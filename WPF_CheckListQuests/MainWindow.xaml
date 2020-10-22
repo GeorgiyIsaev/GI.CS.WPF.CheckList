@@ -38,7 +38,7 @@
             <GridSplitter.RenderTransform> 
                 <TransformGroup>
                     <ScaleTransform/>
-                    <SkewTransform AngleY="0"/>
+                    <SkewTransform AngleY="0"/> 
                     <RotateTransform/>
                     <TranslateTransform Y="0"/>
                 </TransformGroup>
