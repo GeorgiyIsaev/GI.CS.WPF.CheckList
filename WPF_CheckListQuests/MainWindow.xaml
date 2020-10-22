@@ -35,7 +35,7 @@
         <GridSplitter ResizeDirection="Columns"
                   HorizontalAlignment="Left" Width="6"
                   ResizeBehavior="PreviousAndNext" Background="LightGray" RenderTransformOrigin="0.5,0.5" Margin="188,25,0,0" Grid.ColumnSpan="2" >
-            <GridSplitter.RenderTransform>
+            <GridSplitter.RenderTransform> 
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform AngleY="0"/>
