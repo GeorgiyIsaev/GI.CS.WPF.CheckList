@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_TestWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="543" Width="948">
     <Grid Margin="0,0,257,-16">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -26,7 +26,7 @@
             <ListBox x:Name="ListBox_Quest" Margin="0,63,0,0" Height="337" VerticalAlignment="Top"/>
         </Grid>
 
-        <Grid Grid.Column="2" Margin="10,10,-245,24" Grid.RowSpan="2">
+        <Grid Grid.Column="2" Margin="23,49,-230,79" Grid.RowSpan="2">
             <TextBlock HorizontalAlignment="Left" Margin="-23,44,0,0" Text="Вопрос" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="64" RenderTransformOrigin="0.5,0.5" FontSize="16" TextAlignment="Center">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
