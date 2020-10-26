@@ -27,7 +27,7 @@ namespace WPF_TestElement
             InitializeComponent();
             Models.Add(new MyModel { tName = "Test", Description = "Hello" });
             Models.Add(new MyModel { tName = "Test2", Description = "Hello2" });
-            Models.Add(new MyModel { tName = "Test3", Description = "Hello3" });
+            Models.Add(new MyModel { tName = "Test3", Description = "Hello3" }); 
         }
 
         public ObservableCollection<MyModel> Models
