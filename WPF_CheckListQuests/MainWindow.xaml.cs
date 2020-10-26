@@ -36,8 +36,21 @@ namespace WPF_CheckListQuests
             }
         }
 
+        private void Button_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            input_AnAnswer.Text = "";
+            input_Answer.Text = "";
+            input_Comment.Text = "";
+            input_Quest.Text = "";
+        }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            QuestItem questItem = new QuestItem();
+            questItem.quest = input_Quest.Text;
+            questItem.comment = input_Comment.Text;
+            questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
+            QuestsBox.answerItem.Add(questItem);
+        }
     }
-
-
-
 }
