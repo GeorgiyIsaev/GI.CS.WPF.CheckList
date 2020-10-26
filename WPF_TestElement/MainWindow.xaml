@@ -18,10 +18,10 @@
             <RowDefinition Height="23*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <TextBox Margin="10,1,10,1" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
-        <TextBox Margin="10,1,10,1" Text="" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <TextBox Margin="10,1,10,1" Text="" TextWrapping="Wrap" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <TextBox Margin="10,1,10,1" Text="" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="input_Quest" ToolTip="Текствовое поля для вопроса" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="input_Answer" ToolTip="Текствовое поля для верных ответов. Если ответов несколько, они должны быть разделены через Enter" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="input_AnAnswer" ToolTip="Текствовое поля для не верных ответов. Если ответов несколько, они должны быть разделены через Enter"  Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="input_Comment" ToolTip="Текствовое поля для пояснения к вопросу" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
         <Button x:Name="Button_Clear" Content="Очистить" Margin="10,1,1,7" Grid.Row="4"/>
         <Button x:Name="Button_Save"  Content="Сохранить" Margin="1,1,10,7" Grid.Row="4" Grid.Column="1"/>
 
