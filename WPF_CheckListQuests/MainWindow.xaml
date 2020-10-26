@@ -7,10 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="482" Width="454">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="191*"/>
-            <ColumnDefinition Width="209*"/>
-        </Grid.ColumnDefinitions>
+        <!--Меню приложения-->
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
                 <MenuItem Header="Новый проект" ></MenuItem>
@@ -26,74 +23,45 @@
             </MenuItem>
             <MenuItem Header="О программме" ></MenuItem>
         </Menu>
-        <!--Основные элементы слева Листбокс с вопросами-->
-        <Grid Margin="0,0,6,0">
-            <TextBlock HorizontalAlignment="Left" Margin="10,26,0,0" Text="Список вопросов:" TextWrapping="Wrap" VerticalAlignment="Top" Height="17" Width="159"/>
-            <ListBox x:Name="ListBox_Quest" Margin="0,48,0,0"/>    
+        <Grid>
+            <!--Разметка колонок-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <!--Основные элементы слева Листбокс с вопросами-->
+            </Grid.RowDefinitions>
+            <Grid Margin="0,0,6,0">
+                <TextBlock HorizontalAlignment="Left" Margin="10,26,0,0" Text="Список вопросов:" TextWrapping="Wrap" VerticalAlignment="Top" Height="17" Width="159"/>
+                <ListBox x:Name="ListBox_Quest" Margin="0,48,0,0"/>
+            </Grid>
+            <!--Ввод информации о вопросе-->
+            <Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="input_Quest" ToolTip="Текствовое поля для вопроса" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="input_Answer" ToolTip="Текствовое поля для верных ответов. Если ответов несколько, они должны быть разделены через Enter" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="input_AnAnswer" ToolTip="Текствовое поля для не верных ответов. Если ответов несколько, они должны быть разделены через Enter"  Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="input_Comment" ToolTip="Текствовое поля для пояснения к вопросу" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <Button x:Name="Button_Clear" Content="Очистить" Margin="10,1,1,7" Grid.Row="4"/>
+                <Button x:Name="Button_Save"  Content="Сохранить" Margin="1,1,10,7" Grid.Row="4" Grid.Column="1"/>
+            </Grid>
+            <!--Разделитель колонок приложения-->
+            <GridSplitter Grid.Column="1" Grid.RowSpan="2" ShowsPreview="False" Background="LightGray" Width="3"
+             HorizontalAlignment="Center" VerticalAlignment="Stretch" />
         </Grid>
-        <!--Разделитель-->
-        <!--<GridSplitter ResizeDirection="Columns"
-                  HorizontalAlignment="Left" Width="6"
-                  ResizeBehavior="PreviousAndNext" Background="LightGray" RenderTransformOrigin="0.5,0.5" Margin="188,25,0,0" Grid.ColumnSpan="2" >
-            <GridSplitter.RenderTransform> 
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="0"/> 
-                    <RotateTransform/>
-                    <TranslateTransform Y="0"/>
-                </TransformGroup>
-            </GridSplitter.RenderTransform>
-        </GridSplitter>-->
-        <!--Основные элементы справа форма для получения и редактирования вопроса-->
-        <Grid Grid.Column="1" Margin="8,26,2,1">
-            <TextBlock HorizontalAlignment="Left" Margin="-23,44,0,0" Text="Вопрос" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="64" RenderTransformOrigin="0.5,0.5" FontSize="16" TextAlignment="Center">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-90.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBox Margin="18,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="97"/>
-            <TextBlock HorizontalAlignment="Left" Margin="-23,148,0,0" Text="Верно" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="64" RenderTransformOrigin="0.5,0.5" FontSize="16" TextAlignment="Center">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBox Margin="18,102,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="102"/>
-            <TextBlock HorizontalAlignment="Left" Margin="-30,242,0,0" Text="Не верно" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="82" RenderTransformOrigin="0.5,0.5" FontSize="16" TextAlignment="Center">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBox Margin="18,209,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95"/>
-            <TextBlock HorizontalAlignment="Left" Margin="-10,320,0,0" Text="Коментарий" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="64" RenderTransformOrigin="0.5,0.5" FontSize="16" TextAlignment="Center">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBox Margin="18,309,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="66"/>
-            <Button x:Name="Button_Clear" Content="Очистить" HorizontalAlignment="Left" Margin="0,375,0,0" VerticalAlignment="Top" Height="22" Width="100"/>
-            <Button x:Name="Button_Save"  Content="Сохранить" HorizontalAlignment="Left" Margin="100,375,0,0" VerticalAlignment="Top" Height="22" Width="99"/>
-
-        </Grid>
-
     </Grid>
 </Window>

@@ -24,7 +24,6 @@
         <TextBox x:Name="input_Comment" ToolTip="Текствовое поля для пояснения к вопросу" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
         <Button x:Name="Button_Clear" Content="Очистить" Margin="10,1,1,7" Grid.Row="4"/>
         <Button x:Name="Button_Save"  Content="Сохранить" Margin="1,1,10,7" Grid.Row="4" Grid.Column="1"/>
-
     </Grid>
 
 </Window>
