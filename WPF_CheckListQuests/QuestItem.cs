@@ -35,8 +35,12 @@ namespace WPF_CheckListQuests
 				answerItem.Add(temp);
 			}
 		}
+        public override string ToString()
+        {
+			return $"{quest} --> {answerItem.Count} ответа.";
+		}
 
-		
-	}    
+
+    }    
 }
 

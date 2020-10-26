@@ -29,11 +29,11 @@ namespace WPF_CheckListQuests
         }
         void inputTestList()
         {
-            for (int i = 0; i < 50; i++)
-            {
-                str_list_test.Add($"Тестовый вопрос {i}");
-                ListBox_Quest.Items.Add($"Тестовый вопрос {i}");
-            }
+            //for (int i = 0; i < 50; i++)
+            //{
+            //    str_list_test.Add($"Тестовый вопрос {i}");
+            //    ListBox_Quest.Items.Add($"Тестовый вопрос {i}");
+            //}
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -46,11 +46,28 @@ namespace WPF_CheckListQuests
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
+            if (QuestsBox.if_ThereQuest(input_Quest.Text))
+            {
+                MessageBox.Show("Такой вопрос уже был добавлен ранее","Невозможно добавить вопрос");
+                return;
+            }
+            
             QuestItem questItem = new QuestItem();
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
-            QuestsBox.answerItem.Add(questItem);
+            addListBoxQuetsItem(questItem);
         }
+        private void addListBoxQuetsItem(QuestItem questItem)
+        {
+            QuestsBox.answerItem.Add(questItem);
+            ListBox_Quest.Items.Add(questItem);
+            ListBox_Quest.Items.Dispatcher. = questItem.ToString();
+
+            /*TODO будут ли они сортироваться, можно ли добваить всплывающую подсказку*/
+        }
+
+
+
     }
 }
