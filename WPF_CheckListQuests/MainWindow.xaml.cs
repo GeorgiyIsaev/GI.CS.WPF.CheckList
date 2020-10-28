@@ -22,8 +22,18 @@ namespace WPF_CheckListQuests
         public MainWindow()
         {
             InitializeComponent();
-            QuestsBox.file_readTXT("TEMPTXT.txt");
+            Loaded += MainWindow_Loaded;        
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {            
+            // QuestsBox.file_readTXT("TEMPTXT.txt");
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
+
+           // QuestsBox.questItems.Add();
+
+            QuestsBox.file_readTXT("TEMPTXT.txt");
+            ListBox_New.Items.Add("<Добавить новый вопрос>");
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -63,7 +73,14 @@ namespace WPF_CheckListQuests
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Button_Clear.Content = "Удалить";
+            Button_Save.Content = "Изменить";
+        }
 
+        private void ListBox_New_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Button_Clear.Content = "Очистить";
+            Button_Save.Content = "Сохранить";
         }
     }
 }

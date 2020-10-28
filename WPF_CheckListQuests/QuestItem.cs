@@ -37,16 +37,18 @@ namespace WPF_CheckListQuests
 		}
         public override string ToString()
         {
-			return quest;
-			//return $"{quest} --> {answerItem.Count} ответа."; //откуда берется лишний перенос
+			//return quest;
+			return $"{quest} --> {answerItem.Count} ответа."; //откуда берется лишний перенос
 		}
 		public void EndlForSpase()
         {	
-			while (true){			
+			while (true){
+				quest = quest.Replace("\r", " ");
 				quest = quest.Replace("\n", " "); 			
 				if (!quest.Contains("\n")) break;
 			}
 			while (true){
+				comment = comment.Replace("\r", " ");
 				comment = comment.Replace("\n", " ");
 				if (!comment.Contains("\n")) break;
 			}

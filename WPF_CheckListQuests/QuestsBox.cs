@@ -24,9 +24,9 @@ namespace WPF_CheckListQuests
 		{
 			/*Запись вопросов в блокнот*/
 			using (var file = new StreamWriter(nameFile))
-			{
+			{				
 				foreach(QuestItem tmp in questItems)
-                {
+                {					
 					file.WriteLine($"ВОПРОС: {tmp.quest}");
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
