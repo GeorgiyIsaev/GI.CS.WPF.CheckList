@@ -41,8 +41,17 @@
                     <RowDefinition Height="401*"/>
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Left" Margin="10,26,0,0" Text="Список вопросов:" TextWrapping="Wrap" VerticalAlignment="Top" Height="17" Width="159"/>
-                <ListBox x:Name="ListBox_New" SelectionChanged="ListBox_New_SelectionChanged"  Margin="0,48,0,0" Height="19" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top"/>
                 <ListBox x:Name="ListBox_Quest" SelectionChanged="ListBox_Quest_SelectionChanged"  Margin="0,0,0,4" Grid.Row="1"/>
+                <Button  x:Name="Button_NewQuest" Click="Button_NewQuest_Click" Content="Новый вопрос" HorizontalAlignment="Right" Margin="0,41,0,0" VerticalAlignment="Top" Height="26" Width="149">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF3F3F3"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFFFF9F9" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <!--Ввод информации о вопросе-->
             <Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
