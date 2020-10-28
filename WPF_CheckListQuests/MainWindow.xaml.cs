@@ -21,7 +21,8 @@ namespace WPF_CheckListQuests
     {      
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            QuestsBox.file_readTXT("TEMPTXT.txt");
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -53,7 +54,11 @@ namespace WPF_CheckListQuests
             /*TODO будут ли они сортироваться, можно ли добаваить всплывающую подсказку*/
         }
 
-
-
+        private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
+        {
+            QuestsBox.file_saveTXT("text.txt");
+            MessageBox.Show("Файл сохранен text.txt");
+        }
+       
     }
 }
