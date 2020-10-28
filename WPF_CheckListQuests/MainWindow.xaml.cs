@@ -29,13 +29,14 @@ namespace WPF_CheckListQuests
         {
             /*Контейнер с привязкой к листбоксу*/
             QuestItem questItem = new QuestItem();
-            ListBox_Quest.ItemsSource = QuestsBox.questItems;  
+            ListBox_Quest.ItemsSource = QuestsBox.questItems;
             /*Нулевой эл-т для новых вопросов*/
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem);
-            /*Чтение из временого файла*/       
+            /*Чтение из временого файла*/
             QuestsBox.file_readTXT("TEMPTXT.txt");
-            ListBox_Quest.SelectedIndex = 0;            
+            ListBox_Quest.SelectedIndex = 0;
+            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -57,11 +58,17 @@ namespace WPF_CheckListQuests
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             int val = ListBox_Quest.SelectedIndex;        
-            if (val > 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
+            if (val == 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
             {
                 MessageBox.Show("Такой вопрос уже был добавлен ранее", "Невозможно добавить вопрос");
                 return;
-            }            
+            }
+            if (input_Quest.Text == "")
+            {
+                MessageBox.Show("Поле с вопросом не заполнено", "Невозможно добавить вопрос");
+                return;
+            }
+
             QuestItem questItem = new QuestItem();
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
@@ -75,6 +82,7 @@ namespace WPF_CheckListQuests
             }
             else
                 QuestsBox.questItems.Add(questItem);
+            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
         }       
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
@@ -103,28 +111,15 @@ namespace WPF_CheckListQuests
             }
         } 
 
-        private void  ResetListNew()
-        {
-           // ListBox_New.Items.Clear();
-            //ListBox_New.Items.Add("<Добавить новый вопрос>");
-        }
 
-        private void ListBox_New_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //ListBox_Quest.SelectedIndex = -1;
-            //ListBox_Quest.Selec
 
-              // ClearSelected();
-            Button_Clear.Content = "Очистить";
-            Button_Save.Content = "Сохранить";
-        }
-
-        private void Button_NewQuest_Click(object sender, RoutedEventArgs e)
-        {
-            //if(ListBox_Quest.SelectedIndex != -1) ListBox_Quest.SelectedIndex = -1; // снимаем выделение    
-            Button_Clear_Click(sender, e);
-            Button_Clear.Content = "Очистить";
-            Button_Save.Content = "Сохранить";
-        }
+        //private void Button_NewQuest_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //if(ListBox_Quest.SelectedIndex != -1) ListBox_Quest.SelectedIndex = -1; // снимаем выделение   
+        //    // ClearSelected(); только для винформ
+        //    Button_Clear_Click(sender, e);
+        //    Button_Clear.Content = "Очистить";
+        //    Button_Save.Content = "Сохранить";
+        //}
     }
 }

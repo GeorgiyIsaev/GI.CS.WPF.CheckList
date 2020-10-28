@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
+using System.Windows.Xps.Serialization;
 
 namespace WPF_CheckListQuests
 {
@@ -61,8 +62,8 @@ namespace WPF_CheckListQuests
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
 						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); }
-						questItem = new QuestItem();
-						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: "));
+						questItem = new QuestItem();					
+						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: ")+8);
 					}
 					else if (line.IndexOf("ВЕРНО:") == 0)
 					{
