@@ -33,14 +33,24 @@ namespace WPF_CheckListQuests
 				Answer temp = new Answer(tmp, false);
 				answerItem.Add(temp);
 			}
+			EndlForSpase();
 		}
         public override string ToString()
         {
-			return $"{quest} --> {answerItem.Count} ответа.";
+			return quest;
+			//return $"{quest} --> {answerItem.Count} ответа."; //откуда берется лишний перенос
 		}
-
-		
-
+		public void EndlForSpase()
+        {	
+			while (true){			
+				quest = quest.Replace("\n", " "); 			
+				if (!quest.Contains("\n")) break;
+			}
+			while (true){
+				comment = comment.Replace("\n", " ");
+				if (!comment.Contains("\n")) break;
+			}
+		}
 	}    
 }
 

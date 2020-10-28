@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 
@@ -7,7 +8,10 @@ namespace WPF_CheckListQuests
 {
     public static class QuestsBox
     {
-        public static List<QuestItem> questItems = new List<QuestItem>();
+
+		//ObservableCollection;
+		//public static ObservableCollection
+		public static ObservableCollection<QuestItem> questItems = new ObservableCollection<QuestItem>();
         public static bool if_ThereQuest(string str)
         {
            foreach (QuestItem tmp in questItems)
@@ -56,7 +60,7 @@ namespace WPF_CheckListQuests
 				{
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
-						if (questItem != null) questItems.Add(questItem);
+						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); }
 						questItem = new QuestItem();
 						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: "));
 					}

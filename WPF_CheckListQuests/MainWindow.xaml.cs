@@ -23,6 +23,7 @@ namespace WPF_CheckListQuests
         {
             InitializeComponent();
             QuestsBox.file_readTXT("TEMPTXT.txt");
+            ListBox_Quest.ItemsSource = QuestsBox.questItems;
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -50,7 +51,7 @@ namespace WPF_CheckListQuests
         private void addListBoxQuetsItem(QuestItem questItem)
         {
             QuestsBox.questItems.Add(questItem);
-            ListBox_Quest.Items.Add(questItem);    
+            //ListBox_Quest.Items.Add(questItem);    
             /*TODO будут ли они сортироваться, можно ли добаваить всплывающую подсказку*/
         }
 
@@ -59,6 +60,10 @@ namespace WPF_CheckListQuests
             QuestsBox.file_saveTXT("text.txt");
             MessageBox.Show("Файл сохранен text.txt");
         }
-       
+
+        private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
