@@ -27,26 +27,31 @@ namespace WPF_CheckListQuests
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            /*Контейнер с привязкой к листбоксу*/
             QuestItem questItem = new QuestItem();
+            ListBox_Quest.ItemsSource = QuestsBox.questItems;  
+            /*Нулевой эл-т для новых вопросов*/
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem);
-
-            // QuestsBox.file_readTXT("TEMPTXT.txt");
-            ListBox_Quest.ItemsSource = QuestsBox.questItems;
-
-            // QuestsBox.questItems.Add();
+            /*Чтение из временого файла*/       
             QuestsBox.file_readTXT("TEMPTXT.txt");
-            ListBox_Quest.SelectedIndex = 0;
-            //ResetListNew();
-            //ListBox_New.Items.Add("<Добавить новый вопрос>");
+            ListBox_Quest.SelectedIndex = 0;            
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
-            input_AnAnswer.Text = "";
-            input_Answer.Text = "";
-            input_Comment.Text = "";
-            input_Quest.Text = "";
+            if (ListBox_Quest.SelectedIndex == 0)
+            {
+                input_AnAnswer.Text = "";
+                input_Answer.Text = "";
+                input_Comment.Text = "";
+                input_Quest.Text = "";
+            }
+            else {
+                int val = ListBox_Quest.SelectedIndex;
+                if (val > 0)  QuestsBox.questItems.RemoveAt(val);
+                ListBox_Quest.SelectedIndex = 0;
+            }
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -61,15 +66,8 @@ namespace WPF_CheckListQuests
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
-            addListBoxQuetsItem(questItem);
-        }
-        private void addListBoxQuetsItem(QuestItem questItem)
-        {
             QuestsBox.questItems.Add(questItem);
-            //ListBox_Quest.Items.Add(questItem);    
-            /*TODO будут ли они сортироваться, можно ли добаваить всплывающую подсказку*/
-        }
-
+        }       
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
             QuestsBox.file_saveTXT("text.txt");
@@ -78,7 +76,8 @@ namespace WPF_CheckListQuests
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListBox_Quest.SelectedIndex != 0)
+            /*Перемещение по лист боксу*/
+            if (ListBox_Quest.SelectedIndex > 0)
             {
                 int val = ListBox_Quest.SelectedIndex; // индекс выделеного эл-та
                 input_AnAnswer.Text = QuestsBox.questItems.ElementAt(val).StrFullAnswer(false);
@@ -95,6 +94,7 @@ namespace WPF_CheckListQuests
                 Button_Save.Content = "Сохранить";
             }
         } 
+
         private void  ResetListNew()
         {
            // ListBox_New.Items.Clear();
