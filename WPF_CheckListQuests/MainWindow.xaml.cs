@@ -48,7 +48,7 @@ namespace WPF_CheckListQuests
         }
         private void addListBoxQuetsItem(QuestItem questItem)
         {
-            QuestsBox.questItem.Add(questItem);
+            QuestsBox.questItems.Add(questItem);
             ListBox_Quest.Items.Add(questItem);    
             /*TODO будут ли они сортироваться, можно ли добаваить всплывающую подсказку*/
         }

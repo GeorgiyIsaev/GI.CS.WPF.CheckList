@@ -7,8 +7,8 @@ namespace WPF_CheckListQuests
 	public class QuestItem
 	{
 		/*Части вопроса*/
-		public string quest { get; set; }
-		public string comment { get; set; }
+		public string quest { get; set; } = "";
+		public string comment { get; set; } = "";
 		public List<Answer> answerItem;
 
 		/*Логика работы вопроса*/
