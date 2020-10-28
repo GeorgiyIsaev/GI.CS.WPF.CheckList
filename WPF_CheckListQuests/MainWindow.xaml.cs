@@ -56,17 +56,25 @@ namespace WPF_CheckListQuests
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (QuestsBox.if_ThereQuest(input_Quest.Text))
+            int val = ListBox_Quest.SelectedIndex;        
+            if (val > 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
             {
                 MessageBox.Show("Такой вопрос уже был добавлен ранее", "Невозможно добавить вопрос");
                 return;
-            }
-
+            }            
             QuestItem questItem = new QuestItem();
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
-            QuestsBox.questItems.Add(questItem);
+
+            if (ListBox_Quest.SelectedIndex != 0)
+            {
+                QuestsBox.questItems.Insert(val+1, questItem);
+                QuestsBox.questItems.RemoveAt(val);
+                ListBox_Quest.SelectedIndex = val;
+            }
+            else
+                QuestsBox.questItems.Add(questItem);
         }       
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
