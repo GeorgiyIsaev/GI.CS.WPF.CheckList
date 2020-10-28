@@ -36,49 +36,52 @@ namespace WPF_CheckListQuests
 			}	
 		}
 		public static void file_readTXT(string nameFile)
-		{
-			QuestItem questItem = null;
-			string line;
+		{			
+			string fullLine;
 			/*Чтение вопросов из блокнота*/
 			using (var file = new StreamReader(nameFile, Encoding.Unicode))
 			{
-				while ((line = file.ReadLine()) != null)
-				{
-					try
-					{
-						line = file.ReadLine();
-						if (line.IndexOf("ВОПРОС:") >= 0)
-						{
-							if (questItem != null) questItems.Add(questItem);
-							questItem = new QuestItem();
-							questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: "));
-						}
-						else if (line.IndexOf("ВЕРНО:") == 0)
-						{
-							Answer temp = new Answer(line.Substring(7), true);
-							questItem.answerItem.Add(temp);
-						}
-						else if(line.IndexOf("НЕ ВЕРНО:") == 0)
-						{
-							Answer temp = new Answer(line.Substring(10), false);
-							questItem.answerItem.Add(temp);
-						}
-						else if(line.IndexOf("КОММЕНТАРИЙ:") == 0)
-						{
-							questItem.comment = line.Substring(13);
-						}
-					}
-                    catch (Exception e)
-					{
-						System.Windows.MessageBox.Show(e.ToString());				
-						/*Просто игнорируем*/
-
-					}
-				}		
+				fullLine = file.ReadToEnd();				
 			}
-
-
+			parsing_quest(fullLine);
 		}
+		private static void parsing_quest(string str)
+        {
+			string[] lineItem = str.Split("\n");			
+			QuestItem questItem = null;
 
+			foreach(string line in lineItem)
+            {
+				try
+				{
+					if (line.IndexOf("ВОПРОС:") >= 0)
+					{
+						if (questItem != null) questItems.Add(questItem);
+						questItem = new QuestItem();
+						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: "));
+					}
+					else if (line.IndexOf("ВЕРНО:") == 0)
+					{
+						Answer temp = new Answer(line.Substring(7), true);
+						questItem.answerItem.Add(temp);
+					}
+					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
+					{
+						Answer temp = new Answer(line.Substring(10), false);
+						questItem.answerItem.Add(temp);
+					}
+					else if (line.IndexOf("КОММЕНТАРИЙ:") == 0)
+					{
+						questItem.comment = line.Substring(13);
+					}
+				}
+				catch (Exception e)
+				{
+					System.Windows.MessageBox.Show(e.ToString());
+					/*Просто игнорируем*/
+				}
+            }
+			
+		}
 	}
 }

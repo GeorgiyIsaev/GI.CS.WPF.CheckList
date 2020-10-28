@@ -9,13 +9,12 @@ namespace WPF_CheckListQuests
 		/*Части вопроса*/
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
-		public List<Answer> answerItem;
+		public List<Answer> answerItem = new List<Answer>();
 
 		/*Логика работы вопроса*/
 		/*Добавление верные и не верных ответов в лист*/
 		public void InputAnswerList(string answer, string anAnswer)
-        {
-			answerItem = new List<Answer>();
+        {		
 			String[] answerMas = answer.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 			String[] anAnswerMas = anAnswer.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
