@@ -18,22 +18,10 @@ namespace WPF_CheckListQuests
    
     
     public partial class MainWindow : Window
-    {
-        List<string> str_list_test = new List<string>();        
+    {      
         public MainWindow()
         {
-            InitializeComponent();
-            inputTestList();
-
-
-        }
-        void inputTestList()
-        {
-            //for (int i = 0; i < 50; i++)
-            //{
-            //    str_list_test.Add($"Тестовый вопрос {i}");
-            //    ListBox_Quest.Items.Add($"Тестовый вопрос {i}");
-            //}
+            InitializeComponent(); 
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -60,11 +48,9 @@ namespace WPF_CheckListQuests
         }
         private void addListBoxQuetsItem(QuestItem questItem)
         {
-            QuestsBox.answerItem.Add(questItem);
-            ListBox_Quest.Items.Add(questItem);
-            ListBox_Quest.Items.Dispatcher. = questItem.ToString();
-
-            /*TODO будут ли они сортироваться, можно ли добваить всплывающую подсказку*/
+            QuestsBox.questItem.Add(questItem);
+            ListBox_Quest.Items.Add(questItem);    
+            /*TODO будут ли они сортироваться, можно ли добаваить всплывающую подсказку*/
         }
 
 

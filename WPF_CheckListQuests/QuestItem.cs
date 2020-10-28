@@ -40,7 +40,8 @@ namespace WPF_CheckListQuests
 			return $"{quest} --> {answerItem.Count} ответа.";
 		}
 
+		
 
-    }    
+	}    
 }
 

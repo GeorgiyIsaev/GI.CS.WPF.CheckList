@@ -26,7 +26,7 @@
         <Grid>
             <!--Разметка колонок-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="75*" />
             </Grid.ColumnDefinitions>
