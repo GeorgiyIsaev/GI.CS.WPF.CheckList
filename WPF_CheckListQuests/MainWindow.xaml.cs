@@ -15,25 +15,26 @@ using System.Windows.Shapes;
 
 namespace WPF_CheckListQuests
 {
-   
-    
+
+
     public partial class MainWindow : Window
-    {      
+    {
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;        
+            Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {            
+        {
             // QuestsBox.file_readTXT("TEMPTXT.txt");
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
 
-           // QuestsBox.questItems.Add();
-
+            // QuestsBox.questItems.Add();
             QuestsBox.file_readTXT("TEMPTXT.txt");
-            ListBox_New.Items.Add("<Добавить новый вопрос>");
+
+            ResetListNew();
+            //ListBox_New.Items.Add("<Добавить новый вопрос>");
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -48,10 +49,10 @@ namespace WPF_CheckListQuests
         {
             if (QuestsBox.if_ThereQuest(input_Quest.Text))
             {
-                MessageBox.Show("Такой вопрос уже был добавлен ранее","Невозможно добавить вопрос");
+                MessageBox.Show("Такой вопрос уже был добавлен ранее", "Невозможно добавить вопрос");
                 return;
             }
-            
+
             QuestItem questItem = new QuestItem();
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
@@ -73,12 +74,42 @@ namespace WPF_CheckListQuests
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // var t = ListBox_Quest.items[ListBox_Quest.Itemindex];
+            // var temp = ListBox_Quest.SelectedItem;
+            int val = IndexClickListBox(ListBox_Quest.SelectedItem.ToString());
+            input_AnAnswer.Text = QuestsBox.questItems.ElementAt(val).StrFullAnswer(false);
+            input_Answer.Text = QuestsBox.questItems.ElementAt(val).StrFullAnswer();
+            input_Comment.Text = QuestsBox.questItems.ElementAt(val).comment;
+            input_Quest.Text = QuestsBox.questItems.ElementAt(val).quest;
+
+
             Button_Clear.Content = "Удалить";
             Button_Save.Content = "Изменить";
+            ResetListNew();
+        }
+        private int IndexClickListBox(string str)
+        {
+            int count = 0;
+            foreach (QuestItem tmp in QuestsBox.questItems)
+            {
+                if(tmp.ToString() == str)
+                    return count;
+                count++;
+            }
+            return 0;
+        }
+        private void  ResetListNew()
+        {
+            ListBox_New.Items.Clear();
+            ListBox_New.Items.Add("<Добавить новый вопрос>");
         }
 
         private void ListBox_New_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //ListBox_Quest.SelectedIndex = -1;
+
+
+              // ClearSelected();
             Button_Clear.Content = "Очистить";
             Button_Save.Content = "Сохранить";
         }

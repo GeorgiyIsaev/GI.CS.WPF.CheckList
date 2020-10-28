@@ -53,6 +53,20 @@ namespace WPF_CheckListQuests
 				if (!comment.Contains("\n")) break;
 			}
 		}
+		public string StrFullAnswer(bool if_answer = true)
+        {
+			StringBuilder tempSTR = new StringBuilder();
+			foreach(Answer answer in answerItem)
+            {
+				if (answer.if_true == if_answer)
+                {
+					if(tempSTR.Length>1) tempSTR.Append("\n");
+					tempSTR.Append(answer.answerSTR);		
+				}
+			}
+			return tempSTR.ToString();
+        }
+
 	}    
 }
 
