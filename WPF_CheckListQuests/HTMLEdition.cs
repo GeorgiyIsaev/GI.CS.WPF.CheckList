@@ -19,6 +19,7 @@ namespace WPF_CheckListQuests
 				int count =0;
 				foreach (QuestItem tmp in QuestsBox.questItems)
 				{
+					if (count++ == 0) continue; // Пропуск вопроса настройки
 					file.WriteLine("<div class=\"questBox\">");
 					file.WriteLine($"<div class=\"questBox__quest\">{count++}) {tmp.quest}</div>");
 										
@@ -36,11 +37,6 @@ namespace WPF_CheckListQuests
 				file.WriteLine(footerBilder());
 				file.WriteLine("</body>\n</html>");
 			}
-
-
-
-		
-
 		}
 
 
@@ -73,7 +69,7 @@ namespace WPF_CheckListQuests
 		private static string footerBilder()
 		{
 			return $"<div id=footer><div><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.0.8\" by Georgiyelbaf</div>" + "\n" +
-				"<div> Дата и время сборки: 19.11.2020 - 15:20 </div></div></div> ";
+				$"<div> Дата и время сборки: {DateTime.Now}</div></div></div> ";
 		}
 	}
 }
