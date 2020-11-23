@@ -109,7 +109,12 @@ namespace WPF_CheckListQuests
                 Button_Clear.Content = "Очистить";
                 Button_Save.Content = "Сохранить";
             }
-        } 
+        }
+
+        private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
+        {
+            HTMLEdition.bilderHTML();
+        }
 
 
 

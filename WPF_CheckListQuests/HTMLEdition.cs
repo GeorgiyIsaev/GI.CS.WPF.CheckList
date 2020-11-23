@@ -5,11 +5,11 @@ using System.IO;
 
 namespace WPF_CheckListQuests
 {
-	class HTMLEdition
+	public class HTMLEdition
 	{
 
 
-		public void bilderHTML()
+		public static void bilderHTML()
 		{
 			using (var file = new StreamWriter("Test.html"))
 			{
@@ -44,7 +44,7 @@ namespace WPF_CheckListQuests
 		}
 
 
-		private string headBilder()
+		private static string headBilder()
 		{
 			string head = @"<!DOCTYPE html>" + "\n" +
 				"<html><head><title> ЗАГОЛОВОК </title><style>" + "\n" +
@@ -65,12 +65,12 @@ namespace WPF_CheckListQuests
 		}
 		
 
-		private string h1Bilder()
+		private static string h1Bilder()
 		{
 			return $"<div><div class=\"questBox\"><h1>{"Тема чек-листа"}</h1>" + "\n" +
 			$"<div id= \"opisanie\" > {"Описание чек листа"} </div></div></div> ";
 		}
-		private string footerBilder()
+		private static string footerBilder()
 		{
 			return $"<div id=footer><div><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.0.8\" by Georgiyelbaf</div>" + "\n" +
 				"<div> Дата и время сборки: 19.11.2020 - 15:20 </div></div></div> ";

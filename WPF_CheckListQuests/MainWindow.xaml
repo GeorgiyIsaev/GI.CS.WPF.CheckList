@@ -13,7 +13,7 @@
                 <MenuItem Header="Новый проект" ></MenuItem>
                 <MenuItem Header="Сохранить" >
                     <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
-                    <MenuItem Header="Сохранить как HTML" ></MenuItem>
+                    <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Настройка" ></MenuItem>
             </MenuItem>
