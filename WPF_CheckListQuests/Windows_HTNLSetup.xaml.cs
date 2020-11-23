@@ -26,14 +26,23 @@ namespace WPF_CheckListQuests
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
         {
             CreateComboBox_FontSize();
+        } 
+        
+        private void CreateComboBox_FontSize()
+        {
+            for(int i = 8; i<30; i+=2)
+                ComboBox_FontSize.Items.Add($"Шрифт: {i}");
+            ComboBox_FontSize.SelectedIndex = 4;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             if (nameFile.Text=="") { MessageBox.Show("Должно быть указано имя файла"); return; }
+            if (input_header.Text == "") { MessageBox.Show("Не указан заголовок для чек-листа"); return; }
+            setupHTML();
+
 
             HTMLEdition.bilderHTML(nameFile.Text);
-
             var result = MessageBox.Show($"Файл {nameFile.Text}.html успешно создан\n Хотите открыть файл?", 
                 "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -42,18 +51,21 @@ namespace WPF_CheckListQuests
                 System.Diagnostics.Process.Start("explorer", forever_papka);
             }  
         }
-
-        private void CreateComboBox_FontSize()
+        private void setupHTML()
         {
-            for(int i = 8; i<30; i+=2)
-                ComboBox_FontSize.Items.Add($"Шрифт: {i}");
-
-            ComboBox_FontSize.SelectedIndex = 4;
+            HTMLEdition.headerHTML = input_header.Text;
+            HTMLEdition.describeHTML = input_describe.Text;
+            HTMLEdition.signFooterHTML = input_sign.Text;
+            HTMLEdition.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
+            HTMLEdition.deleteAnAnswerIf = CB_lineThrough.IsChecked == true;
+            HTMLEdition.spoilerIf = CB_spoilerIf.IsChecked == true;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+      
 
-        }
+        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+
+        //}
     }
 }

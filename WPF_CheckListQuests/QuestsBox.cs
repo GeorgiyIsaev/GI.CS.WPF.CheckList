@@ -23,7 +23,7 @@ namespace WPF_CheckListQuests
         }
 		public static void file_saveTXT(string nameFile)
 		{
-			/*Запись вопросов в блокнот*/
+			/*Запись вопросов в блакнот*/
 			using (var file = new StreamWriter(nameFile))
 			{				
 				foreach(QuestItem tmp in questItems)

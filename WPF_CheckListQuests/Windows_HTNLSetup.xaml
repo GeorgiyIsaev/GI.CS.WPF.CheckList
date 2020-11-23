@@ -20,7 +20,7 @@
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="773*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="input_header" HorizontalAlignment="Left" Height="30" Margin="10,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="input_header" HorizontalAlignment="Left" Height="30" Margin="10,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" Grid.ColumnSpan="2"/>
                     <TextBlock IsHitTestVisible="False" Text="Введите заголовок для Чек-листа" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Foreground="DarkGray" Grid.Column="1" Width="588">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -33,7 +33,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <TextBox x:Name="input_describe" HorizontalAlignment="Left" Height="160" Margin="10,46,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" TextChanged="TextBox_TextChanged" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="input_describe" HorizontalAlignment="Left" Height="160" Margin="10,46,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                     <TextBlock IsHitTestVisible="False" Text="Введите информацию о чек-листе (*необязательное поле)" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="DarkGray" Grid.Column="1" Width="588" Margin="10,50,0,0">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -47,7 +47,7 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBox x:Name="input_sign" HorizontalAlignment="Left" Height="30" Margin="10,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2" Grid.Row="1"/>
+                    <TextBox x:Name="input_sign" HorizontalAlignment="Left" Height="30" Margin="10,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" Grid.ColumnSpan="2" Grid.Row="1"/>
                     <TextBlock IsHitTestVisible="False" Text="Введите подпись (*необязательное поле)" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="DarkGray" Grid.Column="1" Width="588" Margin="9,29,0,0" Grid.Row="1" FontWeight="Bold">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -61,8 +61,8 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <ComboBox x:Name="ComboBox_FontSize" HorizontalAlignment="Left" Height="26" Margin="0,65,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149" Grid.Column="1" FontWeight="Normal"/>
-                    <CheckBox Content="Убрать все пояснения под спойлер" Grid.Column="1" HorizontalAlignment="Left" Margin="163,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="294" FontWeight="Normal"/>
-                    <CheckBox Content="Зачеркнуть неверные ответы" Grid.Column="1" HorizontalAlignment="Left" Margin="462,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="252" FontWeight="Normal"/>
+                    <CheckBox x:Name="CB_spoilerIf" Content="Убрать все пояснения под спойлер" Grid.Column="1" HorizontalAlignment="Left" Margin="163,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="294" FontWeight="Normal"/>
+                    <CheckBox x:Name="CB_lineThrough" Content="Зачеркнуть неверные ответы" Grid.Column="1" HorizontalAlignment="Left" Margin="462,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="252" FontWeight="Normal"/>
                 </Grid>
             </TabItem>
 
@@ -74,7 +74,7 @@
 
         <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="42,379,0,0" Text="Имя файла:" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="134"/>
         <TextBox FontSize="16"  x:Name="nameFile" HorizontalAlignment="Left" Height="30" Margin="181,379,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="411"/>
-        <Button FontSize="16" Content="Сохранить" HorizontalAlignment="Left" Margin="592,379,0,0" VerticalAlignment="Top" Height="30" Width="170" Click="Button_Click"/>
+        <Button FontSize="16" Content="Сохранить" HorizontalAlignment="Left" Margin="592,379,0,0" VerticalAlignment="Top" Height="30" Width="170" Click="ButtonSave_Click"/>
 
 
     </Grid>
