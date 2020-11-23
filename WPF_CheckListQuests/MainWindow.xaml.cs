@@ -114,9 +114,12 @@ namespace WPF_CheckListQuests
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
             HTMLEdition.bilderHTML();
+        }     
+        private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
+        {
+            string forever_papka = Environment.CurrentDirectory;
+            System.Diagnostics.Process.Start("explorer", forever_papka);
         }
-
-
 
         //private void Button_NewQuest_Click(object sender, RoutedEventArgs e)
         //{

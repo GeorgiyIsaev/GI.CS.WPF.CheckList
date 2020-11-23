@@ -10,18 +10,17 @@
         <!--Меню приложения-->
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
-                <MenuItem Header="Новый проект" ></MenuItem>
-                <MenuItem Header="Сохранить" >
-                    <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
-                    <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Настройка" ></MenuItem>
+                <MenuItem Header="Новый проект" ></MenuItem>               
+                <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
+                <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
+                <MenuItem Header="Настройка"></MenuItem>
             </MenuItem>
             <MenuItem Header="Тест" >
                 <MenuItem Header="Запустить тест"></MenuItem>
-                <MenuItem Header="Настроить тетс" ></MenuItem>
+                <MenuItem Header="Настроить тест" ></MenuItem>
             </MenuItem>
             <MenuItem Header="О программме" ></MenuItem>
+            <MenuItem Header="Открыть папку" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
         </Menu>
         <Grid>
             <!--Разметка колонок-->
