@@ -20,6 +20,12 @@ namespace WPF_CheckListQuests
         public Windows_HTNLSetup()
         {
             InitializeComponent();
+            Loaded += Windows_HTNLSetup_Loaded;
+        }
+
+        private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
+        {
+            CreateComboBox_FontSize();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,6 +41,19 @@ namespace WPF_CheckListQuests
                 string forever_papka = Environment.CurrentDirectory + "\\" + nameFile.Text + ".html";         
                 System.Diagnostics.Process.Start("explorer", forever_papka);
             }  
+        }
+
+        private void CreateComboBox_FontSize()
+        {
+            for(int i = 8; i<30; i+=2)
+                ComboBox_FontSize.Items.Add($"Шрифт: {i}");
+
+            ComboBox_FontSize.SelectedIndex = 4;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
