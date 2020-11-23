@@ -19,7 +19,7 @@ namespace WPF_CheckListQuests
 				int count =0;
 				foreach (QuestItem tmp in QuestsBox.questItems)
 				{
-					if (count++ == 0) continue; // Пропуск вопроса настройки
+					if (count == 0) { count++; continue; } // Пропуск вопроса настройки
 					file.WriteLine("<div class=\"questBox\">");
 					file.WriteLine($"<div class=\"questBox__quest\">{count++}) {tmp.quest}</div>");
 										
