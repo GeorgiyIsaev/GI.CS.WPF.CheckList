@@ -113,7 +113,8 @@ namespace WPF_CheckListQuests
 
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
-            HTMLEdition.bilderHTML();
+            new Windows_HTNLSetup().ShowDialog();
+           // HTMLEdition.bilderHTML();
         }     
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
         {

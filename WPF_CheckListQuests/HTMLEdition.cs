@@ -9,9 +9,11 @@ namespace WPF_CheckListQuests
 	{
 
 
-		public static void bilderHTML()
+		public static void bilderHTML(string nameFile)
 		{
-			using (var file = new StreamWriter("Test.html"))
+			
+			nameFile += ".html";
+			using (var file = new StreamWriter(nameFile))
 			{
 				file.WriteLine(headBilder());
 				file.WriteLine("<body>");
