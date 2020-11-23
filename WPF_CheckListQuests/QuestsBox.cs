@@ -36,7 +36,7 @@ namespace WPF_CheckListQuests
 						else
 							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR}");
 					}
-					file.WriteLine($"ВОПРОС: {tmp.comment}");
+					file.WriteLine($"КОММЕНТАРИЙ: {tmp.comment}");
 				}	
 			}	
 		}
