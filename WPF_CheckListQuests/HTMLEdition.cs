@@ -15,6 +15,8 @@ namespace WPF_CheckListQuests
 		public static bool deleteAnAnswerIf { get; set; }
 		public static bool spoilerIf { get; set; }
 
+		/*Настройки цветов*/
+
 
 		/*Логика*/
 		public static void bilderHTML(string nameFile)
