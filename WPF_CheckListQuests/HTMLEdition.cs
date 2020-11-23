@@ -58,7 +58,7 @@ namespace WPF_CheckListQuests
 				".questBox__answer, .questBox__unanwser{padding: 0px 60px 0px;}" + "\n" +
 				".questBox__answer div{color: green;font-weight: bold;display: inline; }" + "\n" +
 				".questBox__unanwser div{ color: red;font-weight: bold;display: inline; }" + "\n" +
-				"#footer {	font-size: 15px;	font-weight: bold;	font-style:italic; padding: 20px 0 27px 12px;	text-align: center ;background-color: #a9a9a9;}" + "\n" +
+				"#footer {	font-size: 15px;	font-weight: bold;	font-style:italic; padding: 20px 0 27px 12px; text-align: center ;background-color: #a9a9a9;}" + "\n" +
 				"</style></head>";
 			return head;
 		}
