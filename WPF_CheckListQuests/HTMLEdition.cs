@@ -30,9 +30,11 @@ namespace WPF_CheckListQuests
 						else
 							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div> {tmpAnswer.answerSTR} </div>" + "\n");
 					}
-
-					file.WriteLine($"	<div class=\"questBox__coment\"><details><summary> !!ПОЯСНЕНИЕ </summary><div> {tmp.comment} </div></details>");
-					file.WriteLine($"	</div>\n</div>");
+					if (tmp.comment != "")
+					{
+						file.WriteLine($"	<div class=\"questBox__coment\"><details><summary> ПОЯСНЕНИЕ: </summary><div> {tmp.comment} </div></details>\n		</div>\n");
+					}
+					file.WriteLine($"</div>");
 				}
 				file.WriteLine(footerBilder());
 				file.WriteLine("</body>\n</html>");
@@ -43,8 +45,9 @@ namespace WPF_CheckListQuests
 		private static string headBilder()
 		{
 			string head = @"<!DOCTYPE html>" + "\n" +
-				"<html><head><title> ЗАГОЛОВОК </title><style>" + "\n" +
-				"html, body{margin: 0;padding: 0;font-family: Arial;	background-color: #c4d0c7;text-align: justify;font-size: 18px;}" + "\n" +
+				"<html><head><title> ЗАГОЛОВОК </title>" + "\n" +
+				"<meta charset = \"utf-8\">" + "\n" +
+				"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: #c4d0c7;text-align: justify;font-size: 18px;}" + "\n" +
 				"h1{font-size: 24px;padding: 20px 0 27px 0px;margin: 0px 0 15px;text-align: center;}" + "\n" +
 				"#opisanie{font-size: 16px;padding: 0 110px 10px; font-style:italic;}		" + "\n" +
 				".questBox{max-width: 1000px; min-width:  320px;padding: 0px 20px 12px;margin: 0 auto;	position: relative;background-color: #ffffff;}	" + "\n" +
