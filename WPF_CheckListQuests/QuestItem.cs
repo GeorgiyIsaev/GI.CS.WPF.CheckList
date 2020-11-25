@@ -35,10 +35,12 @@ namespace WPF_CheckListQuests
 			}
 			EndlForSpase();
 		}
-        public override string ToString()
-        {
+		public override string ToString()
+		{
+			string temp = quest;
+			if (answerItem.Count == 0) temp += $" -- > ОТВЕТЫ: {answerItem.Count} шт.";
 			//return quest;
-			return $"{quest} --> ОТВЕТЫ: {answerItem.Count} шт."; 
+			return temp;
 		}
 		public void EndlForSpase()
         {	
