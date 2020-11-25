@@ -35,12 +35,27 @@ namespace WPF_CheckListQuests
             string namefile = nameFile.Text;
             if (nameFile.Text == "") { MessageBox.Show("Не указано имя файла"); return; }
 
-            if (!System.IO.File.Exists(nameFile.Text))            
+            if (!System.IO.File.Exists(nameFile.Text))
+            {
                 MessageBox.Show($"Файл {nameFile.Text} не обнаружен!");
+                return;
+            }
 
 
-            int count = HTMLEdition.readHTML(nameFile.Text);
-            MessageBox.Show($"Добавлено {count} вопросов.");
+            if (nameFile.Text.LastIndexOf(".txt") > -1) {
+                int count = QuestsBox.file_readTXT(nameFile.Text);
+                MessageBox.Show($"Добавлено {count} вопросов.");
+            }
+            else if (nameFile.Text.LastIndexOf(".html") > -1)
+            {
+                int count = HTMLEdition.readHTML(nameFile.Text);
+                MessageBox.Show($"Добавлено {count} вопросов.");
+            }
+            else {
+                MessageBox.Show($"Указан не читаемый формат (Допустимы файлы .txt и .html)");
+            }
+
+          
 
         }
       

@@ -40,7 +40,7 @@ namespace WPF_CheckListQuests
 				}	
 			}	
 		}
-		public static void file_readTXT(string nameFile)
+		public static int file_readTXT(string nameFile)
 		{			
 			string fullLine;
 			/*Чтение вопросов из блокнота*/
@@ -48,12 +48,13 @@ namespace WPF_CheckListQuests
 			{
 				fullLine = file.ReadToEnd();				
 			}
-			parsing_quest(fullLine);
+			return parsing_quest(fullLine);
 		}
-		private static void parsing_quest(string str)
+		private static int parsing_quest(string str)
         {
 			string[] lineItem = str.Split("\n");			
 			QuestItem questItem = null;
+			int count = 0;
 
 			foreach(string line in lineItem)
             {
@@ -61,7 +62,7 @@ namespace WPF_CheckListQuests
 				{
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
-						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); }
+						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); count++; }
 						questItem = new QuestItem();					
 						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: ")+8);
 					}
@@ -86,6 +87,7 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
             }
+			return count;
 			
 		}
 	}
