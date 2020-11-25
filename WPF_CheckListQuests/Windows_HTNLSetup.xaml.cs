@@ -63,7 +63,7 @@ namespace WPF_CheckListQuests
 
         private void ColorStack()
         {
-            CB_FonBack.Items
+           // CB_FonBack.Items
         }
 
       
