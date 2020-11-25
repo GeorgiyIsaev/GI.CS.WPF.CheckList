@@ -38,7 +38,7 @@ namespace WPF_CheckListQuests
 		public override string ToString()
 		{
 			string temp = quest;
-			if (answerItem.Count == 0) temp += $" -- > ОТВЕТЫ: {answerItem.Count} шт.";
+			if (answerItem.Count != 0) temp += $" -- > ОТВЕТЫ: {answerItem.Count} шт.";
 			//return quest;
 			return temp;
 		}

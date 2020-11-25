@@ -38,13 +38,13 @@ namespace WPF_CheckListQuests
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
 						if (tmpAnswer.if_true)
-							file.WriteLine($"   <div class=\"questBox__answer\"><div> &#10004;</div> {tmpAnswer.answerSTR} </div>" + "\n");
+							file.WriteLine($"   <div class=\"questBox__answer\"><div> &#10004;</div>{tmpAnswer.answerSTR}</div>" + "\n");
 						else
-							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div> {tmpAnswer.answerSTR} </div>" + "\n");
+							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}</div>" + "\n");
 					}
 					if (tmp.comment != "")
 					{
-						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}><summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}</div></details>\n		</div>\n");
+						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}</div></details>\n		</div>\n");
 					}
 					file.WriteLine($"</div>");
 				}
@@ -105,5 +105,76 @@ namespace WPF_CheckListQuests
 			}
 			return "";
         }
+
+
+
+		public void readHTML(string nameFile)
+        {
+			string fullLine;
+			/*Чтение всго текста со страницы*/
+			using (var file = new StreamReader(nameFile, Encoding.Unicode))
+			{
+				fullLine = file.ReadToEnd();
+			}
+			HTMLParsingQuest(fullLine);
+		}
+
+		public void HTMLParsingQuest(string str)
+		{
+			/*Строковые метки*/
+			string questBegin = $"<div class=\"questBox__quest\">";
+			string questEnd = "</div>";
+			string AnswerBegin = $"   <div class=\"questBox__answer\"><div> &#10004;</div>";
+			string UnAnswerBegin = $"   <div class=\"questBox__unanwser\"><div> &#10008;</div>";
+			string AnswerEnd= "</div>" + "\n";
+			string comentBegin = "<summary>ПОЯСНЕНИЕ:</summary><div>";
+			string comentEnd = "</div></details>";
+
+			/*Старт*/
+			string[] lineItem = str.Split("\n");
+			QuestItem questItem = null;
+
+			foreach (string line in lineItem)
+			{
+				string temp;
+				try
+				{
+					if (line.IndexOf(questBegin) >= 0)
+					{
+						if (questItem != null) { QuestsBox.questItems.Add(questItem); }
+						questItem = new QuestItem();
+						temp = line.Replace(questBegin, "");
+						temp = temp.Replace(questEnd, "");					
+						temp = temp.Remove(0, s.IndexOf(')') + 2);
+						questItem.quest = line.Substring(temp);
+					}
+					else if (line.IndexOf(AnswerBegin) == 0)
+					{
+						temp = line.Replace(AnswerBegin, "");
+						temp = temp.Replace(AnswerEnd, "");
+						Answer tempAns = new Answer(temp, true);
+						questItem.answerItem.Add(tempAns);
+					}
+					else if (line.IndexOf(UnAnswerBegin) == 0)
+					{
+						temp = line.Replace(UnAnswerBegin, "");
+						temp = temp.Replace(AnswerEnd, "");
+						Answer tempAns = new Answer(temp, false);
+						questItem.answerItem.Add(tempAns);
+					}
+					else if (line.IndexOf("КОММЕНТАРИЙ:") == 0)
+					{
+						temp = line.Replace(comentBegin, "");
+						temp = temp.Replace(comentEnd, "");
+						questItem.comment = line.Substring(13);
+					}
+				}
+				catch (Exception e)
+				{
+					System.Windows.MessageBox.Show(e.ToString());
+					/*Просто игнорируем*/
+				}
+			}
+		}
 	}
 }
