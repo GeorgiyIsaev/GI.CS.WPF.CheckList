@@ -12,7 +12,8 @@
         <!--Меню приложения-->
         <Menu  FontSize="14" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
-                <MenuItem Header="Новый проект" ></MenuItem>
+                <MenuItem Header="Очистить проект"></MenuItem>
+                <MenuItem Header="Добавить из файла" Click="MenuItemLoad_Click"></MenuItem>
                 <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
                 <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
                 <MenuItem Header="Настройка"></MenuItem>

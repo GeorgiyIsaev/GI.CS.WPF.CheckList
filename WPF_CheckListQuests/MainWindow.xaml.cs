@@ -89,6 +89,10 @@ namespace WPF_CheckListQuests
             QuestsBox.file_saveTXT("text.txt");
             MessageBox.Show("Файл сохранен text.txt");
         }
+    
+
+
+
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -121,6 +125,14 @@ namespace WPF_CheckListQuests
             string forever_papka = Environment.CurrentDirectory;
             System.Diagnostics.Process.Start("explorer", forever_papka);
         }
+        private void MenuItemLoad_Click(object sender, RoutedEventArgs e)
+        {
+            new Windows_Load().ShowDialog();
+        }
+     
+
+
+
 
         //private void Button_NewQuest_Click(object sender, RoutedEventArgs e)
         //{
