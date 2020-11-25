@@ -108,18 +108,19 @@ namespace WPF_CheckListQuests
 
 
 
-		public void readHTML(string nameFile)
+		public static int readHTML(string nameFile)
         {
-			string fullLine;
+			string fullLine;		
 			/*Чтение всго текста со страницы*/
 			using (var file = new StreamReader(nameFile, Encoding.Unicode))
 			{
 				fullLine = file.ReadToEnd();
 			}
-			HTMLParsingQuest(fullLine);
+			return HTMLParsingQuest(fullLine);
+
 		}
 
-		public void HTMLParsingQuest(string str)
+		public static int HTMLParsingQuest(string str)
 		{
 			/*Строковые метки*/
 			string questBegin = $"<div class=\"questBox__quest\">";
@@ -133,6 +134,7 @@ namespace WPF_CheckListQuests
 			/*Старт*/
 			string[] lineItem = str.Split("\n");
 			QuestItem questItem = null;
+			int count = 0;
 
 			foreach (string line in lineItem)
 			{
@@ -141,12 +143,12 @@ namespace WPF_CheckListQuests
 				{
 					if (line.IndexOf(questBegin) >= 0)
 					{
-						if (questItem != null) { QuestsBox.questItems.Add(questItem); }
+						if (questItem != null) { QuestsBox.questItems.Add(questItem); count++; }
 						questItem = new QuestItem();
 						temp = line.Replace(questBegin, "");
 						temp = temp.Replace(questEnd, "");					
-						temp = temp.Remove(0, s.IndexOf(')') + 2);
-						questItem.quest = line.Substring(temp);
+						temp = temp.Remove(0, temp.IndexOf(')') + 2);
+						questItem.quest =temp;
 					}
 					else if (line.IndexOf(AnswerBegin) == 0)
 					{
@@ -166,7 +168,7 @@ namespace WPF_CheckListQuests
 					{
 						temp = line.Replace(comentBegin, "");
 						temp = temp.Replace(comentEnd, "");
-						questItem.comment = line.Substring(13);
+						questItem.comment = temp;
 					}
 				}
 				catch (Exception e)
@@ -175,6 +177,7 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
 			}
+			return count;
 		}
 	}
 }
