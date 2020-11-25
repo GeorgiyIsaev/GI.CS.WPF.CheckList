@@ -19,7 +19,43 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid>
+    <Grid Margin="211,0,0,9">
         <ListBox ItemTemplate="{StaticResource removableTalentListTemplate}" ItemsSource="{Binding ElementName=UI, Path=Models}" />
+
+        <ScrollViewer Grid.Column="1" Grid.RowSpan="2">
+
+            <ListBox   Background="Black" ItemsSource="{Binding Path=ActiveLog}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Foreground="White">
+                        <TextBlock >Date:</TextBlock>
+                        <TextBlock  Text="{Binding Path=LogDate}"/>
+                    </TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="White">
+                        <TextBlock >Severity:</TextBlock>
+                        <TextBlock  Text="{Binding Path=Severity}"/>
+                    </TextBlock>
+                            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Foreground="LightGray" Text="{Binding Path=Message}"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Template>
+                    <ControlTemplate>
+                        <StackPanel Background="Black" IsItemsHost="True" >
+                        </StackPanel>
+                    </ControlTemplate>
+                </ListBox.Template>
+
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </Window>

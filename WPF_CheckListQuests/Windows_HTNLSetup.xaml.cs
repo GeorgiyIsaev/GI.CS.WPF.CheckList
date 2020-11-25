@@ -61,6 +61,11 @@ namespace WPF_CheckListQuests
             HTMLEdition.spoilerIf = CB_spoilerIf.IsChecked == true;
         }
 
+        private void ColorStack()
+        {
+            CB_FonBack.Items
+        }
+
       
 
         //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
