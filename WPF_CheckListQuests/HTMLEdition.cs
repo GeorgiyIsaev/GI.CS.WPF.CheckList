@@ -46,7 +46,7 @@ namespace WPF_CheckListQuests
 					if (tmp.comment.Length > 0)
 					{
 						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}</div></details>\n		</div>\n");
-					}
+					} 
 					file.WriteLine($"</div>");
 				}
 				file.WriteLine(footerBilder());
