@@ -47,13 +47,13 @@ namespace WPF_CheckListQuests
             FileInfo[] filesTXT = dir.GetFiles("**.txt");
             foreach (FileInfo crrDir in filesTXT)
             {
-                ListBox_FileMenedger.Items.Add(crrDir.Name);
+                ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
             }
 
             FileInfo[] filesHTML = dir.GetFiles("**.html");
             foreach (FileInfo crrDir in filesHTML)
             {
-                ListBox_FileMenedger.Items.Add(crrDir.Name);
+                ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
             }
 
         }
@@ -103,10 +103,13 @@ namespace WPF_CheckListQuests
                     TextBlock_Directori.Text = Directory.GetParent(TextBlock_Directori.Text).FullName;
                     inputElementWindow();
                 }
-                catch /*(NullReferenceException ex)*/ { }        
+                catch /*(NullReferenceException ex)*/ { 
+                    //TODO Найти способ показать все диски
+                }        
             }
             else if (fileName.LastIndexOf(".txt") > -1 || fileName.LastIndexOf(".html") > -1)
             {
+                fileName = fileName.Replace("    ", "");
                 startFile(TextBlock_Directori.Text + "\\" + fileName);
             }
             else
