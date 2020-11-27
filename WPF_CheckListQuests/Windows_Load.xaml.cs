@@ -72,35 +72,48 @@ namespace WPF_CheckListQuests
                 return;
             }
 
-
-            if (nameFile.Text.LastIndexOf(".txt") > -1) {
-                int count = QuestsBox.file_readTXT(nameFile.Text);
-                MessageBox.Show($"Добавлено {count} вопросов.");
-            }
-            else if (nameFile.Text.LastIndexOf(".html") > -1)
-            {
-                int count = HTMLEdition.readHTML(nameFile.Text);
-                MessageBox.Show($"Добавлено {count} вопросов.");
-            }
-            else {
-                MessageBox.Show($"Указан не читаемый формат (Допустимы файлы .txt и .html)");
-            }  
+            //startFile();
         }
+
+        private void startFile(string fileName)
+        {
+
+            if (fileName.LastIndexOf(".txt") > -1)
+            {
+                int count = QuestsBox.file_readTXT(fileName);
+                MessageBox.Show($"Добавлено {count} вопросов.");
+            }
+            else if (fileName.LastIndexOf(".html") > -1)
+            {
+                int count = HTMLEdition.readHTML(fileName);
+                MessageBox.Show($"Добавлено {count} вопросов.");
+            }
+        }
+
+
 
         private void ListBox_FileMenedger_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            string fileName = ListBox_FileMenedger.SelectedItem.ToString();
+
             if (ListBox_FileMenedger.SelectedIndex == 0)
             {
-                TextBlock_Directori.Text = Directory.GetParent(TextBlock_Directori.Text).FullName;
+                try
+                {                    
+                    TextBlock_Directori.Text = Directory.GetParent(TextBlock_Directori.Text).FullName;
+                    inputElementWindow();
+                }
+                catch /*(NullReferenceException ex)*/ { }        
+            }
+            else if (fileName.LastIndexOf(".txt") > -1 || fileName.LastIndexOf(".html") > -1)
+            {
+                startFile(TextBlock_Directori.Text + "\\" + fileName);
+            }
+            else
+            {
+                TextBlock_Directori.Text += "\\" + fileName;
                 inputElementWindow();
             }
-            else if (true)
-            {
-                TextBlock_Directori.Text += ListBox_FileMenedger.SelectedItems.ToString();
-            }
-            
-            
-         
         }
     }
 }
