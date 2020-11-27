@@ -68,17 +68,16 @@ namespace WPF_CheckListQuests
 
         private void startFile(string fileName)
         {
-
-            if (fileName.LastIndexOf(".txt") > -1)
-            {
-                int count = QuestsBox.file_readTXT(fileName);
+            int count = 0;
+            if (fileName.LastIndexOf(".txt") > -1)            
+                count = QuestsBox.file_readTXT(fileName);
+            else if (fileName.LastIndexOf(".html") > -1)           
+                count = HTMLEdition.readHTML(fileName);               
+            
+            if (count == 0)
+                MessageBox.Show($"В данном файле вопросы не обнаруженны!");
+            else
                 MessageBox.Show($"Добавлено {count} вопросов.");
-            }
-            else if (fileName.LastIndexOf(".html") > -1)
-            {
-                int count = HTMLEdition.readHTML(fileName);
-                MessageBox.Show($"Добавлено {count} вопросов.");
-            }
         }
 
 
