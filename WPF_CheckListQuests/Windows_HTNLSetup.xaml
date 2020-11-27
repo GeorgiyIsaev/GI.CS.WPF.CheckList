@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPF_CheckListQuests"
         mc:Ignorable="d"
         ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
         Title="Создание HTML Чек-Листа" Height="467" Width="804">
     <Grid Margin="0,0,0,8">
         <TabControl Height="337" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="750">

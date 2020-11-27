@@ -36,25 +36,29 @@ namespace WPF_CheckListQuests
             DirectoryInfo dir = new DirectoryInfo(TextBlock_Directori.Text);
 
             ListBox_FileMenedger.Items.Add("<--");
-            //string PathFolder1 = Path.GetDirectoryName(PathFolder2);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            foreach (DirectoryInfo crrDir in dirs)
+
+            try
             {
-                ListBox_FileMenedger.Items.Add(crrDir.Name);
-            }
+                DirectoryInfo[] dirs = dir.GetDirectories();
+                foreach (DirectoryInfo crrDir in dirs)
+                {
+                    ListBox_FileMenedger.Items.Add(crrDir.Name);
+                }
 
 
-            FileInfo[] filesTXT = dir.GetFiles("**.txt");
-            foreach (FileInfo crrDir in filesTXT)
-            {
-                ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
-            }
+                FileInfo[] filesTXT = dir.GetFiles("**.txt");
+                foreach (FileInfo crrDir in filesTXT)
+                {
+                    ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
+                }
 
-            FileInfo[] filesHTML = dir.GetFiles("**.html");
-            foreach (FileInfo crrDir in filesHTML)
-            {
-                ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
+                FileInfo[] filesHTML = dir.GetFiles("**.html");
+                foreach (FileInfo crrDir in filesHTML)
+                {
+                    ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
+                }
             }
+            catch { }
 
         }
 

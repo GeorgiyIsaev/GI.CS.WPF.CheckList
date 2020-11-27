@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPF_CheckListQuests"
         mc:Ignorable="d"
         ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
         Title="Добавление вопросов из файла" Height="467" Width="804">
     <Grid>
 
