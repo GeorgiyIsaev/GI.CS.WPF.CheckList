@@ -26,7 +26,7 @@ namespace WPF_CheckListQuests
 
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
         {
-             TextBlock_Directori.Text = Directory.GetCurrentDirectory();
+            TextBlock_Directori.Text = Directory.GetCurrentDirectory();
             inputElementWindow();
         } 
         
@@ -61,19 +61,6 @@ namespace WPF_CheckListQuests
 
        
 
-        private void ButtonLoad_Click(object sender, RoutedEventArgs e)
-        {
-            string namefile = nameFile.Text;
-            if (nameFile.Text == "") { MessageBox.Show("Не указано имя файла"); return; }
-
-            if (!System.IO.File.Exists(nameFile.Text))
-            {
-                MessageBox.Show($"Файл {nameFile.Text} не обнаружен!");
-                return;
-            }
-
-            //startFile();
-        }
 
         private void startFile(string fileName)
         {

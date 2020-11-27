@@ -178,6 +178,7 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
 			}
+			if (questItem != null) { QuestsBox.questItems.Add(questItem); count++; }
 			return count;
 		}
 	}
