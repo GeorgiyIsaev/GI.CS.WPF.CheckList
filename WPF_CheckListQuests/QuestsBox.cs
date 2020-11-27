@@ -90,6 +90,7 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
             }
+			if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); count++; }
 			return count;
 			
 		}
