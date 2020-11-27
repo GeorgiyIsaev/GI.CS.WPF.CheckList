@@ -23,7 +23,7 @@ namespace WPF_CheckListQuests
 		{
 			
 			nameFile += ".html";
-			using (var file = new StreamWriter(nameFile))
+			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
 			{
 				file.WriteLine(headBilder());
 				file.WriteLine("<body>");
@@ -31,7 +31,8 @@ namespace WPF_CheckListQuests
 				int count =0;
 				foreach (QuestItem tmp in QuestsBox.questItems)
 				{
-					if (count == 0) { count++; continue; } // Пропуск вопроса настройки
+					if (count == 0) {
+						count++; continue; } // Пропуск вопроса настройки
 					file.WriteLine("<div class=\"questBox\">");
 					file.WriteLine($"<div class=\"questBox__quest\">{count++}) {tmp.quest}</div>");
 										
@@ -42,7 +43,7 @@ namespace WPF_CheckListQuests
 						else
 							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}</div>" + "\n");
 					}
-					if (tmp.comment != "")
+					if (tmp.comment.Length > 0)
 					{
 						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}</div></details>\n		</div>\n");
 					}

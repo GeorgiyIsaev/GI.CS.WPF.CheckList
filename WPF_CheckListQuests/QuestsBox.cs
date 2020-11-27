@@ -24,10 +24,12 @@ namespace WPF_CheckListQuests
 		public static void file_saveTXT(string nameFile)
 		{
 			/*Запись вопросов в блакнот*/
-			using (var file = new StreamWriter(nameFile))
-			{				
+			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
+			{
+				int count = 0;
 				foreach(QuestItem tmp in questItems)
-                {					
+                {
+					if (count == 0) { count++; continue; }// Пропуск вопроса настройки
 					file.WriteLine($"ВОПРОС: {tmp.quest}");
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
@@ -37,6 +39,7 @@ namespace WPF_CheckListQuests
 							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR}");
 					}
 					file.WriteLine($"КОММЕНТАРИЙ: {tmp.comment}");
+					//count++;
 				}	
 			}	
 		}
