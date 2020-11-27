@@ -33,9 +33,13 @@ namespace WPF_CheckListQuests
             /*Нулевой эл-т для новых вопросов*/
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem);
-            /*Чтение из временого файла*/
-            QuestsBox.file_readTXT("TEMPTXT.txt");
+         
+         
             ListBox_Quest.SelectedIndex = 0;
+            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
+         
+             /*Чтение из временого файла*/
+            QuestsBox.file_readTXT("TEMPTXT.txt");
             Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
         }
 

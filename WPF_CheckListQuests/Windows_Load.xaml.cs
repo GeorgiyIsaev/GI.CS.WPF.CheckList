@@ -51,7 +51,6 @@ namespace WPF_CheckListQuests
                 {
                     ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
                 }
-
                 FileInfo[] filesHTML = dir.GetFiles("**.html");
                 foreach (FileInfo crrDir in filesHTML)
                 {
@@ -59,7 +58,6 @@ namespace WPF_CheckListQuests
                 }
             }
             catch { }
-
         }
 
 

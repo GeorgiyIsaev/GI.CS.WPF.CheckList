@@ -88,8 +88,9 @@
         </TabControl>
 
         <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="42,379,0,0" Text="Имя файла:" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="134"/>
-        <TextBox FontSize="16"  x:Name="nameFile" HorizontalAlignment="Left" Height="30" Margin="181,379,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="411"/>
+        <TextBox FontSize="16"  x:Name="nameFile" HorizontalAlignment="Left" Height="30" Margin="181,379,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="353"/>
         <Button FontSize="16" Content="Сохранить" HorizontalAlignment="Left" Margin="592,379,0,0" VerticalAlignment="Top" Height="30" Width="170" Click="ButtonSave_Click"/>
+        <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="534,383,0,0" Text=".html" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="58"/>
 
 
     </Grid>
