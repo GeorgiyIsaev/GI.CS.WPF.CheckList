@@ -48,7 +48,7 @@ namespace WPF_CheckListQuests
                 input_AnAnswer.Text = "";
                 input_Answer.Text = "";
                 input_Comment.Text = "";
-                input_Quest.Text = "";
+                input_Quest.Text = ""; 
             }
             else {
                 int val = ListBox_Quest.SelectedIndex;
