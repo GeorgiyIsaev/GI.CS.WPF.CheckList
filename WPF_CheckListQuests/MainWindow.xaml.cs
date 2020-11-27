@@ -111,7 +111,7 @@ namespace WPF_CheckListQuests
             {
                 Button_Clear_Click(sender, e);
                 Button_Clear.Content = "Очистить";
-                Button_Save.Content = "Сохранить";
+                Button_Save.Content = "Добавить";
             }
         }
 

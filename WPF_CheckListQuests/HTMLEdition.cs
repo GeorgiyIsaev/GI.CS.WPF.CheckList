@@ -112,7 +112,7 @@ namespace WPF_CheckListQuests
 		public static int readHTML(string nameFile)
         {
 			string fullLine;		
-			/*Чтение всго текста со страницы*/
+			/*Чтение всего текста со страницы*/
 			using (var file = new StreamReader(nameFile, Encoding.Unicode))
 			{
 				fullLine = file.ReadToEnd();
