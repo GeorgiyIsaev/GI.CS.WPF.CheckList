@@ -19,7 +19,7 @@
                 <MenuItem Header="Настройка"></MenuItem>
             </MenuItem>
             <MenuItem Header="Тест" >
-                <MenuItem Header="Запустить тест"></MenuItem>
+                <MenuItem Header="Запустить тест" Click="MenuItemStartTest_Click"></MenuItem>
                 <MenuItem Header="Настроить тест" ></MenuItem>
             </MenuItem>
             <MenuItem Header="О программме" ></MenuItem>

@@ -131,8 +131,13 @@ namespace WPF_CheckListQuests
         {
             new Windows_Load().ShowDialog();
         }
-     
+        private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
+        {
+            new Windows_StartTest().ShowDialog();
+        }
 
+
+        
 
 
 
