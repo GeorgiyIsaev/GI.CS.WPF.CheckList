@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WPF_CheckListQuests"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow"  Height="467" Width="804"
+        Title="MainWindow"  Height="467" Width="804" FontSize="14" 
         >
     <Grid>
         <!--Меню приложения-->
         <Menu  FontSize="14" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Файл" Width="73">
-                <MenuItem Header="Очистить проект"></MenuItem>
+                <MenuItem Header="Очистить проект" Click="MenuItemClear_Click"></MenuItem>
                 <MenuItem Header="Добавить из файла" Click="MenuItemLoad_Click"></MenuItem>
                 <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
                 <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
