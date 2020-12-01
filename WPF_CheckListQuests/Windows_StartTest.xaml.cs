@@ -17,12 +17,24 @@ namespace WPF_CheckListQuests
     /// </summary>
     public partial class Windows_StartTest : Window
     {
+        private int currentItem = 0;
         public Windows_StartTest()
         {
-            InitializeComponent();
-            TextBox_Quest.Text = "efwwwwwwwwwwwwwwwwwwwwwwwwwwwwrge sdsg sdfg sdfsdf sdf sdf sdf sdf sdf wwwwwwwwwwwwwww w wwwwwwwwwwwwwww w  wwwwwwwwwwwwwwwww   wwwwwwwwwwwwwwwwwwwwww  eefwfwfwfwfwfwfwfwfwfwfwfwfw ewf wefwe fwe wefewf ewfew fewf ewf ewfwefew fewfwefewf ef ew e fwef ew ffeew f wefew few we few fwe fewf wef ewf wefwe ew e we fwef";
-          
+            InitializeComponent();            
         }
+
+        void questNext()
+        {
+            TextBox_Quest.Text = QuestsBoxForTest.questItemsForTest[currentItem].quest;
+
+            foreach (Answer tmpAnswer in QuestsBoxForTest.questItemsForTest[currentItem].answerItem)
+            {
+                ListBox_AnswerItem.Items.Add(tmpAnswer);
+            }
+        }
+
+
+
     }
     
 }

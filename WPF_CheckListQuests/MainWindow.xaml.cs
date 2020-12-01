@@ -62,14 +62,21 @@ namespace WPF_CheckListQuests
             int val = ListBox_Quest.SelectedIndex;        
             if (val == 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
             {
-                MessageBox.Show("Такой вопрос уже был добавлен ранее", "Невозможно добавить вопрос");
+                MessageBox.Show("Такой вопрос уже был добавлен ранее", "Добавление не возможно!");
                 return;
             }
             if (input_Quest.Text == "")
             {
-                MessageBox.Show("Поле с вопросом не заполнено", "Невозможно добавить вопрос");
+                MessageBox.Show("Поле с вопросом не заполнено", "Добавление не возможно!");
                 return;
             }
+            if (input_Answer.Text == "")
+            {
+                MessageBox.Show("Поле с верным ответом не заполнено", "Добавление не возможно!");
+                return;
+            }
+
+
 
             QuestItem questItem = new QuestItem();
             questItem.quest = input_Quest.Text;

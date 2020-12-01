@@ -29,12 +29,7 @@ namespace WPF_CheckListQuests
             {
 				Answer temp = new Answer(tmp, true);
 				answerItem.Add(temp);
-			}
-			if(answerItem.Count < 1)
-            {
-				Answer temp = new Answer("Нет верного ответа", true);
-				answerItem.Add(temp);
-			}
+			}	
 			foreach (string tmp in anAnswerMas)
 			{
 				Answer temp = new Answer(tmp, false);
