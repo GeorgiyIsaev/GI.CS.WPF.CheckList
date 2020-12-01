@@ -18,23 +18,37 @@ namespace WPF_CheckListQuests
     public partial class Windows_StartTest : Window
     {
         private int currentItem = 0;
+        private int finalItem = 20;
+
         public Windows_StartTest()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Loaded += Windows_StartTest_Loaded;
         }
 
-        void questNext()
+        private void Windows_StartTest_Loaded(object sender, RoutedEventArgs e)
         {
-            TextBox_Quest.Text = QuestsBoxForTest.questItemsForTest[currentItem].quest;
+            QuestNext();
+        }
 
+        void QuestNext()
+        {
+            QuestsBoxForTest.createTest();
+            if (QuestsBoxForTest.questItemsForTest.Count < 20) finalItem = QuestsBoxForTest.questItemsForTest.Count;
+            Title = $"Вопрос {currentItem} из {finalItem}";
+            TextBox_Quest.Text = QuestsBoxForTest.questItemsForTest[currentItem].quest;
             foreach (Answer tmpAnswer in QuestsBoxForTest.questItemsForTest[currentItem].answerItem)
             {
                 ListBox_AnswerItem.Items.Add(tmpAnswer);
             }
+            TextBox_Comment.Text = "";
+
         }
 
-
-
+        private void Buttun_GetAnswer_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
     }
     
 }

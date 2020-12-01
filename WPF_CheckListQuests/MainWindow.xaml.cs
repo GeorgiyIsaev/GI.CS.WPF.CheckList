@@ -137,6 +137,7 @@ namespace WPF_CheckListQuests
         private void MenuItemLoad_Click(object sender, RoutedEventArgs e)
         {
             new Windows_Load().ShowDialog();
+            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {

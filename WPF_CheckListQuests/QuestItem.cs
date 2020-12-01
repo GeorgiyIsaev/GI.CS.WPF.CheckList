@@ -10,13 +10,7 @@ namespace WPF_CheckListQuests
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
 		public List<Answer> answerItem = new List<Answer>();
-		public int intRandomQuest { get; set; } = 0;
-
-		public QuestItem()
-        {
-			Random rnd = new Random();
-			intRandomQuest = rnd.Next(0, 100);
-		}
+		public int intRandomQuest { get; set; } = 0;	
 
 		/*Логика работы вопроса*/
 		/*Добавление верные и не верных ответов в лист*/
@@ -70,6 +64,18 @@ namespace WPF_CheckListQuests
 			}
 			return tempSTR.ToString();
         }
+
+		public void RandomGeneratorIt()
+        {
+			Random rnd = new Random();
+			intRandomQuest = rnd.Next(0, 100);
+			foreach (Answer tmpAnswer in answerItem)
+			{
+				tmpAnswer.RandomAnswerIt();
+			}
+			/*Перетасовать ответы*/
+			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));		
+		}
 
 	}    
 }

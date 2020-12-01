@@ -27,16 +27,31 @@
             <Grid Grid.Column="0" Grid.Row="0" Background="LightGreen">
                 <TextBox x:Name="TextBox_Quest" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Canvas.Left="10" Canvas.Top="10" Margin="10,10,15,5" Text="Текст с Вопросом" TextAlignment="Justify" IsManipulationEnabled="True" VerticalScrollBarVisibility="Visible"/>
             </Grid>
+           
             <Grid Grid.Column="0" Grid.Row="2" Background="LightGreen">
-                <ListBox x:Name="ListBox_AnswerItem"  Margin="10,5,15,5"/>
+                <ListBox x:Name="ListBox_AnswerItem"  Margin="10,2,15,2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Multiple">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Background" Value="Gainsboro"/>
+                            <Setter Property="Margin" Value="5"/>
+                            <Setter Property="Padding" Value="5"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>                
             </Grid>
+           
             <Grid Grid.Column="0" Grid.Row="4" Background="LightGreen">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="45"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,5,15,0" Text="Текст с Коментом" TextAlignment="Justify" IsManipulationEnabled="True" VerticalScrollBarVisibility="Visible"/>
-                <Button x:Name="buttun_GetAnswer" Content="Ответить" Margin="10,2,15,10" Grid.Row="1"/>
+                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,5,15,0" Text="Текст с Коментом" TextAlignment="Justify" IsManipulationEnabled="True"  VerticalScrollBarVisibility="Visible"></TextBox>
+                <Button x:Name="buttun_GetAnswer" Content="Ответить" Margin="10,2,15,10" Grid.Row="1" Click="Buttun_GetAnswer_Click"/>
 
 
 
