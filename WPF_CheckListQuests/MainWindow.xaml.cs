@@ -142,6 +142,11 @@ namespace WPF_CheckListQuests
         }
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {
+            if (QuestsBox.questItems.Count < 1)
+            {
+                MessageBox.Show("Недостаточно вопросов для запуска теста");
+                return;
+            }
             new Windows_StartTest().ShowDialog();
         }
 
