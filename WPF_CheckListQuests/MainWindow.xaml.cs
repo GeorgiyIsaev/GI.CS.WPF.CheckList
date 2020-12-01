@@ -34,11 +34,11 @@ namespace WPF_CheckListQuests
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem); 
             ListBox_Quest.SelectedIndex = 0;
-            Title = $"Чек-Лист [{QuestsBox.questItems.Count-1}] вопросов";
+            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count-1}]";
          
              /*Чтение из временого файла*/
             QuestsBox.file_readTXT("TEMPTXT.txt");
-            Title = $"Чек-Лист [{QuestsBox.questItems.Count-1}] вопросов";
+            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count-1}]";
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)

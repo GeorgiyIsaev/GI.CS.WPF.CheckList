@@ -10,6 +10,13 @@ namespace WPF_CheckListQuests
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
 		public List<Answer> answerItem = new List<Answer>();
+		public int intRandomQuest { get; set; } = 0;
+
+		public QuestItem()
+        {
+			Random rnd = new Random();
+			intRandomQuest = rnd.Next(0, 100);
+		}
 
 		/*Логика работы вопроса*/
 		/*Добавление верные и не верных ответов в лист*/

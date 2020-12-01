@@ -19,7 +19,7 @@ namespace WPF_CheckListQuests
            {
                 if (tmp.quest == str) return true;
            }
-            return false;
+           return false;
         }
 		public static void file_saveTXT(string nameFile)
 		{
