@@ -54,6 +54,7 @@ namespace WPF_CheckListQuests
                 int val = ListBox_Quest.SelectedIndex;
                 if (val > 0)  QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = 0;
+                Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
             }
         }
 

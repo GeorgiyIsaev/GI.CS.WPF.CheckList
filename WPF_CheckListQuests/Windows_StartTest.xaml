@@ -50,7 +50,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="45"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,5,15,0" Text="Текст с Коментом" TextAlignment="Justify" IsManipulationEnabled="True"  VerticalScrollBarVisibility="Visible"></TextBox>
+                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,5,15,0" Text="Текст с Коментом" TextAlignment="Center" IsManipulationEnabled="True"  VerticalScrollBarVisibility="Visible"></TextBox>
                 <Button x:Name="buttun_GetAnswer" Content="Ответить" Margin="10,2,15,10" Grid.Row="1" Click="Buttun_GetAnswer_Click"/>
 
 
