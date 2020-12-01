@@ -47,6 +47,12 @@ namespace WPF_CheckListQuests
 		{			
 			string fullLine;
 			/*Чтение вопросов из блокнота*/
+
+			if (!System.IO.File.Exists("save1.txt"))
+            {
+				return 0;
+            }
+
 			using (var file = new StreamReader(nameFile, Encoding.Unicode))
 			{
 				fullLine = file.ReadToEnd();				

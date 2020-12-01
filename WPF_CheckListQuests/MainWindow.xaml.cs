@@ -54,9 +54,9 @@ namespace WPF_CheckListQuests
                 int val = ListBox_Quest.SelectedIndex;
                 if (val > 0)  QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = 0;
+                QuestsBox.file_saveTXT("TEMPTXT.txt");
                 Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
-            }
-            QuestsBox.file_saveTXT("TEMPTXT.txt");
+            }           
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -87,15 +87,19 @@ namespace WPF_CheckListQuests
 
             if (ListBox_Quest.SelectedIndex != 0)
             {
-                QuestsBox.questItems.Insert(val+1, questItem);
+                QuestsBox.questItems.Insert(val + 1, questItem);
                 QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = val;
+                QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
             else
+            {
                 QuestsBox.questItems.Add(questItem);
-            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
-            QuestsBox.file_saveTXT("TEMPTXT.txt");
-        }       
+                QuestsBox.file_saveTXT("TEMPTXT.txt");
+            }
+            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";            
+        }  
+        
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
             QuestsBox.file_saveTXT("text.txt");
@@ -124,9 +128,11 @@ namespace WPF_CheckListQuests
                 Button_Clear_Click(sender, e);
                 Button_Clear.Content = "Очистить";
                 Button_Save.Content = "Добавить";
-            }
-          
+            }          
         }
+
+
+
 
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
@@ -152,7 +158,6 @@ namespace WPF_CheckListQuests
             }
             new Windows_StartTest().ShowDialog();
         }
-
         private void MenuItemClear_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -166,18 +171,5 @@ namespace WPF_CheckListQuests
             }     
         }
 
-
-
-
-
-
-        //private void Button_NewQuest_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //if(ListBox_Quest.SelectedIndex != -1) ListBox_Quest.SelectedIndex = -1; // снимаем выделение   
-        //    // ClearSelected(); только для винформ
-        //    Button_Clear_Click(sender, e);
-        //    Button_Clear.Content = "Очистить";
-        //    Button_Save.Content = "Сохранить";
-        //}
     }
 }
