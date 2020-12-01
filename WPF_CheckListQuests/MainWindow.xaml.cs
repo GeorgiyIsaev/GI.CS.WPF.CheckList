@@ -27,10 +27,10 @@ namespace WPF_CheckListQuests
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            /*Контейнер с привязкой к листбоксу*/
-            QuestItem questItem = new QuestItem();
+            /*Контейнер с привязкой к листбоксу*/            
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
             /*Нулевой эл-т для новых вопросов*/
+            QuestItem questItem = new QuestItem();
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem); 
             ListBox_Quest.SelectedIndex = 0;
@@ -56,6 +56,7 @@ namespace WPF_CheckListQuests
                 ListBox_Quest.SelectedIndex = 0;
                 Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
             }
+            QuestsBox.file_saveTXT("TEMPTXT.txt");
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -93,6 +94,7 @@ namespace WPF_CheckListQuests
             else
                 QuestsBox.questItems.Add(questItem);
             Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";
+            QuestsBox.file_saveTXT("TEMPTXT.txt");
         }       
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
@@ -115,14 +117,15 @@ namespace WPF_CheckListQuests
                 input_Comment.Text = QuestsBox.questItems.ElementAt(val).comment;
                 input_Quest.Text = QuestsBox.questItems.ElementAt(val).quest;
                 Button_Clear.Content = "Удалить";
-                Button_Save.Content = "Изменить";
+                Button_Save.Content = "Изменить";   
             }
             else
-            {
+            {                
                 Button_Clear_Click(sender, e);
                 Button_Clear.Content = "Очистить";
                 Button_Save.Content = "Добавить";
             }
+          
         }
 
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
@@ -160,10 +163,7 @@ namespace WPF_CheckListQuests
                 questItem.quest = "<Добавить новый вопрос>";
                 QuestsBox.questItems.Add(questItem);          
                 Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
-            }
-               
-
-         
+            }     
         }
 
 
