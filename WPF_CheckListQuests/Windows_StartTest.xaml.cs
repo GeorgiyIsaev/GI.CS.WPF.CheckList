@@ -77,14 +77,15 @@ namespace WPF_CheckListQuests
             else
             {
                 currentStatus = true;
-                if (currentItem < finalItem) {
-                    currentItem++;
+                currentItem++;
+                if (currentItem < finalItem) {                    
                     QuestNext();
                     buttun_GetAnswer.Content = "Ответить";
                 }
                 else
                 {
                     MessageBox.Show($"Тест Заверешн!\n\n Колличество верных ответов: {currentItem} из {finalItem}");
+                    this.Close();
                 }
             }
 
@@ -92,7 +93,7 @@ namespace WPF_CheckListQuests
         private bool TruyOrFalse()
         {
             /*Проверка 1: Несотвествие количества ответов*/
-            if (QuestsBoxForTest.questItemsForTest[currentItem].answerItem.Count == ListBox_AnswerItem.SelectedItems.Count)
+            if (QuestsBoxForTest.questItemsForTest[currentItem].countTrueAnswer != ListBox_AnswerItem.SelectedItems.Count)
                 return false;
             
             /*Проверка 2: Все выбраные ответы верные*/    

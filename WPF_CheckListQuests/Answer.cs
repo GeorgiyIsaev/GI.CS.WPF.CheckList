@@ -8,7 +8,7 @@ namespace WPF_CheckListQuests
 	{
 		public bool if_true { get; set; } // 1-Верный ответ, 0-Не верный ответ.
 		public string answerSTR { get; set; }
-		public int random_nomer { get; set; } = 0; 
+		public int random_nomer { get; set; } = 0;	
 		public Answer(string str, bool if_answer)
 		{
 			if_true = if_answer;
@@ -25,5 +25,6 @@ namespace WPF_CheckListQuests
 			answerSTR = answerSTR.Replace("\r", "");
 			return answerSTR;
         }
+
     };
 }

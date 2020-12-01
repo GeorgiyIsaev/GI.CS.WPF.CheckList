@@ -10,7 +10,8 @@ namespace WPF_CheckListQuests
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
 		public List<Answer> answerItem = new List<Answer>();
-		public int intRandomQuest { get; set; } = 0;	
+		public int intRandomQuest { get; set; } = 0;
+		public int countTrueAnswer{ get; set; } = 0;
 
 		/*Логика работы вопроса*/
 		/*Добавление верные и не верных ответов в лист*/
@@ -23,6 +24,7 @@ namespace WPF_CheckListQuests
             {
 				Answer temp = new Answer(tmp, true);
 				answerItem.Add(temp);
+				countTrueAnswer++;
 			}	
 			foreach (string tmp in anAnswerMas)
 			{
