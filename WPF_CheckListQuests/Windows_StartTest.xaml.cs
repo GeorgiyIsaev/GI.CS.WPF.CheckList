@@ -46,6 +46,7 @@ namespace WPF_CheckListQuests
             {
                 ListBox_AnswerItem.Items.Add(tmpAnswer);
             }
+            TextBox_Result.Text = "";
             TextBox_Comment.Text = "";
 
         }
@@ -62,16 +63,21 @@ namespace WPF_CheckListQuests
 
                 if (TruyOrFalse())
                 {
-                    TextBox_Comment.Text = "ВЕРНО!\n";
+                    TextBox_Result.Text = "ВЕРНО!\n";
+                    TextBox_Result.Foreground = new SolidColorBrush(Colors.Green);
                     trueAnswerCount++;
                 }
                 else
                 {
-                    TextBox_Comment.Text = "НЕ ВЕРНО!\n";
+                    TextBox_Result.Foreground = new SolidColorBrush(Colors.Red);
+                    TextBox_Result.Text = "НЕ ВЕРНО!\n";
                 }
+                TextBox_Comment.Text = "Верные ответы: \n";
+                TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].StrFullAnswer();
+                TextBox_Comment.Text += "\nПояснение: ";
                 TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
                 buttun_GetAnswer.Content = "Следующий вопрос -->";
-                if(finalItem == currentItem) buttun_GetAnswer.Content = "Получить результат!";
+                if(finalItem-1 == currentItem) buttun_GetAnswer.Content = "Получить результат!";
                 currentStatus = false;
 
             }

@@ -10,21 +10,17 @@ namespace WPF_CheckListQuests
 	public class QuestItem
 	{
 		/*Для контакта с листбоксом*/
-		//private string _tName = "<>";
 		private string _description = "Добавить новый вопрос!";
-
 		public string tName
 		{
 			get { return quest; }
 			set { quest = value; NotifyPropertyChanged("tName"); }
 		}
-
 		public string Description
 		{
 			get { return _description; }
 			set { _description = value; NotifyPropertyChanged("Description"); }
 		} 
-
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void NotifyPropertyChanged(string property)
 		{
@@ -52,8 +48,7 @@ namespace WPF_CheckListQuests
 			foreach (string tmp in answerMas)
             {
 				Answer temp = new Answer(tmp, true);
-				answerItem.Add(temp);
-				countTrueAnswer++;
+				answerItem.Add(temp);			
 			}	
 			foreach (string tmp in anAnswerMas)
 			{
@@ -124,10 +119,15 @@ namespace WPF_CheckListQuests
 			intRandomQuest = rnd.Next(0, 100);
 			foreach (Answer tmpAnswer in answerItem)
 			{
+				if(tmpAnswer.if_true) countTrueAnswer++;
 				tmpAnswer.RandomAnswerIt();
 			}
 			/*Перетасовать ответы*/
-			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));		
+			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));
+
+
+
+			
 		}
 
 

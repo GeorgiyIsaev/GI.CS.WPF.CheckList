@@ -13,8 +13,10 @@ namespace WPF_CheckListQuests
        {          
             questItemsForTest = new List<QuestItem>(QuestsBox.questItems);         
             questItemsForTest.RemoveAt(0);
+            string val =  questItemsForTest[0].ToolTypeListBox();
 
-            foreach(QuestItem tmp in questItemsForTest)
+
+            foreach (QuestItem tmp in questItemsForTest)
             {
                 tmp.RandomGeneratorIt();
             }             

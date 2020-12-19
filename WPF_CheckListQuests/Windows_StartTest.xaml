@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Тест" FontSize="14" Height="467" Width="804" MinHeight="280">
-    <Grid>
+    
+    <Grid>     
 
         <!--Разметка колонок-->
         <Grid>
@@ -27,7 +28,7 @@
             <Grid Grid.Column="0" Grid.Row="0" Background="LightGreen">
                 <TextBox x:Name="TextBox_Quest" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Canvas.Left="10" Canvas.Top="10" Margin="10,10,15,5" Text="Текст с Вопросом" TextAlignment="Justify" IsManipulationEnabled="True" VerticalScrollBarVisibility="Visible"/>
             </Grid>
-           
+
             <Grid Grid.Column="0" Grid.Row="2" Background="LightGreen">
                 <ListBox x:Name="ListBox_AnswerItem"  Margin="10,2,15,2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Multiple">
                     <ListBox.ItemContainerStyle>
@@ -42,17 +43,24 @@
                             <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>                
+                    <ListBox.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{x:Static SystemColors.HighlightColor}"/>
+                    </ListBox.Resources>
+                </ListBox>
+                <!--Gainsboro  {x:Static SystemColors.HighlightColor}  -->
             </Grid>
-           
+
             <Grid Grid.Column="0" Grid.Row="4" Background="LightGreen">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="91*"/>
                     <RowDefinition Height="45"/>
                 </Grid.RowDefinitions>
-                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,5,15,0" Text="Текст с Коментом" TextAlignment="Center" IsManipulationEnabled="True"  VerticalScrollBarVisibility="Visible"></TextBox>
-                <Button x:Name="buttun_GetAnswer" Content="Ответить" Margin="10,2,15,10" Grid.Row="1" Click="Buttun_GetAnswer_Click"/>
-
+                <TextBlock x:Name="TextBox_Result" Margin="10,0,15,0" Text="" TextWrapping="Wrap" Foreground="#FF293CF9" FontSize="18" FontWeight="Bold" TextAlignment="Center" Background="White"/>
+                <TextBox x:Name="TextBox_Comment" TextWrapping="Wrap" MaxLength="0" IsReadOnly="True" Margin="10,0,15,0" Text="" TextAlignment="Justify" IsManipulationEnabled="True"  VerticalScrollBarVisibility="Visible" Grid.Row="1"/>
+                <Button x:Name="buttun_GetAnswer" Content="Ответить" Margin="10,2,15,10" Grid.Row="3" Click="Buttun_GetAnswer_Click"/>
+                
 
 
             </Grid>
