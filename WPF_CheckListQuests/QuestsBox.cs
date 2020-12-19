@@ -48,7 +48,7 @@ namespace WPF_CheckListQuests
 			string fullLine;
 			/*Чтение вопросов из блокнота*/
 
-			if (!System.IO.File.Exists("save1.txt"))
+			if (!System.IO.File.Exists(nameFile))
             {
 				return 0;
             }
