@@ -70,16 +70,17 @@ namespace WPF_CheckListQuests
 		}
 		private static int parsing_quest(string str)
         {
-			string[] lineItem = str.Split("\n");			
+			string[] separator = { "\n", "\r" };
+			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 			QuestItem questItem = null;
 			int count = 0;
 
-			foreach(string _line in lineItem)
+			foreach(string line in lineItem)
             {
 				try
 				{
-					string line = _line.Replace("\n", "");
-					line = line.Replace("\r", "");
+					//	string line = _line.Replace("\n", "");
+					//line = line.Replace("\r", "");
 
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
