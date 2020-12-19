@@ -49,6 +49,7 @@ namespace WPF_CheckListQuests
 					} 
 					file.WriteLine($"</div>");
 				}
+				file.WriteLine("<div class=\"questBox\"><p></p></div>");
 				file.WriteLine(footerBilder());
 				file.WriteLine("</body>\n</html>");
 			}
