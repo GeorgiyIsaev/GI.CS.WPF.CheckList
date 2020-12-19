@@ -55,7 +55,7 @@ namespace WPF_CheckListQuests
 		}
 		private static string spoilerOpen()
         {
-			if (spoilerIf) return "open";
+			if (!spoilerIf) return "open";
 			return "";
 		}
 
