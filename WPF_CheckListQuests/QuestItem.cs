@@ -11,7 +11,7 @@ namespace WPF_CheckListQuests
 	{
 		/*Для контакта с листбоксом*/
 		//private string _tName = "<>";
-		private string _description;
+		private string _description = "Добавить новый вопрос!";
 
 		public string tName
 		{
@@ -23,7 +23,7 @@ namespace WPF_CheckListQuests
 		{
 			get { return _description; }
 			set { _description = value; NotifyPropertyChanged("Description"); }
-		}
+		} 
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void NotifyPropertyChanged(string property)
