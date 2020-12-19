@@ -34,11 +34,11 @@ namespace WPF_CheckListQuests
             questItem.quest = "<Добавить новый вопрос>";
             QuestsBox.questItems.Add(questItem); 
             ListBox_Quest.SelectedIndex = 0;
-            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count-1}]";
-         
-             /*Чтение из временого файла*/
+            NewTitle();
+
+            /*Чтение из временого файла*/
             QuestsBox.file_readTXT("TEMPTXT.txt");
-            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count-1}]";
+            NewTitle();
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace WPF_CheckListQuests
                 if (val > 0)  QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = 0;
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
-                Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
+                NewTitle();
             }           
         }
 
@@ -97,7 +97,7 @@ namespace WPF_CheckListQuests
                 QuestsBox.questItems.Add(questItem);
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
-            Title = $"Чек-Лист [{QuestsBox.questItems.Count}] вопросов";            
+            NewTitle();
         }  
         
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace WPF_CheckListQuests
         private void MenuItemLoad_Click(object sender, RoutedEventArgs e)
         {
             new Windows_Load().ShowDialog();
-            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
+            NewTitle();
         }
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {
@@ -166,9 +166,13 @@ namespace WPF_CheckListQuests
                 QuestsBox.questItems.Clear();
                 QuestItem questItem = new QuestItem();        
                 questItem.quest = "<Добавить новый вопрос>";
-                QuestsBox.questItems.Add(questItem);          
-                Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
+                QuestsBox.questItems.Add(questItem);
+                NewTitle();
             }     
+        }
+        private void NewTitle()
+        {
+            Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
 
     }
