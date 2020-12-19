@@ -84,6 +84,7 @@ namespace WPF_CheckListQuests
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
+            questItem.Description = questItem.ToolTypeListBox();
 
             if (ListBox_Quest.SelectedIndex != 0)
             {
@@ -93,7 +94,7 @@ namespace WPF_CheckListQuests
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
             else
-            {
+            {           
                 QuestsBox.questItems.Add(questItem);
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
