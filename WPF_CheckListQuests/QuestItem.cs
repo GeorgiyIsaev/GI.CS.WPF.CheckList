@@ -79,7 +79,7 @@ namespace WPF_CheckListQuests
 				foreach (Answer answer in answerItem)
 				{
 					temp += (count++) + ". ";
-					temp += answer.if_true ? "Верный: " : "Неверный: ";
+					temp += answer.if_true ? "Верный: " : "Не верный: ";
 					temp += answer.answerSTR +"\n";
 				}
 			}
