@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         Title="MainWindow"  Height="467" Width="804" FontSize="14" 
         >
-
+    
     <!--Ресурс для листбокса-->
     <Window.Resources>
         <DataTemplate x:Key="removableTalentListTemplate">
@@ -30,18 +30,16 @@
     <Grid>
         <!--Меню приложения-->
         <Menu  FontSize="14" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <MenuItem Header="Файл" Width="73">
+            <MenuItem Header="Файл" ToolTip="Сохранение/Загрузка/Настройки" Width="73">
                 <MenuItem Header="Очистить проект" Click="MenuItemClear_Click"></MenuItem>
                 <MenuItem Header="Добавить из файла" Click="MenuItemLoad_Click"></MenuItem>
                 <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
                 <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
-                <MenuItem Header="Настройка"></MenuItem>
+                <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Запустить тест" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
-
-
-            <MenuItem Header="О программме" Width="136" ></MenuItem>
-            <MenuItem Header="Открыть папку" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+            <MenuItem Header="Запустить тест" ToolTip="Запуск теста из 20 случайных вопросов из доступных в приложении" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
+            <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" ></MenuItem>
+            <MenuItem Header="Открыть папку" ToolTip="Открыть папку, в которой расположено приложение" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
         </Menu>
         <Grid>
             <!--Разметка колонок-->
@@ -64,8 +62,8 @@
             <!--Ввод информации о вопросе-->
             <Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="157*"/>
-                    <ColumnDefinition Width="445*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
@@ -74,6 +72,7 @@
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
+                <TextBox FontSize="14"  x:Name="input_Quest" ToolTip="Текствовое поля для вопроса" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
                 <TextBlock IsHitTestVisible="False" Text="Введите вопрос (*обязательное поле!)" Foreground="DarkGray" Margin="19,5,18,10" Grid.ColumnSpan="2">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
