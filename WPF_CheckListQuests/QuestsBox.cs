@@ -65,10 +65,13 @@ namespace WPF_CheckListQuests
 			QuestItem questItem = null;
 			int count = 0;
 
-			foreach(string line in lineItem)
+			foreach(string _line in lineItem)
             {
 				try
 				{
+					string line = _line.Replace("\n", "");
+					line = line.Replace("\r", "");
+
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
 						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); count++; }
@@ -77,7 +80,7 @@ namespace WPF_CheckListQuests
 					}
 					else if (line.IndexOf("ВЕРНО:") == 0)
 					{
-						Answer temp = new Answer(line.Substring(7), true);
+						Answer temp = new Answer(line.Substring(7), true);						
 						questItem.answerItem.Add(temp);
 					}
 					else if (line.IndexOf("НЕ ВЕРНО:") == 0)

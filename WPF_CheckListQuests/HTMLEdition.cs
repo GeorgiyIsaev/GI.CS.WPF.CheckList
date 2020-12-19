@@ -142,6 +142,7 @@ namespace WPF_CheckListQuests
 				string temp;
 				try
 				{
+									
 					if (line.IndexOf(questBegin) >= 0)
 					{
 						if (questItem != null) { QuestsBox.questItems.Add(questItem); count++; }
