@@ -27,12 +27,12 @@ namespace WPF_CheckListQuests
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            /*Контейнер с привязкой к листбоксу*/            
+            /*Контейнер с привязкой к листбоксу*/
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
             /*Нулевой эл-т для новых вопросов*/
             QuestItem questItem = new QuestItem();
             questItem.quest = "<Добавить новый вопрос>";
-            QuestsBox.questItems.Add(questItem); 
+            QuestsBox.questItems.Add(questItem);
             ListBox_Quest.SelectedIndex = 0;
             NewTitle();
 
@@ -48,20 +48,21 @@ namespace WPF_CheckListQuests
                 input_AnAnswer.Text = "";
                 input_Answer.Text = "";
                 input_Comment.Text = "";
-                input_Quest.Text = ""; 
+                input_Quest.Text = "";
             }
-            else {
+            else
+            {
                 int val = ListBox_Quest.SelectedIndex;
-                if (val > 0)  QuestsBox.questItems.RemoveAt(val);
+                if (val > 0) QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = 0;
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
                 NewTitle();
-            }           
+            }
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            int val = ListBox_Quest.SelectedIndex;        
+            int val = ListBox_Quest.SelectedIndex;
             if (val == 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
             {
                 MessageBox.Show("Такой вопрос уже был добавлен ранее", "Добавление не возможно!");
@@ -94,19 +95,19 @@ namespace WPF_CheckListQuests
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
             else
-            {           
+            {
                 QuestsBox.questItems.Add(questItem);
                 QuestsBox.file_saveTXT("TEMPTXT.txt");
             }
             NewTitle();
-        }  
-        
+        }
+
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
             QuestsBox.file_saveTXT("text.txt");
             MessageBox.Show("Файл сохранен text.txt");
         }
-    
+
 
 
 
@@ -122,15 +123,15 @@ namespace WPF_CheckListQuests
                 input_Comment.Text = QuestsBox.questItems.ElementAt(val).comment;
                 input_Quest.Text = QuestsBox.questItems.ElementAt(val).quest;
                 Button_Clear.Content = "Удалить";
-                Button_Save.Content = "Изменить";   
+                Button_Save.Content = "Изменить";
             }
             else
-            {                
+            {
                 Button_Clear_Click(sender, e);
                 Button_Clear.Content = "Очистить";
                 Button_Save.Content = "Добавить";
-              
-            }          
+
+            }
         }
 
 
@@ -139,8 +140,8 @@ namespace WPF_CheckListQuests
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
             new Windows_HTNLSetup().ShowDialog();
-           // HTMLEdition.bilderHTML();
-        }     
+            // HTMLEdition.bilderHTML();
+        }
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
         {
             string forever_papka = Environment.CurrentDirectory;
@@ -166,16 +167,21 @@ namespace WPF_CheckListQuests
             if (result == MessageBoxResult.Yes)
             {
                 QuestsBox.questItems.Clear();
-                QuestItem questItem = new QuestItem();        
+                QuestItem questItem = new QuestItem();
                 questItem.quest = "<Добавить новый вопрос>";
                 QuestsBox.questItems.Add(questItem);
                 NewTitle();
-            }     
+            }
         }
+        private void MenuItemOpenDescription_Click(object sender, RoutedEventArgs e)
+        {
+            new Window_DescriptionForApplication().ShowDialog();          
+        }
+
         private void NewTitle()
         {
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
 
-    }
+    } 
 }
