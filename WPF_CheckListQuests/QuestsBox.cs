@@ -5,10 +5,19 @@ using System.IO;
 using System.Text;
 using System.Windows.Xps.Serialization;
 
+
 namespace WPF_CheckListQuests
 {
     public static class QuestsBox
     {
+		/*Для тулбокса*/
+		//private static ObservableCollection<QuestItem> _models = new ObservableCollection<QuestItem>();
+		//public static ObservableCollection<QuestItem> Models
+		//{
+		//	get { return _models; }
+		//	set { _models = value; }
+		//}
+
 
 		//ObservableCollection;
 		//public static ObservableCollection
@@ -74,7 +83,12 @@ namespace WPF_CheckListQuests
 
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
-						if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); count++; }
+						if (questItem != null) { 
+							questItem.EndlForSpase();
+							questItem.Description = questItem.ToolTypeListBox();
+							questItems.Add(questItem);							
+							count++;							
+						}
 						questItem = new QuestItem();					
 						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: ")+8);
 					}
@@ -99,7 +113,11 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
             }
-			if (questItem != null) { questItem.EndlForSpase(); questItems.Add(questItem); count++; }
+			if (questItem != null) { 
+				questItem.EndlForSpase(); 
+				questItem.Description = questItem.ToolTypeListBox();
+				questItems.Add(questItem);				
+				count++; }
 			return count;
 			
 		}

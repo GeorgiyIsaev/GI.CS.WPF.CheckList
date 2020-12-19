@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,7 +17,11 @@ namespace WPF_TestElement
     public partial class MainWindow : Window
     {    
         private ObservableCollection<MyModel> _models = new ObservableCollection<MyModel>();
-
+        public ObservableCollection<MyModel> Models
+        {
+            get { return _models; }
+            set { _models = value; }
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -30,11 +30,7 @@ namespace WPF_TestElement
             Models.Add(new MyModel { tName = "Test3", Description = "Hello3" }); 
         }
 
-        public ObservableCollection<MyModel> Models
-        {
-            get { return _models; }
-            set { _models = value; }
-        }
+       
     }
 
     public class MyModel// :  INotifyCollectionChanged

@@ -1,11 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
 
 namespace WPF_CheckListQuests
 {
 	public class QuestItem
 	{
+		/*Для контакта с листбоксом*/
+		//private string _tName = "<>";
+		private string _description;
+
+		public string tName
+		{
+			get { return quest; }
+			set { quest = value; NotifyPropertyChanged("tName"); }
+		}
+
+		public string Description
+		{
+			get { return _description; }
+			set { _description = value; NotifyPropertyChanged("Description"); }
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		private void NotifyPropertyChanged(string property)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(property));
+			}
+		}
+
+
 		/*Части вопроса*/
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
@@ -46,12 +75,15 @@ namespace WPF_CheckListQuests
 			if (answerItem.Count != 0)
 			{
 				temp += $"\nOТВЕТЫ: {answerItem.Count} шт.\n";
+				int count = 1;
 				foreach (Answer answer in answerItem)
 				{
-					temp += answer.if_true ? "Верный: " : "Неверный ";
-					temp += answer.answerSTR;
+					temp += (count++) + ". ";
+					temp += answer.if_true ? "Верный: " : "Неверный: ";
+					temp += answer.answerSTR +"\n";
 				}
-			}	
+			}
+			else { temp = "Добавить новый вопрос!"; }
 			return temp;
 		}
 
