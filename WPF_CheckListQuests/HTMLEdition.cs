@@ -134,7 +134,8 @@ namespace WPF_CheckListQuests
 			string comentEnd = "</div></details>";
 
 			/*Старт*/
-			string[] lineItem = str.Split("\n");
+			string[] separator = { "\n", "\r" };
+			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 			QuestItem questItem = null;
 			int count = 0;
 
