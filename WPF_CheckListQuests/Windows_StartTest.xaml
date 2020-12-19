@@ -44,8 +44,12 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                     <ListBox.Resources>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
-                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{x:Static SystemColors.HighlightColor}"/>
+                        <!-- В фокусе-->
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#0505F3" /> 
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#00FF3D" />
+                        <!-- Вне фокуса-->
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#0505F3"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#00FF3D"/>
                     </ListBox.Resources>
                 </ListBox>
                 <!--Gainsboro  {x:Static SystemColors.HighlightColor}  -->

@@ -63,12 +63,14 @@ namespace WPF_CheckListQuests
 
                 if (TruyOrFalse())
                 {
+                    HighLighting();
                     TextBox_Result.Text = "ВЕРНО!\n";
                     TextBox_Result.Foreground = new SolidColorBrush(Colors.Green);
-                    trueAnswerCount++;
+                    trueAnswerCount++;                
                 }
                 else
                 {
+                    HighLighting();
                     TextBox_Result.Foreground = new SolidColorBrush(Colors.Red);
                     TextBox_Result.Text = "НЕ ВЕРНО!\n";
                 }
@@ -112,6 +114,29 @@ namespace WPF_CheckListQuests
             /*Ответ дан верный!*/
             return true;
         }
+        private void HighLighting()
+        {
+            /*Проблема с убераеним выделения эл-тов.. поэтому я просто их перезапишу*/         
+            int count = 0;
+            foreach (Answer temp in ListBox_AnswerItem.Items)
+            {
+                ListBoxItem lbi = (ListBoxItem)ListBox_AnswerItem.ItemContainerGenerator.ContainerFromIndex(count);
+                if (lbi.IsSelected && temp.if_true)
+                {
+                    
+                    bool a = lbi.IsSelected;
+                    lbi.Background = Brushes.Green;
+                }
+                else if (lbi.IsSelected && !temp.if_true)
+                {                              
+                    lbi.Background = Brushes.HotPink;
+                }
+                count++;
+            }
+            ListBox_AnswerItem.SelectedIndex = -1;
+        }
+
+
 
 
     }
