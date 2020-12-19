@@ -71,6 +71,7 @@ namespace WPF_CheckListQuests
                 }
                 TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
                 buttun_GetAnswer.Content = "Следующий вопрос -->";
+                if(finalItem == currentItem) buttun_GetAnswer.Content = "Получить результат!";
                 currentStatus = false;
 
             }
@@ -84,7 +85,7 @@ namespace WPF_CheckListQuests
                 }
                 else
                 {
-                    MessageBox.Show($"Тест Заверешн!\n\n Колличество верных ответов: {currentItem} из {finalItem}");
+                    MessageBox.Show($"Тест Заверешн!\n\n Колличество верных ответов: {trueAnswerCount} из {finalItem}");
                     this.Close();
                 }
             }

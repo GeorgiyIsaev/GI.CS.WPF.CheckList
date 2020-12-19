@@ -111,7 +111,7 @@ namespace WPF_CheckListQuests
             {
 				if (answer.if_true == if_answer)
                 {
-					if(tempSTR.Length>1) tempSTR.Append("\n");
+					if(tempSTR.Length>=1) tempSTR.Append("\n");
 					tempSTR.Append(answer.answerSTR);		
 				}
 			}
