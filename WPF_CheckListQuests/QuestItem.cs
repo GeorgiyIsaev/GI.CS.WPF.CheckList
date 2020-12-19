@@ -40,6 +40,25 @@ namespace WPF_CheckListQuests
 			//return quest;
 			return temp;
 		}
+		public string ToolTypeListBox()
+		{
+			string temp = quest;
+			if (answerItem.Count != 0)
+			{
+				temp += $"\nOТВЕТЫ: {answerItem.Count} шт.\n";
+				foreach (Answer answer in answerItem)
+				{
+					temp += answer.if_true ? "Верный: " : "Неверный ";
+					temp += answer.answerSTR;
+				}
+			}	
+			return temp;
+		}
+
+
+
+
+
 		public void EndlForSpase()
         {	
 			while (true){
@@ -78,6 +97,7 @@ namespace WPF_CheckListQuests
 			/*Перетасовать ответы*/
 			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));		
 		}
+
 
 	}    
 }
