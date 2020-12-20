@@ -22,14 +22,20 @@ namespace WPF_CheckListQuests
 		//ObservableCollection;
 		//public static ObservableCollection
 		public static ObservableCollection<QuestItem> questItems = new ObservableCollection<QuestItem>();
-        public static bool if_ThereQuest(string str)
-        {
-           foreach (QuestItem tmp in questItems)
-           {
-                if (tmp.quest == str) return true;
-           }
-           return false;
-        }
+		public static bool if_ThereQuest(string str)
+		{
+			while (true)
+			{
+				str = str.Replace("\r", " ");
+				str = str.Replace("\n", " ");
+				if (!str.Contains("\n")) break;
+			}
+			foreach (QuestItem tmp in questItems)
+			{
+				if (tmp.quest == str) return true;
+			}
+			return false;
+		}
 		public static void file_saveTXT(string nameFile)
 		{
 			/*Запись вопросов в блакнот*/
