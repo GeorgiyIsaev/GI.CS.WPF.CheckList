@@ -39,7 +39,7 @@
             </MenuItem>
             <MenuItem Header="Запустить тест" ToolTip="Запуск теста из 20 случайных вопросов из доступных в приложении" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
             <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" Click="MenuItemOpenDescription_Click" ></MenuItem>
-            <MenuItem Header="Открыть папку" ToolTip="Открыть папку, в которой расположено приложение" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+            <MenuItem Header="Директория" ToolTip="Открыть папку, в которой расположено приложение" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
         </Menu>
         <Grid>
             <!--Разметка колонок-->
@@ -113,7 +113,7 @@
                     </TextBlock.Style>
                 </TextBlock>
 
-                <TextBox FontSize="14"  x:Name="input_AnAnswer" ToolTip="Текствовое поля для не верных ответов. Если ответов несколько, они должны быть разделены через Enter"  Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBox FontSize="14"   x:Name="input_AnAnswer" ToolTip="Текствовое поля для не верных ответов. Если ответов несколько, они должны быть разделены через Enter"  Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
                 <TextBlock IsHitTestVisible="False" Text="Введите не верные ответы (*не обязательное поле)" Foreground="DarkGray" Margin="19,6,18,6" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Row="2">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
