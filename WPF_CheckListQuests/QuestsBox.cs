@@ -92,9 +92,11 @@ namespace WPF_CheckListQuests
 					{
 						if (questItem != null) { 
 							questItem.EndlForSpase();
-							questItem.Description = questItem.ToolTypeListBox();
-							questItems.Add(questItem);							
-							count++;							
+							if (!if_ThereQuest(questItem.quest)) { 
+								questItem.Description = questItem.ToolTypeListBox();
+								questItems.Add(questItem);							
+								count++;	
+							}												
 						}
 						questItem = new QuestItem();					
 						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: ")+8);
@@ -121,12 +123,15 @@ namespace WPF_CheckListQuests
 				}
             }
 			if (questItem != null) { 
-				questItem.EndlForSpase(); 
-				questItem.Description = questItem.ToolTypeListBox();
-				questItems.Add(questItem);				
-				count++; }
-			return count;
-			
+				questItem.EndlForSpase();
+				if (!if_ThereQuest(questItem.quest))
+				{
+					questItem.Description = questItem.ToolTypeListBox();
+					questItems.Add(questItem);
+					count++;
+				}
+			}
+			return count;			
 		}
 	}
 }

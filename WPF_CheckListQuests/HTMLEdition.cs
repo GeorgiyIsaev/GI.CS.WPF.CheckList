@@ -147,7 +147,10 @@ namespace WPF_CheckListQuests
 									
 					if (line.IndexOf(questBegin) >= 0)
 					{
-						if (questItem != null) { questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++; }
+						if (questItem != null && !QuestsBox.if_ThereQuest(questItem.quest))
+						{
+							questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;
+						}
 						questItem = new QuestItem();
 						temp = line.Replace(questBegin, "");
 						temp = temp.Replace(questEnd, "");					
@@ -181,7 +184,10 @@ namespace WPF_CheckListQuests
 					/*Просто игнорируем*/
 				}
 			}
-			if (questItem != null) { questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++; }
+			if (questItem != null && !QuestsBox.if_ThereQuest(questItem.quest))
+			{			
+				questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;				
+			}
 			return count;
 		}
 	}
