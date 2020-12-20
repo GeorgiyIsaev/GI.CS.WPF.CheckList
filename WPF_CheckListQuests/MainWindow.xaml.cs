@@ -43,21 +43,7 @@ namespace WPF_CheckListQuests
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
-            if (ListBox_Quest.SelectedIndex == 0)
-            {
-                input_AnAnswer.Text = "";
-                input_Answer.Text = "";
-                input_Comment.Text = "";
-                input_Quest.Text = "";
-            }
-            else
-            {
-                int val = ListBox_Quest.SelectedIndex;
-                if (val > 0) QuestsBox.questItems.RemoveAt(val);
-                ListBox_Quest.SelectedIndex = 0;
-                QuestsBox.file_saveTXT("TEMPTXT.txt");
-                NewTitle();
-            }
+            DeleteItem();
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -133,6 +119,37 @@ namespace WPF_CheckListQuests
 
             }
         }
+        private void ListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ("Delete" == e.Key.ToString() && ListBox_Quest.SelectedIndex != 0)
+                DeleteItem();
+        }
+        private void DeleteItem()
+        {
+            if (ListBox_Quest.SelectedIndex <= 0)
+            {
+                input_AnAnswer.Text = "";
+                input_Answer.Text = "";
+                input_Comment.Text = "";
+                input_Quest.Text = "";
+            }
+            else
+            {
+                var result = MessageBox.Show($"Вы действительно хотите удалить этот вопрос?", "Предуприждение!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    int val = ListBox_Quest.SelectedIndex;
+                    if (val > 0) QuestsBox.questItems.RemoveAt(val);
+                    ListBox_Quest.SelectedIndex = 0;
+                    QuestsBox.file_saveTXT("TEMPTXT.txt");
+                    NewTitle();
+                }
+            }
+        }
+
+
+
 
 
 

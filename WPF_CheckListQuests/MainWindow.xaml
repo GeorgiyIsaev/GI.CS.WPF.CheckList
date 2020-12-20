@@ -57,7 +57,7 @@
                 <TextBlock  FontSize="14"  Margin="10,2,8,0" Text="Список вопросов:" TextWrapping="Wrap" VerticalAlignment="Top" Height="17"/>
                 <ListBox  
                     ItemTemplate="{StaticResource removableTalentListTemplate}" ItemsSource="{Binding ElementName=UI, Path=Models}"
-                    FontSize="14"  x:Name="ListBox_Quest" SelectionChanged="ListBox_Quest_SelectionChanged"  Margin="0,26,0,5">
+                    FontSize="14"  x:Name="ListBox_Quest" SelectionChanged="ListBox_Quest_SelectionChanged" KeyUp="ListBox_KeyDown" Margin="0,26,0,5">
                     <ListBox.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
                         <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{x:Static SystemColors.HighlightColor}"/>
