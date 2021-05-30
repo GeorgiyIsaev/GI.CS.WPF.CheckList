@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GI.CS.WPF.Core.CheckList
+namespace GI.CS.WPF.FW.CheckList
 {
 
 
