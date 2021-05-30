@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WPF_CheckListQuests
+namespace GI.CS.WPF.Core.CheckList
 {
     class MainMenu
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WPF_CheckListQuests
+namespace GI.CS.WPF.Core.CheckList
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPF_CheckListQuests
+namespace GI.CS.WPF.Core.CheckList
 {
     /// <summary>
     /// Логика взаимодействия для Windows_HTNLSetup.xaml

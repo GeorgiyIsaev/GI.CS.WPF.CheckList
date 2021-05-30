@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Xps.Serialization;
 
 
-namespace WPF_CheckListQuests
+namespace GI.CS.WPF.Core.CheckList
 {
     public static class QuestsBox
     {

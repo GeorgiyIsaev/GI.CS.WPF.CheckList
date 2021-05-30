@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
-namespace WPF_CheckListQuests
+namespace GI.CS.WPF.Core.CheckList
 {
 	public class QuestItem
 	{
