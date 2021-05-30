@@ -5,7 +5,7 @@ using System.IO;
 
 namespace GI.CS.WPF.Core.CheckList
 {
-	public class HTMLEdition
+	public class EditionHTML
 	{
 		/*Основные настройки*/
 		public static string headerHTML { get; set; }
@@ -147,7 +147,7 @@ namespace GI.CS.WPF.Core.CheckList
 									
 					if (line.IndexOf(questBegin) >= 0)
 					{
-						if (questItem != null && !QuestsBox.if_ThereQuest(questItem.quest))
+						if (questItem != null && !EditionTXT.if_ThereQuest(questItem.quest))
 						{
 							questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;
 						}
@@ -184,7 +184,7 @@ namespace GI.CS.WPF.Core.CheckList
 					/*Просто игнорируем*/
 				}
 			}
-			if (questItem != null && !QuestsBox.if_ThereQuest(questItem.quest))
+			if (questItem != null && !EditionTXT.if_ThereQuest(questItem.quest))
 			{			
 				questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;				
 			}

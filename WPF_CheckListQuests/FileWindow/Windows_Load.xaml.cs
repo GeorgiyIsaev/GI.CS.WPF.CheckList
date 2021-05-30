@@ -68,9 +68,9 @@ namespace GI.CS.WPF.Core.CheckList
         {
             int count = 0;
             if (fileName.LastIndexOf(".txt") > -1)            
-                count = QuestsBox.file_readTXT(fileName);
+                count = EditionTXT.file_readTXT(fileName);
             else if (fileName.LastIndexOf(".html") > -1)           
-                count = HTMLEdition.readHTML(fileName);
+                count = EditionHTML.readHTML(fileName);
 
             if (count == 0)
                 MessageBox.Show($"В данном файле вопросы не обнаруженны!");

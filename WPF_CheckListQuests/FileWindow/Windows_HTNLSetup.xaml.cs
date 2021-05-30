@@ -42,7 +42,7 @@ namespace GI.CS.WPF.Core.CheckList
             setupHTML();
 
 
-            HTMLEdition.bilderHTML(nameFile.Text);
+            EditionHTML.bilderHTML(nameFile.Text);
             var result = MessageBox.Show($"Файл {nameFile.Text}.html успешно создан\n Хотите открыть файл?", 
                 "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -53,12 +53,12 @@ namespace GI.CS.WPF.Core.CheckList
         }
         private void setupHTML()
         {
-            HTMLEdition.headerHTML = input_header.Text;
-            HTMLEdition.describeHTML = input_describe.Text;
-            HTMLEdition.signFooterHTML = input_sign.Text;
-            HTMLEdition.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
-            HTMLEdition.deleteAnAnswerIf = CB_lineThrough.IsChecked == true;
-            HTMLEdition.spoilerIf = CB_spoilerIf.IsChecked == true;
+            EditionHTML.headerHTML = input_header.Text;
+            EditionHTML.describeHTML = input_describe.Text;
+            EditionHTML.signFooterHTML = input_sign.Text;
+            EditionHTML.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
+            EditionHTML.deleteAnAnswerIf = CB_lineThrough.IsChecked == true;
+            EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
         }
 
         private void ColorStack()

@@ -37,7 +37,7 @@ namespace GI.CS.WPF.Core.CheckList
             NewTitle();
 
             /*Чтение из временого файла*/
-            QuestsBox.file_readTXT("TEMPTXT.txt");
+            EditionTXT.file_readTXT("TEMPTXT.txt");
             NewTitle();
         }
 
@@ -49,7 +49,7 @@ namespace GI.CS.WPF.Core.CheckList
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             int val = ListBox_Quest.SelectedIndex;
-            if (val == 0 && QuestsBox.if_ThereQuest(input_Quest.Text))
+            if (val == 0 && EditionTXT.if_ThereQuest(input_Quest.Text))
             {
                 MessageBox.Show("Такой вопрос уже был добавлен ранее", "Добавление не возможно!");
                 return;
@@ -78,19 +78,19 @@ namespace GI.CS.WPF.Core.CheckList
                 QuestsBox.questItems.Insert(val + 1, questItem);
                 QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = val;
-                QuestsBox.file_saveTXT("TEMPTXT.txt");
+                EditionTXT.file_saveTXT("TEMPTXT.txt");
             }
             else
             {
                 QuestsBox.questItems.Add(questItem);
-                QuestsBox.file_saveTXT("TEMPTXT.txt");
+                EditionTXT.file_saveTXT("TEMPTXT.txt");
             }
             NewTitle();
         }
 
         private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
         {
-            QuestsBox.file_saveTXT("text.txt");
+            EditionTXT.file_saveTXT("text.txt");
             MessageBox.Show("Файл сохранен text.txt");
         }
 
@@ -142,7 +142,7 @@ namespace GI.CS.WPF.Core.CheckList
                     int val = ListBox_Quest.SelectedIndex;
                     if (val > 0) QuestsBox.questItems.RemoveAt(val);
                     ListBox_Quest.SelectedIndex = 0;
-                    QuestsBox.file_saveTXT("TEMPTXT.txt");
+                    EditionTXT.file_saveTXT("TEMPTXT.txt");
                     NewTitle();
                 }
             }
