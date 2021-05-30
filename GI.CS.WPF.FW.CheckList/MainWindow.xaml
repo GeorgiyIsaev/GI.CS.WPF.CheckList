@@ -1,0 +1,168 @@
+﻿<Window x:Class="GI.CS.WPF.Core.CheckList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GI.CS.WPF.Core.CheckList"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow"  Height="467" Width="804" FontSize="14" 
+        >
+    
+    <!--Ресурс для листбокса-->
+    <Window.Resources>
+        <DataTemplate x:Key="removableTalentListTemplate">
+            <StackPanel>
+                <TextBlock FontSize="13" Text="{Binding Path=tName}" VerticalAlignment="Center" Width="175" Height="18" Grid.Column="0" >
+                    <TextBlock.ToolTip>
+                        <ToolTip Background="Blue">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Description}" Foreground="White" />
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+
+    <Grid>
+        <!--Меню приложения-->
+        <Menu  FontSize="14" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл" ToolTip="Сохранение/Загрузка/Настройки" Width="73">
+                <MenuItem Header="Очистить проект" Click="MenuItemClear_Click"></MenuItem>
+                <MenuItem Header="Добавить из файла" Click="MenuItemLoad_Click"></MenuItem>
+                <MenuItem Header="Сохранить как TXT" Click="MenuItemSaveTXT_Click"></MenuItem>
+                <MenuItem Header="Сохранить как HTML" Click="MenuItemSaveHTML_Click" ></MenuItem>
+                <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Запустить тест" ToolTip="Запуск теста из 20 случайных вопросов из доступных в приложении" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
+            <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" Click="MenuItemOpenDescription_Click" ></MenuItem>
+            <MenuItem Header="Директория" ToolTip="Открыть папку, в которой расположено приложение" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+        </Menu>
+        <Grid>
+            <!--Разметка колонок-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="75*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <!--Основные элементы слева Листбокс с вопросами-->
+            </Grid.RowDefinitions>
+            <Grid Margin="0,30,1,0" Grid.RowSpan="2">
+                <TextBlock  FontSize="14"  Margin="10,2,8,0" Text="Список вопросов:" TextWrapping="Wrap" VerticalAlignment="Top" Height="17"/>
+                <ListBox  
+                    ItemTemplate="{StaticResource removableTalentListTemplate}" ItemsSource="{Binding ElementName=UI, Path=Models}"
+                    FontSize="14"  x:Name="ListBox_Quest" SelectionChanged="ListBox_Quest_SelectionChanged" KeyUp="ListBox_KeyDown" Margin="0,26,0,5">
+                    <ListBox.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{x:Static SystemColors.HighlightColor}"/>
+                    </ListBox.Resources>
+                </ListBox>
+            </Grid>
+            <!--Ввод информации о вопросе-->
+            <Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <TextBox FontSize="14"  x:Name="input_Quest" ToolTip="Текствовое поля для вопроса" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBlock IsHitTestVisible="False" Text="Введите вопрос (*обязательное поле!)" Foreground="DarkGray" Margin="19,5,18,10" Grid.ColumnSpan="2">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=input_Quest}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBox FontSize="14"  x:Name="input_Answer" ToolTip="Текствовое поля для верных ответов. Если ответов несколько, они должны быть разделены через Enter" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBlock IsHitTestVisible="False" Text="Введите верные ответы (*обязательное поле!)" Foreground="DarkGray" Margin="19,6,18,6" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=input_Answer}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBox FontSize="14"   x:Name="input_AnAnswer" ToolTip="Текствовое поля для не верных ответов. Если ответов несколько, они должны быть разделены через Enter"  Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBlock IsHitTestVisible="False" Text="Введите не верные ответы (*не обязательное поле)" Foreground="DarkGray" Margin="19,6,18,6" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Row="2">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=input_AnAnswer}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBox FontSize="14"  x:Name="input_Comment" ToolTip="Текствовое поля для пояснения к вопросу" Margin="10,1,10,1" Text="" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+                <TextBlock IsHitTestVisible="False" Text="Введите пояснение к вопросу (*не обязательное поле)" Foreground="DarkGray" Margin="19,6,18,6" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Row="3">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=input_Comment}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <Button  FontSize="14"  x:Name="Button_Clear" Content="Очистить" Click="Button_Clear_Click" Margin="10,1,1,2" Grid.Row="4"/>
+                <Button  FontSize="14"  x:Name="Button_Save"  Content="Добавить" Click="Button_Save_Click" Margin="1,1,10,2" Grid.Row="4" Grid.Column="1"/>
+            </Grid>
+            <!--Разделитель колонок приложения-->
+            <GridSplitter Grid.Column="1" Grid.RowSpan="2" ShowsPreview="False" Background="LightGray" Width="3"
+             HorizontalAlignment="Center" Margin="0,25,0,0" />
+        </Grid>
+    </Grid>
+</Window>
