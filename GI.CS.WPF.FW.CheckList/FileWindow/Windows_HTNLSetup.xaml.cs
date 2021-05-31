@@ -68,20 +68,17 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void ComboBox_FormatSave_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int valIndex = ComboBox_FormatSave.SelectedIndex;
-            if (valIndex == 0)
+            switch (ComboBox_FormatSave.SelectedIndex)
             {
-                WinIsEnabled(true);
-            }
-            if (valIndex == 1)
-            {
-                WinIsEnabled();
-                MessageBox.Show(".txt");
-            }
-            if (valIndex == 2)
-            {
-                WinIsEnabled();
-                MessageBox.Show(".json");
+                case 0:
+                    WinIsEnabled(true);
+                    break;
+                case 1:
+                    WinIsEnabled();                
+                    break;
+                case 2:
+                    WinIsEnabled();                
+                    break;
             }
         }
 
