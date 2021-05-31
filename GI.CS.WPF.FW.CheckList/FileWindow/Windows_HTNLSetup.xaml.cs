@@ -75,6 +75,7 @@ namespace GI.CS.WPF.FW.CheckList
             }
             if (valIndex == 1)
             {
+                Board_Coolor.IsEnabled = false;
                 MessageBox.Show(".txt");
             }
             if (valIndex == 2)

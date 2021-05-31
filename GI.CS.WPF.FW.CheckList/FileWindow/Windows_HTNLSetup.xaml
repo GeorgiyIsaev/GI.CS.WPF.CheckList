@@ -10,7 +10,7 @@
         Title="Создание HTML Чек-Листа" Height="467" Width="804">
     <Grid Margin="0,0,0,8">
         <TabControl Height="337" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="750">
-            <TabItem Header="Основные настройки" FontSize="16" FontWeight="Bold" Margin="-2,-3,-2,0">
+            <TabItem x:Name="Board_Coolor" Header="Основные настройки" FontSize="16" FontWeight="Bold" Margin="-2,-3,-2,0">
 
                 <Grid Background="#FFE5E5E5" Height="388">
                     <Grid.RowDefinitions>
