@@ -20,9 +20,7 @@ namespace GI.CS.WPF.FW.CheckList
 
 		/*Логика*/
 		public static void bilderHTML(string nameFile)
-		{
-			
-			nameFile += ".html";
+		{			
 			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
 			{
 				file.WriteLine(headBilder());

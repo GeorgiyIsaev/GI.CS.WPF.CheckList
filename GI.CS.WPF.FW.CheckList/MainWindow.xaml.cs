@@ -88,16 +88,6 @@ namespace GI.CS.WPF.FW.CheckList
             NewTitle();
         }
 
-        private void MenuItemSaveTXT_Click(object sender, RoutedEventArgs e)
-        {
-            EditionTXT.file_saveTXT("text.txt");
-            MessageBox.Show("Файл сохранен text.txt");
-        }
-
-
-
-
-
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             /*Перемещение по лист боксу*/
@@ -156,8 +146,7 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
-            new Windows_HTNLSetup().ShowDialog();
-            // HTMLEdition.bilderHTML();
+            new Windows_HTNLSetup().ShowDialog();          
         }
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
         {
@@ -171,7 +160,7 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {
-            if (QuestsBox.questItems.Count < 1)
+            if (QuestsBox.questItems.Count <= 1)
             {
                 MessageBox.Show("Недостаточно вопросов для запуска теста");
                 return;
@@ -199,6 +188,5 @@ namespace GI.CS.WPF.FW.CheckList
         {
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
-
     } 
 }
