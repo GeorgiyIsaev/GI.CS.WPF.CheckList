@@ -66,7 +66,24 @@ namespace GI.CS.WPF.FW.CheckList
            // CB_FonBack.Items
         }
 
-      
+        private void ComboBox_FormatSave_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int valIndex = ComboBox_FormatSave.SelectedIndex;
+            if (valIndex == 0)
+            {
+                MessageBox.Show(".html");
+            }
+            if (valIndex == 1)
+            {
+                MessageBox.Show(".txt");
+            }
+            if (valIndex == 2)
+            {
+                MessageBox.Show(".json");
+            }
+        }
+
+
 
         //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         //{
