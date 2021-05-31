@@ -115,12 +115,5 @@ namespace GI.CS.WPF.FW.CheckList
             CB_spoilerIf.IsEnabled = ifnow;
             CB_lineThrough.IsEnabled = ifnow;
         }
-
-
-
-        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-
-        //}
     }
 }
