@@ -37,17 +37,31 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            if (nameFile.Text=="") { MessageBox.Show("Должно быть указано имя файла"); return; }
-            if (input_header.Text == "") { MessageBox.Show("Не указан заголовок для чек-листа"); return; }
-            setupHTML();
+            string nameANDformat = nameFile.Text;
+            if (nameFile.Text == "") { MessageBox.Show("Необходимо указать имя для сохраняемого файла"); return; }
+            if (ComboBox_FormatSave.SelectedIndex == 0)
+            {               
+                if (input_header.Text == "") { MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
+                nameANDformat += ".html";
+                setupHTML();
+                EditionHTML.bilderHTML(nameANDformat);
+            }
+            else if(ComboBox_FormatSave.SelectedIndex == 1)
+            {
+                nameANDformat += ".txt";
+                EditionTXT.file_saveTXT(nameANDformat);
+            }
+            else if (ComboBox_FormatSave.SelectedIndex == 2)
+            {
+                nameANDformat += ".json";
+                EditionTXT.file_saveTXT(nameANDformat);
+            }
 
-
-            EditionHTML.bilderHTML(nameFile.Text);
-            var result = MessageBox.Show($"Файл {nameFile.Text}.html успешно создан\n Хотите открыть файл?", 
+            var result = MessageBox.Show($"Файл {nameANDformat} успешно создан\n Хотите открыть файл?", 
                 "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                string forever_papka = Environment.CurrentDirectory + "\\" + nameFile.Text + ".html";         
+                string forever_papka = Environment.CurrentDirectory + "\\" + nameANDformat;         
                 System.Diagnostics.Process.Start("explorer", forever_papka);
             }  
         }
