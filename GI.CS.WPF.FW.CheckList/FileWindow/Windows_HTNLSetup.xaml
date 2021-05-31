@@ -91,10 +91,10 @@
         <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="42,379,0,0" Text="Имя файла:" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="134"/>
         <TextBox FontSize="16"  x:Name="nameFile" ToolTip="Имя сохраняемого файла"  HorizontalAlignment="Left" Height="30" Margin="181,379,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="332"/>
         <Button FontSize="16" Content="Сохранить" ToolTip="Сохранить тест в файл"  HorizontalAlignment="Left" Margin="592,379,0,0" VerticalAlignment="Top" Height="30" Width="170" Click="ButtonSave_Click"/>
-        <ComboBox x:Name="ComboBox_FormatSave" FontSize="16"  HorizontalAlignment="Left"  ToolTip="Основной шрифт теста"  Height="30" Margin="513,379,0,0" VerticalAlignment="Top" Width="79" FontWeight="Normal" RenderTransformOrigin="0.5,0.5">
+        <ComboBox x:Name="ComboBox_FormatSave" SelectedIndex="0"  FontSize="16"  HorizontalAlignment="Left"  ToolTip="Основной шрифт теста"  Height="30" Margin="513,379,0,0" VerticalAlignment="Top" Width="79" FontWeight="Normal" RenderTransformOrigin="0.5,0.5">
             <TextBlock>.html</TextBlock>
             <TextBlock>.txt</TextBlock>
-            <TextBlock>.json</TextBlock>        
+            <TextBlock>.json</TextBlock>           
         </ComboBox>
 
 
