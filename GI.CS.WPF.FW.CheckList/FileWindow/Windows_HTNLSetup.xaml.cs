@@ -71,17 +71,31 @@ namespace GI.CS.WPF.FW.CheckList
             int valIndex = ComboBox_FormatSave.SelectedIndex;
             if (valIndex == 0)
             {
-                MessageBox.Show(".html");
+                WinIsEnabled(true);
             }
             if (valIndex == 1)
             {
-                Board_Coolor.IsEnabled = false;
+                WinIsEnabled();
                 MessageBox.Show(".txt");
             }
             if (valIndex == 2)
             {
+                WinIsEnabled();
                 MessageBox.Show(".json");
             }
+        }
+
+        private void WinIsEnabled(bool ifnow = false)
+        {
+            TabControl_Edition.SelectedIndex = 0;
+            Board_Base.IsEnabled = ifnow;
+            Board_Coolor.IsEnabled = ifnow;
+            input_header.IsEnabled = ifnow;
+            input_describe.IsEnabled = ifnow;
+            input_sign.IsEnabled = ifnow;
+            ComboBox_FontSize.IsEnabled = ifnow;
+            CB_spoilerIf.IsEnabled = ifnow;
+            CB_lineThrough.IsEnabled = ifnow;
         }
 
 

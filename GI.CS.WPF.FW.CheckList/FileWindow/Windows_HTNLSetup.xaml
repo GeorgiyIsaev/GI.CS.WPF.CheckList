@@ -9,8 +9,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Создание HTML Чек-Листа" Height="467" Width="804">
     <Grid Margin="0,0,0,8">
-        <TabControl Height="337" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="750">
-            <TabItem x:Name="Board_Coolor" Header="Основные настройки" FontSize="16" FontWeight="Bold" Margin="-2,-3,-2,0">
+        <TabControl  x:Name="TabControl_Edition"  Height="337" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="750">
+            <TabItem x:Name="Board_Base" Header="Основные настройки" FontSize="16" FontWeight="Bold" Margin="-2,-3,-2,0">
 
                 <Grid Background="#FFE5E5E5" Height="388">
                     <Grid.RowDefinitions>
@@ -68,7 +68,7 @@
             </TabItem>
 
 
-            <TabItem Header="Цвета фона и текста" FontSize="16" FontWeight="Bold" Margin="1,-3,-5,0">
+            <TabItem x:Name="Board_Coolor" Header="Цвета фона и текста" FontSize="16" FontWeight="Bold" Margin="1,-3,-5,0">
                 <Grid Background="#FFE5E5E5">
                     <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,471,0" Background="BlueViolet"/>
                     <TextBlock HorizontalAlignment="Left" Margin="313,10,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
