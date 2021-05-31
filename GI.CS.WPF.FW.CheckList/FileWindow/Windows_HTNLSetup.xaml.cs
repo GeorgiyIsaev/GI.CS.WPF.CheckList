@@ -37,11 +37,18 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
+            input_header.Background = Brushes.White;
+            nameFile.Background = Brushes.White;
             string nameANDformat = nameFile.Text;
-            if (nameFile.Text == "") { MessageBox.Show("Необходимо указать имя для сохраняемого файла"); return; }
+            if (nameFile.Text == "") {   
+                nameFile.Background = Brushes.Yellow;
+                MessageBox.Show("Необходимо указать имя для сохраняемого файла"); return; 
+            }
             if (ComboBox_FormatSave.SelectedIndex == 0)
             {               
-                if (input_header.Text == "") { MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
+                if (input_header.Text == "") {
+                    input_header.Background = Brushes.Yellow;
+                    MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
                 nameANDformat += ".html";
                 setupHTML();
                 EditionHTML.bilderHTML(nameANDformat);
