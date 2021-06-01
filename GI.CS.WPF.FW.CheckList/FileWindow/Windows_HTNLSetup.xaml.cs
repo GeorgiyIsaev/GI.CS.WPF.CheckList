@@ -92,18 +92,18 @@ namespace GI.CS.WPF.FW.CheckList
             switch (ComboBox_FormatSave.SelectedIndex)
             {
                 case 0:
-                    WinIsEnabled(true);
+                    WinIsEnabled();
                     break;
                 case 1:
-                    WinIsEnabled();                
+                    WinIsEnabled(false);                
                     break;
                 case 2:
-                    WinIsEnabled();                
+                    WinIsEnabled(false,true);                
                     break;
             }
         }
 
-        private void WinIsEnabled(bool ifnow = false)
+        private void WinIsEnabled(bool ifnow = true, bool ifJson = false)
         {
             TabControl_Edition.SelectedIndex = 0;
             Board_Base.IsEnabled = ifnow;
@@ -111,9 +111,10 @@ namespace GI.CS.WPF.FW.CheckList
             input_header.IsEnabled = ifnow;
             input_describe.IsEnabled = ifnow;
             input_sign.IsEnabled = ifnow;
-            ComboBox_FontSize.IsEnabled = ifnow;
-            CB_spoilerIf.IsEnabled = ifnow;
-            CB_lineThrough.IsEnabled = ifnow;
+            ComboBox_FontSize.IsEnabled = ifnow;            
+            CB_spoilerIf.IsEnabled = ifnow || ifJson;
+            CB_lineThrough.IsEnabled = ifnow || ifJson;
+            
         }
     }
 }

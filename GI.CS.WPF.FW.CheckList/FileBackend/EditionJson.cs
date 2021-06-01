@@ -12,19 +12,32 @@ using System.Collections.ObjectModel;
 namespace GI.CS.WPF.FW.CheckList
 {
     class EditionJson
-    {
-        static public void WriteJSON(string namefile)
+    {              
+        static public void WriteJSON(string namefile, bool ifWriteIndented = false, bool ifEncoder = false)
         {
             if (File.Exists(namefile))            
                 File.Delete(namefile);
 
-            var options = new JsonSerializerOptions
+            var options = new JsonSerializerOptions { };
+            if (ifEncoder)
             {
-                DefaultBufferSize = 100000, //максимальный буфер (по умолчанию 16 384 байт)             
-                WriteIndented = true, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
-               
-            };           
+                options = new JsonSerializerOptions
+                {
+                    DefaultBufferSize = 100000, //максимальный буфер (по умолчанию 16 384 байт)             
+                    WriteIndented = ifWriteIndented, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
+
+                };
+            }
+            else {
+                options = new JsonSerializerOptions
+                {
+                    DefaultBufferSize = 100000, //максимальный буфер (по умолчанию 16 384 байт)             
+                    WriteIndented = ifWriteIndented, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
+                };
+            }
+
             using (FileStream file = new FileStream(namefile, FileMode.Create))
             {
                 JsonSerializer.SerializeAsync(file, QuestsBox.questItems, options);
