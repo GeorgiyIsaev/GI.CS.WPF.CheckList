@@ -8,19 +8,23 @@ using System.Text;
 namespace GI.CS.WPF.FW.CheckList
 {
     public static class QuestsBox
-    {
-		/*Для тулбокса*/
-		//private static ObservableCollection<QuestItem> _models = new ObservableCollection<QuestItem>();
-		//public static ObservableCollection<QuestItem> Models
-		//{
-		//	get { return _models; }
-		//	set { _models = value; }
-		//}
-
-
-		//ObservableCollection;
-		//public static ObservableCollection
+    {		
 		public static ObservableCollection<QuestItem> questItems = new ObservableCollection<QuestItem>();
-		
-	}
+
+		public static void DeleteOneQuest()
+        {
+            if (questItems.Count > 0)
+                questItems.RemoveAt(0);
+        }
+        public static void AddOneQuest() //QuestsBox.AddOneQuest() DeleteOneQuest()
+        {
+            /*Нулевой эл-т для новых вопросов*/
+            QuestItem questItem = new QuestItem();
+            questItem.quest = "<Добавить новый вопрос>";
+            questItems.Add(questItem);         
+        }
+
+
+
+    }
 }

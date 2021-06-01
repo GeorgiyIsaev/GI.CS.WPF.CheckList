@@ -29,10 +29,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             /*Контейнер с привязкой к листбоксу*/
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
-            /*Нулевой эл-т для новых вопросов*/
-            QuestItem questItem = new QuestItem();
-            questItem.quest = "<Добавить новый вопрос>";
-            QuestsBox.questItems.Add(questItem);
+            QuestsBox.AddOneQuest();
             ListBox_Quest.SelectedIndex = 0;
             NewTitle();
 

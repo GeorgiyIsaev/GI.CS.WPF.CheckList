@@ -8,6 +8,7 @@ using System.Text.Unicode;
 using System.Text.Json;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -44,16 +45,32 @@ namespace GI.CS.WPF.FW.CheckList
             }            
         }
 
-        public static void ReadJSON()
+        public static int ReadJSON(string namefile)
         {
-            ObservableCollection<QuestItem> questItemsTemp = new ObservableCollection<QuestItem>();
-                       
-            using (FileStream fs = new FileStream("test.json", FileMode.Open))
+            try
             {
-                questItemsTemp = JsonSerializer.DeserializeAsync<ObservableCollection<QuestItem>>(fs).Result;               
+                ObservableCollection<QuestItem> questItemsTemp = new ObservableCollection<QuestItem>();
+                int countRead = questItemsTemp.Count;
+                int countBefore = QuestsBox.questItems.Count;
+             
+                using (FileStream fs = new FileStream(namefile, FileMode.Open))
+                {
+                    questItemsTemp = JsonSerializer.DeserializeAsync<ObservableCollection<QuestItem>>(fs).Result;
+                }
+                QuestsBox.DeleteOneQuest();
+                foreach (QuestItem questItem in questItemsTemp)
+                    QuestsBox.questItems.Add(questItem);
+                QuestsBox.AddOneQuest();
+                return (QuestsBox.questItems.Count - countBefore);
             }
-            foreach(QuestItem questItem in questItemsTemp)
-                QuestsBox.questItems.Add(questItem);
+            catch (Exception ex)
+            {
+                string textError = "При чтении из файла namefile произошла ошибка,\n" +
+                    "проверте, соответствует ли содержимое файла формату JSON!\n\n" +
+                    "ОПИСАНИЕ ОШИБКИ:\n" + ex +"\n"+ex.Message;
+                MessageBox.Show(textError);
+            }
+            return 0;
         }
     }
 }

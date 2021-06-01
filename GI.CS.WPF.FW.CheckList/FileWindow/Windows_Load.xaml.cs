@@ -56,6 +56,11 @@ namespace GI.CS.WPF.FW.CheckList
                 {
                     ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
                 }
+                FileInfo[] filesJSON = dir.GetFiles("**.json");
+                foreach (FileInfo crrDir in filesJSON)
+                {
+                    ListBox_FileMenedger.Items.Add("    " + crrDir.Name);
+                }
             }
             catch { }
         }
@@ -71,6 +76,8 @@ namespace GI.CS.WPF.FW.CheckList
                 count = EditionTXT.file_readTXT(fileName);
             else if (fileName.LastIndexOf(".html") > -1)           
                 count = EditionHTML.readHTML(fileName);
+            else if (fileName.LastIndexOf(".json") > -1)
+                count = EditionJson.ReadJSON(fileName);
 
             if (count == 0)
                 MessageBox.Show($"В данном файле вопросы не обнаруженны!");
@@ -107,7 +114,7 @@ namespace GI.CS.WPF.FW.CheckList
                     //TODO Найти способ показать все диски
                 }        
             }
-            else if (fileName.LastIndexOf(".txt") > -1 || fileName.LastIndexOf(".html") > -1)
+            else if (fileName.LastIndexOf(".txt") > -1 || fileName.LastIndexOf(".html") > -1 || fileName.LastIndexOf(".json") > -1)
             {
                 fileName = fileName.Replace("    ", "");
                 startFile(TextBlock_Directori.Text + "\\" + fileName);
