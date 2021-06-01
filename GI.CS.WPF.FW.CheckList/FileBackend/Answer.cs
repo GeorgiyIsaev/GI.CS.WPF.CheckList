@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -8,6 +9,7 @@ namespace GI.CS.WPF.FW.CheckList
 	{
 		public bool if_true { get; set; } // 1-Верный ответ, 0-Не верный ответ.
 		public string answerSTR { get; set; }
+		[JsonIgnore]
 		public int random_nomer { get; set; } = 0;	
 		public Answer(string str, bool if_answer)
 		{

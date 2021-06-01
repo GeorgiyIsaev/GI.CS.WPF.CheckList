@@ -4,18 +4,22 @@ using System.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Text.Json.Serialization;
 
 namespace GI.CS.WPF.FW.CheckList
 {
 	public class QuestItem
 	{
 		/*Для контакта с листбоксом*/
+		[JsonIgnore]
 		private string _description = "Добавить новый вопрос!";
+		[JsonIgnore]
 		public string tName
 		{
 			get { return quest; }
 			set { quest = value; NotifyPropertyChanged("tName"); }
 		}
+		[JsonIgnore]
 		public string Description
 		{
 			get { return _description; }
@@ -34,8 +38,10 @@ namespace GI.CS.WPF.FW.CheckList
 		/*Части вопроса*/
 		public string quest { get; set; } = "";
 		public string comment { get; set; } = "";
-		public List<Answer> answerItem = new List<Answer>();
+		public List<Answer> answerItem { get; set; } = new List<Answer>();
+		[JsonIgnore]
 		public int intRandomQuest { get; set; } = 0;
+		[JsonIgnore]
 		public int countTrueAnswer{ get; set; } = 0;
 
 		/*Логика работы вопроса*/
