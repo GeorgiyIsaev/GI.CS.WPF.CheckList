@@ -20,9 +20,9 @@ namespace GI.CS.WPF.FW.CheckList
 
             var options = new JsonSerializerOptions
             {
-               DefaultBufferSize = Int32.MaxValue,
+                DefaultBufferSize = 100000,
                 // MaxDepth = 64, //максимальная глубина
-                // WriteIndented = true, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
+                //WriteIndented = true, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
                
             };           
