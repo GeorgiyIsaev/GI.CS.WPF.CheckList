@@ -61,6 +61,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileBackend\EditionJson.cs" />
     <Compile Include="FileBackend\Answer.cs" />
     <Compile Include="FileBackend\EditionHTML.cs" />
     <Compile Include="FileBackend\EditionTXT.cs" />
