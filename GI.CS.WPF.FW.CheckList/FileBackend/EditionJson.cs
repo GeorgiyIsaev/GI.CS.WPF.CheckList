@@ -20,12 +20,13 @@ namespace GI.CS.WPF.FW.CheckList
 
             var options = new JsonSerializerOptions
             {
-                MaxDepth = 64, //максимальная глубина
+               DefaultBufferSize = Int32.MaxValue,
+                // MaxDepth = 64, //максимальная глубина
                 // WriteIndented = true, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
                
             };           
-            using (FileStream file = new FileStream("test.json", FileMode.Create))
+            using (FileStream file = new FileStream(namefile, FileMode.Create))
             {
                 JsonSerializer.SerializeAsync(file, QuestsBox.questItems, options);
             }            
