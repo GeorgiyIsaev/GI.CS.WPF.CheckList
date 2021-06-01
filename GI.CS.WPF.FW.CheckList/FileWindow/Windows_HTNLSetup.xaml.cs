@@ -56,12 +56,12 @@ namespace GI.CS.WPF.FW.CheckList
             else if(ComboBox_FormatSave.SelectedIndex == 1)
             {
                 nameANDformat += ".txt";
-                EditionTXT.file_saveTXT(nameANDformat);
+                EditionTXT.WriteInTXT(nameANDformat);
             }
             else if (ComboBox_FormatSave.SelectedIndex == 2)
             {
                 nameANDformat += ".json";
-                EditionTXT.file_saveTXT(nameANDformat);
+                EditionJson.WriteJSON(nameANDformat);
             }
 
             var result = MessageBox.Show($"Файл {nameANDformat} успешно создан\n Хотите открыть файл?", 

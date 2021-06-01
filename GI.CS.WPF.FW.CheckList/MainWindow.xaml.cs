@@ -78,12 +78,12 @@ namespace GI.CS.WPF.FW.CheckList
                 QuestsBox.questItems.Insert(val + 1, questItem);
                 QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = val;
-                EditionTXT.file_saveTXT("TEMPTXT.txt");
+                EditionTXT.WriteInTXT("TEMPTXT.txt");
             }
             else
             {
                 QuestsBox.questItems.Add(questItem);
-                EditionTXT.file_saveTXT("TEMPTXT.txt");
+                EditionTXT.WriteInTXT("TEMPTXT.txt");
             }
             NewTitle();
         }
@@ -132,7 +132,7 @@ namespace GI.CS.WPF.FW.CheckList
                     int val = ListBox_Quest.SelectedIndex;
                     if (val > 0) QuestsBox.questItems.RemoveAt(val);
                     ListBox_Quest.SelectedIndex = 0;
-                    EditionTXT.file_saveTXT("TEMPTXT.txt");
+                    EditionTXT.WriteInTXT("TEMPTXT.txt");
                     NewTitle();
                 }
             }

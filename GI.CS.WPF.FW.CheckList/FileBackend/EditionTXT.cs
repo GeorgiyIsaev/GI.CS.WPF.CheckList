@@ -21,7 +21,7 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return false;
 		}
-		public static void file_saveTXT(string nameFile)
+		public static void WriteInTXT(string nameFile)
 		{
 			/*Запись вопросов в блакнот*/
 			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
