@@ -32,12 +32,7 @@ namespace GI.CS.WPF.FW.CheckList
         public static void ReadJSON()
         {
             ObservableCollection<QuestItem> questItemsTemp = new ObservableCollection<QuestItem>();
-
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true, // Если равно true устанавливаются дополнительные пробелы и переносы (для красоты)
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Вот эта строка Вам поможет с кодировкой
-            };
+                       
             using (FileStream fs = new FileStream("test.json", FileMode.Open))
             {
                 questItemsTemp = JsonSerializer.DeserializeAsync<ObservableCollection<QuestItem>>(fs).Result;               
