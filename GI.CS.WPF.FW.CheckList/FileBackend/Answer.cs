@@ -10,7 +10,8 @@ namespace GI.CS.WPF.FW.CheckList
 		public bool if_true { get; set; } // 1-Верный ответ, 0-Не верный ответ.
 		public string answerSTR { get; set; }
 		[JsonIgnore]
-		public int random_nomer { get; set; } = 0;	
+		public int random_nomer { get; set; } = 0;
+		public Answer(){}
 		public Answer(string str, bool if_answer)
 		{
 			if_true = if_answer;
@@ -27,6 +28,5 @@ namespace GI.CS.WPF.FW.CheckList
 			answerSTR = answerSTR.Replace("\r", "");
 			return answerSTR;
         }
-
     };
 }
