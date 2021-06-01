@@ -59,9 +59,9 @@ namespace GI.CS.WPF.FW.CheckList
                 EditionTXT.WriteInTXT(nameANDformat);
             }
             else if (ComboBox_FormatSave.SelectedIndex == 2)
-            {
+            {       
                 nameANDformat += ".json";
-                EditionJson.WriteJSON(nameANDformat);
+                EditionJson.WriteJSON(nameANDformat, (bool)CB_spoilerIf.IsChecked, (bool)CB_lineThrough.IsChecked);
             }
 
             var result = MessageBox.Show($"Файл {nameANDformat} успешно создан\n Хотите открыть файл?", 
@@ -114,7 +114,22 @@ namespace GI.CS.WPF.FW.CheckList
             ComboBox_FontSize.IsEnabled = ifnow;            
             CB_spoilerIf.IsEnabled = ifnow || ifJson;
             CB_lineThrough.IsEnabled = ifnow || ifJson;
-            
+            if (!ifJson)
+            {
+                CB_spoilerIf.Content = "Скрыть пояснения под спойлер";
+                CB_lineThrough.Content = "Зачеркнуть неверные ответы";
+                CB_spoilerIf.ToolTip = "При использовании скроет поясения по спойлер";
+                CB_lineThrough.ToolTip = "При использовании зачернет не верные ответы";
+            }
+            else
+            {
+                CB_spoilerIf.Content = "Добавить в JSON файл переносы";
+                CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности
+                CB_spoilerIf.ToolTip = "При использовании в файл JSON будут добавлены пробелы и переносы!";
+                CB_lineThrough.ToolTip = "При использовании файл JSON будит записан в Unicode,\n" +
+                                       "по умолчанию используется Escape-последовательность";
+            }
+
         }
     }
 }
