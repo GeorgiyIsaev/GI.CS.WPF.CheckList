@@ -66,7 +66,7 @@ namespace GI.CS.WPF.FW.CheckList
             {
                 string textError = "При чтении из файла namefile произошла ошибка,\n" +
                     "проверте, соответствует ли содержимое файла формату JSON!\n\n" +
-                    "ОПИСАНИЕ ОШИБКИ:\n" + ex +"\n"+ex.Message;
+                    "ОШИБКА:\n" + ex + "\nОПИСАНИЕ ОШИБКИ:\n" + ex.Message;
                 MessageBox.Show(textError);
             }
             return 0;

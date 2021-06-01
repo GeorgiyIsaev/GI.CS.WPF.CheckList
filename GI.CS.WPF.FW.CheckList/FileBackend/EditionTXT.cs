@@ -70,9 +70,6 @@ namespace GI.CS.WPF.FW.CheckList
 			{
 				try
 				{
-					//	string line = _line.Replace("\n", "");
-					//line = line.Replace("\r", "");
-
 					if (line.IndexOf("ВОПРОС:") >= 0)
 					{
 						if (questItem != null)
