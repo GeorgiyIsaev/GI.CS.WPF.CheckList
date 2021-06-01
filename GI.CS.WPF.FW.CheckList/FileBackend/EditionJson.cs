@@ -34,12 +34,11 @@ namespace GI.CS.WPF.FW.CheckList
                 options = new JsonSerializerOptions
                 {
                     DefaultBufferSize = 100000, //максимальный буфер (по умолчанию 16 384 байт)             
-                    WriteIndented = ifWriteIndented, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
-                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
+                    WriteIndented = ifWriteIndented, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)               
                 };
             }
 
-            using (FileStream file = new FileStream(namefile, FileMode.Create))
+            using (FileStream file = new FileStream(namefile, FileMode.CreateNew))
             {
                 JsonSerializer.SerializeAsync(file, QuestsBox.questItems, options);
             }            
