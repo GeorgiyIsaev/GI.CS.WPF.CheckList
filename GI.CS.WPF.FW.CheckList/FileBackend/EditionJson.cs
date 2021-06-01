@@ -16,12 +16,14 @@ namespace GI.CS.WPF.FW.CheckList
         static public void WriteJSON(string namefile)
         {
             if (File.Exists(namefile))            
-                File.Delete(namefile);          
+                File.Delete(namefile);
 
             var options = new JsonSerializerOptions
             {
+                MaxDepth = 64, //максимальная глубина
                 // WriteIndented = true, // Если true - устанавливаются дополнительные пробелы и переносы (для красоты)
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности          
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) //Кодировка в юникоде вместо ескайп последовательности  
+               
             };           
             using (FileStream file = new FileStream("test.json", FileMode.Create))
             {
