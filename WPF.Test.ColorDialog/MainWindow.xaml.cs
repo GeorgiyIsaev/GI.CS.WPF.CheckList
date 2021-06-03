@@ -13,6 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using System.ComponentModel;
+//using System.Windows.Media;
+using PropertyTools.Wpf;
+
 namespace WPF.Test.ColorDialog
 {
     /// <summary>
@@ -24,5 +29,6 @@ namespace WPF.Test.ColorDialog
         {
             InitializeComponent();
         }
+
     }
 }
