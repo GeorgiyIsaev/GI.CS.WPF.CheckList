@@ -71,14 +71,8 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.mainBackend.color = "#ffffff";
 			structCCS.futterBackend.color = "#a9a9a9";
 
-			structCCS.title.sizeFront = 16;
-			structCCS.title.fullStringCss = "font-size: " + structCCS.title.sizeFront + "px; ";
-			structCCS.title.italics = false;
-			if(structCCS.title.italics) structCCS.title.fullStringCss += "";
-			structCCS.title.bold = false;
-			structCCS.title.strike = false;
-			structCCS.title.color = "";
-			structCCS.title.fullStringCss += "";
+			structCCS.title.CreateCSS(16, false,false,false, "#ccceee");
+			structCCS.description.CreateCSS(16, false, false, false, "#ccceee");
 
 		}
 		private static string headBilder()

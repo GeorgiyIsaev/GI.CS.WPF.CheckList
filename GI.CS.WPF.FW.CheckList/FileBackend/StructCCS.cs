@@ -6,12 +6,12 @@ namespace GI.CS.WPF.FW.CheckList
 {
     public struct CCSFont
     {
-        public string fullStringCss;
-        public int sizeFront;
-        public bool italics;
-        public bool bold;
-        public bool strike; //зачеркнут
-        public string color;
+        private string fullStringCss;
+        private int sizeFront;
+        private bool italics;
+        private bool bold;
+        private bool strike; //зачеркнут
+        private string color;
         public void CreateCSS(int sizeFront, bool italics, bool bold, bool strike, string color)
         {
             this.sizeFront = sizeFront;
@@ -20,8 +20,9 @@ namespace GI.CS.WPF.FW.CheckList
             this.bold = bold;
             this.strike = strike;
             this.color = color;
+            CreateStringCSS()
         }
-        public void CreateStringCSS()
+        private void CreateStringCSS()
         {
             fullStringCss = "font-size: " + sizeFront + "px; ";
             if (italics) fullStringCss += "font-style:italic; ";
