@@ -25,6 +25,7 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
         {
+            EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
             CreateComboBox_FontSize();
         } 
         

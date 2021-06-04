@@ -23,6 +23,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+            
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

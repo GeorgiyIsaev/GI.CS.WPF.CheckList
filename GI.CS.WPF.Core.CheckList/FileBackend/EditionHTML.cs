@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace GI.CS.WPF.Core.CheckList
+namespace GI.CS.WPF.FW.CheckList
 {
 	public static class EditionHTML
 	{
