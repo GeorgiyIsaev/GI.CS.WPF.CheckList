@@ -71,8 +71,17 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.mainBackend.color = "#ffffff";
 			structCCS.futterBackend.color = "#a9a9a9";
 
-			structCCS.title.CreateCSS(16, false,false,false, "#ccceee");
-			structCCS.description.CreateCSS(16, false, false, false, "#ccceee");
+			structCCS.title.CreateCSS(16, false,false,false, "#520000");
+			structCCS.description.CreateCSS(16, true, false, false, "#520000");
+			structCCS.question.CreateCSS(16, false, false, false, "#520000");
+			structCCS.trueAanswer.CreateCSS(16, false, false, false, "#520000");
+			structCCS.falseAnswer.CreateCSS(16, false, false, false, "#520000");
+			structCCS.trueAanswerIcon.CreateCSS(16, false, true, false, "#1eaf1e");
+			structCCS.falseAanswerIcon.CreateCSS(16, false, true, false, "#ff0000");
+			structCCS.comment.CreateCSS(16, false, false, false, "#520000");
+			structCCS.signature.CreateCSS(16, true, true, false, "#520000");
+
+			"+structCCS.signature.FullStringCss +"
 
 		}
 		private static string headBilder()
@@ -81,17 +90,18 @@ namespace GI.CS.WPF.FW.CheckList
 				$"<html><head><title> {headerHTML} </title>" + "\n" +
 				"<meta charset = \"utf-8\">" + "\n" +
 				"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: "+ FrontSiseBody + "px;}" + "\n" +
-				"h1{font-size: " + (FrontSiseBody + 8) + "px;padding: 20px 0 27px 0px;margin: 0px 0 15px; text-align: center;}" + "\n" +
-				"#opisanie{font-size: " + (FrontSiseBody -1) + "px;padding: 0 110px 10px; font-style:italic;}		" + "\n" +
+				"h1{" + structCCS.title.FullStringCss + " ;padding: 20px 0 27px 0px; margin: 0px 0 15px; text-align: center;}" + "\n" +
+				"#opisanie{" + structCCS.description.FullStringCss + ";padding: 0 110px 10px;}" + "\n" +
 				".questBox{max-width: 1000px; min-width:  320px;padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: "+ structCCS.mainBackend.color + ";}	" + "\n" +
-				".questBox__coment details div{ padding: 5px 15px 0px;}" + "\n" +
+				".questBox__coment details div{ padding: 5px 15px 0px; " + structCCS.comment.FullStringCss + "}" + "\n" +
 				".questBox__coment{padding: 5px 25px 0px;}" + "\n" +
 
-				".questBox__quest{padding: 0px 25px 5px;}" + "\n" + 
-				".questBox__answer, .questBox__unanwser{padding: 0px 60px 0px;}" + "\n" + deleteUnAnswer() +
-				".questBox__answer div{color: green;font-weight: bold;display: inline; }" + "\n" +
-				".questBox__unanwser div{ color: "+ "#c4d0c7" + "; font-weight: bold; display: inline; }" + "\n" +
-				"#footer {	font-size: " + (FrontSiseBody - 1) + "px;	font-weight: bold;	font-style:italic; padding: 20px 0 27px 12px; text-align: center ;background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
+				".questBox__quest{padding: 0px 25px 5px;" + structCCS.question.FullStringCss + "} \n" +
+				".questBox__answer {" + structCCS.trueAanswer.FullStringCss + "padding: 0px 60px 0px; }" + "\n" +
+				".questBox__unanwser{" + structCCS.falseAnswer.FullStringCss + "padding: 0px 60px 0px; }" + "\n"+
+				".questBox__answer div{" + structCCS.trueAanswerIcon.FullStringCss + "  display: inline; }" + "\n" +
+				".questBox__unanwser div{" + structCCS.falseAanswerIcon.FullStringCss + "display: inline; }" + "\n" +
+				"#footer {" + structCCS.signature.FullStringCss + " padding: 20px 0 27px 12px; text-align: center; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
 				"</style></head>";
 			return head;
 		}
