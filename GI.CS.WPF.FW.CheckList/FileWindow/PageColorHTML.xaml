@@ -1,0 +1,29 @@
+﻿<Page x:Class="GI.CS.WPF.FW.CheckList.PageColorHTML"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GI.CS.WPF.FW.CheckList"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageColorHTML">
+
+    <Grid>
+        <Grid Background="#FFE5E5E5" Margin="51,0,0,145">
+        <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,471,0" Background="BlueViolet"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,10,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+        <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="479,7,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,48,0,0" Text="Главный фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="166"/>
+        <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="479,45,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,86,0,0" Text="Фон подписи" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+        <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="479,86,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,126,0,0" Text="Основной шрифт" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+        <ComboBox x:Name="CB_Shrift" HorizontalAlignment="Left" Margin="479,123,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,163,0,0" Text="Верные ответы" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="161"/>
+        <ComboBox x:Name="CB_ShriftAnswer" HorizontalAlignment="Left" Margin="479,160,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="313,200,0,0" Text="Не верные ответы" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="161"/>
+        <ComboBox x:Name="CB_ShrftdUnAnswer" HorizontalAlignment="Left" Margin="479,197,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="274,241,0,0" Text="ColorDialog не работает!" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="22" Foreground="#FFF90404" TextAlignment="Center"/>
+    </Grid>
+    </Grid>
+</Page>

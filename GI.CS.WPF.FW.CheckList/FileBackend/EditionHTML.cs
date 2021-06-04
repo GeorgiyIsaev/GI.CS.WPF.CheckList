@@ -89,8 +89,8 @@ namespace GI.CS.WPF.FW.CheckList
 				"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: "+ FrontSiseBody + "px;}" + "\n" +
 				"h1{" + structCCS.title.FullStringCss + " ;padding: 20px 0 27px 0px; margin: 0px 0 15px; text-align: center;}" + "\n" +
 				"#opisanie{" + structCCS.description.FullStringCss + ";padding: 0 110px 10px;}" + "\n" +
-				".questBox{max-width: 1000px; min-width:  320px;padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: "+ structCCS.mainBackend.color + ";}	" + "\n" +
-				".questBox__coment details div{ padding: 5px 15px 0px; " + structCCS.comment.FullStringCss + "}" + "\n" +
+				".questBox{max-width: 1000px; min-width: 320px; padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: "+ structCCS.mainBackend.color + ";}	" + "\n" +
+				".questBox__coment details div{" + structCCS.comment.FullStringCss + " padding: 5px 15px 0px; }" + "\n" +
 				".questBox__coment{padding: 5px 25px 0px;}" + "\n" +
 
 				".questBox__quest{padding: 0px 25px 5px;" + structCCS.question.FullStringCss + "} \n" +
