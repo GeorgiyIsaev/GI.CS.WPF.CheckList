@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileBackend\StructCCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileBackend\EditionJson.cs" />

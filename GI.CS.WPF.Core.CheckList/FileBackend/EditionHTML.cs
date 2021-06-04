@@ -5,8 +5,11 @@ using System.IO;
 
 namespace GI.CS.WPF.Core.CheckList
 {
-	public class EditionHTML
+	public static class EditionHTML
 	{
+		/*Значение для установки СSS*/
+		public static StructCCS structCCS;
+
 		/*Основные настройки*/
 		public static string headerHTML { get; set; }
 		public static string describeHTML { get; set; }
@@ -69,7 +72,7 @@ namespace GI.CS.WPF.Core.CheckList
 				"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: #c4d0c7;text-align: justify;font-size: "+ FrontSiseBody + "px;}" + "\n" +
 				"h1{font-size: " + (FrontSiseBody + 8) + "px;padding: 20px 0 27px 0px;margin: 0px 0 15px;text-align: center;}" + "\n" +
 				"#opisanie{font-size: " + (FrontSiseBody -1) + "px;padding: 0 110px 10px; font-style:italic;}		" + "\n" +
-				".questBox{max-width: 1000px; min-width:  320px;padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: #ffffff;}	" + "\n" +
+				".questBox{max-width: 1000px; min-width:  320px;padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: #c2ffff;}	" + "\n" +
 				".questBox__coment details div{ padding: 5px 15px 0px;}" + "\n" +
 				".questBox__coment{padding: 5px 25px 0px;}" + "\n" +
 
@@ -81,6 +84,22 @@ namespace GI.CS.WPF.Core.CheckList
 				"</style></head>";
 			return head;
 		}
+		public static void DefaultCSS()
+		{
+			structCCS.baseBackend.color = "#c4d0c7";
+			structCCS.mainBackend.color = "#ffffff";
+			structCCS.futterBackend.color = "#a9a9a9";
+
+			structCCS.title.sizeFront = 16;
+			structCCS.title.italics = false;
+			structCCS.title.bold = false;
+			structCCS.title.strike = false;
+			structCCS.title.color = "";
+
+
+		}
+
+
 
 		private static string deleteUnAnswer()
         {
@@ -189,6 +208,6 @@ namespace GI.CS.WPF.Core.CheckList
 				questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;				
 			}
 			return count;
-		}
+		}		
 	}
 }
