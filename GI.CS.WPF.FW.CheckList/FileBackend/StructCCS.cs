@@ -6,6 +6,7 @@ namespace GI.CS.WPF.FW.CheckList
 {
     public struct StructCCSFont
     {
+        public string fullStringCss;
         public int sizeFront;
         public bool italics;
         public bool bold;

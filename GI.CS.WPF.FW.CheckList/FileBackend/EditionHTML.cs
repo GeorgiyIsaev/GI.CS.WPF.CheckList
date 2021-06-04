@@ -76,6 +76,8 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.title.bold = false;
 			structCCS.title.strike = false;
 			structCCS.title.color = "";
+			structCCS.title.fullStringCss =""
+
 		}
 		private static string headBilder()
 		{
@@ -92,7 +94,7 @@ namespace GI.CS.WPF.FW.CheckList
 				".questBox__quest{padding: 0px 25px 5px;}" + "\n" + 
 				".questBox__answer, .questBox__unanwser{padding: 0px 60px 0px;}" + "\n" + deleteUnAnswer() +
 				".questBox__answer div{color: green;font-weight: bold;display: inline; }" + "\n" +
-				".questBox__unanwser div{ color: red;font-weight: bold;display: inline; }" + "\n" +
+				".questBox__unanwser div{ color: "+ "#c4d0c7" + "; font-weight: bold; display: inline; }" + "\n" +
 				"#footer {	font-size: " + (FrontSiseBody - 1) + "px;	font-weight: bold;	font-style:italic; padding: 20px 0 27px 12px; text-align: center ;background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
 				"</style></head>";
 			return head;
