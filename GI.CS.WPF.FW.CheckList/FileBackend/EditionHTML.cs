@@ -72,11 +72,13 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.futterBackend.color = "#a9a9a9";
 
 			structCCS.title.sizeFront = 16;
+			structCCS.title.fullStringCss = "font-size: " + structCCS.title.sizeFront + "px; ";
 			structCCS.title.italics = false;
+			if(structCCS.title.italics) structCCS.title.fullStringCss += "";
 			structCCS.title.bold = false;
 			structCCS.title.strike = false;
 			structCCS.title.color = "";
-			structCCS.title.fullStringCss =""
+			structCCS.title.fullStringCss += "";
 
 		}
 		private static string headBilder()
@@ -85,7 +87,7 @@ namespace GI.CS.WPF.FW.CheckList
 				$"<html><head><title> {headerHTML} </title>" + "\n" +
 				"<meta charset = \"utf-8\">" + "\n" +
 				"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: "+ FrontSiseBody + "px;}" + "\n" +
-				"h1{font-size: " + (FrontSiseBody + 8) + "px;padding: 20px 0 27px 0px;margin: 0px 0 15px;text-align: center;}" + "\n" +
+				"h1{font-size: " + (FrontSiseBody + 8) + "px;padding: 20px 0 27px 0px;margin: 0px 0 15px; text-align: center;}" + "\n" +
 				"#opisanie{font-size: " + (FrontSiseBody -1) + "px;padding: 0 110px 10px; font-style:italic;}		" + "\n" +
 				".questBox{max-width: 1000px; min-width:  320px;padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: "+ structCCS.mainBackend.color + ";}	" + "\n" +
 				".questBox__coment details div{ padding: 5px 15px 0px;}" + "\n" +

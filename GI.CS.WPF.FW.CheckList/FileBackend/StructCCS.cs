@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GI.CS.WPF.FW.CheckList
 {
-    public struct StructCCSFont
+    public struct CCSFont
     {
         public string fullStringCss;
         public int sizeFront;
@@ -12,25 +12,43 @@ namespace GI.CS.WPF.FW.CheckList
         public bool bold;
         public bool strike; //зачеркнут
         public string color;
+        public void CreateCSS(int sizeFront, bool italics, bool bold, bool strike, string color)
+        {
+            this.sizeFront = sizeFront;
+            this.sizeFront = sizeFront;
+            this.italics = italics;
+            this.bold = bold;
+            this.strike = strike;
+            this.color = color;
+        }
+        public void CreateStringCSS()
+        {
+            fullStringCss = "font-size: " + sizeFront + "px; ";
+            if (italics) fullStringCss += "font-style:italic; ";
+            if (bold) fullStringCss += "font-weight: bold" ;
+            if (strike) fullStringCss += "text-decoration: line-through; ";
+            fullStringCss += "color: red;";
+        }
 
     }
-    public struct StructCCSBackend
+    public struct CCSBackend
     {
         public string color;
     }
 
     public struct StructCCS
     {
-        public StructCCSBackend baseBackend;
-        public StructCCSBackend mainBackend;
-        public StructCCSBackend futterBackend;
+        public CCSBackend baseBackend;
+        public CCSBackend mainBackend;
+        public CCSBackend futterBackend;
 
-        public StructCCSFont title;
-        public StructCCSFont description;
-        public StructCCSFont question;
-        public StructCCSFont trueAanswer;
-        public StructCCSFont falseAnswer;
-        public StructCCSFont comment;
-        public StructCCSFont signature;
+        public CCSFont title;
+        public CCSFont description;
+        public CCSFont question;
+        public CCSFont trueAanswer;
+        public CCSFont falseAnswer;
+        public CCSFont comment;
+        public CCSFont signature;
+        
     }
 }
