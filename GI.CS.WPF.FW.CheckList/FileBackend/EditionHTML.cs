@@ -71,18 +71,15 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.mainBackend.color = "#ffffff";
 			structCCS.futterBackend.color = "#a9a9a9";
 
-			structCCS.title.CreateCSS(16, false,false,false, "#520000");
+			structCCS.title.CreateCSS(26, false,false,false, "#520000");
 			structCCS.description.CreateCSS(16, true, false, false, "#520000");
 			structCCS.question.CreateCSS(16, false, false, false, "#520000");
-			structCCS.trueAanswer.CreateCSS(16, false, false, false, "#520000");
-			structCCS.falseAnswer.CreateCSS(16, false, false, false, "#520000");
-			structCCS.trueAanswerIcon.CreateCSS(16, false, true, false, "#1eaf1e");
-			structCCS.falseAanswerIcon.CreateCSS(16, false, true, false, "#ff0000");
+			structCCS.trueAanswer.CreateCSS(16, false, true, false, "#520000");
+			structCCS.falseAnswer.CreateCSS(16, false, false, true, "#520000");
+			structCCS.trueAanswerIcon.CreateCSS(18, false, true, false, "#1eaf1e");
+			structCCS.falseAanswerIcon.CreateCSS(18, false, true, false, "#ff0000");
 			structCCS.comment.CreateCSS(16, false, false, false, "#520000");
-			structCCS.signature.CreateCSS(16, true, true, false, "#520000");
-
-			"+structCCS.signature.FullStringCss +"
-
+			structCCS.signature.CreateCSS(10, true, true, false, "#520000");
 		}
 		private static string headBilder()
 		{
@@ -106,15 +103,6 @@ namespace GI.CS.WPF.FW.CheckList
 			return head;
 		}
 		
-
-
-		private static string deleteUnAnswer()
-        {
-			if (deleteAnAnswerIf) return " .questBox__unanwser{ text-decoration: line-through; }" + "\n";
-			return "";
-        }
-
-
 		private static string h1Bilder()
 		{
 			return $"<div><div class=\"questBox\"><h1>{headerHTML}</h1>" + "\n" +
