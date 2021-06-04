@@ -68,10 +68,10 @@
             </TabItem>
 
 
-            <TabItem x:Name="Board_Coolor" Header="Цвета фона и текста" FontSize="16" FontWeight="Bold" Margin="1,-3,-5,0">
-                <Grid Background="#FFE5E5E5">
-                    <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,471,0" Background="BlueViolet"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="313,10,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+            <TabItem x:Name="Board_Coolor" Header="Цвета фона и текста" FontSize="16" FontWeight="Bold" Margin="1,-3,-5,0">               
+              <Grid Background="#FFE5E5E5">
+                   <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,471,0" Background="BlueViolet"/>
+                   <TextBlock HorizontalAlignment="Left" Margin="313,10,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
                     <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="479,7,0,0" VerticalAlignment="Top" Width="120"/>
                     <TextBlock HorizontalAlignment="Left" Margin="313,48,0,0" Text="Главный фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="166"/>
                     <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="479,45,0,0" VerticalAlignment="Top" Width="120"/>
@@ -84,7 +84,7 @@
                     <TextBlock HorizontalAlignment="Left" Margin="313,200,0,0" Text="Не верные ответы" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="161"/>
                     <ComboBox x:Name="CB_ShrftdUnAnswer" HorizontalAlignment="Left" Margin="479,197,0,0" VerticalAlignment="Top" Width="120"/>
                     <TextBlock HorizontalAlignment="Left" Height="30" Margin="274,241,0,0" Text="ColorDialog не работает!" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="22" Foreground="#FFF90404" TextAlignment="Center"/>
-                </Grid>
+                </Grid> 
             </TabItem>
         </TabControl>
 
