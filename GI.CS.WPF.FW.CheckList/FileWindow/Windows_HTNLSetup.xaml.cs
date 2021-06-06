@@ -35,7 +35,7 @@ namespace GI.CS.WPF.FW.CheckList
             for (int i = 8; i < 30; i += 2)
             {
                 ComboBox_FontSize.Items.Add($"Шрифт: {i}");
-                ComboBox_FontSize_Head.Items.Add($" {i} ");
+                ComboBox_FontSize_Head.Items.Add(i);
             }
             ComboBox_FontSize.SelectedIndex = 4;
         }
@@ -47,6 +47,18 @@ namespace GI.CS.WPF.FW.CheckList
             Button_head_Z.IsChecked = true;
             ComboBox_FontSize_Head.SelectedIndex = 4;
         }
+        private void ButtonClick_CSS(object sender, RoutedEventArgs e)
+        {            
+            TBCSS_head.FontWeight = (Button_head_G.IsChecked== true) ? FontWeights.Bold : FontWeights.Normal;
+            TBCSS_head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            TBCSS_head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+        }
+        private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
+        {
+            TBCSS_head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
+        }
+
+
 
 
 
@@ -97,6 +109,10 @@ namespace GI.CS.WPF.FW.CheckList
             EditionHTML.deleteAnAnswerIf = CB_lineThrough.IsChecked == true;
             EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
         }
+      
+
+
+
 
         private void ColorStack()
         {
