@@ -81,18 +81,10 @@
                     <TextBlock HorizontalAlignment="Left" Height="30" Margin="274,241,0,0" Text="ColorDialog не работает!" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="22" Foreground="#FFF90404" TextAlignment="Center"/>
 
                     <TextBlock HorizontalAlignment="Left" Margin="282,71,0,0" Text="Заголовок" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
-                    <Button x:Name="Button_head_G" Content="Ж" HorizontalAlignment="Left" Margin="388,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14"/>
-                    <Button x:Name="Button_head_I" Content="К" HorizontalAlignment="Left" Margin="425,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic"/>
-                    <Button x:Name="Button_head_Z" Content="З" HorizontalAlignment="Left" Margin="462,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" RenderTransformOrigin="2.054,0.708">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
-                                <GradientStop Color="#FFFFF6F6" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                    </Button>
+                    <ToggleButton x:Name="Button_head_G" Content="Ж" HorizontalAlignment="Left" Margin="388,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14"/>
+                    <ToggleButton x:Name="Button_head_I" Content="К" HorizontalAlignment="Left" Margin="425,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic"/>
+                    <ToggleButton x:Name="Button_head_Z" Content="З" HorizontalAlignment="Left" Margin="462,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" RenderTransformOrigin="2.054,0.708"/>
+
                     <ComboBox x:Name="ComboBox_FontSize_Head" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="499,68,0,0" VerticalAlignment="Top" Width="53" FontWeight="Normal"/>
                   
                 </Grid>
