@@ -27,6 +27,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
             CreateComboBox_FontSize();
+            StandartStileButton();
         } 
         
         private void CreateComboBox_FontSize()
@@ -38,15 +39,15 @@ namespace GI.CS.WPF.FW.CheckList
             }
             ComboBox_FontSize.SelectedIndex = 4;
         }
-        //private void StandartStileButton()
-        //{
-            
-        //    Button_head_G.Background = Brushes.
-        //        Button_head_I 
-        //        Button_head_Z
-        //    ComboBox_FontSize_Head.SelectedIndex = 4;
-        //}
-       
+        private void StandartStileButton()
+        {
+
+            Button_head_G.IsChecked = true;
+            Button_head_I.IsChecked = false;
+            Button_head_Z.IsChecked = true;
+            ComboBox_FontSize_Head.SelectedIndex = 4;
+        }
+
 
 
 
