@@ -26,37 +26,16 @@ namespace GI.CS.WPF.FW.CheckList
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
         {
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
-            CreateComboBox_FontSize();
-            StandartStileButton();
+            CreateComboBox_FontSize();         
             TabHTMLColor.Content = new PageColorHTML();
-        } 
-        
+        }
         private void CreateComboBox_FontSize()
         {
             for (int i = 8; i < 30; i += 2)
             {
                 ComboBox_FontSize.Items.Add($"Шрифт: {i}");
-                ComboBox_FontSize_Head.Items.Add(i);
             }
             ComboBox_FontSize.SelectedIndex = 4;
-        }
-        private void StandartStileButton()
-        {
-
-            Button_head_G.IsChecked = true;
-            Button_head_I.IsChecked = false;
-            Button_head_Z.IsChecked = true;
-            ComboBox_FontSize_Head.SelectedIndex = 4;
-        }
-        private void ButtonClick_CSS(object sender, RoutedEventArgs e)
-        {            
-            TBCSS_head.FontWeight = (Button_head_G.IsChecked== true) ? FontWeights.Bold : FontWeights.Normal;
-            TBCSS_head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
-            TBCSS_head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
-        }
-        private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
-        {
-            TBCSS_head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
         }
 
 

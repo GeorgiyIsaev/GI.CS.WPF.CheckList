@@ -9,21 +9,26 @@
       Title="PageColorHTML">
 
     <Grid>
-        <Grid Background="#FFE5E5E5" Margin="51,0,0,145">
-        <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,471,0" Background="BlueViolet"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,10,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
-        <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="479,7,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,48,0,0" Text="Главный фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="166"/>
-        <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="479,45,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,86,0,0" Text="Фон подписи" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
-        <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="479,86,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,126,0,0" Text="Основной шрифт" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
-        <ComboBox x:Name="CB_Shrift" HorizontalAlignment="Left" Margin="479,123,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,163,0,0" Text="Верные ответы" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="161"/>
-        <ComboBox x:Name="CB_ShriftAnswer" HorizontalAlignment="Left" Margin="479,160,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="313,200,0,0" Text="Не верные ответы" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="161"/>
-        <ComboBox x:Name="CB_ShrftdUnAnswer" HorizontalAlignment="Left" Margin="479,197,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="274,241,0,0" Text="ColorDialog не работает!" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="22" Foreground="#FFF90404" TextAlignment="Center"/>
-    </Grid>
+        <Grid Background="#FFE5E5E5">
+            <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,526,0" Background="BlueViolet"/>
+            <TextBlock HorizontalAlignment="Left" Margin="282,7,0,0" Text="Задний фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+            <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="282,28,0,0" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left" Margin="443,7,0,0" Text="Главный фон" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="166"/>
+            <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="437,28,0,0" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left" Margin="589,7,-10,0" Text="Фон подписи" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161"/>
+            <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="589,28,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="CB_Shrift" HorizontalAlignment="Left" Margin="552,68,0,0" VerticalAlignment="Top" Width="71" Height="24"/>
+            <TextBlock HorizontalAlignment="Left" Height="30" Margin="274,241,0,0" Text="ColorDialog не работает!" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" FontSize="22" Foreground="#FFF90404" TextAlignment="Center"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="282,71,0,0" Text="Заголовок" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="161" FontWeight="Normal" FontSize="14"/>
+            <ToggleButton x:Name="Button_head_G" Content="Ж" HorizontalAlignment="Left" Margin="388,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS"/>
+            <ToggleButton x:Name="Button_head_I" Content="К" HorizontalAlignment="Left" Margin="425,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
+            <ToggleButton x:Name="Button_head_Z" Content="З" HorizontalAlignment="Left" Margin="462,68,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" Click="ButtonClick_CSS"/>
+
+            <ComboBox x:Name="ComboBox_FontSize_Head" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="499,68,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
+            <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="467,80,0,0" Stroke="Black" VerticalAlignment="Top" Width="27"/>
+            <TextBlock  x:Name="TBCSS_head" HorizontalAlignment="Left" Margin="53,16,0,0" Text="Заголовок" TextWrapping="Wrap" VerticalAlignment="Top" Height="52" Width="160" FontWeight="Normal" FontSize="32" TextDecorations="{x:Null}" TextAlignment="Center"/>
+
+        </Grid>
     </Grid>
 </Page>
