@@ -91,6 +91,9 @@
 
                 </Grid>
             </TabItem>
+            <TabItem x:Name="Board_Coolor1" Header="Цвета фона и текста" FontSize="16" FontWeight="Bold" Margin="1,-3,-5,0">
+                <Frame x:Name="TabHTMLColor"></Frame>
+            </TabItem>
         </TabControl>
 
         <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="42,379,0,0" Text="Имя файла:" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="134"/>

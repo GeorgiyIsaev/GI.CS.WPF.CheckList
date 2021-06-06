@@ -28,6 +28,7 @@ namespace GI.CS.WPF.FW.CheckList
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
             CreateComboBox_FontSize();
             StandartStileButton();
+            TabHTMLColor.Content = new PageColorHTML();
         } 
         
         private void CreateComboBox_FontSize()
