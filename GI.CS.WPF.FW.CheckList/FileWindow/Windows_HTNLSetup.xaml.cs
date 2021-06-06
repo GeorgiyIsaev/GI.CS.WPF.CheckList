@@ -31,8 +31,11 @@ namespace GI.CS.WPF.FW.CheckList
         
         private void CreateComboBox_FontSize()
         {
-            for(int i = 8; i<30; i+=2)
+            for (int i = 8; i < 30; i += 2)
+            {
                 ComboBox_FontSize.Items.Add($"Шрифт: {i}");
+                ComboBox_FontSize_Head.Items.Add($" {i} ");
+            }
             ComboBox_FontSize.SelectedIndex = 4;
         }
 
