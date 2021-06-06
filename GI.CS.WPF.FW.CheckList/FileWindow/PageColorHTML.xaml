@@ -14,10 +14,43 @@
                 <ColumnDefinition Width="300" >
                 </ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>           
+            </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" BorderThickness="1" BorderBrush="Black" Margin="0,0,0,0" Background="BlueViolet"/>
-            <TextBlock Grid.Column="0" x:Name="TBCSS_head" HorizontalAlignment="Left" Margin="5,5,0,0" Text="Заголовок" TextWrapping="Wrap" VerticalAlignment="Top" Height="Auto" Width="160" FontWeight="Normal" FontSize="32" TextDecorations="{x:Null}" TextAlignment="Center"/>
+            <RichTextBox HorizontalAlignment="Left" Margin="25,0,25,0" VerticalAlignment="Stretch">
+                <FlowDocument>
+                    <Paragraph x:Name="RTB_Head" TextAlignment="Center">
+                        <Run Text="Заголовок"/>
+                    </Paragraph>
+                    <Paragraph x:Name="RTB_Discript" TextAlignment="Center">
+                        <Run Text="Короткое описание к тексту"/>
+                    </Paragraph>
+                    <Paragraph Margin="10,0,0,0">                    
+                        <Run x:Name="RTB_Quest" Text="Вопрос"/>
+                    </Paragraph>
+                    <Paragraph Margin="20,0,0,0">
+                        <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔"/>
+                        <Run x:Name="RTB_AnswerTrue1" Text="Верный Ответ"/>
+                    </Paragraph>
+                    <Paragraph Margin="20,0,0,0">
+                        <Run x:Name="RTB_AnswerTrueIcon2" Foreground="#FF7BB02E" Text="✔"/>
+                        <Run x:Name="RTB_AnswerTrue2" Text="Еще один верный Ответ"/>
+                    </Paragraph>
+                    <Paragraph Margin="20,0,0,0">
+                        <Run x:Name="RTB_AnswerFalseIcon1" Text="&#10008;"/>
+                        <Run x:Name="RTB_AnswerFalse1" Text="Не верный Ответ"/>
+                    </Paragraph>
+                    <Paragraph Margin="20,0,0,0">
+                        <Run x:Name="RTB_AnswerFalseIcon2" Text="&#10008;"/>
+                        <Run x:Name="RTB_AnswerFalse2" Text="Еще один не верный Ответ"/>
+                    </Paragraph>
+                    <Paragraph Margin="10,0,0,0">
+                        <Run x:Name="RTB_Comment" Text="Пояснение к вопросу"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+
+
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -31,20 +64,29 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>                
+                </Grid.RowDefinitions>
 
                 <!-- Заголовок -->
-                <StackPanel Grid.Row="2"  Orientation="Horizontal">
-                    <TextBlock Margin="10,8,5,5" Text="Заголовок: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="0"  Orientation="Horizontal">
+                    <TextBlock Margin="10,8,5,5" Text="Описание: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_head_G" Content="Ж" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton Grid.Column="1" x:Name="Button_head_I" Content="К" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton Grid.Column="1" x:Name="Button_head_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
+                    <ToggleButton x:Name="Button_head_I" Content="К" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
+                    <ToggleButton x:Name="Button_head_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-
                     <ComboBox x:Name="ComboBox_FontSize_Head" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
-                
+                <!-- Описание -->
+                <StackPanel Grid.Row="1"  Orientation="Horizontal">
+                    <TextBlock Margin="10,8,5,5" Text="Заголовок: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                    <ToggleButton x:Name="Button_discript_G" Content="Ж" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
+                    <ToggleButton x:Name="Button_discript_I" Content="К" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
+                    <ToggleButton x:Name="Button_discript_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
+                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
+                    </ToggleButton>
+                    <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
+                </StackPanel>
+
                 <!-- Фонг страницы -->
                 <StackPanel Margin="0,5,0,0" Grid.Row="8" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Left"  Margin="10,0,5,0" Text="Боковой фон" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" Width="100"/>

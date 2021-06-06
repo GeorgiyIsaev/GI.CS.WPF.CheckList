@@ -44,13 +44,14 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {
-            TBCSS_head.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
-            TBCSS_head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
-            TBCSS_head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+            RTB_Head.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
         }
         private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
         {
-            TBCSS_head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
+            RTB_Head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
         }
 
 
