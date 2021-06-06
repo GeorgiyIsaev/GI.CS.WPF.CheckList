@@ -54,7 +54,10 @@ namespace GI.CS.WPF.FW.CheckList
             RTB_Head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
         }
 
+        private void Grid_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
 
+        }
     }
 
 }
