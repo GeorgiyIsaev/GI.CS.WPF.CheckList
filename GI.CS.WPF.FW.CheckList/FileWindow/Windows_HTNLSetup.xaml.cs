@@ -40,7 +40,8 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void StandartStileButton()
         {
-            Button_head_G.Background. 
+            
+            Button_head_G.Background = Brushes.
                 Button_head_I 
                 Button_head_Z
             ComboBox_FontSize_Head.SelectedIndex = 4;
