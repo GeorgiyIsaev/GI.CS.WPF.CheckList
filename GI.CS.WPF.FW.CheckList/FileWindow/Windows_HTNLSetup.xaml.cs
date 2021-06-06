@@ -38,6 +38,16 @@ namespace GI.CS.WPF.FW.CheckList
             }
             ComboBox_FontSize.SelectedIndex = 4;
         }
+        private void StandartStileButton()
+        {
+            Button_head_G.Background. 
+                Button_head_I 
+                Button_head_Z
+            ComboBox_FontSize_Head.SelectedIndex = 4;
+        }
+       
+
+
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
