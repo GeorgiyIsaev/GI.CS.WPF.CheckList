@@ -30,19 +30,19 @@
                                 <Run x:Name="RTB_Quest" Text="Вопрос"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
-                                <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔"/>
+                                <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔ "/>
                                 <Run x:Name="RTB_AnswerTrue1" Text="Верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
-                                <Run x:Name="RTB_AnswerTrueIcon2" Foreground="#FF7BB02E" Text="✔"/>
+                                <Run x:Name="RTB_AnswerTrueIcon2" Foreground="#FF7BB02E" Text="✔ "/>
                                 <Run x:Name="RTB_AnswerTrue2" Text="Еще один верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
-                            <Run x:Name="RTB_AnswerFalseIcon1"  FontSize="34"  Text="&#10008;"/>
+                            <Run x:Name="RTB_AnswerFalseIcon1"  FontSize="34"  Text="&#10008; "/>
                             <Run x:Name="RTB_AnswerFalse1"  FontSize="34"  Text="Не верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
-                            <Run x:Name="RTB_AnswerFalseIcon2"  FontSize="34"  Text="&#10008;"/>
+                            <Run x:Name="RTB_AnswerFalseIcon2"  FontSize="34"  Text="&#10008; "/>
                             <Run x:Name="RTB_AnswerFalse2"  FontSize="34"  Text="Еще один не верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="10,0,0,0">
