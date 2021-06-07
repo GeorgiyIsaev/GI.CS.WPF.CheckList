@@ -23,16 +23,29 @@ namespace GI.CS.WPF.FW.CheckList
         public PageColorHTML()
         {
             InitializeComponent();
-            CreateComboBox_FontSize();
-            StandartStileButton();
+            Loaded += Windows_Loaded;
+            
 
         }
+        private void Windows_Loaded(object sender, RoutedEventArgs e)
+        {
+            CreateComboBox_FontSize();           
+            //FontSizeInit();
+        }
+
+
         private void CreateComboBox_FontSize()
         {
-            for (int i = 8; i < 30; i += 2)
+            for (int i = 8; i < 38; i += 2)
             {              
-                ComboBox_FontSize_Head.Items.Add(i);
-            }           
+                ComboBox_FontSizeHead.Items.Add(i);
+                ComboBox_FontSizeDiscript.Items.Add(i);
+                ComboBox_FontSizeQuest.Items.Add(i);
+                ComboBox_FontSizeAnswer .Items.Add(i);
+                ComboBox_FontSizeAnAnswer.Items.Add(i);
+                ComboBox_FontSizeComment.Items.Add(i);
+            }
+            StandartStileButton();
         }
         private void StandartStileButton()
         {
@@ -40,7 +53,12 @@ namespace GI.CS.WPF.FW.CheckList
             Button_head_G.IsChecked = true;
             Button_head_I.IsChecked = false;
             Button_head_Z.IsChecked = true;
-            ComboBox_FontSize_Head.SelectedIndex = 4;
+            //ComboBox_FontSizeHead.SelectedIndex = 4;        
+            //ComboBox_FontSizeDiscript.SelectedIndex = 4;
+            //ComboBox_FontSizeQuest.SelectedIndex = 4;
+            //ComboBox_FontSizeAnswer.SelectedIndex = 4;
+            //ComboBox_FontSizeAnAnswer.SelectedIndex = 4;
+            //ComboBox_FontSizeComment.SelectedIndex = 4;
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {
@@ -51,13 +69,44 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
         {
-            RTB_Head.FontSize = Convert.ToInt32(ComboBox_FontSize_Head.SelectedValue.ToString());
+            FontSizeInit();
         }
 
-        private void Grid_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        private void FontSizeInit()
         {
+            try
+            {
+                if(ComboBox_FontSizeHead.SelectedValue.ToString() != null) 
+                    RTB_Head.FontSize = Convert.ToInt32(ComboBox_FontSizeHead.SelectedValue.ToString());
+                if (ComboBox_FontSizeDiscript.SelectedItem != null)
+                    RTB_Discript.FontSize = Convert.ToInt32(ComboBox_FontSizeDiscript.SelectedValue.ToString());
+                if (ComboBox_FontSizeQuest.SelectedItem != null)
+                    RTB_Quest.FontSize = Convert.ToInt32(ComboBox_FontSizeQuest.SelectedValue.ToString());
 
+                if (ComboBox_FontSizeAnswer.SelectedItem != null)
+                {
+                    RTB_AnswerTrueIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString()) + 2;
+                    RTB_AnswerTrue1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
+                    RTB_AnswerTrueIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString()) + 2;
+                    RTB_AnswerTrue2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
+                }
+                if (ComboBox_FontSizeAnAnswer.SelectedItem != null)
+                {
+                    RTB_AnswerFalseIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString()) + 2;
+                    RTB_AnswerFalse1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
+                    RTB_AnswerFalseIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString()) + 2;
+                    RTB_AnswerFalse2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
+                }
+                if (ComboBox_FontSizeComment.SelectedItem != null)
+                    RTB_Comment.FontSize = Convert.ToInt32(ComboBox_FontSizeComment.SelectedValue.ToString());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+
     }
 
 }
