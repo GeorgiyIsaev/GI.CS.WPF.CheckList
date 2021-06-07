@@ -53,12 +53,12 @@ namespace GI.CS.WPF.FW.CheckList
             Button_head_G.IsChecked = true;
             Button_head_I.IsChecked = false;
             Button_head_Z.IsChecked = true;
-            //ComboBox_FontSizeHead.SelectedIndex = 4;        
-            //ComboBox_FontSizeDiscript.SelectedIndex = 4;
-            //ComboBox_FontSizeQuest.SelectedIndex = 4;
-            //ComboBox_FontSizeAnswer.SelectedIndex = 4;
-            //ComboBox_FontSizeAnAnswer.SelectedIndex = 4;
-            //ComboBox_FontSizeComment.SelectedIndex = 4;
+            ComboBox_FontSizeHead.SelectedIndex = 4;
+            ComboBox_FontSizeDiscript.SelectedIndex = 4;
+            ComboBox_FontSizeQuest.SelectedIndex = 4;
+            ComboBox_FontSizeAnswer.SelectedIndex = 4;
+            ComboBox_FontSizeAnAnswer.SelectedIndex = 4;
+            ComboBox_FontSizeComment.SelectedIndex = 4;
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {

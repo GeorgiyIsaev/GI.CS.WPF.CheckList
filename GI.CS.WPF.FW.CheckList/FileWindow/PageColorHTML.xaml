@@ -75,7 +75,7 @@
                     <ToggleButton x:Name="Button_head_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeHead" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeHead" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
                 <!-- Описание -->
                 <StackPanel Grid.Row="1"  Orientation="Horizontal">
@@ -85,7 +85,7 @@
                     <ToggleButton x:Name="Button_discript_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
                 <!-- Вопрос -->
                 <StackPanel Grid.Row="2"  Orientation="Horizontal">
@@ -95,7 +95,7 @@
                     <ToggleButton x:Name="Button_Quest_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeQuest" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeQuest" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
                 </StackPanel>
                 <!-- Верный ответ -->
                 <StackPanel Grid.Row="3"  Orientation="Horizontal">
@@ -105,7 +105,7 @@
                     <ToggleButton x:Name="Button_Answer_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
                 </StackPanel>
                 <!-- Не верный ответ -->
                 <StackPanel Grid.Row="4"  Orientation="Horizontal">
@@ -115,7 +115,7 @@
                     <ToggleButton x:Name="Button_AnAnswer_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeAnAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
                 <!-- Коментарий -->
                 <StackPanel Grid.Row="5"  Orientation="Horizontal">
@@ -125,7 +125,7 @@
                     <ToggleButton x:Name="Button_Comment_Z" Margin="5,5,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeComment" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" SelectedIndex="4"/>
+                    <ComboBox x:Name="ComboBox_FontSizeComment" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
 
                 <!-- Фонг страницы -->
