@@ -38,7 +38,7 @@
                                 <Run x:Name="RTB_AnswerTrue2" Text="Еще один верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
-                            <Run x:Name="RTB_AnswerFalseIcon1"  FontSize="34"  Text="&#10008; "/>
+                            <Run x:Name="RTB_AnswerFalseIcon1"  FontSize="34"  Text="&#10008; "/> 
                             <Run x:Name="RTB_AnswerFalse1"  FontSize="34"  Text="Не верный Ответ"/>
                             </Paragraph>
                             <Paragraph Margin="20,0,0,0">
@@ -109,7 +109,7 @@
                 </StackPanel>
                 <!-- Верный ответ значек-->
                 <StackPanel Grid.Row="4"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа: " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
+                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [✔]:  " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_AnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_AnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_AnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -129,7 +129,7 @@
                 </StackPanel>
                 <!-- НеВерный ответ значек -->
                 <StackPanel Grid.Row="6"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа: " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
+                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [&#10008;]: " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_AnAnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_AnAnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_AnAnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
