@@ -42,7 +42,9 @@ namespace GI.CS.WPF.FW.CheckList
                 ComboBox_FontSizeDiscript.Items.Add(i);
                 ComboBox_FontSizeQuest.Items.Add(i);
                 ComboBox_FontSizeAnswer .Items.Add(i);
+                ComboBox_FontSizeAnswerI.Items.Add(i);
                 ComboBox_FontSizeAnAnswer.Items.Add(i);
+                ComboBox_FontSizeAnAnswerI.Items.Add(i);
                 ComboBox_FontSizeComment.Items.Add(i);
             }
             StandartStileButton();
@@ -58,6 +60,8 @@ namespace GI.CS.WPF.FW.CheckList
             ComboBox_FontSizeQuest.SelectedIndex = 4;
             ComboBox_FontSizeAnswer.SelectedIndex = 4;
             ComboBox_FontSizeAnAnswer.SelectedIndex = 4;
+            ComboBox_FontSizeAnswerI.SelectedIndex = 4;
+            ComboBox_FontSizeAnAnswerI.SelectedIndex = 4;
             ComboBox_FontSizeComment.SelectedIndex = 4;
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
@@ -84,21 +88,30 @@ namespace GI.CS.WPF.FW.CheckList
                     RTB_Quest.FontSize = Convert.ToInt32(ComboBox_FontSizeQuest.SelectedValue.ToString());
 
                 if (ComboBox_FontSizeAnswer.SelectedItem != null)
-                {
-                    RTB_AnswerTrueIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString()) + 2;
+                {    
                     RTB_AnswerTrue1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
-                    RTB_AnswerTrueIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString()) + 2;
                     RTB_AnswerTrue2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
                 }
-                if (ComboBox_FontSizeAnAnswer.SelectedItem != null)
+                if (ComboBox_FontSizeAnswerI.SelectedItem != null)
                 {
-                    RTB_AnswerFalseIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString()) + 2;
+                    RTB_AnswerTrueIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswerI.SelectedValue.ToString());
+                    RTB_AnswerTrueIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswerI.SelectedValue.ToString());            
+                }
+
+                if (ComboBox_FontSizeAnAnswer.SelectedItem != null)
+                {                 
                     RTB_AnswerFalse1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
-                    RTB_AnswerFalseIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString()) + 2;
                     RTB_AnswerFalse2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
                 }
-                if (ComboBox_FontSizeComment.SelectedItem != null)
-                    RTB_Comment.FontSize = Convert.ToInt32(ComboBox_FontSizeComment.SelectedValue.ToString());
+                if (ComboBox_FontSizeAnAnswerI.SelectedItem != null)
+                {
+                    RTB_AnswerFalseIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
+                    RTB_AnswerFalseIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
+                }
+
+                ComboBox_FontSizeAnswerI.SelectedIndex = 4;
+                ComboBox_FontSizeAnAnswerI.SelectedIndex = 4;
+
             }
             catch(Exception ex)
             {
