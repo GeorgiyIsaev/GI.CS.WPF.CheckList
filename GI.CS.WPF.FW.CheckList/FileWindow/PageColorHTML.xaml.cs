@@ -108,10 +108,6 @@ namespace GI.CS.WPF.FW.CheckList
                     RTB_AnswerFalseIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
                     RTB_AnswerFalseIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
                 }
-
-                ComboBox_FontSizeAnswerI.SelectedIndex = 4;
-                ComboBox_FontSizeAnAnswerI.SelectedIndex = 4;
-
             }
             catch(Exception ex)
             {
