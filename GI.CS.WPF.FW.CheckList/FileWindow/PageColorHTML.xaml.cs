@@ -66,16 +66,52 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {
+            FontStyleInit();
+        }
+        private void FontStyleInit()
+        {
             RTB_Head.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
             RTB_Head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
             RTB_Head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
 
+            RTB_Discript.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Discript.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Discript.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_Quest.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Quest.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Quest.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_AnswerTrue2.FontWeight = RTB_AnswerTrue1.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrue2.FontStyle = RTB_AnswerTrue1.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrue2.TextDecorations = RTB_AnswerTrue1.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_AnswerTrueIcon2.FontWeight = RTB_AnswerTrueIcon1.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrueIcon2.FontStyle = RTB_AnswerTrueIcon1.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrueIcon2.TextDecorations = RTB_AnswerTrueIcon1.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_AnswerFalse2.FontWeight = RTB_AnswerFalse1.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalse2.FontStyle = RTB_AnswerFalse1.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalse2.TextDecorations = RTB_AnswerFalse1.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_AnswerFalseIcon2.FontWeight = RTB_AnswerFalseIcon1.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalseIcon2.FontStyle = RTB_AnswerFalseIcon1.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalseIcon2.TextDecorations = RTB_AnswerFalseIcon1.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
+            RTB_Comment.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Comment.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Comment.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
+
         }
+
+
+
+
+
         private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
         {
             FontSizeInit();
         }
-
         private void FontSizeInit()
         {
             try
