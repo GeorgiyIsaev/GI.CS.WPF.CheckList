@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WPF.Test.ColorDialog" xmlns:p="http://propertytools.org/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid Margin="204,0,0,0"> 
-            <p:ColorPicker  SelectedColor="{Binding Color1}" IsEnabled="{Binding IsChecked, ElementName=Enabled}" Margin="-175,34,645,359"/>
-    </Grid>
+    <Grid>     
+          <p:ColorPicker x:Name="Button_Color"  SelectedColor="{Binding Color1}" IsEnabled="{Binding IsChecked, ElementName=Enabled}" Margin="0,0,652,346" />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="50,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

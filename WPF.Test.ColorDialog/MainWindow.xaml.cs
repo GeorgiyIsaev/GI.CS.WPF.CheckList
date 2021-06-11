@@ -30,5 +30,6 @@ namespace WPF.Test.ColorDialog
             InitializeComponent();
         }
 
+
     }
 }
