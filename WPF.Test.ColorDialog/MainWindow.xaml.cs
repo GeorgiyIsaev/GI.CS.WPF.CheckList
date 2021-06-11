@@ -124,5 +124,10 @@ namespace WPF.Test.ColorDialog
                 MessageBox.Show(color.ToString());
             }           
         }
+
+        private void ButtonColorDialog_test1_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            TextBox_Color.Text = "43";
+        }
     }
 }

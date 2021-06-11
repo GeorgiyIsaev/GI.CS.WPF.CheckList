@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <p:ColorPicker x:Name="ButtonColorDialog_test1" Margin="270,124,382,238" SelectedColor="#FF12E6E6" ContextMenuClosing="ButtonColorDialog_test1_ContextMenuClosing_1" MouseLeave="ButtonColorDialog_test1_MouseLeave" />
+        <p:ColorPicker x:Name="ButtonColorDialog_test1" Margin="270,124,382,238" SelectedColor="#FF12E6E6" ContextMenuClosing="ButtonColorDialog_test1_ContextMenuClosing_1" MouseLeave="ButtonColorDialog_test1_MouseLeave" DataContextChanged="ButtonColorDialog_test1_DataContextChanged" />
         <p:ColorPicker SelectedColor="{Binding Color1}" IsEnabled="{Binding IsChecked, ElementName=Enabled}" Margin="0,0,652,346"/>
         <TextBox x:Name="TextBox_Color" HorizontalAlignment="Left" Height="23" Margin="20,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
 
