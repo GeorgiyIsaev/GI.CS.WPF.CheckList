@@ -21,6 +21,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             InitializeComponent();
             Loaded += Windows_HTNLSetup_Loaded;
+
         }
 
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
