@@ -29,14 +29,14 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateComboBox_FontSize();           
-            //FontSizeInit();
+            CreateComboBox_FontSize();
+            FontStyleInit();           
         }
 
 
         private void CreateComboBox_FontSize()
         {
-            for (int i = 8; i < 38; i += 2)
+            for (int i = 6; i < 42; i += 2)
             {              
                 ComboBox_FontSizeHead.Items.Add(i);
                 ComboBox_FontSizeDiscript.Items.Add(i);
@@ -52,17 +52,19 @@ namespace GI.CS.WPF.FW.CheckList
         private void StandartStileButton()
         {
 
-            Button_head_G.IsChecked = true;
-            Button_head_I.IsChecked = false;
+            Button_head_G.IsChecked = true;          
             Button_head_Z.IsChecked = true;
-            ComboBox_FontSizeHead.SelectedIndex = 4;
-            ComboBox_FontSizeDiscript.SelectedIndex = 4;
-            ComboBox_FontSizeQuest.SelectedIndex = 4;
-            ComboBox_FontSizeAnswer.SelectedIndex = 4;
-            ComboBox_FontSizeAnAnswer.SelectedIndex = 4;
-            ComboBox_FontSizeAnswerI.SelectedIndex = 4;
-            ComboBox_FontSizeAnAnswerI.SelectedIndex = 4;
-            ComboBox_FontSizeComment.SelectedIndex = 4;
+            Button_discript_I.IsChecked = true;
+
+            int baseSize = 5;
+            ComboBox_FontSizeHead.SelectedIndex = baseSize + 3;
+            ComboBox_FontSizeDiscript.SelectedIndex = baseSize - 1;
+            ComboBox_FontSizeQuest.SelectedIndex = baseSize;
+            ComboBox_FontSizeAnswer.SelectedIndex = baseSize;
+            ComboBox_FontSizeAnAnswer.SelectedIndex = baseSize;
+            ComboBox_FontSizeAnswerI.SelectedIndex = baseSize+1;
+            ComboBox_FontSizeAnAnswerI.SelectedIndex = baseSize+1;
+            ComboBox_FontSizeComment.SelectedIndex = baseSize;
         }
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {
