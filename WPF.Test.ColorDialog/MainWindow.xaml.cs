@@ -46,16 +46,16 @@ namespace WPF.Test.ColorDialog
         {
             get
             {
+                MessageBox.Show("");
                 return this.color1;
             }
 
             set
             {
                 this.color1 = value;
-                this.RaisePropertyChanged("Color1");
-
-
-               // TextBox_Color.Text = Convert.ToString(this.color1);
+                this.RaisePropertyChanged("Color1");              
+                MessageBox.Show(this.ToString());
+                
             }
         }
 
@@ -63,8 +63,66 @@ namespace WPF.Test.ColorDialog
         {
             TextBox_Color.Text = "13";
             Color? color = ButtonColorDialog_test1.SelectedColor;
+            
+                MessageBox.Show(color.ToString());            
+          
+
 
             //TextBox_Color.Text = ButtonColorDialog_test1.SelectedColor.ToString();
+        }
+
+        private void ButtonColorDialog_test1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_Color.Text = "22";
+            Color? color = ButtonColorDialog_test1.SelectedColor;
+            if (color != null)
+            {
+                MessageBox.Show(color.ToString());
+            }
+        }
+        public SolidColorBrush Brush { get; set; }
+
+
+
+        private void ButtonColorDialog_test1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBox_Color.Text = "33";    
+            Color? color = ButtonColorDialog_test1.SelectedColor;
+            if (color != null)
+            {
+                MessageBox.Show(color.ToString());
+            }
+        }
+
+        private void ButtonColorDialog_test1_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            TextBox_Color.Text = "36";
+            Color? color = ButtonColorDialog_test1.SelectedColor;
+            if (color != null)
+            {
+                MessageBox.Show(color.ToString());
+            }
+            // ButtonColorDialog_test1.SourceUpdated
+        }
+
+        private void ButtonColorDialog_test1_Selected(object sender, RoutedEventArgs e)
+        {
+            TextBox_Color.Text = "37";
+        }
+
+        private void ButtonColorDialog_test1_ContextMenuClosing_1(object sender, ContextMenuEventArgs e)
+        {
+            TextBox_Color.Text = "38";
+        }
+
+        private void ButtonColorDialog_test1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TextBox_Color.Text = "39";
+            Color? color = ButtonColorDialog_test1.SelectedColor;
+            if (color != null)
+            {
+                MessageBox.Show(color.ToString());
+            }           
         }
     }
 }
