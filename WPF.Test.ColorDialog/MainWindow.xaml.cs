@@ -129,9 +129,8 @@ namespace WPF.Test.ColorDialog
             if (color.Value != null) {    
                 colorIR5 = (Color)color.Value;
                 brush = new SolidColorBrush(colorIR5);
-            }
-            TextBox_Color.Background = brush;
-
+                TextBox_Color.Foreground = brush;
+            }        
         }
 
         private void ButtonColorDialog_test1_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
