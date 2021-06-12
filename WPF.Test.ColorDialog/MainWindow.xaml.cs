@@ -53,9 +53,9 @@ namespace WPF.Test.ColorDialog
             set
             {
                 this.color1 = value;
-                this.RaisePropertyChanged("Color1");              
+                this.RaisePropertyChanged("Color1");
                 MessageBox.Show(this.ToString());
-                
+
             }
         }
 
@@ -63,9 +63,9 @@ namespace WPF.Test.ColorDialog
         {
             TextBox_Color.Text = "13";
             Color? color = ButtonColorDialog_test1.SelectedColor;
-            
-                MessageBox.Show(color.ToString());            
-          
+
+            MessageBox.Show(color.ToString());
+
 
 
             //TextBox_Color.Text = ButtonColorDialog_test1.SelectedColor.ToString();
@@ -86,7 +86,7 @@ namespace WPF.Test.ColorDialog
 
         private void ButtonColorDialog_test1_MouseEnter(object sender, MouseEventArgs e)
         {
-            TextBox_Color.Text = "33";    
+            TextBox_Color.Text = "33";
             Color? color = ButtonColorDialog_test1.SelectedColor;
             if (color != null)
             {
@@ -121,13 +121,129 @@ namespace WPF.Test.ColorDialog
             Color? color = ButtonColorDialog_test1.SelectedColor;
             if (color != null)
             {
-                MessageBox.Show(color.ToString());
-            }           
+                // MessageBox.Show(color.ToString());
+            }
+            TextBox_Color.Text = color.ToString();
+            Color colorIR5 = (Color)ColorConverter.ConvertFromString("#ffaabbcc");
+            SolidColorBrush brush = new SolidColorBrush(colorIR5);
+            if (color.Value != null) {    
+                colorIR5 = (Color)color.Value;
+                brush = new SolidColorBrush(colorIR5);
+            }
+            TextBox_Color.Background = brush;
+
         }
 
         private void ButtonColorDialog_test1_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             TextBox_Color.Text = "43";
         }
+
+        private void ButtonColorDialog_test1_Initialized(object sender, EventArgs e)
+        {
+            TextBox_Color.Text = "44";
+        }
+
+        private void ButtonColorDialog_test1_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            TextBox_Color.Text = "45";
+        }
+
+        private void ButtonColorDialog_test1_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            TextBox_Color.Text = "46";
+        }
+
+        private void ColorPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBox_Color.Text = "47";
+        }
+
+        private void ButtonColorDialog_test1_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            TextBox_Color.Text = "48";
+        }
+
+        private void ButtonColorDialog_test1_StylusButtonDown(object sender, StylusButtonEventArgs e)
+        {
+            TextBox_Color.Text = "49";
+        }
+
+        private void ButtonColorDialog_test1_ToolTipClosing(object sender, ToolTipEventArgs e)
+        {
+            TextBox_Color.Text = "50";
+        }
+
+        private void ButtonColorDialog_test1_TouchDown(object sender, TouchEventArgs e)
+        {
+            TextBox_Color.Text = "51";
+        }
+
+        private void ButtonColorDialog_test1_TouchLeave(object sender, TouchEventArgs e)
+        {
+            TextBox_Color.Text = "52";
+        }
+
+        private void ButtonColorDialog_test1_StylusUp(object sender, StylusEventArgs e)
+        {
+            TextBox_Color.Text = "53";
+        }
+
+        private void ButtonColorDialog_test1_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            TextBox_Color.Text = "54";
+        }
+
+        private void ButtonColorDialog_test1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            TextBox_Color.Text = "55";
+        }
+
+        private void ButtonColorDialog_test1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonColorDialog_test1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_Color.Text = "57";
+        }
+
+        private void ButtonColorDialog_test1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_Color.Text = "58";
+        }
+
+        private void ButtonColorDialog_test1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_Color.Text = "59";
+        }
+
+        private void ButtonColorDialog_test1_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_Color.Text = "60";
+        }
+
+        private void ButtonColorDialog_test1_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            TextBox_Color.Text = "61";
+        }
+
+        private void ButtonColorDialog_test1_MouseMove(object sender, MouseEventArgs e)
+        {
+            //TextBox_Color.Text = "62";
+            // при любом навдениеии хуже чем при уберании
+        }
+
+        private void ButtonColorDialog_test1_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            TextBox_Color.Text = "63";
+        }
+
+        private void ButtonColorDialog_test1_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            TextBox_Color.Text = "64";
+        }
+
     }
 }
