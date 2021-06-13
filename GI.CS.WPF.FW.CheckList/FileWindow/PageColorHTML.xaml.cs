@@ -33,7 +33,8 @@ namespace GI.CS.WPF.FW.CheckList
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
             CreateComboBox_FontSize();
-            FontStyleInit();           
+            FontStyleInit();
+            ColorInitialize();
         }
 
 
@@ -157,6 +158,24 @@ namespace GI.CS.WPF.FW.CheckList
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ColorInitialize()
+        {
+            ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+
+            ColorPicker_Head.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_Discript.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_Quest.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_Answer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+        }
+
+
 
         private void ColorPicker_BeckFon_MouseLeave(object sender, MouseEventArgs e)
         {         
