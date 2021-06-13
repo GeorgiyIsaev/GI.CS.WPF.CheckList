@@ -34,7 +34,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             CreateComboBox_FontSize();
             FontStyleInit();
-            ColorInitialize();
+            ColorPickerInitialize();
         }
 
 
@@ -159,7 +159,7 @@ namespace GI.CS.WPF.FW.CheckList
             }
         }
 
-        private void ColorInitialize()
+        private void ColorPickerInitialize()
         {
             ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffffffff");
             ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffc4d0c7");
@@ -172,7 +172,60 @@ namespace GI.CS.WPF.FW.CheckList
             ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
             ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff1eaf1e");
             ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffff0000");
-            ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");       
+            ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorInitialize();
+        }
+
+        private void ColorInitialize()
+        {
+            Color? colorTemp;
+            SolidColorBrush brushTemp;
+
+            colorTemp = ColorPicker_BeckFon.SelectedColor;        
+            if (colorTemp.Value != null)
+            {               
+                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
+                BackFon.Background = brushTemp;
+            }
+
+            colorTemp = ColorPicker_MainFon.SelectedColor;
+            if (colorTemp.Value != null)
+            {
+                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
+                RichTextBox_Fon.Background = brushTemp;
+            }
+
+            colorTemp = ColorPicker_AnswerI.SelectedColor;
+            if (colorTemp.Value != null)
+            {
+                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
+                RTB_AnswerTrueIcon1.Foreground = brushTemp;
+                RTB_AnswerTrueIcon2.Foreground = brushTemp;
+            }
+
+            colorTemp = ColorPicker_AnAnswerI.SelectedColor;
+            if (colorTemp.Value != null)
+            {
+                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
+                RTB_AnswerFalseIcon1.Foreground = brushTemp;
+                RTB_AnswerFalseIcon2.Foreground = brushTemp;
+            }
+
+            //RTB_AnswerTrueIcon1.Foreground
+
+
+            //ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffffffff");
+            //ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffc4d0c7");
+            //ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffa9a9a9");
+
+            //ColorPicker_Head.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            //ColorPicker_Discript.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            //ColorPicker_Quest.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            //ColorPicker_Answer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            //ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            //ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff1eaf1e");
+            //ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffff0000");
+            //ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
         }
 
 
