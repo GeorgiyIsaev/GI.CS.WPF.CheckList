@@ -159,8 +159,16 @@ namespace GI.CS.WPF.FW.CheckList
         }
 
         private void ColorPicker_BeckFon_MouseLeave(object sender, MouseEventArgs e)
-        {
-
+        {         
+            Color? color = ColorPicker_BeckFon.SelectedColor;         
+            //Color colorIR5 = (Color)ColorConverter.ConvertFromString("#ffaabbcc");
+           // SolidColorBrush brush = new SolidColorBrush(colorIR5);
+            if (color.Value != null)
+            {
+                Color colorIR5 = (Color)color.Value;
+                SolidColorBrush brush = new SolidColorBrush(colorIR5);
+                BackFon.Background = brush;
+            }
         }
     }
 
