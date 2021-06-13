@@ -15,8 +15,9 @@ using System.Windows.Shapes;
 
 
 using System.ComponentModel;
-//using System.Windows.Media;
 using PropertyTools.Wpf;
+//using System.Windows.Media;
+
 
 namespace WPF.Test.ColorDialog
 {
