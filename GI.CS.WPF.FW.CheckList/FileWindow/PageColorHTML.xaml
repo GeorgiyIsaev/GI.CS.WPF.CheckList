@@ -20,18 +20,15 @@
             <Grid Grid.Column="0">
                 <Border x:Name="BackFon" BorderThickness="1" BorderBrush="Black" Margin="0,0,0,0" Background="BlueViolet"/>
                 <RichTextBox x:Name="RichTextBox_Fon" Margin="25,0,25,0" VerticalAlignment="Stretch" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <FlowDocument>
-                        <Paragraph x:Name="RTB_Head" Margin="10,0" TextAlignment="Center">
-                            <Run/>
-                        </Paragraph>
-                        <Paragraph x:Name="RTB_Head1" Margin="10,0" TextAlignment="Center">
+                    <FlowDocument>                    
+                        <Paragraph x:Name="RTB_Head" Margin="0,0,0,0" TextAlignment="Center">
                             <Run Text="Заголовок"/>
                         </Paragraph>
                         <Paragraph x:Name="RTB_Discript" Margin="10,0,10,10" TextAlignment="Center">
                             <Run Text="Короткое описание к тексту"/>
                         </Paragraph>
-                        <Paragraph Margin="10,0,0,0">
-                            <Run x:Name="RTB_Quest" Text="Вопрос"/>
+                        <Paragraph x:Name="RTB_Quest" Margin="10,0,0,0">
+                            <Run Text="Вопрос"/>
                         </Paragraph>
                         <Paragraph Margin="20,0,0,0">
                             <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔ "/>
@@ -89,7 +86,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeHead" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Head" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_Head" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
                 <!-- Описание -->
                 <StackPanel Grid.Row="2"  Orientation="Horizontal">
@@ -100,7 +97,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>                    
                     <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Discript" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_Discript" Margin="5,0,0,6" FontSize="10" Width="91"  MouseLeave="ColorPicker_ColorInitialize" />
                 </StackPanel>
                 <!-- Вопрос -->
                 <StackPanel Grid.Row="3"  Orientation="Horizontal">
@@ -111,7 +108,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeQuest" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_Quest" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_Quest" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
                 <!-- Верный ответ -->
                 <StackPanel Grid.Row="4"  Orientation="Horizontal">
@@ -122,7 +119,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_Answer" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_Answer" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
                 <!-- Верный ответ значек-->
                 <StackPanel Grid.Row="5"  Orientation="Horizontal">
@@ -133,7 +130,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_AnswerI" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_AnswerI" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
                 <!-- Не верный ответ -->
                 <StackPanel Grid.Row="6"  Orientation="Horizontal">
@@ -144,7 +141,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeAnAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_AnAnswer" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_AnAnswer" Margin="5,0,0,6" FontSize="10" Width="91"  MouseLeave="ColorPicker_ColorInitialize" />
                 </StackPanel>
                 <!-- НеВерный ответ значек -->
                 <StackPanel Grid.Row="7"  Orientation="Horizontal">
@@ -155,7 +152,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeAnAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_AnAnswerI" Margin="5,0,0,6" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_AnAnswerI" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
                 <!-- Коментарий -->
                 <StackPanel Grid.Row="8"  Orientation="Horizontal">
@@ -166,7 +163,7 @@
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeComment" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Comment" Margin="5,0,0,1" FontSize="10" Width="91"  />
+                    <p:ColorPicker x:Name="ColorPicker_Comment" Margin="5,0,0,1" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
                 </StackPanel>
 
                 <!-- Фон страницы -->
@@ -175,14 +172,14 @@
                 </StackPanel>
                 <StackPanel Margin="0,5,0,0" Grid.Row="10" Orientation="Horizontal">                    
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Главный: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
-                    <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="89"  />
+                    <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
 
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Бок: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
-                    <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_BeckFon_MouseLeave"  />
+                    <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
 
 
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Низ:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" />
-                    <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" />
+                    <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" MouseLeave="ColorPicker_ColorInitialize" />
                 
                 </StackPanel>
                 <!--<StackPanel Grid.Row="11" Orientation="Horizontal">

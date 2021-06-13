@@ -208,6 +208,12 @@ namespace GI.CS.WPF.FW.CheckList
                 brushTemp = new SolidColorBrush((Color)colorTemp.Value);
                 RTB_Discript.Foreground = brushTemp;
             }
+            colorTemp = ColorPicker_Quest.SelectedColor;
+            if (colorTemp.Value != null)
+            {
+                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
+                RTB_Quest.Foreground = brushTemp;
+            }
             colorTemp = ColorPicker_Answer.SelectedColor;
             if (colorTemp.Value != null)
             {
@@ -253,17 +259,9 @@ namespace GI.CS.WPF.FW.CheckList
 
 
 
-        private void ColorPicker_BeckFon_MouseLeave(object sender, MouseEventArgs e)
-        {         
-            Color? color = ColorPicker_BeckFon.SelectedColor;         
-            //Color colorIR5 = (Color)ColorConverter.ConvertFromString("#ffaabbcc");
-           // SolidColorBrush brush = new SolidColorBrush(colorIR5);
-            if (color.Value != null)
-            {
-                Color colorIR5 = (Color)color.Value;
-                SolidColorBrush brush = new SolidColorBrush(colorIR5);
-                BackFon.Background = brush;
-            }
+        private void ColorPicker_ColorInitialize(object sender, MouseEventArgs e)
+        {
+            ColorInitialize();
         }
     }
 
