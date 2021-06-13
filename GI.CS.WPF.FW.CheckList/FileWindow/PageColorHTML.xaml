@@ -17,43 +17,47 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">                
-                    <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,0,0" Background="BlueViolet"/>
-                <RichTextBox Margin="25,0,25,0" VerticalAlignment="Stretch" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <FlowDocument>
-                        <Paragraph TextAlignment="Center" Margin="10,0,10,0">
-                            <Run Text=""/>
+            <Grid Grid.Column="0">
+                <Border x:Name="BackFon" BorderThickness="1" BorderBrush="Black" Margin="0,0,0,0" Background="BlueViolet"/>
+                <RichTextBox x:Name="RichTextBox_Fon" Margin="25,0,25,0" VerticalAlignment="Stretch" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <FlowDocument>
+                        <Paragraph x:Name="RTB_Head" Margin="10,0" TextAlignment="Center">
+                            <Run/>
                         </Paragraph>
-                        <Paragraph x:Name="RTB_Head" TextAlignment="Center" Margin="10,0,10,0">
-                                <Run Text="Заголовок"/>
-                            </Paragraph>
-                        <Paragraph Margin="10,0,10,10"  x:Name="RTB_Discript" TextAlignment="Center">
-                                <Run Text="Короткое описание к тексту"/>
-                            </Paragraph>
-                            <Paragraph Margin="10,0,0,0">                    
-                                <Run x:Name="RTB_Quest" Text="Вопрос"/>
-                            </Paragraph>
-                            <Paragraph Margin="20,0,0,0">
-                                <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔ "/>
-                                <Run x:Name="RTB_AnswerTrue1" Text="Верный Ответ"/>
-                            </Paragraph>
-                            <Paragraph Margin="20,0,0,0">
-                                <Run x:Name="RTB_AnswerTrueIcon2" Foreground="#FF7BB02E" Text="✔ "/>
-                                <Run x:Name="RTB_AnswerTrue2" Text="Еще верный Ответ"/>
-                            </Paragraph>
-                            <Paragraph Margin="20,0,0,0">
-                            <Run x:Name="RTB_AnswerFalseIcon1"  FontSize="34"  Text="&#10008; "/> 
-                            <Run x:Name="RTB_AnswerFalse1"  FontSize="34"  Text="Не верный Ответ"/>
-                            </Paragraph>
-                            <Paragraph Margin="20,0,0,0">
-                            <Run x:Name="RTB_AnswerFalseIcon2"  FontSize="34"  Text="&#10008; "/>
-                            <Run x:Name="RTB_AnswerFalse2"  FontSize="34"  Text="Еще не верный Ответ"/>
-                            </Paragraph>
-                            <Paragraph Margin="10,0,0,0">
-                            <Run x:Name="RTB_Comment" FontSize="34" Text="Пояснение к вопросу"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>               
+                        <Paragraph x:Name="RTB_Head1" Margin="10,0" TextAlignment="Center">
+                            <Run Text="Заголовок"/>
+                        </Paragraph>
+                        <Paragraph x:Name="RTB_Discript" Margin="10,0,10,10" TextAlignment="Center">
+                            <Run Text="Короткое описание к тексту"/>
+                        </Paragraph>
+                        <Paragraph Margin="10,0,0,0">
+                            <Run x:Name="RTB_Quest" Text="Вопрос"/>
+                        </Paragraph>
+                        <Paragraph Margin="20,0,0,0">
+                            <Run x:Name="RTB_AnswerTrueIcon1" Foreground="#FF7BB02E" Text="✔ "/>
+                            <Run Text=" "/>
+                            <Run x:Name="RTB_AnswerTrue1" Text="Верный Ответ"/>
+                        </Paragraph>
+                        <Paragraph Margin="20,0,0,0">
+                            <Run x:Name="RTB_AnswerTrueIcon2" Foreground="#FF7BB02E" Text="✔ "/>
+                            <Run Text=" "/>
+                            <Run x:Name="RTB_AnswerTrue2" Text="Еще верный Ответ"/>
+                        </Paragraph>
+                        <Paragraph Margin="20,0,0,0">
+                            <Run x:Name="RTB_AnswerFalseIcon1" Text="✘ "/>
+                            <Run Text=" "/>
+                            <Run x:Name="RTB_AnswerFalse1" Text="Не верный Ответ"/>
+                        </Paragraph>
+                        <Paragraph Margin="20,0,0,0">
+                            <Run x:Name="RTB_AnswerFalseIcon2"  Text="✘ "/>
+                            <Run Text=" "/>
+                            <Run x:Name="RTB_AnswerFalse2" Text="Еще не верный Ответ"/>
+                        </Paragraph>
+                        <Paragraph Margin="10,0,0,0">
+                            <Run x:Name="RTB_Comment" Text="Пояснение к вопросу"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
             </Grid>
 
 
@@ -69,22 +73,27 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <!-- Заголовок -->
                 <StackPanel Grid.Row="0"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Описание: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                    <TextBlock Margin="0,0,0,1" Text="ТЕКСТ "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,5" Text="Заголовок: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_head_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_head_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_head_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeHead" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Head" Margin="5,0,0,0" Height="24" FontSize="14"  />
+                    <p:ColorPicker x:Name="ColorPicker_Head" Margin="5,0,0,6" FontSize="10" Width="91"  />
                 </StackPanel>
                 <!-- Описание -->
-                <StackPanel Grid.Row="1"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Описание: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="2"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,5" Text="Описание: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_discript_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_discript_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_discript_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -93,8 +102,8 @@
                     <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
                 <!-- Вопрос -->
-                <StackPanel Grid.Row="2"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Вопрос: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="3"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,5" Text="Вопрос: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_Quest_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_Quest_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_Quest_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -103,8 +112,8 @@
                     <ComboBox x:Name="ComboBox_FontSizeQuest" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
                 </StackPanel>
                 <!-- Верный ответ -->
-                <StackPanel Grid.Row="3"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Верный ответ: " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="4"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,0" Text="Верный ответ: " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_Answer_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_Answer_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_Answer_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -113,18 +122,18 @@
                     <ComboBox x:Name="ComboBox_FontSizeAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
                 </StackPanel>
                 <!-- Верный ответ значек-->
-                <StackPanel Grid.Row="4"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [✔]:  " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="5"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [✔]:  " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_AnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_AnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_AnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
                     </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                </StackPanel>             
+                </StackPanel>
                 <!-- Не верный ответ -->
-                <StackPanel Grid.Row="5"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Не верный ответ: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="6"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,5" Text="Не верный ответ: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_AnAnswer_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_AnAnswer_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_AnAnswer_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -133,8 +142,8 @@
                     <ComboBox x:Name="ComboBox_FontSizeAnAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                 </StackPanel>
                 <!-- НеВерный ответ значек -->
-                <StackPanel Grid.Row="6"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [&#10008;]: " VerticalAlignment="Top" Height="24" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="7"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [&#10008;]: " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_AnAnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_AnAnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_AnAnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -143,8 +152,8 @@
                     <ComboBox x:Name="ComboBox_FontSizeAnAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
                 </StackPanel>
                 <!-- Коментарий -->
-                <StackPanel Grid.Row="7"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Пояснение: " VerticalAlignment="Top" Height="21" Width="150" FontWeight="Normal" FontSize="14"/>
+                <StackPanel Grid.Row="8"  Orientation="Horizontal">
+                    <TextBlock Margin="10,3,5,5" Text="Пояснение: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
                     <ToggleButton x:Name="Button_Comment_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
                     <ToggleButton x:Name="Button_Comment_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_Comment_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
@@ -154,17 +163,27 @@
                 </StackPanel>
 
                 <!-- Фонг страницы -->
-                <StackPanel Margin="0,5,0,0" Grid.Row="8" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Left"  Margin="10,0,5,0" Text="Боковой фон" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" Width="100"/>
-                    <TextBlock HorizontalAlignment="Left"  Margin="10,0,5,0" Text="Главный фон" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" Width="100"/>
-                    <TextBlock HorizontalAlignment="Left"  Margin="10,0,5,0" Text="Фон подписи" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" Width="100"/>
+                <StackPanel Grid.Row="9"  Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,1" Text="ФОН "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Grid.Row="9" Orientation="Horizontal">
+                <StackPanel Margin="0,5,0,0" Grid.Row="10" Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Text="Бок: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
+                    <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="80" MouseLeave="ColorPicker_BeckFon_MouseLeave"  />
+
+                    <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Главный: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
+                    <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="80"  />
+
+                    <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Футер" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" />
+                    <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="80" />
+                
+                </StackPanel>
+                <!--<StackPanel Grid.Row="11" Orientation="Horizontal">
                     <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
                     <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
                     <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top"  Width="100"/>
-                </StackPanel>
-            </Grid>            
+                </StackPanel>-->
+                    
+            </Grid>
         </Grid>
     </Grid>
 </Page>

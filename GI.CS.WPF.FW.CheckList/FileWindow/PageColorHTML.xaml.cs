@@ -158,7 +158,10 @@ namespace GI.CS.WPF.FW.CheckList
             }
         }
 
+        private void ColorPicker_BeckFon_MouseLeave(object sender, MouseEventArgs e)
+        {
 
+        }
     }
 
 }
