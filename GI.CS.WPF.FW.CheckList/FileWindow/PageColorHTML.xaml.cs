@@ -161,18 +161,18 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void ColorInitialize()
         {
-            ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffffffff");
+            ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffc4d0c7");
+            ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffa9a9a9");
 
-            ColorPicker_Head.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_Discript.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_Quest.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_Answer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
-            ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffaabbcc");
+            ColorPicker_Head.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorPicker_Discript.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorPicker_Quest.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorPicker_Answer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+            ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff1eaf1e");
+            ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffff0000");
+            ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");       
         }
 
 
