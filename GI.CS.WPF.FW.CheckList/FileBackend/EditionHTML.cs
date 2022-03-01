@@ -185,7 +185,7 @@ namespace GI.CS.WPF.FW.CheckList
 						Answer tempAns = new Answer(temp, false);
 						questItem.answerItem.Add(tempAns);
 					}
-					else if (line.IndexOf("КОММЕНТАРИЙ:") == 0)
+					else if (line.IndexOf(comentBegin) == 0)
 					{
 						temp = line.Replace(comentBegin, "");
 						temp = temp.Replace(comentEnd, "");
