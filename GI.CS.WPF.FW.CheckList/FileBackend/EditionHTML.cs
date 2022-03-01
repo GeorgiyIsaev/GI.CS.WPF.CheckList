@@ -143,7 +143,7 @@ namespace GI.CS.WPF.FW.CheckList
 			string questEnd = "</div>";
 			string AnswerBegin = $"   <div class=\"questBox__answer\"><div> &#10004;</div>";
 			string UnAnswerBegin = $"   <div class=\"questBox__unanwser\"><div> &#10008;</div>";
-			string AnswerEnd= "</div>" + "\n";
+			string AnswerEnd= "\n</div>\n";
 			string comentBegin = "<summary>ПОЯСНЕНИЕ:</summary><div>";
 			string comentEnd = "</div></details>";
 

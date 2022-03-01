@@ -141,21 +141,24 @@ namespace GI.CS.WPF.FW.CheckList
 
 
 
-
+        /*Меню Файл-> Сохранить в файл*/
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
             new Windows_HTNLSetup().ShowDialog();          
         }
+        /*Меню Файл-> Открыть католок*/
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
         {
             string forever_papka = Environment.CurrentDirectory;
             System.Diagnostics.Process.Start("explorer", forever_papka);
         }
+        /*Меню Файл-> Добавить из файла*/
         private void MenuItemLoad_Click(object sender, RoutedEventArgs e)
         {
             new Windows_Load().ShowDialog();
             NewTitle();
         }
+        /*Меню Запустить тест*/
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {
             if (QuestsBox.questItems.Count <= 1)
@@ -165,6 +168,7 @@ namespace GI.CS.WPF.FW.CheckList
             }
             new Windows_StartTest().ShowDialog();
         }
+        /*Меню Файл-> Очистить лист*/
         private void MenuItemClear_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -175,6 +179,7 @@ namespace GI.CS.WPF.FW.CheckList
                 questItem.quest = "<Добавить новый вопрос>";
                 QuestsBox.questItems.Add(questItem);
                 NewTitle();
+                ListBox_Quest.SelectedIndex = 0;
             }
         }
         private void MenuItemOpenDescription_Click(object sender, RoutedEventArgs e)
