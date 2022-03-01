@@ -36,20 +36,20 @@ namespace GI.CS.WPF.FW.CheckList
 					if (count == 0) {
 						count++; continue; } // Пропуск вопроса настройки
 					file.WriteLine("<div class=\"questBox\">");
-					file.WriteLine($"<div class=\"questBox__quest\">{count++}) {tmp.quest}</div>");
+					file.WriteLine($"<div class=\"questBox__quest\">{count++}) {tmp.quest}\n</div>");
 										
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
 						if (tmpAnswer.if_true)
-							file.WriteLine($"   <div class=\"questBox__answer\"><div> &#10004;</div>{tmpAnswer.answerSTR}</div>" + "\n");
+							file.WriteLine($"   <div class=\"questBox__answer\"><div> &#10004;</div>{tmpAnswer.answerSTR}\n</div>\n");
 						else
-							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}</div>" + "\n");
+							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}\n</div>\n");
 					}
 					if (tmp.comment.Length > 0)
 					{
-						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}</div></details>\n		</div>\n");
+						file.WriteLine($"	<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}\n</div></details>\n		</div>\n");
 					} 
-					file.WriteLine($"</div>");
+					file.WriteLine($"</div>\n");
 				}
 				file.WriteLine("<div class=\"questBox\"><p></p></div>");
 				file.WriteLine(footerBilder());
