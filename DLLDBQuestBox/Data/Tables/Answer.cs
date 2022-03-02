@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DLLDBQuestBox.Data.Tables
 {
-    [Table("Answer")]
+    [Table("Answers")]
     public class Answer
     {
         [Key]

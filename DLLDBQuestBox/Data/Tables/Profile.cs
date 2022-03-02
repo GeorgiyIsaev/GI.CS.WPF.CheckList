@@ -10,7 +10,7 @@ namespace DLLDBQuestBox.Data.Tables
 {
    
 
-    [Table("Profile")]
+    [Table("Profiles")]
     public class Profile
     {
         [Key]

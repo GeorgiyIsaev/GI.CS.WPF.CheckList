@@ -10,7 +10,7 @@ namespace DLLDBQuestBox.Data.Tables
 {
    
 
-    [Table("Test")]
+    [Table("Tests")]
     public class Test
     {
         [Key]
