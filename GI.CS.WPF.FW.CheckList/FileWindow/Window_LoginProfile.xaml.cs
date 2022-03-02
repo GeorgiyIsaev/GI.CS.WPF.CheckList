@@ -29,11 +29,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             if (isCrateProfile)
             {
+                Buttun_CreateProfile.Content = "Войти в существующий";
+                Buttun_EnterProfile.Content = "Создать";
                 TB_Pass02i.Visibility = Visibility.Visible;
                 TB_Pass02.Visibility = Visibility.Visible;
             }
             else
             {
+                Buttun_CreateProfile.Content = "Создать новый профиль";
+                Buttun_EnterProfile.Content = "Войти";
                 TB_Pass02i.Visibility = Visibility.Collapsed;
                 TB_Pass02.Visibility = Visibility.Collapsed;
             }
