@@ -66,7 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\MyDBContext.cs" />
+    <Compile Include="Data\MyDbContextInitializer.cs" />
+    <Compile Include="Data\Tables\Answer.cs" />
+    <Compile Include="Data\Tables\Quest.cs" />
+    <Compile Include="Data\Tables\Test.cs" />
+    <Compile Include="Data\Tables\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
