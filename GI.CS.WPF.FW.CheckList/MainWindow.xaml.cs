@@ -191,5 +191,10 @@ namespace GI.CS.WPF.FW.CheckList
         {
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     } 
 }

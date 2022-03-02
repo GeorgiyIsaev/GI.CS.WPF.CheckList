@@ -34,11 +34,15 @@
                 <MenuItem Header="Очистить проект" Click="MenuItemClear_Click"></MenuItem>
                 <MenuItem Header="Добавить из файла" Click="MenuItemLoad_Click"></MenuItem>               
                 <MenuItem Header="Сохранить в файл" Click="MenuItemSaveHTML_Click"></MenuItem>
-                <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>
+                <MenuItem Header="Открыть католог" ToolTip="Открыть папку с приложением" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+                <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>                
             </MenuItem>
+            <MenuItem Header="Профиль" ToolTip="Доступ к котолоку тестов из профилия" Width="93">
+                <MenuItem Header="Войти в профиль"></MenuItem>              
+            </MenuItem>            
             <MenuItem Header="Запустить тест" ToolTip="Запуск теста из 20 случайных вопросов из доступных в приложении" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
-            <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" Click="MenuItemOpenDescription_Click" ></MenuItem>
-            <MenuItem Header="Директория" ToolTip="Открыть папку, в которой расположено приложение" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+            <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" Click="MenuItemOpenDescription_Click"/>
+
         </Menu>
         <Grid>
             <!--Разметка колонок-->
