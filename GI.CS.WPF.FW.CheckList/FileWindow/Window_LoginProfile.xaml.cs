@@ -22,6 +22,30 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         public WindowLoginProfile()
         {
             InitializeComponent();
+            ReplaceWindow();
         }
+        bool isCrateProfile = false; //состояние текущего окна
+        void ReplaceWindow()
+        {
+            if (isCrateProfile)
+            {
+                TB_Pass02i.Visibility = Visibility.Visible;
+                TB_Pass02.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TB_Pass02i.Visibility = Visibility.Collapsed;
+                TB_Pass02.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /*Кнопка для создания профилия и возврата ко входу*/
+        public void Buttun_CreateProfile_Click(object sender, RoutedEventArgs e) {
+            if (isCrateProfile)isCrateProfile = false;            
+            else isCrateProfile = true; 
+            ReplaceWindow();
+        }
+
     }
+  
 }
