@@ -38,7 +38,7 @@
                 <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>                
             </MenuItem>
             <MenuItem Header="Профиль" ToolTip="Доступ к котолоку тестов из профилия" Width="93">
-                <MenuItem Header="Войти в профиль"></MenuItem>              
+                <MenuItem Header="Войти в профиль" Click="MenuItemLoginProfile_Click"></MenuItem>              
             </MenuItem>            
             <MenuItem Header="Запустить тест" ToolTip="Запуск теста из 20 случайных вопросов из доступных в приложении" Click="MenuItemStartTest_Click" Width="126"></MenuItem>
             <MenuItem Header="О программме" ToolTip="Краткая информация о данном приложении"  Width="136" Click="MenuItemOpenDescription_Click"/>

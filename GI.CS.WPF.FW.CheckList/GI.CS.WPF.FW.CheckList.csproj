@@ -104,6 +104,9 @@
     <Compile Include="FileBackend\QuestItem.cs" />
     <Compile Include="FileBackend\QuestsBox.cs" />
     <Compile Include="FileBackend\QuestsBoxForTest.cs" />
+    <Compile Include="FileWindow\Window_LoginProfile.xaml.cs">
+      <DependentUpon>Window_LoginProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileWindow\Windows_HTNLSetup.xaml.cs">
       <DependentUpon>Windows_HTNLSetup.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FileWindow\Window_LoginProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FileWindow\Windows_HTNLSetup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

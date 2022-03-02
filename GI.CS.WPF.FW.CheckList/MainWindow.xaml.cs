@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GI.CS.WPF.FW.CheckList.FileWindow;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -182,9 +183,15 @@ namespace GI.CS.WPF.FW.CheckList
                 ListBox_Quest.SelectedIndex = 0;
             }
         }
+        /*Меню-Описание приложения*/
         private void MenuItemOpenDescription_Click(object sender, RoutedEventArgs e)
         {
             new Window_DescriptionForApplication().ShowDialog();          
+        }
+        /*Меню-Профиль войтив профиль*/
+        private void MenuItemLoginProfile_Click(object sender, RoutedEventArgs e)
+        {
+            new WindowLoginProfile().ShowDialog();
         }
 
         private void NewTitle()
@@ -192,9 +199,6 @@ namespace GI.CS.WPF.FW.CheckList
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     } 
 }
