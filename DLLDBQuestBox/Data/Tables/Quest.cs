@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLLDBQuestBox.Data.Tables
+namespace Data.Tables
 { 
     [Table("Quests")]
     public class Quest
@@ -16,6 +16,7 @@ namespace DLLDBQuestBox.Data.Tables
         public long Id { get; set; }
         public string TextQuest { get; set; }
         public string TextComment { get; set; }
-        public int TestId { get; set; }
+        public Test Test { get; set; }
+        public long TestId { get; set; }
     }
 }

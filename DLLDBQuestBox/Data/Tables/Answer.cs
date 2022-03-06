@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLLDBQuestBox.Data.Tables
+namespace Data.Tables
 {
     [Table("Answers")]
     public class Answer
@@ -15,7 +15,11 @@ namespace DLLDBQuestBox.Data.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public string TextAnswer { get; set; }
-        public int QuestId { get; set; }
         public bool isTrue { get; set; }
+
+        public Quest Quest { get; set; }
+        public long QuestId { get; set; }
+     
+  
     }
 }

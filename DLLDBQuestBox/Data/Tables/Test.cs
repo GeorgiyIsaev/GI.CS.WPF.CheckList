@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLLDBQuestBox.Data.Tables
+namespace Data.Tables
 {
    
 
@@ -18,6 +18,7 @@ namespace DLLDBQuestBox.Data.Tables
         public long Id { get; set; }
         public string Group { get; set; }
         public string Name { get; set; }
-        public int AccauntId { get; set; }
+        public Profile Profile { get; set; }
+        public long ProfileId { get; set; }
     }
 }
