@@ -27,4 +27,8 @@ namespace Test.DBQuestBoxSQLite
         }
         
     }
+    /*Команды в диспетчере пакетов мигарции
+     * Enable-Migrations - выполняется 1 раз создает Configration.cs
+     * add-migration "text" - выполняет миграцию
+     */
 }
