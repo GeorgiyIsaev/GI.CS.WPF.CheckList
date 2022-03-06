@@ -1,5 +1,4 @@
 ﻿using System;
-using DLLDBQuestBox;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,7 @@ namespace Test.DBQuestBoxSQLite
         {
             try
             {
-                using (var cont = new DLLDBQuestBox.Data.MyDbContext())
+                using (var cont = new Data.MyDbContext())
                 {
                     Console.WriteLine("Есть контакт!");
                 }
