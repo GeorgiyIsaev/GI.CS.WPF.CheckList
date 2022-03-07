@@ -15,7 +15,7 @@ namespace Test.DBQuestBoxSQLite
                 using (var cont = new Data.MyDbContext())
                 {
                     Console.WriteLine("Подключение к базе даных!");
-                    AddProfiles("Admin", 0);
+                    AddProfiles("Admin", "Admin");
 
 
                     /*Если необходимо изменить*/
@@ -43,7 +43,7 @@ namespace Test.DBQuestBoxSQLite
             }
             Console.ReadLine();
         }
-        static void AddProfiles(string name, int password)
+        static void AddProfiles(string name, string password)
         {
             using (var conect = new Data.MyDbContext())
             {
