@@ -14,7 +14,26 @@ namespace Test.DBQuestBoxSQLite
             {
                 using (var cont = new Data.MyDbContext())
                 {
-                    Console.WriteLine("Есть контакт!");
+                    Console.WriteLine("Подключение к базе даных!");
+                    AddProfiles("Admin", 0);
+
+
+                    /*Если необходимо изменить*/
+                    //bool changed = false;
+                    //foreach (var p in cont.Profiles.Include("Orders"))
+                    //{
+                    //    if (!p.Name.GetHashCode())
+                    //    {
+                    //        p.Password = 0000;
+                    //        changed = true;
+                    //    }                
+                    //}
+
+                    //if (changed)
+                    //{
+                    //    cont.SaveChanges();
+                    //}
+
                 }
             }
             catch(Exception ex)
@@ -24,8 +43,20 @@ namespace Test.DBQuestBoxSQLite
             }
             Console.ReadLine();
         }
-        
+        static void AddProfiles(string name, int password)
+        {
+            using (var conect = new Data.MyDbContext())
+            {
+                /*Заполнение таблицы */
+                var profile = new Data.Tables.Profile { Name = name, Password = password };
+                conect.Profiles.Add(profile);
+                conect.SaveChanges();
+            }
+        }
+
     }
+
+
 }
 
 
@@ -53,9 +84,9 @@ System.Data.SQLite.EF6.Migrations
 */
 
 /*Команды в диспетчере пакетов мигарции
-    * Enable-Migrations - выполняется 1 раз создает Configration.cs
-    * add-migration "AddTables" - выполняет миграцию
-    * Update-Database - обновить после каждой команды если возникает предуприждение
-    */
+* Enable-Migrations - выполняется 1 раз создает Configration.cs
+* add-migration "AddTables" - выполняет миграцию
+* Update-Database - завершает предудущую миграцию, что бы начать следующую
+*/
 
 
