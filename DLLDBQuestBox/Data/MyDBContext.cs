@@ -19,6 +19,10 @@ namespace Data
             var model = modelBuilder.Build(Database.Connection);
             ISqlGenerator sqlGenerator = new SqliteSqlGenerator();
             _ = sqlGenerator.Generate(model.StoreModel);
+
+
+        
+
         }
         public DbSet<Tables.Profile> Profiles { get; set; }
         public DbSet<Tables.Test> Tests { get; set; }

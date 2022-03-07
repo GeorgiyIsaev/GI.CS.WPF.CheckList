@@ -15,9 +15,16 @@ namespace Test.DBQuestBoxSQLite
                 using (var cont = new Data.MyDbContext())
                 {
                     Console.WriteLine("Подключение к базе даных!");
-                    AddProfiles("Guest", "0000");
-                    AddProfiles("Admin", "Admin");
+            
+                                      
+                    if (cont.Profiles.Count() == 0) //Если таблица не пуста добавить профили
+                    {
+                        cont.Profiles.Add(new Data.Tables.Profile { Name = "User" });
+                        cont.Profiles.Add(new Data.Tables.Profile { Name = "Admin" });
+                        /*AddProfiles("Guest", "0000");
+                         AddProfiles("Admin", "Admin");*/
 
+                    }
 
                     /*Если необходимо изменить*/
                     //bool changed = false;
@@ -35,6 +42,8 @@ namespace Test.DBQuestBoxSQLite
                     //    cont.SaveChanges();
                     //}
 
+                    /*Чтение из таблицы*/
+
                 }
             }
             catch(Exception ex)
@@ -46,12 +55,12 @@ namespace Test.DBQuestBoxSQLite
         }
         static void AddProfiles(string name, string password)
         {
-            using (var conect = new Data.MyDbContext())
+            using (var cont = new Data.MyDbContext())
             {
                 /*Заполнение таблицы */
                 var profile = new Data.Tables.Profile { Name = name, Password = password };
-                conect.Profiles.Add(profile);
-                conect.SaveChanges();
+                cont.Profiles.Add(profile);
+                cont.SaveChanges();
             }
         }
 
