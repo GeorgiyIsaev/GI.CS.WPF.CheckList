@@ -15,6 +15,7 @@ namespace Test.DBQuestBoxSQLite
                 using (var cont = new Data.MyDbContext())
                 {
                     Console.WriteLine("Подключение к базе даных!");
+                    AddProfiles("Guest", "0000");
                     AddProfiles("Admin", "Admin");
 
 
