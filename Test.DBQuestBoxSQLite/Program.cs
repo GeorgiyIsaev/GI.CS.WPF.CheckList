@@ -14,9 +14,9 @@ namespace Test.DBQuestBoxSQLite
             {
                 using (var cont = new Data.MyDbContext())
                 {
-                    Console.WriteLine("Подключение к базе даных!");
-            
-                                      
+                    Console.WriteLine("Подключение к базе даных!");               
+
+
                     if (cont.Profiles.Count() == 0) //Если таблица не пуста добавить профили
                     {                      
                         AddProfile("Guest", "0000");   
@@ -51,17 +51,21 @@ namespace Test.DBQuestBoxSQLite
                     else Console.WriteLine("Такого эл-та нет 9");
 
                     /*Чтение из таблицы по конкретному значению*/
-                    long profileID = 0;
+                    long profileID = -1;
                     foreach (var p in cont.Profiles)
                     {
                         Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
-                        if ("Admin" == p.Name)
-                            profileID = 0;
+                        Console.WriteLine(p.Name + "== Admin " + (p.Name == "Admin"));
+                        if (p.Name == "Admin")
+                        {
+                            profileID = p.Id;
+                        }
+
                     }
                     Console.WriteLine("profileID " + profileID);
                     foreach (var p in cont.Tests)
                     {
-                        if (profileID != 0 && profileID == p.Id)
+                        if (profileID != -1 && profileID == p.ProfileId)
                         {
                             Console.WriteLine("Совпадение");
                             Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
