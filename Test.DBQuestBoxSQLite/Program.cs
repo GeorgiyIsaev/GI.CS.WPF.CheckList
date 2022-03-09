@@ -22,6 +22,8 @@ namespace Test.DBQuestBoxSQLite
                         AddProfile("Guest", "0000");   
                         var profile = AddProfile("Admin", "Admin");
                         AddTest("Тема по C#", "Основы С#", 1);
+
+
                         if (profile != null)
                         {
                             /*На самом деле кривое добавление так как плодит новые объекты в таблице профиле дублируя передоваемый*/
@@ -32,10 +34,10 @@ namespace Test.DBQuestBoxSQLite
                     }
 
 
-                    /*Чтение из таблицы*/
+                    /*Чтение из таблицы*/                
                     foreach (var p in cont.Profiles)
                     {
-                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
+                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);                   
                     }
 
                     /*Чтение из таблицы по индексу*/
@@ -48,7 +50,14 @@ namespace Test.DBQuestBoxSQLite
                     if(p1 != null) {Console.WriteLine(p1.Id + " " + p1.Name); }
                     else Console.WriteLine("Такого эл-та нет 9");
 
-                    /*Поиск конкретного типа*/
+                    /*Чтение из таблицы по конкретному значению*/
+                    int profileID;
+                    foreach (var p in cont.Profiles)
+                    {
+                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
+                        if ("Admin" == )
+                            profileID = 0;
+                    }
                 }
             }
             catch(Exception ex)
@@ -89,7 +98,7 @@ namespace Test.DBQuestBoxSQLite
             using (var cont = new Data.MyDbContext())
             {
                 /*Заполнение таблицы */
-                var test = new Data.Tables.Test { Name = name, Group = group, Profile = profile };
+                var test = new Data.Tables.Test { Name = name, Group = group, ProfileId = profile.Id };
                 cont.Tests.Add(test);
                 cont.SaveChanges();
             }
