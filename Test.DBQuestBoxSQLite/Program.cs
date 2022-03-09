@@ -51,12 +51,22 @@ namespace Test.DBQuestBoxSQLite
                     else Console.WriteLine("Такого эл-та нет 9");
 
                     /*Чтение из таблицы по конкретному значению*/
-                    int profileID;
+                    long profileID = 0;
                     foreach (var p in cont.Profiles)
                     {
                         Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
-                        if ("Admin" == )
+                        if ("Admin" == p.Name)
                             profileID = 0;
+                    }
+                    Console.WriteLine("profileID " + profileID);
+                    foreach (var p in cont.Tests)
+                    {
+                        if (profileID != 0 && profileID == p.Id)
+                        {
+                            Console.WriteLine("Совпадение");
+                            Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
+                            Console.WriteLine("Профиль: " + p.Profile.Name);
+                        }
                     }
                 }
             }
