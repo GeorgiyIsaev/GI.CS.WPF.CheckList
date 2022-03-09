@@ -23,27 +23,27 @@ namespace Test.DBQuestBoxSQLite
                         cont.Profiles.Add(new Data.Tables.Profile { Name = "Admin" });
                         /*AddProfiles("Guest", "0000");
                          AddProfiles("Admin", "Admin");*/
-
                     }
 
-                    /*Если необходимо изменить*/
-                    //bool changed = false;
-                    //foreach (var p in cont.Profiles.Include("Orders"))
-                    //{
-                    //    if (!p.Name.GetHashCode())
-                    //    {
-                    //        p.Password = 0000;
-                    //        changed = true;
-                    //    }                
-                    //}
-
-                    //if (changed)
-                    //{
-                    //    cont.SaveChanges();
-                    //}
 
                     /*Чтение из таблицы*/
+                    foreach (var p in cont.Profiles)
+                    {
+                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
+                    }
+                    var p1 = cont.Profiles.Find(1); //поиск по id
+                    Console.WriteLine(p1.Id + " "+ p1.Name);
 
+              
+
+                    p1 = cont.Profiles.Find(9); //поиск по id
+                    //Если вернет null будит выбрашена ошибка
+                    if(p1 != null)
+                    {
+                        Console.WriteLine(p1.Id + " " + p1.Name);
+                    }
+                    else
+                     Console.WriteLine("Такого эл-та нет");
                 }
             }
             catch(Exception ex)
