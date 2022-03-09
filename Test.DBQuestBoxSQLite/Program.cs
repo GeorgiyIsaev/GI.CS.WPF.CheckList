@@ -14,12 +14,12 @@ namespace Test.DBQuestBoxSQLite
             {
                 using (var cont = new Data.MyDbContext())
                 {
-                    Console.WriteLine("Подключение к базе даных!");               
+                    Console.WriteLine("Подключение к базе даных!");
 
 
                     if (cont.Profiles.Count() == 0) //Если таблица не пуста добавить профили
-                    {                      
-                        AddProfile("Guest", "0000");   
+                    {
+                        AddProfile("Guest", "0000");
                         var profile = AddProfile("Admin", "Admin");
                         AddTest("Тема по C#", "Основы С#", 1);
 
@@ -34,10 +34,10 @@ namespace Test.DBQuestBoxSQLite
                     }
 
 
-                    /*Чтение из таблицы*/                
+                    /*Чтение из таблицы*/
                     foreach (var p in cont.Profiles)
                     {
-                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);                   
+                        Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
                     }
 
                     /*Чтение из таблицы по индексу*/
@@ -47,7 +47,7 @@ namespace Test.DBQuestBoxSQLite
 
                     p1 = cont.Profiles.Find(9); //поиск по id
                     //Если вернет null будит выбрашена ошибка
-                    if(p1 != null) {Console.WriteLine(p1.Id + " " + p1.Name); }
+                    if (p1 != null) { Console.WriteLine(p1.Id + " " + p1.Name); }
                     else Console.WriteLine("Такого эл-та нет 9");
 
                     /*Чтение из таблицы по конкретному значению*/
@@ -72,9 +72,31 @@ namespace Test.DBQuestBoxSQLite
                             Console.WriteLine("Профиль: " + p.Profile.Name);
                         }
                     }
+
+
+                    /*Удаление*/
+
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == "Admin")
+                        {
+                            var profiledelete = p;
+                            Console.WriteLine("Удаляем " + p.Name);
+                            if (profiledelete != null)
+                                cont.Profiles.Remove(profiledelete);
+                        }
+                    }
+                    /*Посмотрим все тесты*/
+                    foreach (var p in cont.Tests)
+                    {
+
+                        Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
+                        /* Console.WriteLine("Профиль: " + p.Profile.Name);*/
+
+                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error");
                 Console.WriteLine(ex.Message);
