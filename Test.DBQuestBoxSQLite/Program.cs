@@ -83,7 +83,17 @@ namespace Test.DBQuestBoxSQLite
                             var profiledelete = p;
                             Console.WriteLine("Удаляем " + p.Name);
                             if (profiledelete != null)
+                            {
+                                foreach (var t in cont.Tests)
+                                {
+                                    if (t.ProfileId == p.Id)
+                                    {
+                                        cont.Tests.Remove(t);
+                                    }
+                                }
                                 cont.Profiles.Remove(profiledelete);
+                            }
+                               
                         }
                     }
                     /*Посмотрим все тесты*/
