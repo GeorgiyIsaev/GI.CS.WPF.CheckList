@@ -18,11 +18,17 @@ namespace Test.DBQuestBoxSQLite
             
                                       
                     if (cont.Profiles.Count() == 0) //Если таблица не пуста добавить профили
-                    {
-                        cont.Profiles.Add(new Data.Tables.Profile { Name = "User" });
-                        cont.Profiles.Add(new Data.Tables.Profile { Name = "Admin" });
-                        /*AddProfiles("Guest", "0000");
-                         AddProfiles("Admin", "Admin");*/
+                    {                      
+                        AddProfile("Guest", "0000");   
+                        var profile = AddProfile("Admin", "Admin");
+                        AddTest("Тема по C#", "Основы С#", 1);
+                        if (profile != null)
+                        {
+                            /*На самом деле кривое добавление так как плодит новые объекты в таблице профиле дублируя передоваемый*/
+                            AddTestSuper("Тема по C#", "WPF С#", profile);
+                            AddTestSuper("Тема по C#", "WF С#", profile);
+                            AddTestSuper("Тема по C#", "Ado", profile);
+                        }
                     }
 
 
@@ -31,19 +37,18 @@ namespace Test.DBQuestBoxSQLite
                     {
                         Console.WriteLine("ID: " + p.Id + " Имя: " + p.Name + " Пасс: " + p.Password);
                     }
-                    var p1 = cont.Profiles.Find(1); //поиск по id
-                    Console.WriteLine(p1.Id + " "+ p1.Name);
 
-              
+                    /*Чтение из таблицы по индексу*/
+                    var p1 = cont.Profiles.Find(0); //поиск по id
+                    if (p1 != null) { Console.WriteLine(p1.Id + " " + p1.Name); }
+                    else Console.WriteLine("Такого эл-та нет 0");
 
                     p1 = cont.Profiles.Find(9); //поиск по id
                     //Если вернет null будит выбрашена ошибка
-                    if(p1 != null)
-                    {
-                        Console.WriteLine(p1.Id + " " + p1.Name);
-                    }
-                    else
-                     Console.WriteLine("Такого эл-та нет");
+                    if(p1 != null) {Console.WriteLine(p1.Id + " " + p1.Name); }
+                    else Console.WriteLine("Такого эл-та нет 9");
+
+                    /*Поиск конкретного типа*/
                 }
             }
             catch(Exception ex)
@@ -53,13 +58,39 @@ namespace Test.DBQuestBoxSQLite
             }
             Console.ReadLine();
         }
-        static void AddProfiles(string name, string password)
+        static Data.Tables.Profile AddProfile(string name, string password)
+        {
+            Data.Tables.Profile profile;
+            using (var cont = new Data.MyDbContext())
+            {
+                /*Заполнение таблицы */
+                profile = new Data.Tables.Profile { Name = name, Password = password };
+                cont.Profiles.Add(profile);
+                cont.SaveChanges();
+            }
+            return profile;
+        }
+        static Data.Tables.Test AddTest(string name, string group, long profileId)
+        {
+
+            Data.Tables.Test test;
+            using (var cont = new Data.MyDbContext())
+            {
+                /*Заполнение таблицы */
+                test = new Data.Tables.Test { Name = name, Group = group, ProfileId = profileId };
+                cont.Tests.Add(test);
+                cont.SaveChanges();
+            }
+            return test;
+        }
+
+        static void AddTestSuper(string name, string group, Data.Tables.Profile profile)
         {
             using (var cont = new Data.MyDbContext())
             {
                 /*Заполнение таблицы */
-                var profile = new Data.Tables.Profile { Name = name, Password = password };
-                cont.Profiles.Add(profile);
+                var test = new Data.Tables.Test { Name = name, Group = group, Profile = profile };
+                cont.Tests.Add(test);
                 cont.SaveChanges();
             }
         }
