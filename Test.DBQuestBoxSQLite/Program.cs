@@ -88,6 +88,7 @@ namespace Test.DBQuestBoxSQLite
                                 {
                                     if (t.ProfileId == p.Id)
                                     {
+                                        Console.WriteLine("t.ProfileId " + t.ProfileId);
                                         cont.Tests.Remove(t);
                                     }
                                 }
