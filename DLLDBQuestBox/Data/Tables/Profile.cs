@@ -24,12 +24,9 @@ namespace Data.Tables
         public string Password { get; set; }
 
         public ICollection<Test> Tests { get; set; }
-        public Profile()
-        {
-            Tests = new List<Test>();
-           
-
+        public Profile()          
+        {   
+            Tests = new List<Test>();            
         }
-
     }
 }

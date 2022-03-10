@@ -162,8 +162,43 @@ namespace Data.Model
 
                     if (p1 != null)
                     {
-                        p1.Tests.Add(new Tables.Test { Group = group, Name = name });      
+                        p1.Tests.Add(new Tables.Test { Group = group, Name = name });
+
+                        
+
                         cont.SaveChanges(); //сохранить
+                        //var ttt1 = cont.Tests.Where(x => x.ProfileId == p1.Id);
+                        //foreach(var temp in ttt1)
+                        //{
+                        //    Console.WriteLine(temp.Group + " " + temp.Name);
+                        //}
+                        profile = p1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            return profile;
+        }
+
+        public static Tables.Profile ResetTest(long id)
+        {
+            Tables.Profile profile = null;
+            try
+            {
+                using (var cont = new Data.MyDbContext())
+                {
+                    var p1 = cont.Profiles.Find(id); //поиск по id
+
+                    if (p1 != null)
+                    {
+                        var ttt1 = cont.Tests.Where(x => x.ProfileId == p1.Id);
+                        foreach (var temp in ttt1)
+                        {
+                            p1.Tests.Add(temp);           
+                        }
                         profile = p1;
                     }
                 }

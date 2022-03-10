@@ -64,12 +64,15 @@ namespace Test.DBQuestBoxSQLite
             PrintTestsProfile(profile);
 
             profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок1");
-            profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок2");
+            profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
+
+            // profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок2");
             Data.Model.Notifi.printFullTest();
 
             PrintTestsProfile(profile);
 
             profile = Data.Model.ProfileCRUD.GetName("Admin");
+            profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
             PrintTestsProfile(profile);
 
             Console.ReadLine();

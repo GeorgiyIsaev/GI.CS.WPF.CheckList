@@ -21,10 +21,19 @@ namespace Data
             _ = sqlGenerator.Generate(model.StoreModel);
 
             /*Один ко многим*/
-            modelBuilder.Entity<Tables.Profile>()
-                .HasMany(p => p.Tests)
-                .WithRequired(p => p.Profile);
+             modelBuilder.Entity<Tables.Profile>()
+                 .HasMany(p => p.Tests)
+                 .WithRequired(p => p.Profile)
+                 .HasForeignKey(s => s.ProfileId)
+                 .WillCascadeOnDelete(false);;
 
+           /* modelBuilder.Entity<Tables.Test>()
+                 .HasRequired<Tables.Profile>(o => o.Profile)
+                 .WithMany(p => p.Tests)
+                 .HasForeignKey(o => o.ProfileId); */
+
+            //Персона со списоком оредров
+            //Профиль со списком тестов
 
 
         }

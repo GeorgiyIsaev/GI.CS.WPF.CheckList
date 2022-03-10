@@ -18,7 +18,7 @@ namespace Data.Tables
         public long Id { get; set; }
         public string Group { get; set; }
         public string Name { get; set; }
-        public Profile Profile { get; set; }
+        virtual public Profile Profile { get; set; }
         public long ProfileId { get; set; }
     }
 }
