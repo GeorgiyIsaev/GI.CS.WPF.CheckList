@@ -60,6 +60,16 @@ namespace Test.DBQuestBoxSQLite
             Data.Model.Notifi.printFullTest();
 
             /*Показать все тесты конкретного профиля*/
+            profile = Data.Model.ProfileCRUD.GetName("Admin");
+            PrintTestsProfile(profile);
+
+            profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок1");
+            profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок2");
+            Data.Model.Notifi.printFullTest();
+
+            PrintTestsProfile(profile);
+
+            profile = Data.Model.ProfileCRUD.GetName("Admin");
             PrintTestsProfile(profile);
 
             Console.ReadLine();
@@ -71,12 +81,13 @@ namespace Test.DBQuestBoxSQLite
                 Console.WriteLine("Профильне не найден! ");
                 return;
             }
-            Console.WriteLine("Тесты для профиля " + profile.Name);
+            Console.WriteLine("Тесты для профиля " + profile.Name + " ID "+ profile.Tests.Count);
             foreach (var t in profile.Tests)
             {
                 Console.WriteLine("Тесты ");
                 Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
             }
+            Console.WriteLine(" - - - ");
         }
     }
 

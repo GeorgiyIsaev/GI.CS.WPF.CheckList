@@ -27,6 +27,8 @@ namespace Data.Tables
         public Profile()
         {
             Tests = new List<Test>();
+           
+
         }
 
     }

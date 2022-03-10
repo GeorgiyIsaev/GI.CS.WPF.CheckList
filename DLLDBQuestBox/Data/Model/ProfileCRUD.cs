@@ -148,9 +148,31 @@ namespace Data.Model
             catch (Exception ex)
             {
                 Notifi.NoConnection(ex);
-            }
-         
+            }         
         }
 
+        public static Tables.Profile AddTest(long id, String group, String name)
+        {
+            Tables.Profile profile = null;
+            try
+            {
+                using (var cont = new Data.MyDbContext())
+                {
+                    var p1 = cont.Profiles.Find(id); //поиск по id
+
+                    if (p1 != null)
+                    {
+                        p1.Tests.Add(new Tables.Test { Group = group, Name = name });      
+                        cont.SaveChanges(); //сохранить
+                        profile = p1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            return profile;
+        }
     }
 }

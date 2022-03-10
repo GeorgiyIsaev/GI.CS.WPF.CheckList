@@ -24,7 +24,7 @@ namespace Data.Model
                     /*Посмотрим все тесты*/
                     foreach (var p in cont.Tests)
                     {
-                        Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
+                        Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name + " ProfileId: " + p.ProfileId);
                     }
                     Console.WriteLine(" - - - ");
                 }
