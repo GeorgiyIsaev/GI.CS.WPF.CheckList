@@ -20,8 +20,12 @@ namespace Data
             ISqlGenerator sqlGenerator = new SqliteSqlGenerator();
             _ = sqlGenerator.Generate(model.StoreModel);
 
+            /*Один ко многим*/
+            modelBuilder.Entity<Tables.Profile>()
+                .HasMany(p => p.Tests)
+                .WithRequired(p => p.Profile);
 
-        
+
 
         }
         public DbSet<Tables.Profile> Profiles { get; set; }

@@ -74,6 +74,7 @@ namespace Test.DBQuestBoxSQLite
             Console.WriteLine("Тесты для профиля " + profile.Name);
             foreach (var t in profile.Tests)
             {
+                Console.WriteLine("Тесты ");
                 Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
             }
         }
