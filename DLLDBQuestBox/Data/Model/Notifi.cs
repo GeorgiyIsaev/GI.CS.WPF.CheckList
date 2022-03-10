@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Model
 {
+    /*Уведомеления*/
     public static class Notifi
     {
         public static void NoConnection(Exception ex)
