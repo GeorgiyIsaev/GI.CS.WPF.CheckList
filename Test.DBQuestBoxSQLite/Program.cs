@@ -62,16 +62,9 @@ namespace Test.DBQuestBoxSQLite
                         }
 
                     }
-                    Console.WriteLine("profileID " + profileID);
-                    foreach (var p in cont.Tests)
-                    {
-                        if (profileID != -1 && profileID == p.ProfileId)
-                        {
-                            Console.WriteLine("Совпадение");
-                            Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
-                            Console.WriteLine("Профиль: " + p.Profile.Name);
-                        }
-                    }
+                    Console.WriteLine("profileID for Admin: " + profileID);
+
+                    PrintTest(cont); //отобразаить тесты
 
                     /*Удаление*/
                     foreach (var p in cont.Profiles)
@@ -89,40 +82,9 @@ namespace Test.DBQuestBoxSQLite
                     cont.SaveChanges(); //сохранять изменение после каждой записи
 
 
-                    /*Удаление*/
-                    /*foreach (var p in cont.Profiles)
-                    {
-                        if (p.Name == "Admin")
-                        {
-                            var profiledelete = p;
-                            Console.WriteLine("Удаляем " + p.Name);
-                            if (profiledelete != null)
-                            {
-                                foreach (var t in cont.Tests)
-                                {
-                                    if (t.ProfileId == p.Id)
-                                    {
-                                        Console.WriteLine("t.ProfileId " + t.ProfileId);
-                                        cont.Tests.Remove(t);
-                                    }
-                                }
-                                cont.Profiles.Remove(profiledelete);
-                            }
-                               
-                        }
-                    }
-                    cont.SaveChanges(); //сохранять изменение после каждой записи*/
-
-
 
                     /*Посмотрим все тесты*/
-                    foreach (var p in cont.Tests)
-                    {
-
-                        Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
-                        /* Console.WriteLine("Профиль: " + p.Profile.Name);*/
-
-                    }
+                    PrintTest(cont);
                 }
             }
             catch (Exception ex)
@@ -132,6 +94,16 @@ namespace Test.DBQuestBoxSQLite
             }
             Console.ReadLine();
         }
+        static void PrintTest(Data.MyDbContext cont)
+        {
+            Console.WriteLine("Все тесты: ");
+            foreach (var p in cont.Tests)
+            {
+                Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name + " Профиль:" + p.Profile.Name);
+            }
+            Console.WriteLine("///");
+        }
+
         static Data.Tables.Profile AddProfile(string name, string password)
         {
             Data.Tables.Profile profile;
@@ -168,6 +140,32 @@ namespace Test.DBQuestBoxSQLite
                 cont.SaveChanges();
             }
         }
+
+    /*    static void deleteProfile(Data.Tables.Profile profile, Data.MyDbContext cont)
+        {
+            Console.WriteLine("Удаляем " + profile.Name);
+            if (profile != null)
+            {
+                cont.Profiles.Remove(profile);
+            }
+        }
+
+        static void deleteProfile(string profileName, Data.MyDbContext cont)
+        {
+            foreach (var p in cont.Profiles)
+            {
+                if (p.Name == profileName);
+                {
+                    Console.WriteLine("Удаляем " + p.Name);
+                    if (p != null)
+                    {
+                        cont.Profiles.Remove(p);
+                    }
+
+                }
+            }
+        }*/
+
 
     }
 
