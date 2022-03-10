@@ -126,7 +126,30 @@ namespace Data.Model
                 Notifi.NoConnection(ex);
             }
             return profile;
-        } 
-    
+        }
+
+        public static void GetTests(long id)
+        {
+            Tables.Profile profile = null;
+            try
+            {
+                using (var cont = new Data.MyDbContext())
+                {
+
+                    var p1 = cont.Profiles.Find(id); //поиск по id
+
+                    if (p1 != null)
+                    {
+                                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+         
+        }
+
     }
 }

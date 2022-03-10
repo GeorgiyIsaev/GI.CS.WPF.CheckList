@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Data.Model
 {
-    class TestCRUD
+    public static class TestCRUD
     {
 
-        public static Data.Tables.Test Add(String name, String group, long profileId)
+        public static Data.Tables.Test Add(String group, String name, long profileId)
         {
             Data.Tables.Test profile = null;
             try
@@ -102,7 +102,7 @@ namespace Data.Model
             return "Профиль " + test.Name + " удален!";
         }
 
-        public static Tables.Test ModmodificationID(long id, String name, String group)
+        public static Tables.Test ModmodificationID(long id , String group, String name)
         {
             Tables.Test test = null;
             try

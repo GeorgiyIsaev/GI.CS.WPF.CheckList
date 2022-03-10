@@ -31,6 +31,29 @@ namespace Test.DBQuestBoxSQLite
             }
 
 
+            /**  ТЕСТ БЛОК С ТЕСТАМИ  **/
+            /*Добавим*/
+            Data.Tables.Test myTest = null;
+            if (profile != null)
+            {
+                Data.Model.TestCRUD.Add("C#", "Базовый уровень", profile.Id);
+                Data.Model.TestCRUD.Add("C#", "Средний уровень", profile.Id);
+                myTest = Data.Model.TestCRUD.Add("C#", "Высокий уровень", profile.Id);
+                Data.Model.TestCRUD.Add("CPP", "Указатели", profile.Id);
+                Data.Model.TestCRUD.Add("CPP", "Ссылки", profile.Id);
+            }
+
+
+
+            /*Изменим по ID*/
+            if (myTest != null)
+            {
+                var myTestMod = Data.Model.TestCRUD.ModmodificationID(myTest.Id,  "Ado.net", myTest.Name);
+                if (myTestMod != null) Console.WriteLine("Group: " + myTestMod.Group + " Name: " + myTestMod.Name + " Id: " + profile.Id);
+                else Console.WriteLine("Запись не найдена! Чтение не возможно!");
+            }
+
+
 
             Console.ReadLine();
         }
