@@ -10,14 +10,27 @@ namespace Test.DBQuestBoxSQLite
     {
         static void Main(string[] args)
         {
+            /*Изменение*/
             var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");        
             Console.WriteLine(profileDel);
 
+            /*Добавление*/
             Data.Model.ProfileCRUD.Add("Admin", "Admin");
 
+            /*Поиск по имени*/
             var profile = Data.Model.ProfileCRUD.GetName("Admin");
             if (profile != null) Console.WriteLine("profile: " + profile.Name + " password: " + profile.Password + " Id: " + profile.Id);
             else Console.WriteLine("Запись Admin не найдена! Чтение не возможно!");
+
+
+            /*Изменение*/
+            if (profile != null) {
+                var profileMod = Data.Model.ProfileCRUD.ModmodificationID(profile.Id, profile.Name, "0000"); //изменяем пароль
+                if (profileMod != null) Console.WriteLine("profile: " + profileMod.Name + " password: " + profileMod.Password + " Id: " + profileMod.Id);
+                else Console.WriteLine("Запись Admin не найдена! Изменить не возможно!");
+            }
+
+
 
             Console.ReadLine();
         }
