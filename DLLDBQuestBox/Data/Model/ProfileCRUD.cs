@@ -101,19 +101,31 @@ namespace Data.Model
             return "Профиль " + profile.Name + " удален!";
         } 
 
-        public static void Modmodification()
+        public static Tables.Profile ModmodificationID(long id, String name, String password)
         {
+            Tables.Profile profile = null;
             try
             {
                 using (var cont = new Data.MyDbContext())
                 {
 
+                    var p1 = cont.Profiles.Find(id); //поиск по id
+
+                    if (p1 != null)
+                    {
+                        p1.Name = name;
+                        p1.Password = password;
+
+                        cont.SaveChanges(); //сохранить
+                        profile = p1;
+                    }         
                 }
             }
             catch (Exception ex)
             {
                 Notifi.NoConnection(ex);
             }
+            return profile;
         } 
     
     }
