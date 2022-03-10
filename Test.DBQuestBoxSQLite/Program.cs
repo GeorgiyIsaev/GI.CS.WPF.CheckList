@@ -21,7 +21,7 @@ namespace Test.DBQuestBoxSQLite
                     {
                         AddProfile("Guest", "0000");
                         var profile = AddProfile("Admin", "Admin");
-                        AddTest("Тема по C#", "Основы С#", 1);
+                       // AddTest("Тема по C#", "Основы С#", 1);
 
 
                         if (profile != null)
@@ -73,10 +73,24 @@ namespace Test.DBQuestBoxSQLite
                         }
                     }
 
+                    /*Удаление*/
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == "Admin")
+                        {                      
+                            Console.WriteLine("Удаляем " + p.Name);
+                            if (p != null)
+                            {
+                                cont.Profiles.Remove(p);
+                            }
+
+                        }
+                    }
+                    cont.SaveChanges(); //сохранять изменение после каждой записи
+
 
                     /*Удаление*/
-
-                    foreach (var p in cont.Profiles)
+                    /*foreach (var p in cont.Profiles)
                     {
                         if (p.Name == "Admin")
                         {
@@ -97,7 +111,10 @@ namespace Test.DBQuestBoxSQLite
                                
                         }
                     }
-                    cont.SaveChanges();
+                    cont.SaveChanges(); //сохранять изменение после каждой записи*/
+
+
+
                     /*Посмотрим все тесты*/
                     foreach (var p in cont.Tests)
                     {
