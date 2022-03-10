@@ -86,6 +86,7 @@ namespace Data.Model
                             profile = p;
                             if (p != null)
                             {
+                                ResetTest(profile.Id);
                                 cont.Profiles.Remove(p);
                             }
                         }
