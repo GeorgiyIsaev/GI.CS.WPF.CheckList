@@ -97,6 +97,7 @@ namespace Test.DBQuestBoxSQLite
                                
                         }
                     }
+                    cont.SaveChanges();
                     /*Посмотрим все тесты*/
                     foreach (var p in cont.Tests)
                     {
