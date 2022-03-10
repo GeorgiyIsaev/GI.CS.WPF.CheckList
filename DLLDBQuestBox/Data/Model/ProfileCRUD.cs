@@ -140,6 +140,7 @@ namespace Data.Model
 
                     if (p1 != null)
                     {
+                        var test = p1.Tests;
                                        
                     }
                 }

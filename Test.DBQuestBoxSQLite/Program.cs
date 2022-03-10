@@ -11,20 +11,21 @@ namespace Test.DBQuestBoxSQLite
         static void Main(string[] args)
         {
             /*Изменение*/
-            var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");        
+            var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");
             Console.WriteLine(profileDel);
 
             /*Добавление*/
             Data.Model.ProfileCRUD.Add("Admin", "Admin");
 
             /*Поиск по имени*/
-            var profile = Data.Model.ProfileCRUD.GetName("Admin");
+            Data.Tables.Profile profile = Data.Model.ProfileCRUD.GetName("Admin");
             if (profile != null) Console.WriteLine("profile: " + profile.Name + " password: " + profile.Password + " Id: " + profile.Id);
             else Console.WriteLine("Запись Admin не найдена! Чтение не возможно!");
 
 
             /*Изменение*/
-            if (profile != null) {
+            if (profile != null)
+            {
                 var profileMod = Data.Model.ProfileCRUD.ModmodificationID(profile.Id, profile.Name, "0000"); //изменяем пароль
                 if (profileMod != null) Console.WriteLine("profile: " + profileMod.Name + " password: " + profileMod.Password + " Id: " + profileMod.Id);
                 else Console.WriteLine("Запись Admin не найдена! Изменить не возможно!");
@@ -33,6 +34,7 @@ namespace Test.DBQuestBoxSQLite
 
             /**  ТЕСТ БЛОК С ТЕСТАМИ  **/
             /*Добавим*/
+            Data.Model.TestCRUD.Add("Пустой", "Ничей", 0);
             Data.Tables.Test myTest = null;
             if (profile != null)
             {
@@ -48,17 +50,40 @@ namespace Test.DBQuestBoxSQLite
             /*Изменим по ID*/
             if (myTest != null)
             {
-                var myTestMod = Data.Model.TestCRUD.ModmodificationID(myTest.Id,  "Ado.net", myTest.Name);
+                var myTestMod = Data.Model.TestCRUD.ModmodificationID(myTest.Id, "Ado.net", myTest.Name);
                 if (myTestMod != null) Console.WriteLine("Group: " + myTestMod.Group + " Name: " + myTestMod.Name + " Id: " + profile.Id);
                 else Console.WriteLine("Запись не найдена! Чтение не возможно!");
             }
 
 
+            /*Показать все тесты*/
+            Data.Model.Notifi.printFullTest();
+
+            /*Показать все тесты конкретного профиля*/
+            PrintTestsProfile(profile);
 
             Console.ReadLine();
         }
+        public static void PrintTestsProfile(Data.Tables.Profile profile)
+        {
+            if (profile == null)
+            {
+                Console.WriteLine("Профильне не найден! ");
+                return;
+            }
+            Console.WriteLine("Тесты для профиля " + profile.Name);
+            foreach (var t in profile.Tests)
+            {
+                Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
+            }
+        }
     }
+
+
 }
+
+
+
 
 
 /* Пакеты которые нужно подключить через нугет

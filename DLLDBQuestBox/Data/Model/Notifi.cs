@@ -14,5 +14,25 @@ namespace Data.Model
             Console.WriteLine("Отсутствует соединение с базой данных!");
             Console.WriteLine(ex.Message);
         }
+        public static void printFullTest()
+        {
+            try
+            {
+                using (var cont = new Data.MyDbContext())
+                {
+                    Console.WriteLine("\nВСЕ ТЕСТЫ!");
+                    /*Посмотрим все тесты*/
+                    foreach (var p in cont.Tests)
+                    {
+                        Console.WriteLine("ID: " + p.Id + " Группа: " + p.Group + " Название: " + p.Name);
+                    }
+                    Console.WriteLine(" - - - ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
     }
 }
