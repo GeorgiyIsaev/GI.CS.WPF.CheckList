@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\Model\Notifi.cs" />
+    <Compile Include="Data\Model\ProfileCRUD.cs" />
     <Compile Include="Data\MyDBContext.cs" />
     <Compile Include="Data\MyDbContextInitializer.cs" />
     <Compile Include="Data\Tables\Answer.cs" />
