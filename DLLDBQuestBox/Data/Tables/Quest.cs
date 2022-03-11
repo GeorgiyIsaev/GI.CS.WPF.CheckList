@@ -18,5 +18,12 @@ namespace Data.Tables
         public string TextComment { get; set; }
         public Test Test { get; set; }
         public long TestId { get; set; }
+
+        public ICollection<Answer> Answers { get; set; }
+        public Quest()
+        {
+            Answers = new List<Answer>();
+        }
+
     }
 }

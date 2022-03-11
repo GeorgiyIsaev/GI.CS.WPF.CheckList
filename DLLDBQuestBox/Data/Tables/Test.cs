@@ -20,5 +20,11 @@ namespace Data.Tables
         public string Name { get; set; }
         public Profile Profile { get; set; }
         public long ProfileId { get; set; }
+
+        public ICollection<Quest> Quests { get; set; }
+        public Test()
+        {
+            Quests = new List<Quest>();
+        }
     }
 }
