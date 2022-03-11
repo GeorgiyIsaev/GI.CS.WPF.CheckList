@@ -11,11 +11,17 @@ namespace Data.Model
     {
         public static void NoConnection(Exception ex)
         {
+            /*Добавить делигат вызвающий событие в главной программе
+             Будит вызвать окно с текстом ошибки при невозможности подключения!*/
+
             Console.WriteLine("Отсутствует соединение с базой данных!");
             Console.WriteLine(ex.Message);
         }
+
+
+
         public static void printFullTest()
-        {
+        { //метод для отладки
             try
             {
                 using (var cont = new Data.MyDbContext())
