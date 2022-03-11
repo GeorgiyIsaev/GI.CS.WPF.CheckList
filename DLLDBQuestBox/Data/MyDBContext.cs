@@ -25,16 +25,25 @@ namespace Data
                  .HasMany(p => p.Tests)
                  .WithRequired(p => p.Profile)
                  .HasForeignKey(s => s.ProfileId)
-                 .WillCascadeOnDelete(false);;
+                 .WillCascadeOnDelete(false);
 
-           /* modelBuilder.Entity<Tables.Test>()
-                 .HasRequired<Tables.Profile>(o => o.Profile)
-                 .WithMany(p => p.Tests)
-                 .HasForeignKey(o => o.ProfileId); */
+            modelBuilder.Entity<Tables.Test>()
+              .HasMany(p => p.Quests)
+              .WithRequired(p => p.Test)
+              .HasForeignKey(s => s.TestId)
+              .WillCascadeOnDelete(false);
 
-            //Персона со списоком оредров
-            //Профиль со списком тестов
+            modelBuilder.Entity<Tables.Quest>()
+              .HasMany(p => p.Answers)
+              .WithRequired(p => p.Quest)
+              .HasForeignKey(s => s.QuestId)
+              .WillCascadeOnDelete(false);
+               
 
+            /* modelBuilder.Entity<Tables.Test>()
+                  .HasRequired<Tables.Profile>(o => o.Profile)
+                  .WithMany(p => p.Tests)
+                  .HasForeignKey(o => o.ProfileId); */
 
         }
         public DbSet<Tables.Profile> Profiles { get; set; }
