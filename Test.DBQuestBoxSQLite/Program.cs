@@ -12,6 +12,16 @@ namespace Test.DBQuestBoxSQLite
     {
         static void Main(string[] args)
         {
+            /*Вариант 1:  !!! Не удобно. Соправождать кажодое действие
+             * подкючением к БД слишком перегружено*/
+            TestConectDBv1();
+
+            /*Варитн 2: Подключится к БД. Получить профиль со всем записями. Отключится к БД
+            Подключатся к БД для Перезаписи только при конкретных операциях
+            Отдельный метод для получения профиля
+            Отдельный метод для сохранения изменения в БД после изменения профиля*/
+
+
             Data.Model.ProfileBox.ConnectProfile("Admin", "0000");
             if (BOX.profile != null)
             {             
@@ -20,6 +30,27 @@ namespace Test.DBQuestBoxSQLite
                 PrintTestsProfile(BOX.profile);
             }
 
+
+
+            Console.Read();
+        }
+        public static void PrintTestsProfile(Data.Tables.Profile profile)
+        {
+            if (profile == null)
+            {
+                Console.WriteLine("Профильне не найден! ");
+                return;
+            }
+            Console.WriteLine("Тесты для профиля " + profile.Name + " ID "+ profile.Tests.Count);
+            foreach (var t in profile.Tests)
+            {           
+                Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
+            }
+            Console.WriteLine(" - - - ");
+        }
+
+        public static void TestConectDBv1()
+        {
 
             ///*Изменение*/
             //var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");
@@ -85,23 +116,9 @@ namespace Test.DBQuestBoxSQLite
             //profile = Data.Model.ProfileCRUD.GetName("Admin");
             //profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
             //PrintTestsProfile(profile);
+        }
 
-            Console.ReadLine();
-        }
-        public static void PrintTestsProfile(Data.Tables.Profile profile)
-        {
-            if (profile == null)
-            {
-                Console.WriteLine("Профильне не найден! ");
-                return;
-            }
-            Console.WriteLine("Тесты для профиля " + profile.Name + " ID "+ profile.Tests.Count);
-            foreach (var t in profile.Tests)
-            {           
-                Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
-            }
-            Console.WriteLine(" - - - ");
-        }
+
     }
 
 
