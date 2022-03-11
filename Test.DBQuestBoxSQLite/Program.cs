@@ -4,76 +4,87 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BOX = Data.Model.ProfileBox;
+
 namespace Test.DBQuestBoxSQLite
 {
     class Program
     {
         static void Main(string[] args)
         {
-            /*Изменение*/
-            var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");
-            Console.WriteLine(profileDel);
-
-            /*Добавление*/
-            Data.Model.ProfileCRUD.Add("Admin", "Admin");
-
-            /*Поиск по имени*/
-            Data.Tables.Profile profile = Data.Model.ProfileCRUD.GetName("Admin");
-            if (profile != null) Console.WriteLine("profile: " + profile.Name + " password: " + profile.Password + " Id: " + profile.Id);
-            else Console.WriteLine("Запись Admin не найдена! Чтение не возможно!");
-
-
-            /*Изменение*/
-            if (profile != null)
-            {
-                var profileMod = Data.Model.ProfileCRUD.ModmodificationID(profile.Id, profile.Name, "0000"); //изменяем пароль
-                if (profileMod != null) Console.WriteLine("profile: " + profileMod.Name + " password: " + profileMod.Password + " Id: " + profileMod.Id);
-                else Console.WriteLine("Запись Admin не найдена! Изменить не возможно!");
+            Data.Model.ProfileBox.ConnectProfile("Admin", "0000");
+            if (BOX.profile != null)
+            {             
+                Console.WriteLine("Вошел в профиль");
+                Console.WriteLine("profile: " + BOX.profile.Name + " password: " + BOX.profile.Password + " Id: " + BOX.profile.Id);
+                PrintTestsProfile(BOX.profile);
             }
 
 
-            /**  ТЕСТ БЛОК С ТЕСТАМИ  **/
-            /*Добавим*/
-            Data.Model.TestCRUD.Add("Пустой", "Ничей", 0);
-            Data.Tables.Test myTest = null;
-            if (profile != null)
-            {
-                Data.Model.TestCRUD.Add("C#", "Базовый уровень", profile.Id);
-                Data.Model.TestCRUD.Add("C#", "Средний уровень", profile.Id);
-                myTest = Data.Model.TestCRUD.Add("C#", "Высокий уровень", profile.Id);
-                Data.Model.TestCRUD.Add("CPP", "Указатели", profile.Id);
-                Data.Model.TestCRUD.Add("CPP", "Ссылки", profile.Id);
-            }
+            ///*Изменение*/
+            //var profileDel = Data.Model.ProfileCRUD.DeleteStr("Admin");
+            //Console.WriteLine(profileDel);
+
+            ///*Добавление*/
+            //Data.Model.ProfileCRUD.Add("Admin", "Admin");
+
+            ///*Поиск по имени*/
+            //Data.Tables.Profile profile = Data.Model.ProfileCRUD.GetName("Admin");
+            //if (profile != null) Console.WriteLine("profile: " + profile.Name + " password: " + profile.Password + " Id: " + profile.Id);
+            //else Console.WriteLine("Запись Admin не найдена! Чтение не возможно!");
+
+
+            ///*Изменение*/
+            //if (profile != null)
+            //{
+            //    var profileMod = Data.Model.ProfileCRUD.ModmodificationID(profile.Id, profile.Name, "0000"); //изменяем пароль
+            //    if (profileMod != null) Console.WriteLine("profile: " + profileMod.Name + " password: " + profileMod.Password + " Id: " + profileMod.Id);
+            //    else Console.WriteLine("Запись Admin не найдена! Изменить не возможно!");
+            //}
+
+
+            ///**  ТЕСТ БЛОК С ТЕСТАМИ  **/
+            ///*Добавим*/
+            //Data.Model.TestCRUD.Add("Пустой", "Ничей", 0);
+            //Data.Tables.Test myTest = null;
+            //if (profile != null)
+            //{
+            //    Data.Model.TestCRUD.Add("C#", "Базовый уровень", profile.Id);
+            //    Data.Model.TestCRUD.Add("C#", "Средний уровень", profile.Id);
+            //    myTest = Data.Model.TestCRUD.Add("C#", "Высокий уровень", profile.Id);
+            //    Data.Model.TestCRUD.Add("CPP", "Указатели", profile.Id);
+            //    Data.Model.TestCRUD.Add("CPP", "Ссылки", profile.Id);
+            //}
 
 
 
-            /*Изменим по ID*/
-            if (myTest != null)
-            {
-                var myTestMod = Data.Model.TestCRUD.ModmodificationID(myTest.Id, "Ado.net", myTest.Name);
-                if (myTestMod != null) Console.WriteLine("Group: " + myTestMod.Group + " Name: " + myTestMod.Name + " Id: " + profile.Id);
-                else Console.WriteLine("Запись не найдена! Чтение не возможно!");
-            }
+            ///*Изменим по ID*/
+            //if (myTest != null)
+            //{
+            //    var myTestMod = Data.Model.TestCRUD.ModmodificationID(myTest.Id, "Ado.net", myTest.Name);
+            //    if (myTestMod != null) Console.WriteLine("Group: " + myTestMod.Group + " Name: " + myTestMod.Name + " Id: " + profile.Id);
+            //    else Console.WriteLine("Запись не найдена! Чтение не возможно!");
+            //}
 
 
-            /*Показать все тесты*/
-            Data.Model.Notifi.printFullTest();
+            ///*Показать все тесты*/
+            //Data.Model.Notifi.printFullTest();
 
-            /*Показать все тесты конкретного профиля*/
-            profile = Data.Model.ProfileCRUD.GetName("Admin");
-            PrintTestsProfile(profile);
+            ///*Показать все тесты конкретного профиля*/
+            //profile = Data.Model.ProfileCRUD.GetName("Admin");
+            //PrintTestsProfile(profile);
 
-            profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок1");
-            profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
+            //profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок1");
+            //profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
 
-            // profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок2");
-            Data.Model.Notifi.printFullTest();
+            //// profile = Data.Model.ProfileCRUD.AddTest(profile.Id, "Супер тест", "Блок2");
+            //Data.Model.Notifi.printFullTest();
 
-            PrintTestsProfile(profile);
+            //PrintTestsProfile(profile);
 
-            profile = Data.Model.ProfileCRUD.GetName("Admin");
-            profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
-            PrintTestsProfile(profile);
+            //profile = Data.Model.ProfileCRUD.GetName("Admin");
+            //profile = Data.Model.ProfileCRUD.ResetTest(profile.Id);
+            //PrintTestsProfile(profile);
 
             Console.ReadLine();
         }
@@ -86,8 +97,7 @@ namespace Test.DBQuestBoxSQLite
             }
             Console.WriteLine("Тесты для профиля " + profile.Name + " ID "+ profile.Tests.Count);
             foreach (var t in profile.Tests)
-            {
-                Console.WriteLine("Тесты ");
+            {           
                 Console.WriteLine("ID: " + t.Id + " Группа: " + t.Group + " Название: " + t.Name);
             }
             Console.WriteLine(" - - - ");
