@@ -24,6 +24,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             InitializeComponent();
             ReplaceWindow();
         }
+
         bool isCrateProfile = false; //состояние текущего окна
         void ReplaceWindow()
         {
@@ -37,7 +38,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
             else
             {
-                Title = "Войти в профиль";
+                Title = "Вход в профиль";
                 Buttun_CreateProfile.Content = "Создать новый профиль";
                 Buttun_EnterProfile.Content = "Войти";
                 TB_Pass02i.Visibility = Visibility.Collapsed;
@@ -50,11 +51,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (isCrateProfile)isCrateProfile = false;            
             else isCrateProfile = true; 
             ReplaceWindow();
-        }
-
-        private void Accept_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
         }
 
         public string ProfileName
@@ -70,15 +66,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             get { return TB_Pass02.Text; }
         }
 
-
-
         private void Buttun_EnterProfile_Click(object sender, RoutedEventArgs e)
         {
             if (ProfileName == ""){ MessageBox.Show("Не введено имя профиля");return; }
             if (Password01 == "") { MessageBox.Show("Не введен пароль"); return; }
             if (isCrateProfile)
             {
-                if (Password01 == Password02) { MessageBox.Show("Пороль не совпадает"); return; }
+                if (Password01 != Password02) { MessageBox.Show("Пороль не совпадает"); return; }
+
+                /*Действие с созданием новго профиля*/
                 this.DialogResult = true;
             }
             else
@@ -88,9 +84,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 /*Пока типа два профиля*/
                 if (ProfileName == "1" && Password01 == "1") {this.DialogResult = true; return; }
                 if (ProfileName == "Admin" && Password01 == "Admin") {this.DialogResult = true; return; }
-
-                MessageBox.Show("Совпадения имяни пароля не обнаружено!");
-                
+                MessageBox.Show("Совпадения имяни пароля не обнаружено!");                
             }
         }
     }
