@@ -159,6 +159,22 @@ namespace GI.CS.WPF.FW.CheckList
             new Windows_Load().ShowDialog();
             NewTitle();
         }
+        /*Меню Файл-> Добавить из файла v2*/
+        private void MenuItemLoad2_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter = "Html documents (*.html)|*.html";
+            dialog.Filter += "|Text documents(*.txt)|*.txt";
+            dialog.Filter += "|JSON documents (*.json)|*.json";
+            dialog.Filter += "|All files (*.*)|*.*";         
+            //dialog.FilterIndex = 0;
+            Nullable<bool> result = dialog.ShowDialog();
+            if (result == true)
+            {
+                // Open document
+                string filename = dialog.FileName;
+            }
+        }
         /*Меню Запустить тест*/
         private void MenuItemStartTest_Click(object sender, RoutedEventArgs e)
         {
