@@ -9,9 +9,11 @@ using System.Windows.Controls;
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
     public class MenuItemRefresh
-    {
-        static bool isLogin = false;
-
+    {   
+        
+        static bool isLogin = true;
+        //static bool isLogin = false;
+     
         public static void Refresh(MainWindow mainWindow)
         {
 

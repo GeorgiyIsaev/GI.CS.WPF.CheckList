@@ -9,22 +9,40 @@
         Title="Управление профилем"  Height="467" Width="804" FontSize="14" 
         >
     <Grid>
-        <Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <!--<Grid.ColumnDefinitions>
+        <!--<Grid Grid.Column="1" Margin="2,34,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            --><!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
-            </Grid.ColumnDefinitions>-->
+            </Grid.ColumnDefinitions>--><!--
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-        </Grid>
+        </Grid>-->
         <Label Content="Имя профиля:" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
         <TextBox Name="TextBox_ProfileName" HorizontalAlignment="Left" Height="23" Margin="131,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187"/>
-        <Label Content="Имя профиля:" HorizontalAlignment="Left" Margin="322,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
+        <Label Content="Новый Пароль:" HorizontalAlignment="Left" Margin="322,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
         <PasswordBox x:Name="TextBox_ProfilePassword" HorizontalAlignment="Left" Height="23" Margin="451,5,0,0"  VerticalAlignment="Top" Width="187"/>
+        <Button Content="Обновить" HorizontalAlignment="Left" Margin="661,4,0,0" VerticalAlignment="Top" Width="125"/>
+
+        <Grid Background="Lavender" Margin="0,39,0,0">
+            <DataGrid x:Name="Tables_TestBox" AutoGenerateColumns="True">
+             
+                <DataGrid.Resources>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No" Binding="{Binding Path=No}" Width="50" />
+                    <DataGridTextColumn Header="Группа" Binding="{Binding Path=GroupName}" Width="150" />
+                    <DataGridTextColumn Header="Название Теста" Binding="{Binding Path=TestName}" Width="190" />
+                    <DataGridTextColumn Header="Колличество" Binding="{Binding Path=Count}" Width="100" />            
+                </DataGrid.Columns>   
+            </DataGrid>
+        </Grid>
+     
+
+
     </Grid>
 </Window>
