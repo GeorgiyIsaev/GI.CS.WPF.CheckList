@@ -29,7 +29,17 @@ namespace Data.Model
                                 throw new Exception("Неверный пароль");
                             }
                             p.Refresh(); // обновляем запись
+
+                           /* var tetsProfile = cont.Tests.Where(x => x.ProfileId == p.Id);
+                            Console.WriteLine("tetsProfile" + tetsProfile);
+                            foreach (var temp in tetsProfile)
+                            {
+                                Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
+                               /* Console.WriteLine(temp.Name);
+                                p.Tests.Add(temp);
+                            }*/
                             Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
+
                             profile = p;
                             Console.WriteLine("    profile.Tests.Count " + profile.Tests.Count);
                         }
