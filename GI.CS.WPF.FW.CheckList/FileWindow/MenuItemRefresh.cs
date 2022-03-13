@@ -76,7 +76,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private static void ManagementProfile(MainWindow mainWindow)
         {
             //MessageBox.Show("Управление");
-         
+            new Window_ManagementProfile().ShowDialog();
+       
         }
 
         /*Меню-Профиль  Создать тест*/
@@ -84,7 +85,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {     
             String nameTest = DateTime.Now.ToString();
             String nameGroup = "Без группы";
-            MessageBox.Show($"Сздан тест: Група [{nameGroup}] Название [{nameTest}]");
+            MessageBox.Show($"Создан тест: Група [{nameGroup}] Название [{nameTest}]");
         }
 
     }

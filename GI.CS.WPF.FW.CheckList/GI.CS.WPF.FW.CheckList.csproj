@@ -121,6 +121,9 @@
     <Compile Include="FileWindow\Window_DescriptionForApplication.xaml.cs">
       <DependentUpon>Window_DescriptionForApplication.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileWindow\Window_ManagementProfile.xaml.cs">
+      <DependentUpon>Window_ManagementProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
     <Page Include="FileWindow\Window_Load.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FileWindow\Window_ManagementProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FileWindow\Window_StartTest.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -59,11 +59,11 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         public string Password01
         {
-            get { return TB_Pass01.Text; }
+            get { return TB_Pass01.Password; }
         }
         public string Password02
         {
-            get { return TB_Pass02.Text; }
+            get { return TB_Pass02.Password; }
         }
 
         private void Buttun_EnterProfile_Click(object sender, RoutedEventArgs e)
