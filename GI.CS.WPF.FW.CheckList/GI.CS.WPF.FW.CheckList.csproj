@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileBackend\ReadFile.cs" />
     <Compile Include="FileBackend\StructCCS.cs" />
   </ItemGroup>
   <ItemGroup>
