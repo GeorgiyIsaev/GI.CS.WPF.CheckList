@@ -105,6 +105,7 @@
     <Compile Include="FileBackend\QuestItem.cs" />
     <Compile Include="FileBackend\QuestsBox.cs" />
     <Compile Include="FileBackend\QuestsBoxForTest.cs" />
+    <Compile Include="FileWindow\MenuItemRefresh.cs" />
     <Compile Include="FileWindow\Window_LoginProfile.xaml.cs">
       <DependentUpon>Window_LoginProfile.xaml</DependentUpon>
     </Compile>

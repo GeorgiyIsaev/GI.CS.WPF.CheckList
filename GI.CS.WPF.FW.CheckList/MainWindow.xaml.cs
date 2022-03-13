@@ -38,8 +38,15 @@ namespace GI.CS.WPF.FW.CheckList
 
             /*Чтение из временого файла*/
             EditionTXT.file_readTXT("TEMPTXT.txt");
-            NewTitle();
+            NewTitle();   
+
+
+            MenuItemRefresh.Refresh(this);
+         
         }
+
+
+
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
@@ -215,8 +222,6 @@ namespace GI.CS.WPF.FW.CheckList
         private void NewTitle()
         {
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
-        }
-
-       
+        }       
     } 
 }
