@@ -62,18 +62,34 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
             if (nameColumn == "Группа" || nameColumn == "Название Теста") return;
-
-
-                          /*Получаем индекс и столбец*/
-                          var d = Tables_TestBox.SelectedIndex;
+            /*Получаем индекс и столбец*/
+            var d = Tables_TestBox.SelectedIndex;
 
             DataRowView rowView = Tables_TestBox.SelectedValue as DataRowView;
 
-            var i = Tables_TestBox.CurrentCell.Column.Header.ToString();
-            var i1 = Tables_TestBox.SelectedValue;
+            //int index= Tables_TestBox.CurrentCell.Column.Header.ToString();
       
 
-            MessageBox.Show("Нажатие на таблицу " + d + " " + i1 + " " );
+
+            int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex;
+            var selectedCell = Tables_TestBox.SelectedCells[selectedColumn];
+            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
+
+            MessageBox.Show("selectedColumn " + selectedColumn + " \nselectedCell " + selectedCell + " \ncellContent "+ cellContent);
+
+            if (cellContent is TextBlock)
+            {
+                MessageBox.Show((cellContent as TextBlock).Text);
+            }
+
+         
+            MessageBox.Show("Нажатие на таблицу " + d + " " + 0 + " " );
+
+
+            var row = (DataGridRow)Tables_TestBox.ItemContainerGenerator.ContainerFromIndex(d);
+
+            var rowp = (TablesTest)row;
+            MessageBox.Show("row " + row + " \n rowp" + rowp + " ");
         }
 
    
