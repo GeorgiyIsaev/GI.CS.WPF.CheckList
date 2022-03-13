@@ -109,14 +109,14 @@
     <Compile Include="FileWindow\Window_LoginProfile.xaml.cs">
       <DependentUpon>Window_LoginProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileWindow\Windows_HTNLSetup.xaml.cs">
-      <DependentUpon>Windows_HTNLSetup.xaml</DependentUpon>
+    <Compile Include="FileWindow\Window_HTNLSetup.xaml.cs">
+      <DependentUpon>Window_HTNLSetup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileWindow\Windows_Load.xaml.cs">
-      <DependentUpon>Windows_Load.xaml</DependentUpon>
+    <Compile Include="FileWindow\Window_Load.xaml.cs">
+      <DependentUpon>Window_Load.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileWindow\Windows_StartTest.xaml.cs">
-      <DependentUpon>Windows_StartTest.xaml</DependentUpon>
+    <Compile Include="FileWindow\Windows_StartTest.cs">
+      <DependentUpon>Window_StartTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileWindow\Window_DescriptionForApplication.xaml.cs">
       <DependentUpon>Window_DescriptionForApplication.xaml</DependentUpon>
@@ -158,15 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FileWindow\Windows_HTNLSetup.xaml">
+    <Page Include="FileWindow\Window_HTNLSetup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FileWindow\Windows_Load.xaml">
+    <Page Include="FileWindow\Window_Load.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FileWindow\Windows_StartTest.xaml">
+    <Page Include="FileWindow\Window_StartTest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

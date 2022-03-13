@@ -153,7 +153,7 @@ namespace GI.CS.WPF.FW.CheckList
         /*Меню Файл-> Сохранить в файл*/
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
-            new Windows_HTNLSetup().ShowDialog();          
+            new Window_HTNLSetup().ShowDialog();          
         }
         /*Меню Файл-> Открыть католок*/
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
@@ -164,7 +164,7 @@ namespace GI.CS.WPF.FW.CheckList
         /*Меню Файл-> Добавить из файла*/
         private void MenuItemLoad_Click(object sender, RoutedEventArgs e)
         {
-            new Windows_Load().ShowDialog();
+            new Window_Load().ShowDialog();
             NewTitle();
         }
         /*Меню Файл-> Добавить из файла v2 - Правильный*/
@@ -192,7 +192,7 @@ namespace GI.CS.WPF.FW.CheckList
                 MessageBox.Show("Недостаточно вопросов для запуска теста");
                 return;
             }
-            new Windows_StartTest().ShowDialog();
+            new Window_StartTest().ShowDialog();
         }
         /*Меню Файл-> Очистить лист*/
         private void MenuItemClear_Click(object sender, RoutedEventArgs e)

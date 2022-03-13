@@ -16,9 +16,9 @@ namespace GI.CS.WPF.FW.CheckList
     /// <summary>
     /// Логика взаимодействия для Windows_HTNLSetup.xaml
     /// </summary>
-    public partial class Windows_Load : Window
+    public partial class Window_Load : Window
     {
-        public Windows_Load()
+        public Window_Load()
         {
             InitializeComponent();
             Loaded += Windows_HTNLSetup_Loaded;

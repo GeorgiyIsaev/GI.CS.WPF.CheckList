@@ -51,7 +51,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow)
         {
-            WindowLoginProfile windowLoginProfile = new WindowLoginProfile();
+            Window_LoginProfile windowLoginProfile = new Window_LoginProfile();
 
             if (windowLoginProfile.ShowDialog() == true)
             {  

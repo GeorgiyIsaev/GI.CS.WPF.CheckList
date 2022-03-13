@@ -17,9 +17,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     /// <summary>
     /// Логика взаимодействия для WindowLoginProfile.xaml
     /// </summary>
-    public partial class WindowLoginProfile : Window
+    public partial class Window_LoginProfile : Window
     {
-        public WindowLoginProfile()
+        public Window_LoginProfile()
         {
             InitializeComponent();
             ReplaceWindow();

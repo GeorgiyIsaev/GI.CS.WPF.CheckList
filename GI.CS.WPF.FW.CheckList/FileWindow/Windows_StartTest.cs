@@ -15,14 +15,14 @@ namespace GI.CS.WPF.FW.CheckList
     /// <summary>
     /// Логика взаимодействия для Windows_StartTest.xaml
     /// </summary>
-    public partial class Windows_StartTest : Window
+    public partial class Window_StartTest : Window
     {
         private int currentItem = 0;
         private int finalItem = 20;
         private bool currentStatus = true;
         private int trueAnswerCount = 0;
 
-        public Windows_StartTest()
+        public Window_StartTest()
         {
             InitializeComponent();
             Loaded += Windows_StartTest_Loaded;
