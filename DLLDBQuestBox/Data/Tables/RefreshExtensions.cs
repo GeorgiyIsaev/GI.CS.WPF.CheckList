@@ -17,20 +17,20 @@ namespace Data.Tables
                 using (var cont = new Data.MyDbContext())
                 {
 
-                    Console.WriteLine("    EXpProfile " + profile.Name);
+                  //  Console.WriteLine("    EXpProfile " + profile.Name);
 
                     var sqlWhereProfile = cont.Tests.Where(x => x.ProfileId == profile.Id);
-                    Console.WriteLine("    sqlWhereProfile " + sqlWhereProfile.ToString());
+                   // Console.WriteLine("    sqlWhereProfile " + sqlWhereProfile.ToString());
             
                     foreach (var myTest in sqlWhereProfile)
                     {
                         profile.Tests.Add(myTest);
-                        Console.WriteLine("    EXp.Tests.Count " + profile.Tests.Count);                  
+                       // Console.WriteLine("    EXp.Tests.Count " + profile.Tests.Count);                  
                         var sqlWhereTeest = cont.Quests.Where(x => x.TestId == myTest.Id);
                         foreach (var myQuest in sqlWhereTeest)
                         {
                             myTest.Quests.Add(myQuest);
-                            Console.WriteLine("    EXtestProfile.Quests.Count " + myTest.Quests.Count);
+                           // Console.WriteLine("    EXtestProfile.Quests.Count " + myTest.Quests.Count);
 
                             var sqlWhereQuest = cont.Answers.Where(x => x.QuestId == myQuest.Id);
                             foreach (var myAnswer in sqlWhereQuest)
