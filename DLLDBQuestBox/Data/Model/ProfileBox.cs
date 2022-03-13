@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Tables;
 
 namespace Data.Model
 {
@@ -22,21 +23,13 @@ namespace Data.Model
                     {
                         if (p.Name == name)
                         {
-                           // Console.WriteLine(name + " " + p.Password);
+                            // Console.WriteLine(name + " " + p.Password);
                             if (p.Password != password)
                             {
                                 throw new Exception("Неверный пароль");
                             }
-                            var tetsProfile = cont.Tests.Where(x => x.ProfileId == p.Id);
-                            Console.WriteLine("tetsProfile" + tetsProfile);
-                            foreach (var temp in tetsProfile)
-                            {
-                                Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
-                               /* Console.WriteLine(temp.Name);
-                                p.Tests.Add(temp);*/
-                            }
+                            p.Refresh(); // обновляем запись
                             Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
-
                             profile = p;
                             Console.WriteLine("    profile.Tests.Count " + profile.Tests.Count);
                         }
