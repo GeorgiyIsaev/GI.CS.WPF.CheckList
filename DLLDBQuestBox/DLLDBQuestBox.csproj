@@ -72,6 +72,7 @@
     <Compile Include="Data\MyDbContextInitializer.cs" />
     <Compile Include="Data\Tables\Answer.cs" />
     <Compile Include="Data\Tables\Quest.cs" />
+    <Compile Include="Data\Tables\RefreshExtensions.cs" />
     <Compile Include="Data\Tables\Test.cs" />
     <Compile Include="Data\Tables\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
