@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Data.Model
 {
     /*(англ. create), чтение (read), модификация (update), удаление (delete).*/
-    public static class ProfileCRUD
+    public static class ProfileCRUD_FOOL
     {
         public static Data.Tables.Profile Add(String name, String password)
         {
