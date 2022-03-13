@@ -32,8 +32,8 @@ namespace Data.Model
                             foreach (var temp in tetsProfile)
                             {
                                 Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
-                                Console.WriteLine(temp.Name);
-                                p.Tests.Add(temp);
+                               /* Console.WriteLine(temp.Name);
+                                p.Tests.Add(temp);*/
                             }
                             Console.WriteLine("    p.Tests.Count " + p.Tests.Count);
 
