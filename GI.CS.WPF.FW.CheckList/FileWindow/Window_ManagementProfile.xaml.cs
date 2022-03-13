@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             public string GroupName { get; set; }
             public string TestName { get; set; }
             public int Count { get; set; }
-
+            public string Btn { get; set; } = "Изменить";
         }
 
  
@@ -55,5 +56,26 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             Tables_TestBox.ItemsSource = tablesTest;
         }
+
+        private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
+            if (nameColumn == "Группа" || nameColumn == "Название Теста") return;
+
+
+                          /*Получаем индекс и столбец*/
+                          var d = Tables_TestBox.SelectedIndex;
+
+            DataRowView rowView = Tables_TestBox.SelectedValue as DataRowView;
+
+            var i = Tables_TestBox.CurrentCell.Column.Header.ToString();
+            var i1 = Tables_TestBox.SelectedValue;
+      
+
+            MessageBox.Show("Нажатие на таблицу " + d + " " + i1 + " " );
+        }
+
+   
     }
 }
