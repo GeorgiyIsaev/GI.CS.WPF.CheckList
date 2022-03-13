@@ -213,11 +213,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             new Window_DescriptionForApplication().ShowDialog();          
         }
-        /*Меню-Профиль войтив профиль*/
-        private void MenuItemLoginProfile_Click(object sender, RoutedEventArgs e)
-        {
-            new WindowLoginProfile().ShowDialog();
-        }
+
 
         private void NewTitle()
         {

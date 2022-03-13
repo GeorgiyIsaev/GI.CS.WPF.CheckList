@@ -22,10 +22,19 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi.Header = "Выйти из профиля";
                 mi.Click += new RoutedEventHandler(
                  (sendItem, args) => { LogOut(mainWindow); });
-
                 mainWindow.MenuItem_Profile.Items.Add(mi);
-         
 
+                MenuItem mi2 = new MenuItem();
+                mi2.Header = "Управление профилем";
+                mi2.Click += new RoutedEventHandler(
+                 (sendItem, args) => { ManagementProfile(mainWindow); });
+                mainWindow.MenuItem_Profile.Items.Add(mi2);
+
+                MenuItem mi3 = new MenuItem();
+                mi3.Header = "Создать новый тест";
+                mi3.Click += new RoutedEventHandler(
+                 (sendItem, args) => { CreateNewTest(mainWindow); });
+                mainWindow.MenuItem_Profile.Items.Add(mi3);
             }
             else
             {
@@ -39,18 +48,43 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             }
         }
-
+        /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow)
         {
-            //MessageBox.Show("Действие");
-            isLogin = true;
+            WindowLoginProfile windowLoginProfile = new WindowLoginProfile();
+
+            if (windowLoginProfile.ShowDialog() == true)
+            {  
+                MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+                isLogin = true;
+            }
+            else
+            {
+                MessageBox.Show("Авторизация не пройдена");
+            }
             Refresh(mainWindow);
         }
+        /*Меню-Профиль выйти из профиля*/
         private static void LogOut(MainWindow mainWindow)
         {
             //MessageBox.Show("Действие");
             isLogin = false;
             Refresh(mainWindow);
+        }
+
+        /*Меню-Профиль  Управление профилем*/
+        private static void ManagementProfile(MainWindow mainWindow)
+        {
+            //MessageBox.Show("Управление");
+         
+        }
+
+        /*Меню-Профиль  Создать тест*/
+        private static void CreateNewTest(MainWindow mainWindow)
+        {     
+            String nameTest = DateTime.Now.ToString();
+            String nameGroup = "Без группы";
+            MessageBox.Show($"Сздан тест: Група [{nameGroup}] Название [{nameTest}]");
         }
 
     }
