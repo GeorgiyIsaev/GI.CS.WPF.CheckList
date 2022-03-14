@@ -73,11 +73,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
                 //tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
                 //Tables_TestBox.ItemsSource = tablesTest;
+               
+                Tables_TestBox.ItemsSource = null;
+                Tables_TestBox.ItemsSource = tablesTest;
                 Tables_TestBox.Items.Refresh();
 
 
 
-                MessageBox.Show("customer: " + customer.No.ToString());
+                // MessageBox.Show("customer: " + customer.No.ToString());
             }
 
 
@@ -93,6 +96,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 return;
             }
             tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
+           
+            Tables_TestBox.ItemsSource = null;
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh(); 
 
