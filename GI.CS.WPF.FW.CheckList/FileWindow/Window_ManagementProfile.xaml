@@ -47,10 +47,10 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Button Name="Button_AddNewTest2" Click="Button_AddNewTest_Click" Content="Добавить новый тест" HorizontalAlignment="Left" Margin="598,400,0,0" VerticalAlignment="Top" Width="174"/>
-        <Label Content="Группа:" HorizontalAlignment="Left" Margin="2,400,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
+        <Button Name="Button_AddNewTest2" Click="Button_AddNewTest_Click" Content="Добавить новый тест" HorizontalAlignment="Left" Margin="598,398,0,0" VerticalAlignment="Top" Width="174"/>
+        <Label Content="Группа:" HorizontalAlignment="Left" Margin="2,398,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
         <TextBox Name="TextBox_GroupName" HorizontalAlignment="Left" Height="23" Margin="80,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187"/>
-        <Label Content="Имя теста:" HorizontalAlignment="Left" Margin="283,400,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
+        <Label Content="Имя теста:" HorizontalAlignment="Left" Margin="283,398,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
         <TextBox Name="TextBox_TestName" HorizontalAlignment="Left" Height="23" Margin="380,400,0,0"  VerticalAlignment="Top" Width="187"/>
 
     </Grid>

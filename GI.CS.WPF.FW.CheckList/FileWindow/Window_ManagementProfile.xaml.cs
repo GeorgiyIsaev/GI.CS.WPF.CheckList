@@ -55,16 +55,32 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {                
+        {     
+            //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
+            //if (selectedColumn == 1 || selectedColumn == 2) return;
+
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
-            if (nameColumn == "Группа" || nameColumn == "Название Теста") return;
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            if(nameColumn == "Открыть")
+            {
+                var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+                TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+                MessageBox.Show("Открыт объект: " + customer.No.ToString());
+            }
+            if (nameColumn == "Удалить")
+            {
+                TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+                tablesTest.Remove(customer);
 
-            int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
-            if (selectedColumn == 1 || selectedColumn == 2) return;
+                //tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
+                //Tables_TestBox.ItemsSource = tablesTest;
+                Tables_TestBox.Items.Refresh();
 
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("customer: " + customer.No.ToString());
+
+
+                MessageBox.Show("customer: " + customer.No.ToString());
+            }
+
+
         }
 
         private void Button_AddNewTest_Click(object sender, RoutedEventArgs e)
