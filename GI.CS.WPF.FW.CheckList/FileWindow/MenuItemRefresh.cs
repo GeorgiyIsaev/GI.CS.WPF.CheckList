@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ProfileBox = Data.Model.ProfileBox;
+
 
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
     public class MenuItemRefresh
     {   
         
-        static bool isLogin = true;
-        //static bool isLogin = false;
+        //static bool isLogin = true;
+        static bool isLogin = false;
      
         public static void Refresh(MainWindow mainWindow)
         {
@@ -20,6 +22,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             mainWindow.MenuItem_Profile.Items.Clear();
             if (isLogin)
             {
+                TestConectDB();
+
                 MenuItem mi = new MenuItem();
                 mi.Header = "Выйти из профиля";
                 mi.Click += new RoutedEventHandler(
@@ -52,10 +56,20 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         private static void TestConectDB()
         {
-          
+
+            Data.Model.ProfileBox.ConnectProfile("Admin", "0000");
+
+            if (ProfileBox.profile != null)
+            {
+                MessageBox.Show("!!!!!");
+                String text = "profile: " + ProfileBox.profile.Name + " password: " + ProfileBox.profile.Password + " Id: " + ProfileBox.profile.Id;
+                MessageBox.Show(text);
+            }
+            //MessageBox.Show("МИМА");
+
         }
 
-    
+
 
 
 
