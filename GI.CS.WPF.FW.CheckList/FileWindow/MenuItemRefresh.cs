@@ -50,6 +50,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             }
         }
+        private static void TestConectDB()
+        {
+
+        }
+
+
+
+
         /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow)
         {

@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace Data.Model
 {
+    delegate void Message(String text);
+
     /*Уведомеления*/
     public static class Notifi
     {
+
+        static Message mes;
+
+        internal static Message Mes { get => mes; set => mes = value; }
+
         public static void NoConnection(Exception ex)
         {
             /*Добавить делигат вызвающий событие в главной программе
              Будит вызвать окно с текстом ошибки при невозможности подключения!*/
 
-            Console.WriteLine("Отсутствует соединение с базой данных!");
-            Console.WriteLine(ex.Message);
+            String textError = "Ошибка соединения с Базой Дынных.\n";
+            textError += ex.Message;
+
+
+           // Console.WriteLine(textError);
+            mes(textError);
         }
 
 

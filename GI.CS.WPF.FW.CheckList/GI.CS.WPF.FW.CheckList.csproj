@@ -190,5 +190,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLLDBQuestBox\DLLDBQuestBox.csproj">
+      <Project>{531cd185-ef6f-4b41-8d16-bbef51258dd4}</Project>
+      <Name>DLLDBQuestBox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
