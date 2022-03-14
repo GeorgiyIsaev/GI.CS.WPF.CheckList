@@ -42,10 +42,14 @@ namespace GI.CS.WPF.FW.CheckList
 
 
             MenuItemRefresh.Refresh(this);
-         
+            Data.Model.Notifi.mes += MesageNotConect;
         }
 
-
+        private static void MesageNotConect(string text)
+        {
+            /*Метод который отрабатывает при ошибке*/
+            MessageBox.Show(text);
+        }
 
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)

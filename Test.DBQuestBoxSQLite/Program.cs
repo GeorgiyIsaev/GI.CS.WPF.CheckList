@@ -20,7 +20,8 @@ namespace Test.DBQuestBoxSQLite
             Подключатся к БД для Перезаписи только при конкретных операциях
             Отдельный метод для получения профиля
             Отдельный метод для сохранения изменения в БД после изменения профиля*/
-
+            Data.Model.Notifi.mes += MesageNotConect;
+  
 
             Data.Model.ProfileBox.ConnectProfile("Admin", "00001");
 
@@ -35,6 +36,12 @@ namespace Test.DBQuestBoxSQLite
 
             Console.Read();
         }
+
+        private static void MesageNotConect(string text)
+        {
+            Console.WriteLine("Делегат отработал\n" + text);
+        }
+
         public static void PrintTestsProfile(Data.Tables.Profile profile)
         {
             if (profile == null)

@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Data.Model
 {
-    delegate void Message(String text);
+    public delegate void Message(String text);
 
     /*Уведомеления*/
     public static class Notifi
     {
 
-        static Message mes;
+        public static Message mes;
 
-        internal static Message Mes { get => mes; set => mes = value; }
 
         public static void NoConnection(Exception ex)
         {
