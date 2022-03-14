@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BOX = Data.Model.ProfileBox;
+using BOX = DataBase.Model.ProfileBox;
 
 namespace Test.DBQuestBoxSQLite
 {
@@ -20,10 +20,10 @@ namespace Test.DBQuestBoxSQLite
             Подключатся к БД для Перезаписи только при конкретных операциях
             Отдельный метод для получения профиля
             Отдельный метод для сохранения изменения в БД после изменения профиля*/
-            Data.Model.Notifi.mes += MesageNotConect;
+            DataBase.Model.Notifi.mes += MesageNotConect;
   
 
-            Data.Model.ProfileBox.ConnectProfile("Admin", "0000");
+            DataBase.Model.ProfileBox.ConnectProfile("Admin", "0000");
 
             if (BOX.profile != null)
             {             
@@ -42,7 +42,7 @@ namespace Test.DBQuestBoxSQLite
             Console.WriteLine("Делегат отработал\n" + text);
         }
 
-        public static void PrintTestsProfile(Data.Tables.Profile profile)
+        public static void PrintTestsProfile(DataBase.Tables.Profile profile)
         {
             if (profile == null)
             {

@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Model
+namespace DataBase.Model
 {
     public static class TestCRUD
     {
 
-        public static Data.Tables.Test Add(String group, String name, long profileId)
+        public static DataBase.Tables.Test Add(String group, String name, long profileId)
         {
-            Data.Tables.Test profile = null;
+            DataBase.Tables.Test profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     /*Заполнение таблицы */
-                    profile = new Data.Tables.Test { Name = name, Group = group, ProfileId = profileId};
+                    profile = new DataBase.Tables.Test { Name = name, Group = group, ProfileId = profileId};
                     cont.Tests.Add(profile);
                     cont.SaveChanges();
                 }
@@ -33,7 +33,7 @@ namespace Data.Model
             Tables.Test profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     var p1 = cont.Tests.Find(id); //поиск по id
                     if (p1 != null)
@@ -54,7 +54,7 @@ namespace Data.Model
             Tables.Test test = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     foreach (var p in cont.Tests)
                     {
@@ -78,7 +78,7 @@ namespace Data.Model
             Tables.Test test = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     foreach (var t in cont.Tests)
                     {
@@ -107,7 +107,7 @@ namespace Data.Model
             Tables.Test test = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
 
                     var t = cont.Tests.Find(id); //поиск по id

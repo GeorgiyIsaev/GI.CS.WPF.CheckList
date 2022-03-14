@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.Tables;
+using DataBase.Tables;
 
-namespace Data.Model
+namespace DataBase.Model
 {
     public static class ProfileBox
     {
-        public static Data.Tables.Profile profile;
+        public static DataBase.Tables.Profile profile;
 
 
         public static void ConnectProfile(String name, String password)
@@ -17,7 +17,7 @@ namespace Data.Model
             //Data.Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     foreach (var p in cont.Profiles)
                     {
@@ -44,7 +44,7 @@ namespace Data.Model
         {      
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     cont.SaveChanges();
                 }

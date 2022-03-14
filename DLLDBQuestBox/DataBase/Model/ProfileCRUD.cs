@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Model
+namespace DataBase.Model
 {
     /*(англ. create), чтение (read), модификация (update), удаление (delete).*/
     public static class ProfileCRUD_FOOL
     {
-        public static Data.Tables.Profile Add(String name, String password)
+        public static DataBase.Tables.Profile Add(String name, String password)
         {
-            Data.Tables.Profile profile = null;
+            DataBase.Tables.Profile profile = null;
             try
             {                
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {                
                     /*Заполнение таблицы */
-                    profile = new Data.Tables.Profile { Name = name, Password = password };
+                    profile = new DataBase.Tables.Profile { Name = name, Password = password };
                     cont.Profiles.Add(profile);
                     cont.SaveChanges();
                 }
@@ -33,7 +33,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     var p1 = cont.Profiles.Find(id); //поиск по id
                     if (p1 != null) { 
@@ -53,7 +53,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     foreach (var p in cont.Profiles)
                     {
@@ -77,7 +77,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     foreach (var p in cont.Profiles)
                     {
@@ -107,7 +107,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
 
                     var p1 = cont.Profiles.Find(id); //поиск по id
@@ -134,7 +134,7 @@ namespace Data.Model
            // Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
 
                     var p1 = cont.Profiles.Find(id); //поиск по id
@@ -157,7 +157,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     var p1 = cont.Profiles.Find(id); //поиск по id
 
@@ -189,7 +189,7 @@ namespace Data.Model
             Tables.Profile profile = null;
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     var p1 = cont.Profiles.Find(id); //поиск по id
 

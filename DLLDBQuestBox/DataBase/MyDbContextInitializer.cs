@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace DataBase
 {
     public class MyDbContextInitializer : SqliteDropCreateDatabaseAlways<MyDbContext>
     {

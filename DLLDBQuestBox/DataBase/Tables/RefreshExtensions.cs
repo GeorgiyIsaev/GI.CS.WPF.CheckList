@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Data.Tables
+namespace DataBase.Tables
 {
     /*Класс для подтягивания акутальных запией к профилю и обновления объекта*/
     public static class RefreshExtensions
@@ -14,7 +14,7 @@ namespace Data.Tables
         {
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
 
                   //  Console.WriteLine("    EXpProfile " + profile.Name);
@@ -43,7 +43,7 @@ namespace Data.Tables
             }
             catch (Exception ex)
             {
-                Data.Model.Notifi.NoConnection(ex);
+                DataBase.Model.Notifi.NoConnection(ex);
             }
         }
     }

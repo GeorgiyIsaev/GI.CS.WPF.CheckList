@@ -44,7 +44,7 @@ namespace GI.CS.WPF.FW.CheckList
 
 
             MenuItemRefresh.Refresh(this);
-            Data.Model.Notifi.mes += MesageNotConect;
+            DataBase.Model.Notifi.mes += MesageNotConect;
         }
 
         private static void MesageNotConect(string text)

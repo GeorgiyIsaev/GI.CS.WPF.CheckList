@@ -63,18 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Configuration.cs" />
-    <Compile Include="Data\Model\Notifi.cs" />
-    <Compile Include="Data\Model\ProfileBox.cs" />
-    <Compile Include="Data\Model\ProfileCRUD.cs" />
-    <Compile Include="Data\Model\TestCRUD.cs" />
-    <Compile Include="Data\MyDBContext.cs" />
-    <Compile Include="Data\MyDbContextInitializer.cs" />
-    <Compile Include="Data\Tables\Answer.cs" />
-    <Compile Include="Data\Tables\Quest.cs" />
-    <Compile Include="Data\Tables\RefreshExtensions.cs" />
-    <Compile Include="Data\Tables\Test.cs" />
-    <Compile Include="Data\Tables\Profile.cs" />
+    <Compile Include="DataBase\Configuration.cs" />
+    <Compile Include="DataBase\Model\Notifi.cs" />
+    <Compile Include="DataBase\Model\ProfileBox.cs" />
+    <Compile Include="DataBase\Model\ProfileCRUD.cs" />
+    <Compile Include="DataBase\Model\TestCRUD.cs" />
+    <Compile Include="DataBase\MyDBContext.cs" />
+    <Compile Include="DataBase\MyDbContextInitializer.cs" />
+    <Compile Include="DataBase\Tables\Answer.cs" />
+    <Compile Include="DataBase\Tables\Quest.cs" />
+    <Compile Include="DataBase\Tables\RefreshExtensions.cs" />
+    <Compile Include="DataBase\Tables\Test.cs" />
+    <Compile Include="DataBase\Tables\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

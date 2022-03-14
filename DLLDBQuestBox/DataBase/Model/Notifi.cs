@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Model
+namespace DataBase.Model
 {
     public delegate void Message(String text);
 
@@ -35,7 +35,7 @@ namespace Data.Model
         { //метод для отладки
             try
             {
-                using (var cont = new Data.MyDbContext())
+                using (var cont = new DataBase.MyDbContext())
                 {
                     Console.WriteLine("\nВСЕ ТЕСТЫ!");
                     /*Посмотрим все тесты*/
