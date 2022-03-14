@@ -22,7 +22,8 @@ namespace Test.DBQuestBoxSQLite
             Отдельный метод для сохранения изменения в БД после изменения профиля*/
 
 
-            Data.Model.ProfileBox.ConnectProfile("Admin", "0000");
+            Data.Model.ProfileBox.ConnectProfile("Admin", "00001");
+
             if (BOX.profile != null)
             {             
                 Console.WriteLine("Вошел в профиль");

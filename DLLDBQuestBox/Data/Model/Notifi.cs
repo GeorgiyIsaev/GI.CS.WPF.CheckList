@@ -25,8 +25,9 @@ namespace Data.Model
             textError += ex.Message;
 
 
-           // Console.WriteLine(textError);
-            mes(textError);
+            Console.WriteLine(textError);
+            mes?.Invoke(textError); // вызывается метод mes если он есть
+
         }
 
 
