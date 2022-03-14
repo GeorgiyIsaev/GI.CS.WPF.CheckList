@@ -26,7 +26,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             public string GroupName { get; set; }
             public string TestName { get; set; }
             public int Count { get; set; }
-            public string Btn { get; set; } = "Изменить";
+            public string Open { get; set; } = "Открыть";
+            public string Delete { get; set; } = "Удалить";
         }
 
  
@@ -37,10 +38,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
 
         }
-
+        List<TablesTest> tablesTest = new List<TablesTest>();
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<TablesTest> tablesTest = new List<TablesTest>();
+        {      
             int count = 0; 
             for(int i = 0; i<3; i++)
             {
@@ -51,47 +51,35 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                     tablesTest.Add(new TablesTest { No = count++, GroupName=groupName,TestName=name,Count=20 });
                 }
             }
-
-
-
             Tables_TestBox.ItemsSource = tablesTest;
         }
 
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
+        {                
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
             if (nameColumn == "Группа" || nameColumn == "Название Теста") return;
-            /*Получаем индекс и столбец*/
-            var d = Tables_TestBox.SelectedIndex;
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
 
-            DataRowView rowView = Tables_TestBox.SelectedValue as DataRowView;
+            int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
+            if (selectedColumn == 1 || selectedColumn == 2) return;
 
-            //int index= Tables_TestBox.CurrentCell.Column.Header.ToString();
-      
-
-
-            int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex;
-            var selectedCell = Tables_TestBox.SelectedCells[selectedColumn];
-            var cellContent = selectedCell.Column.GetCellContent(selectedCell.Item);
-
-            MessageBox.Show("selectedColumn " + selectedColumn + " \nselectedCell " + selectedCell + " \ncellContent "+ cellContent);
-
-            if (cellContent is TextBlock)
-            {
-                MessageBox.Show((cellContent as TextBlock).Text);
-            }
-
-         
-            MessageBox.Show("Нажатие на таблицу " + d + " " + 0 + " " );
-
-
-            var row = (DataGridRow)Tables_TestBox.ItemContainerGenerator.ContainerFromIndex(d);
-
-            var rowp = (TablesTest)row;
-            MessageBox.Show("row " + row + " \n rowp" + rowp + " ");
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("customer: " + customer.No.ToString());
         }
 
-   
+        private void Button_AddNewTest_Click(object sender, RoutedEventArgs e)
+        {
+            var a = TextBox_GroupName.Text;
+            var b = TextBox_TestName.Text;
+            if (TextBox_GroupName.Text == "" || TextBox_TestName.Text == "")
+            {
+                MessageBox.Show("Не указанно название группы или название теста!");
+                return;
+            }
+            tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
+            Tables_TestBox.ItemsSource = tablesTest;
+            Tables_TestBox.Items.Refresh(); 
+
+        }
     }
 }
