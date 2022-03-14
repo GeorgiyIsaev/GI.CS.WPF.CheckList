@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ProfBox = Data.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
@@ -50,21 +51,37 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             }
         }
+
+
+
+        private static void TestConectDB()
+        {
+            ProfBox.ConnectProfile("Admin", "0000");
+            if (ProfBox.profile != null)
+            {
+                MessageBox.Show("!!!!!");
+                String text = "profile: " + ProfBox.profile.Name + " password: " + ProfBox.profile.Password + " Id: " + ProfBox.profile.Id;
+                MessageBox.Show(text);
+            }        
+        }
         /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow)
         {
             Window_LoginProfile windowLoginProfile = new Window_LoginProfile();
+            isLogin = true;
+            TestConectDB();
 
-            if (windowLoginProfile.ShowDialog() == true)
-            {  
-                MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
-                isLogin = true;
-            }
-            else
-            {
-                MessageBox.Show("Авторизация не пройдена");
-            }
-            Refresh(mainWindow);
+
+            //if (windowLoginProfile.ShowDialog() == true)
+            //{  
+            //    MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+            //    isLogin = true;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Авторизация не пройдена");
+            //}
+            //Refresh(mainWindow);
         }
         /*Меню-Профиль выйти из профиля*/
         private static void LogOut(MainWindow mainWindow)

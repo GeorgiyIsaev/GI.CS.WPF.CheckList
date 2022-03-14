@@ -28,6 +28,8 @@ namespace GI.CS.WPF.FW.CheckList
             
         }
 
+
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             /*Контейнер с привязкой к листбоксу*/
@@ -42,7 +44,13 @@ namespace GI.CS.WPF.FW.CheckList
 
 
             MenuItemRefresh.Refresh(this);
-         
+            Data.Model.Notifi.mes += MesageNotConect;
+        }
+
+        private static void MesageNotConect(string text)
+        {
+            /*Метод который отрабатывает при ошибке*/
+            MessageBox.Show(text);
         }
 
 
