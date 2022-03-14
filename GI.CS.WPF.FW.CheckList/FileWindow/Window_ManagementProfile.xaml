@@ -22,7 +22,7 @@
             <Button Content="Обновить" HorizontalAlignment="Left" Margin="661,4,0,0" VerticalAlignment="Top" Width="125"/>
         </Grid>
         <Grid Background="Lavender" Grid.Row="1" >
-            <DataGrid HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+            <DataGrid CanUserAddRows="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                 x:Name="Tables_TestBox" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray" 
                       MouseDoubleClick="Tables_TestBox_MouseDoubleClick" AlternatingRowBackground="White">
                 <DataGrid.Resources>
