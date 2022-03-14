@@ -131,7 +131,7 @@ namespace Data.Model
 
         public static void GetTests(long id)
         {
-            Tables.Profile profile = null;
+           // Tables.Profile profile = null;
             try
             {
                 using (var cont = new Data.MyDbContext())
