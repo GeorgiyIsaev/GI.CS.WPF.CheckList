@@ -56,6 +56,37 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         private static void TestConectDB()
         {
+            string name = "Admin";
+            string password = "0000";
+
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == name)
+                        {
+                            // Console.WriteLine(name + " " + p.Password);
+                            if (p.Password != password)
+                            {
+                                throw new Exception("Неверный пароль");
+                            }
+                           // p.Refresh(); // обновляем запись
+                          //  profile = p;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DataBase.Model.Notifi.NoConnection(ex);
+            }
+
+
+
+
+
             ProfBox.ConnectProfile("Admin", "0000");
             if (ProfBox.profile != null)
             {
