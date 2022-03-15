@@ -12,12 +12,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     public class MenuItemRefresh
     {   
         
-        static bool isLogin = true;
-        //static bool isLogin = false;
+       // static bool isLogin = true;
+        static bool isLogin = false;
      
         public static void Refresh(MainWindow mainWindow)
         {
-
+            //TestConectDB();
             mainWindow.MenuItem_Profile.Items.Clear();
             if (isLogin)
             {
@@ -28,7 +28,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.MenuItem_Profile.Items.Add(mi);
 
                 MenuItem mi2 = new MenuItem();
-                mi2.Header = "Управление профилем";
+                mi2.Header = "Управление профилем [" + ProfBox.profile.Name + "]";
                 mi2.Click += new RoutedEventHandler(
                  (sendItem, args) => { ManagementProfile(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi2);
@@ -46,73 +46,51 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi.Click += new RoutedEventHandler(
                     (sendItem, args) =>{LogIn(mainWindow);});   
                 mainWindow.MenuItem_Profile.Items.Add(mi);
-
-
-
             }
         }
 
 
-
-        private static void TestConectDB()
+        private static bool TestConectDB(string name = "Admin", string password = "0000")
         {
-            string name = "Admin";
-            string password = "0000";
-
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    foreach (var p in cont.Profiles)
-                    {
-                        if (p.Name == name)
-                        {
-                            // Console.WriteLine(name + " " + p.Password);
-                            if (p.Password != password)
-                            {
-                                throw new Exception("Неверный пароль");
-                            }
-                           // p.Refresh(); // обновляем запись
-                          //  profile = p;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                DataBase.Model.Notifi.NoConnection(ex);
-            }
-
-
-
-
-
-            ProfBox.ConnectProfile("Admin", "0000");
+            ProfBox.ConnectProfile(name, password);
             if (ProfBox.profile != null)
             {
-                MessageBox.Show("!!!!!");
                 String text = "profile: " + ProfBox.profile.Name + " password: " + ProfBox.profile.Password + " Id: " + ProfBox.profile.Id;
                 MessageBox.Show(text);
-            }        
+                isLogin = true;
+                return true;
+            }
+            else
+            {
+                isLogin = false;
+                return false;
+            }           
         }
+
+
+
         /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow)
         {
             Window_LoginProfile windowLoginProfile = new Window_LoginProfile();
-            isLogin = true;
-            TestConectDB();
+           // isLogin = true;
+            //TestConectDB();
 
-
-            //if (windowLoginProfile.ShowDialog() == true)
-            //{  
-            //    MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
-            //    isLogin = true;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Авторизация не пройдена");
-            //}
-            //Refresh(mainWindow);
+            if (windowLoginProfile.ShowDialog() == true)
+            {
+                MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+                TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
+                if (ProfBox.profile != null)
+                {
+                    MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+                    isLogin = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Авторизация не пройдена");
+            }
+            Refresh(mainWindow);
         }
         /*Меню-Профиль выйти из профиля*/
         private static void LogOut(MainWindow mainWindow)

@@ -68,6 +68,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         private void Buttun_EnterProfile_Click(object sender, RoutedEventArgs e)
         {
+           
+            
+            
+            
             if (ProfileName == ""){ MessageBox.Show("Не введено имя профиля");return; }
             if (Password01 == "") { MessageBox.Show("Не введен пароль"); return; }
             if (isCrateProfile)

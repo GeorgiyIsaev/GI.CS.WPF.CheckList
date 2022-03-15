@@ -42,9 +42,8 @@ namespace GI.CS.WPF.FW.CheckList
             EditionTXT.file_readTXT("TEMPTXT.txt");
             NewTitle();   
 
-
-            MenuItemRefresh.Refresh(this);
             DataBase.Model.Notifi.mes += MesageNotConect;
+            MenuItemRefresh.Refresh(this);          
         }
 
         private static void MesageNotConect(string text)
