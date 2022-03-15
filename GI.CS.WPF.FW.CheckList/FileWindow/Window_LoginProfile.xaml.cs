@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
@@ -67,28 +68,26 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
         private void Buttun_EnterProfile_Click(object sender, RoutedEventArgs e)
-        {
-           
-            
-            
-            
+        {                  
             if (ProfileName == ""){ MessageBox.Show("Не введено имя профиля");return; }
-            if (Password01 == "") { MessageBox.Show("Не введен пароль"); return; }
+           // if (Password01 == "") { MessageBox.Show("Не введен пароль"); return; } //пустой пароль будит доупустим!
+
             if (isCrateProfile)
             {
                 if (Password01 != Password02) { MessageBox.Show("Пороль не совпадает"); return; }
-
                 /*Действие с созданием новго профиля*/
                 this.DialogResult = true;
             }
             else
             {
                 /*Тут будит подключение к БД и сохранение профиля в прогу*/
+                MenuItemRefresh.TestConectDB(ProfileName, Password01);
+                if (ProfBox.profile == null) { MessageBox.Show("Совпадения имяни пароля не обнаружено!"); return;}
 
                 /*Пока типа два профиля*/
-                if (ProfileName == "1" && Password01 == "1") {this.DialogResult = true; return; }
-                if (ProfileName == "Admin" && Password01 == "Admin") {this.DialogResult = true; return; }
-                MessageBox.Show("Совпадения имяни пароля не обнаружено!");                
+                //  if (ProfileName == "1" && Password01 == "1") {this.DialogResult = true; return; }
+                // if (ProfileName == "Admin" && Password01 == "Admin") {this.DialogResult = true; return; }
+                this.DialogResult = true; //вурнуть успех
             }
         }
     }

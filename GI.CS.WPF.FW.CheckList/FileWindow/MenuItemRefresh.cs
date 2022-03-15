@@ -50,7 +50,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
 
-        private static bool TestConectDB(string name = "Admin", string password = "0000")
+        public static bool TestConectDB(string name = "Admin", string password = "0000")
         {
             ProfBox.ConnectProfile(name, password);
             if (ProfBox.profile != null)
@@ -79,7 +79,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (windowLoginProfile.ShowDialog() == true)
             {
                 MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
-                TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
+              //  TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
                 if (ProfBox.profile != null)
                 {
                     MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
