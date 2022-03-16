@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
@@ -22,13 +23,18 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     {
         public class TablesTest
         {
-            public int No { get; set; }
+            public long No { get; set; }
             public string GroupName { get; set; }
             public string TestName { get; set; }
             public int Count { get; set; }
             public string Open { get; set; } = "Открыть";
             public string Delete { get; set; } = "Удалить";
         }
+
+
+
+
+
 
  
         public Window_ManagementProfile()
@@ -40,17 +46,16 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         List<TablesTest> tablesTest = new List<TablesTest>();
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
-        {      
-            int count = 0; 
-            for(int i = 0; i<3; i++)
+        {
+            if (ProfBox.profile == null) return;
+            Title = "Управление профилем [" + ProfBox.profile.Name + "]";
+            TextBox_ProfileName.Text = ProfBox.profile.Name;
+
+            foreach (var test in ProfBox.profile.Tests)
             {
-                string groupName = "Группа " + i;
-                for (int j = 0; j < 3; j++)
-                {
-                    string name = "Тест " + j;
-                    tablesTest.Add(new TablesTest { No = count++, GroupName=groupName,TestName=name,Count=20 });
-                }
-            }
+                tablesTest.Add(new TablesTest { No = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
+            }        
+
             Tables_TestBox.ItemsSource = tablesTest;
         }
 
