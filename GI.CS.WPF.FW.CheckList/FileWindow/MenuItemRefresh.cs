@@ -21,6 +21,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             mainWindow.MenuItem_Profile.Items.Clear();
             if (isLogin)
             {
+                ProfilesMenuItem(mainWindow);
                 MenuItem mi = new MenuItem();
                 mi.Header = "Выйти из профиля";
                 mi.Click += new RoutedEventHandler(
@@ -48,6 +49,27 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.MenuItem_Profile.Items.Add(mi);
             }
         }
+        public static void ProfilesMenuItem(MainWindow mainWindow)
+        {
+            MenuItem mi = new MenuItem();
+            mi.Header = "Сменить профиль";
+           /* mi.Click += new RoutedEventHandler(
+             (sendItem, args) => { LogOut(mainWindow); });*/
+            mainWindow.MenuItem_Profile.Items.Add(mi);
+
+            MenuItem mi1 = new MenuItem();
+            mi1.Header = "Профиль 1";
+            MenuItem mi2= new MenuItem();
+            mi2.Header = "Профиль 1";
+            mi.Items.Add(mi1);
+            mi.Items.Add(mi2);
+
+
+        }
+
+
+
+
 
 
         public static bool TestConectDB(string name = "Admin", string password = "0000")
