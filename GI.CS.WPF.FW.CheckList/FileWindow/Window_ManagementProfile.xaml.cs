@@ -19,6 +19,27 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     /// <summary>
     /// Логика взаимодействия для Window_ManagementProfile.xaml
     /// </summary>
+    /// 
+    public static class TablesExtensions
+    {
+        public static string Open(this DataBase.Tables.Test test)
+        {
+           return "Открыть";
+        }
+        public static string Delete(this DataBase.Tables.Test test)
+        {
+            return "Удалить";
+        }
+
+        public static void Refresh(this ICollection<DataBase.Tables.Test> tests)
+        {
+
+            // ProfBox.profile.Tests.
+        }
+
+    }
+
+
     public partial class Window_ManagementProfile : Window
     {
         public class TablesTest
@@ -30,19 +51,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             public string Open { get; set; } = "Открыть";
             public string Delete { get; set; } = "Удалить";
         }
+      
 
 
 
 
 
 
- 
         public Window_ManagementProfile()
         {
             InitializeComponent();
             Loaded += Window_ManagementProfile_Loaded;
-
-
         }
         List<TablesTest> tablesTest = new List<TablesTest>();
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
@@ -50,22 +69,34 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile == null) return;
             Title = "Управление профилем [" + ProfBox.profile.Name + "]";
             TextBox_ProfileName.Text = ProfBox.profile.Name;
+            ResetTablesDV();
+        }
 
+        private void ResetTablesDV()
+        {
+            if (ProfBox.profile == null) return;
             foreach (var test in ProfBox.profile.Tests)
             {
                 tablesTest.Add(new TablesTest { No = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
-            }        
-
+            }
             Tables_TestBox.ItemsSource = tablesTest;
+
+            Tables_TestBox.ItemsSource = null;
+            Tables_TestBox.ItemsSource = tablesTest;
+            Tables_TestBox.Items.Refresh();
         }
 
+
+
+
+
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {     
+        {
             //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
             //if (selectedColumn == 1 || selectedColumn == 2) return;
 
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
-            if(nameColumn == "Открыть")
+            if (nameColumn == "Открыть")
             {
                 var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
@@ -78,7 +109,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
                 //tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
                 //Tables_TestBox.ItemsSource = tablesTest;
-               
+
                 Tables_TestBox.ItemsSource = null;
                 Tables_TestBox.ItemsSource = tablesTest;
                 Tables_TestBox.Items.Refresh();
@@ -87,7 +118,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
                 // MessageBox.Show("customer: " + customer.No.ToString());
             }
-
 
         }
 
@@ -100,11 +130,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 MessageBox.Show("Не указанно название группы или название теста!");
                 return;
             }
-            tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
-           
+            ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
+            ProfBox.SaveToDB();
+
+
+            // tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
+
             Tables_TestBox.ItemsSource = null;
             Tables_TestBox.ItemsSource = tablesTest;
-            Tables_TestBox.Items.Refresh(); 
+            Tables_TestBox.Items.Refresh();
 
         }
 
@@ -118,12 +152,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile != null)
             {
                 ProfBox.profile.Name = TextBox_ProfileName.Text;
-                ProfBox.SaveToDB();             
+                ProfBox.SaveToDB();
+
+                ResetTablesDV();
             }
         }
 
     }
 
-
-
+ 
 }
+

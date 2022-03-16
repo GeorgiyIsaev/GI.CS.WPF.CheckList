@@ -86,6 +86,8 @@ namespace DataBase.Model
             ConnectProfile(name, password);
         }
 
+      
+
 
 
     }
