@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Управление профилем"  Height="467" Width="804" FontSize="14" 
-        >
+        Closed="Form_Closing" 
+        ><!--Closing="Form_Closing"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.RowSpan="1">
             <Label Content="Имя профиля:" HorizontalAlignment="Left" Margin="2,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
-            <TextBox Name="TextBox_ProfileName" HorizontalAlignment="Left" Height="23" Margin="131,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187"/>
+            <TextBox Name="TextBox_ProfileName" TextChanged="TextBox_ProfileName_TextChanged"  HorizontalAlignment="Left" Height="23" Margin="131,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187"/>
             <Label Content="Новый Пароль:" HorizontalAlignment="Left" Margin="322,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.14,0.276" Width="124" FontWeight="Bold"/>
             <PasswordBox x:Name="TextBox_ProfilePassword" HorizontalAlignment="Left" Height="23" Margin="451,5,0,0"  VerticalAlignment="Top" Width="187"/>
             <Button Content="Обновить" HorizontalAlignment="Left" Margin="661,4,0,0" VerticalAlignment="Top" Width="125"/>

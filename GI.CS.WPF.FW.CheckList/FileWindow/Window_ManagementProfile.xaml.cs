@@ -107,5 +107,23 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.Items.Refresh(); 
 
         }
+
+        private void TextBox_ProfileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Title = "Управление профилем [" + TextBox_ProfileName.Text + "]";
+        }
+
+        private void Form_Closing(object sender, EventArgs e)
+        {
+            if (ProfBox.profile != null)
+            {
+                ProfBox.profile.Name = TextBox_ProfileName.Text;
+                ProfBox.SaveToDB();             
+            }
+        }
+
     }
+
+
+
 }

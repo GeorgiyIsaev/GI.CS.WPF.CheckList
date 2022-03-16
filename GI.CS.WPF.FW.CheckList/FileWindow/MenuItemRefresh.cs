@@ -138,8 +138,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private static void ManagementProfile(MainWindow mainWindow)
         {
             //MessageBox.Show("Управление");
-            new Window_ManagementProfile().ShowDialog();
-       
+            var window = new Window_ManagementProfile().ShowDialog();
+            if(window.Value == false) Refresh(mainWindow);
+
         }
 
         /*Меню-Профиль  Создать тест*/
