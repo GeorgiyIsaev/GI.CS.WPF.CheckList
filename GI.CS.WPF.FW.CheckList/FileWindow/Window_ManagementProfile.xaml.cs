@@ -146,6 +146,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
         }
 
+        private void Button_DeleteProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_NewPassword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
  

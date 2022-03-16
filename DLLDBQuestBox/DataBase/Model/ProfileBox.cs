@@ -103,11 +103,5 @@ namespace DataBase.Model
             profile = null;
         }
 
-
-
-
-
-
-
     }
 }
