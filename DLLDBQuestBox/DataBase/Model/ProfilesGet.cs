@@ -9,7 +9,7 @@ namespace DataBase.Model
 {
     public class ProfilesGet
     {
-        static List<Profile> profiles;    
+        public static List<Profile> profiles;    
 
         public static void Connect(String name = "")
         {      

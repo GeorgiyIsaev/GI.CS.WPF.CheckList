@@ -10,9 +10,7 @@ namespace DataBase.Model
     public static class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
-
-
-        public static void ConnectProfile(String name, String password)
+                public static void ConnectProfile(String name, String password)
         {
             //Data.Tables.Profile profile = null;
             try
