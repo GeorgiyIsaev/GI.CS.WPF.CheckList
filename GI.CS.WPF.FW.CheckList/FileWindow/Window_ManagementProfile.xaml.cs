@@ -44,6 +44,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     {
         public class TablesTest
         {
+            
            
             public long Id { get; set; }
             public string GroupName { get; set; }
@@ -133,7 +134,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 return;
             }
             ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
-          //  ProfBox.SaveToDB();
+            ProfBox.SaveToDB();
             ResetTablesDV();
 
         }

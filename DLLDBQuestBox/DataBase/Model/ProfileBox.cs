@@ -74,21 +74,25 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
+                    cont.Profiles.Attach(profile);
+                    cont.SaveChanges(); //сохранить
 
-                    var p1 = cont.Profiles.Find(profile.Id); //поиск по id
-                    if (p1 != null)
-                    {
-                        p1.Name = profile.Name;
-                        p1.Password = profile.Password;
-                        // p1.Refresh();
+                    //var p1 = cont.Profiles.Find(profile.Id); //поиск по id
+                    //if (p1 != null)
+                    //{
+                    //    p1.Name = profile.Name;
+                    //    p1.Password = profile.Password;
+                    //    // p1.Refresh();
 
-                        cont.Profiles.Attach(p1);
-                       // p1.Tests = profile.Tests;
+                    //    cont.Profiles.Attach(p1);
 
-                        cont.SaveChanges(); //сохранить
-                        profile = p1;
-                        profile.Refresh();
-                    }
+
+                    //   // p1.Tests = profile.Tests;
+
+                    //    cont.SaveChanges(); //сохранить
+                    //    profile = p1;
+                    //    profile.Refresh();
+                    //}
                 }
             }
             catch (Exception ex)
