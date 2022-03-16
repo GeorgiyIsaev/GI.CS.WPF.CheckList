@@ -44,9 +44,84 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
         }
+        public static void DeleteQuesttAt(long Id)
+        {
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    var quest = cont.Quests.Find(Id);
+
+                    //test.Refresh();
+                    cont.Quests.Remove(quest);
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
+        public static void DeleteAnswertAt(long Id)
+        {
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    var answer = cont.Answers.Find(Id);
+
+                    //test.Refresh();
+                    cont.Answers.Remove(answer);
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
 
 
+
+
+
+
+
+        public static void CreateNewProfile(String name, String password)
+        {
+            //Создали профиль
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Profiles.Add(new DataBase.Tables.Profile { Name = name, Password = password });
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            //Подключились
+            ConnectProfile(name, password);
+        }
+
+        public static void CreateNewTest(String groupName, String testName)
+        {
+            //Создали профиль
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Profiles.Find(profile.Id).Tests.Add(new DataBase.Tables.Test { Group = groupName, Name = testName });
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            profile.Refresh();
+        }
     }
-
-
 }

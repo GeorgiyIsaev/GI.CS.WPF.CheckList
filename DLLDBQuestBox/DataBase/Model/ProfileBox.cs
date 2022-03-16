@@ -48,19 +48,6 @@ namespace DataBase.Model
                 {
                     //cont.Profiles.Attach(profile);
                     profile.Refresh();
-                    //foreach (var p in cont.Profiles)
-                    //{
-                    //    if (p.Name == name)
-                    //    {
-                    //        // Console.WriteLine(name + " " + p.Password);
-                    //        if (p.Password != password)
-                    //        {
-                    //            throw new Exception("Неверный пароль");
-                    //        }
-                    //        p.Refresh(); // обновляем запись
-                    //        profile = p;
-                    //    }
-                    //}
                 }
             }
             catch (Exception ex)
@@ -80,10 +67,7 @@ namespace DataBase.Model
                     cont.Entry(profile).State = EntityState.Modified;
                    // cont.AddOrUpdate(profile);
                     //cont.Profiles.Attach(profile);
-                    cont.SaveChanges();
-
-                  
-                   
+                    cont.SaveChanges();  
                 }
             }
             catch (Exception ex)
@@ -120,42 +104,7 @@ namespace DataBase.Model
         }
 
 
-        public static void CreateNewProfile(String name, String password)
-        {
-            //Создали профиль
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {           
-                    cont.Profiles.Add(new DataBase.Tables.Profile { Name = name, Password = password });
-                    cont.SaveChanges();                  
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-            //Подключились
-            ConnectProfile(name, password);
-        }
 
-        public static void CreateNewTest(String groupName, String testName)
-        {
-            //Создали профиль
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    cont.Profiles.Find(profile.Id).Tests.Add(new DataBase.Tables.Test { Group = groupName, Name = testName });
-                    cont.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-            profile.Refresh();            
-        }
 
 
 
