@@ -60,20 +60,22 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             DataBase.Model.ProfilesGet.Connect();
             foreach(var profile in DataBase.Model.ProfilesGet.profiles)
             {
+                if (profile.Password != "") continue; //пропуск если с паролем                
+                
                 MenuItem mi1 = new MenuItem();
                 mi1.Header = profile.Name;
                 mi1.Click += new RoutedEventHandler(
-              (sendItem, args) => { ConectPR(mainWindow, args); });
+                (sendItem, args) => { ConectPR(mainWindow, args); });
                 mi.Items.Add(mi1);
             }
         }
         private static void ConectPR(MainWindow mainWindow, RoutedEventArgs e)
         {        
 
-            var nameProfile = ((MenuItem)e.OriginalSource).ToString();
+            var nameProfile = ((MenuItem)e.OriginalSource).Header.ToString();
             TestConectDB(nameProfile, "");
-
-
+            if (ProfBox.profile != null) { isLogin = true; Refresh(mainWindow); }
+           // else MessageBox.Show("No");
         }
 
 
@@ -88,7 +90,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile != null)
             {
                 String text = "profile: " + ProfBox.profile.Name + " password: " + ProfBox.profile.Password + " Id: " + ProfBox.profile.Id;
-                MessageBox.Show(text);
+                //MessageBox.Show(text); //!!!!!!!!!!!!!!!!!!!!!
                 isLogin = true;
                 return true;
             }
