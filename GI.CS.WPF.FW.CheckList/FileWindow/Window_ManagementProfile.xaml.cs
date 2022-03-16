@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBase.Tables;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -72,7 +73,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         private void ResetTablesDV()
         {
+           
+            //if (ProfBox.profile == null) return;
+            //ProfBox.ReConnect();
             if (ProfBox.profile == null) return;
+            ProfBox.profile.Refresh();
+            //ProfBox.ReConnect();
             Tables_TestBox.ItemsSource = null; //сборс
             tablesTest = new List<TablesTest>();
             foreach (var test in ProfBox.profile.Tests)
@@ -133,8 +139,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 MessageBox.Show("Не указанно название группы или название теста!");
                 return;
             }
-            ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
-            ProfBox.SaveToDB();
+            ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);
+       
+            //ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
+            //ProfBox.SaveToDB();
             ResetTablesDV();
 
         }

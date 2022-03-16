@@ -17,9 +17,10 @@ namespace DataBase.Tables
                 using (var cont = new DataBase.MyDbContext())
                 {
 
-                  //  Console.WriteLine("    EXpProfile " + profile.Name);
+                    //  Console.WriteLine("    EXpProfile " + profile.Name);
+                    profile.Tests.Clear(); //очистка перед перезаписью
 
-                    var sqlWhereProfile = cont.Tests.Where(x => x.ProfileId == profile.Id);
+                      var sqlWhereProfile = cont.Tests.Where(x => x.ProfileId == profile.Id);
                    // Console.WriteLine("    sqlWhereProfile " + sqlWhereProfile.ToString());
             
                     foreach (var myTest in sqlWhereProfile)

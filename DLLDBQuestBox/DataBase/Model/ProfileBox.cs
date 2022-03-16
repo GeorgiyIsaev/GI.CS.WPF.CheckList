@@ -12,6 +12,7 @@ namespace DataBase.Model
         public static DataBase.Tables.Profile profile;
         public static void ConnectProfile(String name, String password)
         {
+            EndConect();
             //Data.Tables.Profile profile = null;
             try
             {
@@ -37,28 +38,28 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }           
         }
-        public static void ReConnect(String name, String password)
+        public static void ReConnect()
         {
             //Data.Tables.Profile profile = null;
             try
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    
-                    
-                    foreach (var p in cont.Profiles)
-                    {
-                        if (p.Name == name)
-                        {
-                            // Console.WriteLine(name + " " + p.Password);
-                            if (p.Password != password)
-                            {
-                                throw new Exception("Неверный пароль");
-                            }
-                            p.Refresh(); // обновляем запись
-                            profile = p;
-                        }
-                    }
+                    //cont.Profiles.Attach(profile);
+                    profile.Refresh();
+                    //foreach (var p in cont.Profiles)
+                    //{
+                    //    if (p.Name == name)
+                    //    {
+                    //        // Console.WriteLine(name + " " + p.Password);
+                    //        if (p.Password != password)
+                    //        {
+                    //            throw new Exception("Неверный пароль");
+                    //        }
+                    //        p.Refresh(); // обновляем запись
+                    //        profile = p;
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -69,30 +70,25 @@ namespace DataBase.Model
 
 
         public static void SaveToDB()
-        {      //Сохранить измения в базу
+        {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
             try
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    cont.Profiles.Attach(profile);
+                    cont.Profiles.Attach(profile);                 
                     cont.SaveChanges(); //сохранить
 
-                    //var p1 = cont.Profiles.Find(profile.Id); //поиск по id
-                    //if (p1 != null)
-                    //{
-                    //    p1.Name = profile.Name;
-                    //    p1.Password = profile.Password;
-                    //    // p1.Refresh();
 
-                    //    cont.Profiles.Attach(p1);
+                    var p1 = cont.Profiles.Find(profile.Id); //поиск по id
+                    if (p1 != null)
+                    {
+                        p1.Name = profile.Name;
+                        p1.Password = profile.Password;
+                        cont.SaveChanges(); //сохранить
+                        profile = p1;
 
-
-                    //   // p1.Tests = profile.Tests;
-
-                    //    cont.SaveChanges(); //сохранить
-                    //    profile = p1;
-                    //    profile.Refresh();
-                    //}
+                    }
+                    profile.Refresh();
                 }
             }
             catch (Exception ex)
@@ -125,7 +121,25 @@ namespace DataBase.Model
             ConnectProfile(name, password);
         }
 
-      
+        public static void CreateNewTest(String groupName, String testName)
+        {
+            //Создали профиль
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Profiles.Find(profile.Id).Tests.Add(new DataBase.Tables.Test { Group = groupName, Name = testName });
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            ReConnect();
+            //Подключились          
+        }
+
 
 
 
