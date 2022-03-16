@@ -43,7 +43,17 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    cont.SaveChanges();
+
+                    var p1 = cont.Profiles.Find(profile.Id); //поиск по id
+                    if (p1 != null)
+                    {
+                        p1.Name = profile.Name;
+                        p1.Password = profile.Password;
+                        p1.Tests = profile.Tests;
+
+                        cont.SaveChanges(); //сохранить
+                        profile = p1;
+                    }
                 }
             }
             catch (Exception ex)
