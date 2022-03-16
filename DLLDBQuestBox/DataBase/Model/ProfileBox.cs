@@ -80,11 +80,14 @@ namespace DataBase.Model
                     {
                         p1.Name = profile.Name;
                         p1.Password = profile.Password;
-                        p1.Refresh();
-                        //  p1.Tests = profile.Tests;
+                        // p1.Refresh();
+
+                        cont.Profiles.Attach(p1);
+                       // p1.Tests = profile.Tests;
 
                         cont.SaveChanges(); //сохранить
                         profile = p1;
+                        profile.Refresh();
                     }
                 }
             }

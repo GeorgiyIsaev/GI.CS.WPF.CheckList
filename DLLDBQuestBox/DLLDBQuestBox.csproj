@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\Configuration.cs" />
+    <Compile Include="DataBase\Model\DBTestBox.cs" />
     <Compile Include="DataBase\Model\Notifi.cs" />
     <Compile Include="DataBase\Model\ProfileBox.cs" />
     <Compile Include="DataBase\Model\ProfileCRUD.cs" />

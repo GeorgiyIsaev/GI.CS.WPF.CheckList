@@ -72,13 +72,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void ResetTablesDV()
         {
             if (ProfBox.profile == null) return;
+            Tables_TestBox.ItemsSource = null; //сборс
+            tablesTest = new List<TablesTest>();
             foreach (var test in ProfBox.profile.Tests)
             {
                 tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
-            }
-            Tables_TestBox.ItemsSource = tablesTest;
-
-            Tables_TestBox.ItemsSource = null;
+            }        
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh();
         }
@@ -88,11 +87,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             DataBase.Tables.Test findTest = null;
             foreach (var test in ProfBox.profile.Tests)
             {
-                if(ID == test.Id)
+                if (ID == test.Id)
+                {
                     findTest = test;
+                    break;
+                }
             }
             if (findTest != null)
                ProfBox.profile.Tests.Remove(findTest);
+           // ProfBox.ReConnect();
         }
 
 
@@ -105,7 +108,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
             //if (selectedColumn == 1 || selectedColumn == 2) return;
-
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
             if (nameColumn == "Открыть")
             {
@@ -118,22 +120,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
                 DeleteTestID(customer.Id);
                 ResetTablesDV();
-
-
-
-                //tablesTest.Remove(customer);
-
-                //tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
-                //Tables_TestBox.ItemsSource = tablesTest;
-//  Tables_TestBox.ItemsSource = null;
-            //    Tables_TestBox.ItemsSource = tablesTest;
-           //     Tables_TestBox.Items.Refresh();
-
-
-
-                // MessageBox.Show("customer: " + customer.No.ToString());
             }
-
         }
 
         private void Button_AddNewTest_Click(object sender, RoutedEventArgs e)
@@ -146,14 +133,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 return;
             }
             ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
-            ProfBox.SaveToDB();
+          //  ProfBox.SaveToDB();
             ResetTablesDV();
-
-            // tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
-
-            Tables_TestBox.ItemsSource = null;
-            Tables_TestBox.ItemsSource = tablesTest;
-            Tables_TestBox.Items.Refresh();
 
         }
 
