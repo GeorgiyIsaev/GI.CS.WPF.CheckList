@@ -10,7 +10,7 @@ namespace DataBase.Model
     public static class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
-                public static void ConnectProfile(String name, String password)
+        public static void ConnectProfile(String name, String password)
         {
             //Data.Tables.Profile profile = null;
             try
@@ -37,6 +37,37 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }           
         }
+        public static void ReConnect(String name, String password)
+        {
+            //Data.Tables.Profile profile = null;
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    
+                    
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == name)
+                        {
+                            // Console.WriteLine(name + " " + p.Password);
+                            if (p.Password != password)
+                            {
+                                throw new Exception("Неверный пароль");
+                            }
+                            p.Refresh(); // обновляем запись
+                            profile = p;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
+
+
         public static void SaveToDB()
         {      //Сохранить измения в базу
             try
@@ -49,7 +80,8 @@ namespace DataBase.Model
                     {
                         p1.Name = profile.Name;
                         p1.Password = profile.Password;
-                        p1.Tests = profile.Tests;
+                        p1.Refresh();
+                        //  p1.Tests = profile.Tests;
 
                         cont.SaveChanges(); //сохранить
                         profile = p1;

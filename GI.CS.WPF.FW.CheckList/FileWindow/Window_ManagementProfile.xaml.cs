@@ -44,7 +44,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     {
         public class TablesTest
         {
-            public long No { get; set; }
+           
+            public long Id { get; set; }
             public string GroupName { get; set; }
             public string TestName { get; set; }
             public int Count { get; set; }
@@ -52,10 +53,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             public string Delete { get; set; } = "Удалить";
         }
       
-
-
-
-
 
 
         public Window_ManagementProfile()
@@ -77,7 +74,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile == null) return;
             foreach (var test in ProfBox.profile.Tests)
             {
-                tablesTest.Add(new TablesTest { No = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
+                tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
             }
             Tables_TestBox.ItemsSource = tablesTest;
 
@@ -85,6 +82,20 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh();
         }
+        private void DeleteTestID(long ID)
+        {
+            if (ProfBox.profile == null) return;
+            DataBase.Tables.Test findTest = null;
+            foreach (var test in ProfBox.profile.Tests)
+            {
+                if(ID == test.Id)
+                    findTest = test;
+            }
+            if (findTest != null)
+               ProfBox.profile.Tests.Remove(findTest);
+        }
+
+
 
 
 
@@ -100,19 +111,23 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                 var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                MessageBox.Show("Открыт объект: " + customer.No.ToString());
+                MessageBox.Show("Открыт объект: " + customer.Id.ToString());
             }
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                tablesTest.Remove(customer);
+                DeleteTestID(customer.Id);
+                ResetTablesDV();
+
+
+
+                //tablesTest.Remove(customer);
 
                 //tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
                 //Tables_TestBox.ItemsSource = tablesTest;
-
-                Tables_TestBox.ItemsSource = null;
-                Tables_TestBox.ItemsSource = tablesTest;
-                Tables_TestBox.Items.Refresh();
+//  Tables_TestBox.ItemsSource = null;
+            //    Tables_TestBox.ItemsSource = tablesTest;
+           //     Tables_TestBox.Items.Refresh();
 
 
 
@@ -132,7 +147,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
             ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
             ProfBox.SaveToDB();
-
+            ResetTablesDV();
 
             // tablesTest.Add(new TablesTest { No = 99, GroupName = TextBox_GroupName.Text, TestName = TextBox_TestName.Text, Count = 0 });
 
@@ -142,19 +157,19 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         }
 
+
+        /*Метод вызвающийся при каждом изменении имени*/
         private void TextBox_ProfileName_TextChanged(object sender, TextChangedEventArgs e)
         {
             Title = "Управление профилем [" + TextBox_ProfileName.Text + "]";
         }
-
+        /*Форма закрывается изменения сохраняются*/
         private void Form_Closing(object sender, EventArgs e)
         {
             if (ProfBox.profile != null)
             {
                 ProfBox.profile.Name = TextBox_ProfileName.Text;
-                ProfBox.SaveToDB();
-
-                ResetTablesDV();
+                ProfBox.SaveToDB();                
             }
         }
 
