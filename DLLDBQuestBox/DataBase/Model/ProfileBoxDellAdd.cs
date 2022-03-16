@@ -9,6 +9,28 @@ namespace DataBase.Model
 {
     public static partial class ProfileBox
     {
+        public static void DeleteProfileAt()
+        {
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    var prof = cont.Profiles.Find(profile.Id);
+                   prof.Refresh();
+                   // cont.Tests.RemoveRange(profile.Tests);
+                    cont.Tests.RemoveRange(prof.Tests);
+                    cont.Profiles.Remove(prof);
+                    cont.SaveChanges();
+                    profile = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
+
+
         public static void DeleteProfileAt(long Id)
         {       
             try

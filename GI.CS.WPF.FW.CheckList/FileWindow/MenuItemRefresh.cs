@@ -112,11 +112,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             if (windowLoginProfile.ShowDialog() == true)
             {
-                MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+               // MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
               //  TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
                 if (ProfBox.profile != null)
-                {
-                    MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
+                {               
                     isLogin = true;
                 }
             }
@@ -139,7 +138,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //MessageBox.Show("Управление");
             var window = new Window_ManagementProfile().ShowDialog();
-            if(window.Value == false) Refresh(mainWindow);
+            if(window.Value == false) { isLogin = false; Refresh(mainWindow); }
 
         }
 

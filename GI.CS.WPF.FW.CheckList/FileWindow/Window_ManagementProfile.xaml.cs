@@ -146,9 +146,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
         }
 
+        /*Удалить профиль*/
         private void Button_DeleteProfile_Click(object sender, RoutedEventArgs e)
         {
+            ProfBox.DeleteProfileAt();
 
+            DialogResult = false;
         }
 
         private void Button_NewPassword_Click(object sender, RoutedEventArgs e)
