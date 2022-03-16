@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using DataBase.Tables;
 
 namespace DataBase.Model
 {
-    public static class ProfileBox
+    public static partial class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
         public static void ConnectProfile(String name, String password)
@@ -69,33 +70,50 @@ namespace DataBase.Model
         }
 
 
-        public static void SaveToDB()
+        public static void SaveToChangeDB()
         {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
             try
             {
                 using (var cont = new DataBase.MyDbContext())
-                {
-                    cont.Profiles.Attach(profile);                 
-                    cont.SaveChanges(); //сохранить
+                {       
+                    /*Изменяем связанные списки из кода в Базу*/
+                    cont.Entry(profile).State = EntityState.Modified;
+                   // cont.AddOrUpdate(profile);
+                    //cont.Profiles.Attach(profile);
+                    cont.SaveChanges();
 
-
-                    var p1 = cont.Profiles.Find(profile.Id); //поиск по id
-                    if (p1 != null)
-                    {
-                        p1.Name = profile.Name;
-                        p1.Password = profile.Password;
-                        cont.SaveChanges(); //сохранить
-                        profile = p1;
-
-                    }
-                    profile.Refresh();
+                  
+                   
                 }
             }
             catch (Exception ex)
             {
                 Notifi.NoConnection(ex);
-            }     
+            } 
+            profile.Refresh();  /*Обновляем списки на те что в базе*/    
         }
+        public static void SaveToDeleteDB()
+        {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    /*Изменяем связанные списки из кода в Базу*/
+                    cont.Profiles.Attach(profile);
+                    //profile.Tests = profile.Tests;
+                    //Attach();
+                    //cont.Entry(profile).State = EntityState.Unchanged;
+                    cont.SaveChanges();                 
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            profile.Refresh();
+        }
+
+
         public static void EndConect()
         { //Очистить профиль
             profile = null;
@@ -136,8 +154,7 @@ namespace DataBase.Model
             {
                 Notifi.NoConnection(ex);
             }
-            ReConnect();
-            //Подключились          
+            profile.Refresh();            
         }
 
 

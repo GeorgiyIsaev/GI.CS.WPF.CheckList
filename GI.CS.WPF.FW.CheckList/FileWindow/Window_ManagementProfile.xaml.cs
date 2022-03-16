@@ -21,38 +21,19 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     /// Логика взаимодействия для Window_ManagementProfile.xaml
     /// </summary>
     /// 
-    public static class TablesExtensions
-    {
-        public static string Open(this DataBase.Tables.Test test)
-        {
-           return "Открыть";
-        }
-        public static string Delete(this DataBase.Tables.Test test)
-        {
-            return "Удалить";
-        }
-
-        public static void Refresh(this ICollection<DataBase.Tables.Test> tests)
-        {
-
-            // ProfBox.profile.Tests.
-        }
-
-    }
 
 
     public partial class Window_ManagementProfile : Window
     {
         public class TablesTest
-        {
-            
+        {            
            
             public long Id { get; set; }
             public string GroupName { get; set; }
             public string TestName { get; set; }
             public int Count { get; set; }
             public string Open { get; set; } = "Открыть";
-            public string Delete { get; set; } = "Удалить";
+            public string Delete { get; set; } = "Удалить";     
         }
       
 
@@ -83,11 +64,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             tablesTest = new List<TablesTest>();
             foreach (var test in ProfBox.profile.Tests)
             {
-                tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
+                tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count()});
             }        
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh();
         }
+
+        /*Удаляем тест по ID*/
         private void DeleteTestID(long ID)
         {
             if (ProfBox.profile == null) return;
@@ -101,7 +84,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 }
             }
             if (findTest != null)
-               ProfBox.profile.Tests.Remove(findTest);
+            {
+                ProfBox.profile.Tests.Remove(findTest);
+                ProfBox.SaveToChangeDB();
+            }
            // ProfBox.ReConnect();
         }
 
@@ -125,26 +111,23 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                DeleteTestID(customer.Id);
+                ProfBox.DeleteTestAt(customer.Id);
+
+               // DeleteTestID(customer.Id);
                 ResetTablesDV();
             }
         }
 
+        /*Добавление нового теста*/
         private void Button_AddNewTest_Click(object sender, RoutedEventArgs e)
         {
-            var a = TextBox_GroupName.Text;
-            var b = TextBox_TestName.Text;
             if (TextBox_GroupName.Text == "" || TextBox_TestName.Text == "")
             {
                 MessageBox.Show("Не указанно название группы или название теста!");
                 return;
             }
-            ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);
-       
-            //ProfBox.profile.Tests.Add(new DataBase.Tables.Test() { Group = TextBox_GroupName.Text, Name = TextBox_TestName.Text });
-            //ProfBox.SaveToDB();
-            ResetTablesDV();
-
+            ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
+            ResetTablesDV(); //обновить таблицу
         }
 
 
@@ -159,7 +142,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile != null)
             {
                 ProfBox.profile.Name = TextBox_ProfileName.Text;
-                ProfBox.SaveToDB();                
+                ProfBox.SaveToChangeDB();                
             }
         }
 
