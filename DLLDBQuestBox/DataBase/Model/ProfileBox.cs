@@ -39,9 +39,8 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }           
         }
-
         public static void SaveToDB()
-        {      
+        {      //Сохранить измения в базу
             try
             {
                 using (var cont = new DataBase.MyDbContext())
@@ -54,6 +53,32 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }     
         }
+        public static void EndConect()
+        { //Очистить профиль
+            profile = null;
+        }
+
+
+        public static void CreateNewProfile(String name, String password)
+        {
+            //Создали профиль
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {           
+                    cont.Profiles.Add(new DataBase.Tables.Profile { Name = name, Password = password });
+                    cont.SaveChanges();                  
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            //Подключились
+            ConnectProfile(name, password);
+        }
+
+
 
     }
 }

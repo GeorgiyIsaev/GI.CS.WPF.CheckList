@@ -75,14 +75,16 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (isCrateProfile)
             {
                 if (Password01 != Password02) { MessageBox.Show("Пороль не совпадает"); return; }
-                /*Действие с созданием новго профиля*/
-                this.DialogResult = true;
+                ProfBox.CreateNewProfile(ProfileName, Password01);
+                if (ProfBox.profile != null) { this.DialogResult = true;  } //Если профиль получен закрываем окно
+
+
             }
             else
             {
                 /*Тут будит подключение к БД и сохранение профиля в прогу*/
                 MenuItemRefresh.TestConectDB(ProfileName, Password01);
-                if (ProfBox.profile == null) { MessageBox.Show("Совпадения имяни пароля не обнаружено!"); return;}
+                if (ProfBox.profile == null) { return;}
 
                 /*Пока типа два профиля*/
                 //  if (ProfileName == "1" && Password01 == "1") {this.DialogResult = true; return; }
