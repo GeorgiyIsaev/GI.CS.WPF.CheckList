@@ -51,9 +51,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             else
             {
                 MenuItem mi = new MenuItem();
-                mi.Header = "Войти в профль";         
+                mi.Header = "Войти в профль";
                 mi.Click += new RoutedEventHandler(
-                    (sendItem, args) =>{LogIn(mainWindow, false);});   
+                    (sendItem, args) => { LogIn(mainWindow, false); });
                 mainWindow.MenuItem_Profile.Items.Add(mi);
             }
         }

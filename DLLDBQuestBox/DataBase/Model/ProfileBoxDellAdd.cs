@@ -116,6 +116,13 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == name)
+                        {
+                            throw new Exception("Профиль с таким именем уже существует");
+                        }
+                    }
                     cont.Profiles.Add(new DataBase.Tables.Profile { Name = name, Password = password });
                     cont.SaveChanges();
                 }
