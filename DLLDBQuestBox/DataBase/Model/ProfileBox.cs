@@ -62,9 +62,12 @@ namespace DataBase.Model
             try
             {
                 using (var cont = new DataBase.MyDbContext())
-                {       
-                    /*Изменяем связанные списки из кода в Базу*/
+                {
                     cont.Entry(profile).State = EntityState.Modified;
+                    nameID(cont); //Меняет имя если такое уже есть
+
+                    /*Изменяем связанные списки из кода в Базу*/
+                    //cont.Entry(profile).State = EntityState.Modified;
                    // cont.AddOrUpdate(profile);
                     //cont.Profiles.Attach(profile);
                     cont.SaveChanges();  
@@ -76,6 +79,21 @@ namespace DataBase.Model
             } 
             profile.Refresh();  /*Обновляем списки на те что в базе*/    
         }
+
+        private static void nameID(MyDbContext cont)
+        {    
+            foreach (var p in cont.Profiles)
+            {
+                if (p.Name == profile.Name && p.Id != profile.Id)
+                {
+                    profile.Name += " " + profile.Id;
+                    nameID(cont);
+                    break;
+                }
+            }
+        
+        }
+
         public static void SaveToDeleteDB()
         {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
             try
