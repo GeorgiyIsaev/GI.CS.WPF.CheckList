@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DataBase.Tables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DataBase.Tables
-{
+
     /*Класс для подтягивания акутальных запией к профилю и обновления объекта*/
     public static class RefreshExtensions
     {
@@ -48,4 +48,4 @@ namespace DataBase.Tables
             }
         }
     }
-}
+

@@ -13,7 +13,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     {   
         
        // static bool isLogin = true;
-        static bool isLogin = false;
+        //static bool isLogin = false;
 
 
         static bool IsLogin {
@@ -115,10 +115,18 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 TestItem.Header = test.Name;
                 TestItem.Click += new RoutedEventHandler(
                 (sendItem, args) => {
-                    ProfBox.SetCurrentTestID(test.Id);
+                    EnterTest(mainWindow, test.Id);               
                 });
 
 
+                /*Отметка выбраного теста*/
+                if (ProfBox.testCurrent != null && ProfBox.testCurrent.Id == test.Id)
+                {
+                    TestItem.FontWeight = FontWeights.Bold;
+                }
+
+
+                /*Создание групп*/
                 MenuItem tempItem = testItem.Find(t1 => t1.Header.ToString() == test.Group);
                 if(tempItem == null)
                 {
@@ -140,6 +148,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
 
 
+        /*Вход в тест*/
+        private static void EnterTest(MainWindow mainWindow, long id)
+        {
+            ProfBox.TestRefresh(id);
+            Refresh(mainWindow);
+        }
+
 
 
         private static void ConectPR(MainWindow mainWindow, RoutedEventArgs e)
@@ -147,7 +162,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             var nameProfile = ((MenuItem)e.OriginalSource).Header.ToString();
             TestConectDB(nameProfile, "");
-            if (ProfBox.profile != null) { isLogin = true; Refresh(mainWindow); }
+            if (ProfBox.profile != null) { /*isLogin = true; */Refresh(mainWindow); }
            // else MessageBox.Show("No");
         }
 
@@ -164,12 +179,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                 String text = "profile: " + ProfBox.profile.Name + " password: " + ProfBox.profile.Password + " Id: " + ProfBox.profile.Id;
                 //MessageBox.Show(text); //!!!!!!!!!!!!!!!!!!!!!
-                isLogin = true;
+                //isLogin = true;
                 return true;
             }
             else
             {
-                isLogin = false;
+                //isLogin = false;
                 return false;
             }           
         }
@@ -202,7 +217,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private static void LogOut(MainWindow mainWindow)
         {
             //MessageBox.Show("Действие");
-            isLogin = false;
+            //isLogin = false;
             Refresh(mainWindow);
         }
 
@@ -211,7 +226,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //MessageBox.Show("Управление");
             var window = new Window_ManagementProfile().ShowDialog();
-            if(window.Value == false) { isLogin = false; Refresh(mainWindow); }
+            if(window.Value == false) { /*isLogin = false; */Refresh(mainWindow); }
 
         }
 
