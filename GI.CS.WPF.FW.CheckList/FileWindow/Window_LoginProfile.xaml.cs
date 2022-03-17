@@ -95,6 +95,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 // if (ProfileName == "Admin" && Password01 == "Admin") {this.DialogResult = true; return; }
                 this.DialogResult = true; //вурнуть успех
             }
+
+
         }
     }
   

@@ -11,6 +11,12 @@ namespace DataBase.Model
     public static partial class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
+        static long currentTestID = -1;
+        public static long GetCurrentTestID { get { return currentTestID; } }
+
+
+
+
         public static void ConnectProfile(String name, String password)
         {
             EndConect();
@@ -119,6 +125,7 @@ namespace DataBase.Model
         public static void EndConect()
         { //Очистить профиль
             profile = null;
+            currentTestID = -1;
         }
 
     }

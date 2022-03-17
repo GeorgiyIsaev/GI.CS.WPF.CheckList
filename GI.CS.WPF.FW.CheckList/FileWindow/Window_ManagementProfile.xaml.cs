@@ -28,12 +28,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         public class TablesTest
         {            
            
-            public long Id { get; set; }
-            public string GroupName { get; set; }
-            public string TestName { get; set; }
-            public int Count { get; set; }
+            //public long Id { get; set; }
+            //public string GroupName { get; set; }
+            //public string TestName { get; set; }
+            public int Count { get { return test.Quests.Count(); } }
             public string Open { get; set; } = "Открыть";
-            public string Delete { get; set; } = "Удалить";     
+            public string Delete { get; set; } = "Удалить";
+            public Test test { get; set; }
         }
       
 
@@ -62,13 +63,38 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             //ProfBox.ReConnect();
             Tables_TestBox.ItemsSource = null; //сборс
             tablesTest = new List<TablesTest>();
-            foreach (var test in ProfBox.profile.Tests)
+            foreach (Test testP in ProfBox.profile.Tests)
             {
-                tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count()});
+                tablesTest.Add(new TablesTest { test = testP, /*Id = testP.Id, GroupName = testP.Group, TestName = testP.Name, Count = testP.Quests.Count()*/});
             }        
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh();
         }
+
+        private void ResetDBChange()
+        {
+
+            //if (ProfBox.profile == null) return;
+            //ProfBox.ReConnect();
+            //if (ProfBox.profile == null) return;
+            //ProfBox.profile.Refresh();
+            //foreach (var test in ProfBox.profile.Tests)
+            //{
+            //    if(test.Id = tablesTest.Find(test.Id)
+            //}
+
+            //    //ProfBox.ReConnect();
+            //    Tables_TestBox.ItemsSource = null; //сборс
+            //tablesTest = new List<TablesTest>();
+            //foreach (var test in ProfBox.profile.Tests)
+            //{
+            //    tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
+            //}
+            //Tables_TestBox.ItemsSource = tablesTest;
+            //Tables_TestBox.Items.Refresh();
+        }
+
+
 
         /*Удаляем тест по ID*/
         private void DeleteTestID(long ID)
@@ -106,12 +132,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                 var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                MessageBox.Show("Открыт объект: " + customer.Id.ToString());
+                MessageBox.Show("Открыт объект: " + customer.test.Id.ToString());
             }
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                ProfBox.DeleteTestAt(customer.Id);
+                ProfBox.DeleteTestAt(customer.test.Id);
 
                // DeleteTestID(customer.Id);
                 ResetTablesDV();
@@ -136,15 +162,20 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             Title = "Управление профилем [" + TextBox_ProfileName.Text + "]";
         }
+
+
         /*Форма закрывается изменения сохраняются*/
         private void Form_Closing(object sender, EventArgs e)
         {
             if (ProfBox.profile != null)
             {
                 ProfBox.profile.Name = TextBox_ProfileName.Text;
+
+
                 ProfBox.SaveToChangeDB();                
             }
         }
+
 
         /*Удалить профиль*/
         private void Button_DeleteProfile_Click(object sender, RoutedEventArgs e)

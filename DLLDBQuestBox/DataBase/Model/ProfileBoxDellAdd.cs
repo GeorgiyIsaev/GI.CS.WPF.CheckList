@@ -10,6 +10,9 @@ namespace DataBase.Model
 {
     public static partial class ProfileBox
     {
+        
+        
+        
         public static void DeleteProfileAt()
         {
             try
@@ -135,6 +138,7 @@ namespace DataBase.Model
             ConnectProfile(name, password);
         }
 
+  
         public static void CreateNewTest(String groupName, String testName)
         {
             //Создали профиль
@@ -151,6 +155,8 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
             profile.Refresh();
+            var newTest = profile.Tests.Last<Test>();
+            if (newTest != null) currentTestID = newTest.Id;
         }
     }
 }
