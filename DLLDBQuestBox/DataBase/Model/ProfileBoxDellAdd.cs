@@ -1,6 +1,7 @@
 ﻿using DataBase.Tables;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,10 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    var prof = cont.Profiles.Find(profile.Id);
-                    prof.Refresh();
-                    cont.Tests.RemoveRange(prof.Tests);
-                    cont.Profiles.Remove(prof);
-
-
-                    //profile.Tests.Clear();
-                    //cont.Profiles.Remove(profile);
+  
+                    cont.Profiles.Attach(profile);     
+                    cont.Entry(profile).State = EntityState.Modified;       
+                    cont.Profiles.Remove(profile);
                     cont.SaveChanges();
                     profile = null;
                 }

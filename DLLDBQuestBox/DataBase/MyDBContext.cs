@@ -25,20 +25,30 @@ namespace DataBase
                  .HasMany(p => p.Tests)
                  .WithRequired(p => p.Profile)
                  .HasForeignKey(s => s.ProfileId)
-                 .WillCascadeOnDelete(false);
+                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Tables.Test>()
               .HasMany(p => p.Quests)
               .WithRequired(p => p.Test)
               .HasForeignKey(s => s.TestId)
-              .WillCascadeOnDelete(false);
+              .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Tables.Quest>()
               .HasMany(p => p.Answers)
               .WithRequired(p => p.Quest)
               .HasForeignKey(s => s.QuestId)
-              .WillCascadeOnDelete(false);
-               
+              .WillCascadeOnDelete(true);
+
+
+
+            //modelBuilder.Entity<Tables.Profile>()
+            //   .HasMany<Tables.Test>(p => p.Tests)
+            //   .WithRequired(p => p.Profile)
+            //   .HasForeignKey(C => C.JobId).WillCascadeOnDelete(true);
+            //modelBuilder.Entity<Sport>()
+            //    .HasMany<JobSportsMapping>(C => C.JobSportsMappings)
+            //      .WithRequired(C => C.Sport)
+            //      .HasForeignKey(C => C.SportId).WillCascadeOnDelete(true);
 
             /* modelBuilder.Entity<Tables.Test>()
                   .HasRequired<Tables.Profile>(o => o.Profile)
