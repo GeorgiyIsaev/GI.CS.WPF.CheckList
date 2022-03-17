@@ -65,6 +65,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 ProfilesMenuItem(mainWindow);
             }
         }
+
+        /*Меню с профилями*/
         public static void ProfilesMenuItem(MainWindow mainWindow)
         {
             MenuItem mi = new MenuItem();
@@ -105,6 +107,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
         }
 
+        /*Меню с тестами*/
         public static void ProfileTestsMenuItem(MainWindow mainWindow)
         {
             List<MenuItem> testItem = new List<MenuItem>();            
@@ -162,7 +165,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
 
-
+        /*МЕНЮ - Выбора профилия из списка ВХОД*/
         private static void ConectPR(MainWindow mainWindow, RoutedEventArgs e)
         {        
 
@@ -241,8 +244,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {     
             String nameTest = DateTime.Now.ToString();
             String nameGroup = "Без группы";
+            ProfBox.testCurrent = ProfBox.CreateNewTest(nameGroup, nameTest);  //добавляем и открываем
 
-            ProfBox.CreateNewTest(nameGroup, nameTest);   //добавить           
+            // ProfBox.TestRefresh(ProfBox.CreateNewTest(nameGroup, nameTest).Id);
+            Refresh(mainWindow);
         }
 
     }

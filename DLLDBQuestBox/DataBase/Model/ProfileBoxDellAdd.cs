@@ -139,7 +139,7 @@ namespace DataBase.Model
         }
 
   
-        public static void CreateNewTest(String groupName, String testName)
+        public static Test CreateNewTest(String groupName, String testName)
         {
             //Создали профиль
             try
@@ -155,8 +155,7 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
             profile.Refresh();
-            var newTest = profile.Tests.Last<Test>();
-            if (newTest != null) currentTestID = newTest.Id;
+            return profile.Tests.Last(); //возвращаем последний добавленный тест
         }
     }
 }

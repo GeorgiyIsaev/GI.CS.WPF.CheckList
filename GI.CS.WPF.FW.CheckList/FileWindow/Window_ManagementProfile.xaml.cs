@@ -52,6 +52,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Title = "Управление профилем [" + ProfBox.profile.Name + "]";
             TextBox_ProfileName.Text = ProfBox.profile.Name;
             ResetTablesDV();
+
+
         }
 
         private void ResetTablesDV()
