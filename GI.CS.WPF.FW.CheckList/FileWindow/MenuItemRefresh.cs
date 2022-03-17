@@ -53,7 +53,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 MenuItem mi = new MenuItem();
                 mi.Header = "Войти в профль";         
                 mi.Click += new RoutedEventHandler(
-                    (sendItem, args) =>{LogIn(mainWindow);});   
+                    (sendItem, args) =>{LogIn(mainWindow, false);});   
                 mainWindow.MenuItem_Profile.Items.Add(mi);
             }
         }
@@ -68,7 +68,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             MenuItem newCreate = new MenuItem();
             newCreate.Header = "Добавить новый";
             newCreate.Click += new RoutedEventHandler(
-             (sendItem, args) => { LogOut(mainWindow); });
+             (sendItem, args) => { LogIn(mainWindow, true); });
             mi.Items.Add(newCreate);
 
 
@@ -80,8 +80,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 
                 MenuItem mi1 = new MenuItem();
                 mi1.Header = profile.Name;
-                mi1.Click += new RoutedEventHandler(
-                (sendItem, args) => { ConectPR(mainWindow, args); });
+                if (profile.Password != "")
+                {
+                    mi1.Header = profile.Name + "🔑";
+                    mi1.Click += new RoutedEventHandler(
+                    (sendItem, args) => { LogIn(mainWindow, true, profile.Name); });
+                }
+                else
+                {
+                    mi1.Click += new RoutedEventHandler(
+                    (sendItem, args) => { ConectPR(mainWindow, args); });
+                }
                 mi.Items.Add(mi1);
             }
         }
@@ -120,9 +129,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
 
         /*Меню-Профиль войти в профиль*/
-        private static void LogIn(MainWindow mainWindow)
+        private static void LogIn(MainWindow mainWindow, bool isCreate, String NameProfile="")
         {
-            Window_LoginProfile windowLoginProfile = new Window_LoginProfile();
+            Window_LoginProfile windowLoginProfile = new Window_LoginProfile(isCreate, NameProfile);
            // isLogin = true;
             //TestConectDB();
 
@@ -130,14 +139,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                // MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
               //  TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
-                if (ProfBox.profile != null)
-                {               
-                    isLogin = true;
-                }
+                //if (ProfBox.profile != null)
+                //{               
+                //    isLogin = true;
+                //}
             }
             else
             {
-                MessageBox.Show("Авторизация не пройдена");
+               //MessageBox.Show("Авторизация не пройдена");
             }
             Refresh(mainWindow);
         }

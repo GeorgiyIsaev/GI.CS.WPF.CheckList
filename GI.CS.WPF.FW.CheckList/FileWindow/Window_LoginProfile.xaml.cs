@@ -20,13 +20,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     /// </summary>
     public partial class Window_LoginProfile : Window
     {
-        public Window_LoginProfile()
+        
+        
+        bool isCrateProfile = false; //состояние текущего окна
+        public Window_LoginProfile(bool isCrate, String name = "")
         {
             InitializeComponent();
+            isCrateProfile = isCrate;
+            TB_Login.Text = name;
             ReplaceWindow();
         }
 
-        bool isCrateProfile = false; //состояние текущего окна
         void ReplaceWindow()
         {
             if (isCrateProfile)
