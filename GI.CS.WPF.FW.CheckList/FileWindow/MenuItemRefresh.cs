@@ -178,7 +178,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {     
             String nameTest = DateTime.Now.ToString();
             String nameGroup = "Без группы";
-            MessageBox.Show($"Создан тест: Група [{nameGroup}] Название [{nameTest}]");
+
+            ProfBox.CreateNewTest(nameGroup, nameTest);   //добавить   
+           // MessageBox.Show($"Создан тест: Група [{nameGroup}] Название [{nameTest}]");
         }
 
     }
