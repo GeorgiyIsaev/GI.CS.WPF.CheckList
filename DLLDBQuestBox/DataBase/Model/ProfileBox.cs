@@ -13,8 +13,7 @@ namespace DataBase.Model
         public static DataBase.Tables.Profile profile;
         static long currentTestID = -1;
         public static long GetCurrentTestID { get { return currentTestID; } }
-
-
+        public static void SetCurrentTestID(long id) { currentTestID = id; }
 
 
         public static void ConnectProfile(String name, String password)

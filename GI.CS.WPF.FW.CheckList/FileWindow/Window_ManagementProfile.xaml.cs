@@ -206,6 +206,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Событие после изменения таблицы*/
         private void Tables_TestBox_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
+            /*
+             При завершении редактирования изменение не фиксируется, но фиксируется после еще одного изменения разобратся почему так!!!
+             
+             */
+
+
+
             var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
             MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());

@@ -36,7 +36,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                  (sendItem, args) => { LogOut(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi);
 
-                ProfilesMenuItem(mainWindow);
+                ProfilesMenuItem(mainWindow);             
 
                 MenuItem mi2 = new MenuItem();
                 mi2.Header = "Управление профилем [" + ProfBox.profile.Name + "]";
@@ -49,6 +49,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi3.Click += new RoutedEventHandler(
                  (sendItem, args) => { CreateNewTest(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi3);
+
+                mainWindow.MenuItem_Profile.Items.Add(new Separator());
+                ProfileTestsMenuItem(mainWindow);
+
             }
             else
             {
@@ -100,6 +104,32 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi.Items.Add(mi1);
             }
         }
+
+        public static void ProfileTestsMenuItem(MainWindow mainWindow)
+        {
+            MenuItem mi = new MenuItem();
+            mi.Header = "Тесты";
+            mainWindow.MenuItem_Profile.Items.Add(mi);
+            
+            foreach (DataBase.Tables.Test test in ProfBox.profile.Tests)
+            {
+                MenuItem mi1 = new MenuItem();
+                mi1.Header = test.Group;
+                mi.Items.Add(mi1);
+
+                MenuItem mi2 = new MenuItem();
+                mi2.Header = test.Name;
+                mi2.Click += new RoutedEventHandler(
+                (sendItem, args) => {
+                    ProfBox.SetCurrentTestID(test.Id);});
+                mi1.Items.Add(mi2);
+            }
+        }
+
+
+
+
+
         private static void ConectPR(MainWindow mainWindow, RoutedEventArgs e)
         {        
 
