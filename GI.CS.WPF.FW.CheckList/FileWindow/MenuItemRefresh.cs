@@ -76,15 +76,18 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             DataBase.Model.ProfilesGet.Connect();
             foreach(var profile in DataBase.Model.ProfilesGet.profiles)
             {
-                if (profile.Password != "") continue; //пропуск если с паролем                
+               // if (profile.Password != "") continue; //пропуск если с паролем                
                 
                 MenuItem mi1 = new MenuItem();
                 mi1.Header = profile.Name;
+
+                if (IsLogin && profile.Name == ProfBox.profile.Name) { mi1.FontWeight = FontWeights.UltraBold; }    //жирный для текущего профиля
+
                 if (profile.Password != "")
                 {
                     mi1.Header = profile.Name + "🔑";
                     mi1.Click += new RoutedEventHandler(
-                    (sendItem, args) => { LogIn(mainWindow, true, profile.Name); });
+                    (sendItem, args) => { LogIn(mainWindow, false, profile.Name); });
                 }
                 else
                 {
