@@ -222,15 +222,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
             Refresh(mainWindow);
         }
-        /*Меню-Профиль выйти из профиля*/
+        /*Меню-Профиль - выйти из профиля*/
         private static void LogOut(MainWindow mainWindow)
         {
+            ProfBox.EndConect();
+
             //MessageBox.Show("Действие");
             //isLogin = false;
             Refresh(mainWindow);
         }
 
-        /*Меню-Профиль  Управление профилем*/
+        /*Меню-Профиль -  Управление профилем*/
         private static void ManagementProfile(MainWindow mainWindow)
         {
             //MessageBox.Show("Управление");
@@ -239,7 +241,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Refresh(mainWindow); // вызваем в любом случаии
         }
 
-        /*Меню-Профиль  Создать тест*/
+        /*Меню-Профиль - Быстрое создание теста*/
         private static void CreateNewTest(MainWindow mainWindow)
         {     
             String nameTest = DateTime.Now.ToString();

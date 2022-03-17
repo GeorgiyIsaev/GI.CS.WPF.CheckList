@@ -124,7 +124,8 @@ namespace DataBase.Model
         public static void EndConect()
         { //Очистить профиль
             profile = null;
-            currentTestID = -1;
+            testCurrent = null;
+            //currentTestID = -1;
         }
 
     }
