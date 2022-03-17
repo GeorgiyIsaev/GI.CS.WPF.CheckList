@@ -74,13 +74,28 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void ResetDBChange()
         {
 
-            //if (ProfBox.profile == null) return;
-            //ProfBox.ReConnect();
-            //if (ProfBox.profile == null) return;
-            //ProfBox.profile.Refresh();
+            if (ProfBox.profile == null) return;
+            ProfBox.ReConnect();
+            if (ProfBox.profile == null) return;
+            ProfBox.profile.Refresh();
+
+            //foreach (TablesTest test in tablesTest)
+            //{
+            //    Test d = test.test;
+            //    ((List<Test>)(ProfBox.profile.Tests)).Find(test.test);
+
+            //}
+
+
+
             //foreach (var test in ProfBox.profile.Tests)
             //{
-            //    if(test.Id = tablesTest.Find(test.Id)
+            //    tablesTest.
+
+
+            //    test
+
+            //    if (test.Id = tablesTest.Find(test.Id)
             //}
 
             //    //ProfBox.ReConnect();
@@ -170,8 +185,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ProfBox.profile != null)
             {
                 ProfBox.profile.Name = TextBox_ProfileName.Text;
-
-
                 ProfBox.SaveToChangeDB();                
             }
         }
@@ -181,13 +194,34 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Button_DeleteProfile_Click(object sender, RoutedEventArgs e)
         {
             ProfBox.DeleteProfileAt();
-
             DialogResult = false;
         }
 
         private void Button_NewPassword_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        /*Событие после изменения таблицы*/
+        private void Tables_TestBox_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+
+            //var tests = ProfBox.profile.Tests;
+            foreach(var test in ProfBox.profile.Tests)
+            {
+                if(test.Id == customer.test.Id)
+                {
+                    test.Group = customer.test.Group;
+                    test.Name = customer.test.Name;
+                    break;
+                }
+            }
+      
+
+
+            //MessageBox.Show("Изменен объект: " + customer.test.Id.ToString());
         }
     }
 
