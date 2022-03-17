@@ -14,13 +14,21 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         
        // static bool isLogin = true;
         static bool isLogin = false;
-     
+
+
+        static bool IsLogin {
+            get {
+                if (ProfBox.profile == null) return false;
+                else return true;
+            }
+        }
+
         public static void Refresh(MainWindow mainWindow)
         {
             //TestConectDB();
             mainWindow.MenuItem_Profile.Items.Clear();
             ProfilesMenuItem(mainWindow);
-            if (isLogin)
+            if (IsLogin)
             {         
                 MenuItem mi = new MenuItem();
                 mi.Header = "Выйти из профиля";
@@ -56,6 +64,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
            /* mi.Click += new RoutedEventHandler(
              (sendItem, args) => { LogOut(mainWindow); });*/
             mainWindow.MenuItem_Profile.Items.Add(mi);
+
+            MenuItem newCreate = new MenuItem();
+            newCreate.Header = "Добавить новый";
+            newCreate.Click += new RoutedEventHandler(
+             (sendItem, args) => { LogOut(mainWindow); });
+            mi.Items.Add(newCreate);
+
+
 
             DataBase.Model.ProfilesGet.Connect();
             foreach(var profile in DataBase.Model.ProfilesGet.profiles)
