@@ -107,22 +107,34 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         public static void ProfileTestsMenuItem(MainWindow mainWindow)
         {
-            MenuItem mi = new MenuItem();
-            mi.Header = "Тесты";
-            mainWindow.MenuItem_Profile.Items.Add(mi);
-            
+            List<MenuItem> testItem = new List<MenuItem>();            
             foreach (DataBase.Tables.Test test in ProfBox.profile.Tests)
             {
-                MenuItem mi1 = new MenuItem();
-                mi1.Header = test.Group;
-                mi.Items.Add(mi1);
-
-                MenuItem mi2 = new MenuItem();
-                mi2.Header = test.Name;
-                mi2.Click += new RoutedEventHandler(
+                /*Вызваемый тест*/
+                MenuItem TestItem = new MenuItem();
+                TestItem.Header = test.Name;
+                TestItem.Click += new RoutedEventHandler(
                 (sendItem, args) => {
-                    ProfBox.SetCurrentTestID(test.Id);});
-                mi1.Items.Add(mi2);
+                    ProfBox.SetCurrentTestID(test.Id);
+                });
+
+
+                MenuItem tempItem = testItem.Find(t1 => t1.Header.ToString() == test.Group);
+                if(tempItem == null)
+                {
+                    MenuItem GroupTestItem = new MenuItem();
+                    GroupTestItem.Header = test.Group;
+                    testItem.Add(GroupTestItem);
+                    GroupTestItem.Items.Add(TestItem);           
+                }
+                else
+                {
+                    testItem.Find(t1 => t1.Header.ToString() == test.Group).Items.Add(TestItem);
+                }
+            }
+            foreach(var t in testItem)
+            {
+                mainWindow.MenuItem_Profile.Items.Add(t);
             }
         }
 
