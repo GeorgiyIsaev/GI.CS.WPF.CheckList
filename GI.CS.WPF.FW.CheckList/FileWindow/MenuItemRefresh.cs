@@ -116,19 +116,18 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 TestItem.Click += new RoutedEventHandler(
                 (sendItem, args) => {
                     EnterTest(mainWindow, test.Id);               
-                });
-
+                });                
 
                 /*Отметка выбраного теста*/
                 if (ProfBox.testCurrent != null && ProfBox.testCurrent.Id == test.Id)
                 {
-                    TestItem.FontWeight = FontWeights.Bold;
+                    TestItem.FontWeight = FontWeights.Bold;             
                 }
+                else TestItem.FontWeight = FontWeights.Normal;
 
-
-                /*Создание групп*/
+                 /*Создание групп*/         
                 MenuItem tempItem = testItem.Find(t1 => t1.Header.ToString() == test.Group);
-                if(tempItem == null)
+                if (tempItem == null)
                 {
                     MenuItem GroupTestItem = new MenuItem();
                     GroupTestItem.Header = test.Group;
@@ -139,6 +138,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 {
                     testItem.Find(t1 => t1.Header.ToString() == test.Group).Items.Add(TestItem);
                 }
+
+                /*Подсветка группы меню*/
+                if (ProfBox.testCurrent != null && ProfBox.testCurrent.Id == test.Id)
+                {               
+                    testItem.Find(t1 => t1.Header.ToString() == test.Group).FontWeight = FontWeights.Bold;
+                }
+         
             }
             foreach(var t in testItem)
             {
@@ -226,8 +232,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //MessageBox.Show("Управление");
             var window = new Window_ManagementProfile().ShowDialog();
-            if(window.Value == false) { /*isLogin = false; */Refresh(mainWindow); }
-
+            if(window.Value == false) { /*isLogin = false; *//*Refresh(mainWindow);*/ }
+            Refresh(mainWindow); // вызваем в любом случаии
         }
 
         /*Меню-Профиль  Создать тест*/
