@@ -1,6 +1,7 @@
 ﻿using DataBase.Tables;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             InitializeComponent();
             Loaded += Window_ManagementProfile_Loaded;
         }
-        List<TablesTest> tablesTest = new List<TablesTest>();
+        ObservableCollection<TablesTest> tablesTest = new ObservableCollection<TablesTest>();
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
         {
             if (ProfBox.profile == null) return;
@@ -62,7 +63,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             ProfBox.profile.Refresh();
             //ProfBox.ReConnect();
             Tables_TestBox.ItemsSource = null; //сборс
-            tablesTest = new List<TablesTest>();
+            tablesTest = new ObservableCollection<TablesTest>();
             foreach (Test testP in ProfBox.profile.Tests)
             {
                 tablesTest.Add(new TablesTest { test = testP, /*Id = testP.Id, GroupName = testP.Group, TestName = testP.Name, Count = testP.Quests.Count()*/});
@@ -207,9 +208,9 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-
+            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
             //var tests = ProfBox.profile.Tests;
-            foreach(var test in ProfBox.profile.Tests)
+            foreach (var test in ProfBox.profile.Tests)
             {
                 if(test.Id == customer.test.Id)
                 {
@@ -218,8 +219,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                     break;
                 }
             }
-      
-
 
             //MessageBox.Show("Изменен объект: " + customer.test.Id.ToString());
         }
