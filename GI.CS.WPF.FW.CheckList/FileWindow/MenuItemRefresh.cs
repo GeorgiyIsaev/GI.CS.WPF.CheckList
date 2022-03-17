@@ -27,7 +27,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //TestConectDB();
             mainWindow.MenuItem_Profile.Items.Clear();
-            ProfilesMenuItem(mainWindow);
+           // ProfilesMenuItem(mainWindow);
             if (IsLogin)
             {         
                 MenuItem mi = new MenuItem();
@@ -35,6 +35,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi.Click += new RoutedEventHandler(
                  (sendItem, args) => { LogOut(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi);
+
+                ProfilesMenuItem(mainWindow);
 
                 MenuItem mi2 = new MenuItem();
                 mi2.Header = "Управление профилем [" + ProfBox.profile.Name + "]";
@@ -55,18 +57,19 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mi.Click += new RoutedEventHandler(
                     (sendItem, args) => { LogIn(mainWindow, false); });
                 mainWindow.MenuItem_Profile.Items.Add(mi);
+
+                ProfilesMenuItem(mainWindow);
             }
         }
         public static void ProfilesMenuItem(MainWindow mainWindow)
         {
             MenuItem mi = new MenuItem();
             mi.Header = "Сменить профиль";
-           /* mi.Click += new RoutedEventHandler(
-             (sendItem, args) => { LogOut(mainWindow); });*/
             mainWindow.MenuItem_Profile.Items.Add(mi);
 
             MenuItem newCreate = new MenuItem();
             newCreate.Header = "Добавить новый";
+            newCreate.FontStyle = FontStyles.Italic; //курсив
             newCreate.Click += new RoutedEventHandler(
              (sendItem, args) => { LogIn(mainWindow, true); });
             mi.Items.Add(newCreate);
