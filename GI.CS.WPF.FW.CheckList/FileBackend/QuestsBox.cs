@@ -27,13 +27,13 @@ namespace GI.CS.WPF.FW.CheckList
         /*Метод для вычитвания вопросов из базы в главный список*/
         public static void ReadQuestDB(DataBase.Tables.Test testItemDB)
         {
-            
-            foreach(var questItem in testItemBD)
+
+            foreach (var questItemDB in testItemDB.Quests)
             {
                 QuestItem questItem = new QuestItem();
-                questItem.SetQuestDB(questItem);
-                questItems.Add(questItem);          
-            }     
+                questItem.SetQuestDB(questItemDB);
+                questItems.Add(questItem);
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ namespace GI.CS.WPF.FW.CheckList
 				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
 			}
 		}
-		public void GetQuestBD() { return questBD; }
+		public DataBase.Tables.Quest GetQuestBD() { return questBD; }
 
 
 
