@@ -30,13 +30,13 @@ using System.Threading.Tasks;
                         var sqlWhereTeest = cont.Quests.Where(x => x.TestId == myTest.Id);
                         foreach (var myQuest in sqlWhereTeest)
                         {
-                            myTest.Quests.Add(myQuest);
+                           // myTest.Quests.Add(myQuest); //внезапно добавление происходит при чтении, а как это так
                            // Console.WriteLine("    EXtestProfile.Quests.Count " + myTest.Quests.Count);
 
                             var sqlWhereQuest = cont.Answers.Where(x => x.QuestId == myQuest.Id);
                             foreach (var myAnswer in sqlWhereQuest)
                             {
-                                myQuest.Answers.Add(myAnswer);
+                            //myQuest.Answers.Add(myAnswer);//внезапно добавление происходит при чтении, а как это так
                             }
                         }
                     }

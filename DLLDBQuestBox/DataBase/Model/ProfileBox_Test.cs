@@ -67,21 +67,20 @@ namespace DataBase.Model
         }
         public static DataBase.Tables.Quest GetLastTest()
         {
-            //DataBase.Tables.Quest quest
+            DataBase.Tables.Quest quest = null;
             if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
             try
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    var questDB1 = cont.Quests.Last();
-                    
+                    var quest = cont.Quests.Last();                    
                 }
             }
             catch (Exception ex)
             {
                 Notifi.NoConnection(ex);
             }
-            return null;
+            return quest;
         }
 
 

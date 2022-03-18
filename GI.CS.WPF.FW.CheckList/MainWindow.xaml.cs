@@ -185,16 +185,14 @@ namespace GI.CS.WPF.FW.CheckList
 
         public void ClearForm()
         {
-            var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
+    
                 QuestsBox.questItems.Clear();
                 QuestItem questItem = new QuestItem();
                 questItem.quest = "<Добавить новый вопрос>";
                 QuestsBox.questItems.Add(questItem);
                 NewTitle();
                 ListBox_Quest.SelectedIndex = 0;
-            }
+            
         }
 
 
@@ -247,7 +245,11 @@ namespace GI.CS.WPF.FW.CheckList
         /*Меню Файл-> Очистить лист*/
         private void MenuItemClear_Click(object sender, RoutedEventArgs e)
         {
-            ClearForm();
+            var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                ClearForm();
+            }
         }
         /*Меню-Описание приложения*/
         private void MenuItemOpenDescription_Click(object sender, RoutedEventArgs e)

@@ -160,12 +160,19 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Вход в тест*/
         private static void EnterTest(MainWindow mainWindow, long id)
         {
+            /*Очистка вопросов если лист заполенен*/
+            if (ProfBox.testCurrent == null && QuestsBox.questItems.Count() > 1)
+            {
+                var result = MessageBox.Show($"Очистить форму от впросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No) return;
+            }
+
             ProfBox.TestRefresh(id);
             Refresh(mainWindow);
 
             /*Загружаем тест в контейнер вопросов приложения*/
             if (ProfBox.testCurrent != null)
-            {
+            {      
                 mainWindow.ClearForm();
                 QuestsBox.ReadQuestDB(ProfBox.testCurrent);
             }
