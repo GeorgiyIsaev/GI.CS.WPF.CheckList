@@ -162,10 +162,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             ProfBox.TestRefresh(id);
             Refresh(mainWindow);
-   
+
             /*Загружаем тест в контейнер вопросов приложения*/
-            if(ProfBox.testCurrent != null)
+            if (ProfBox.testCurrent != null)
+            {
+                mainWindow.ClearForm();
                 QuestsBox.ReadQuestDB(ProfBox.testCurrent);
+            }
         }
 
 
@@ -241,7 +244,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //MessageBox.Show("Управление");
             var window = new Window_ManagementProfile().ShowDialog();
-            if(window.Value == false) { /*isLogin = false; *//*Refresh(mainWindow);*/ }
+            if(window.Value == true) { mainWindow.ClearForm();}
             Refresh(mainWindow); // вызваем в любом случаии
         }
 
@@ -254,6 +257,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
             // ProfBox.TestRefresh(ProfBox.CreateNewTest(nameGroup, nameTest).Id);
             Refresh(mainWindow);
+            mainWindow.ClearForm();
         }
 
     }

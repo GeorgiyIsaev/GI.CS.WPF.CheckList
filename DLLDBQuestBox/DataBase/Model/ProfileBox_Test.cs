@@ -25,7 +25,7 @@ namespace DataBase.Model
 
         }
 
-        private static DataBase.Tables.Quest newQuestCreate (string questText,
+        public static DataBase.Tables.Quest CreateNewTest (string questText,
             string commentText, string answerListText, string anAnswerListText)
         {
             DataBase.Tables.Quest questDB = new Tables.Quest();
@@ -41,9 +41,31 @@ namespace DataBase.Model
             foreach (string text in anAnswerMas)
             {
                 questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = false, Quest = questDB });
-            }
+            }                 
             return questDB;
         }
+
+        public static DataBase.Tables.Quest AddQuestToDB(DataBase.Tables.Quest questDB)
+        {
+            //DataBase.Tables.Quest quest
+            if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
+                    cont.SaveChanges();
+                    questDB = cont.Quests.Last();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            return questDB; 
+        }
+
+
 
     }
 }

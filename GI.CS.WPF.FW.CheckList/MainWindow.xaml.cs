@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -81,7 +82,7 @@ namespace GI.CS.WPF.FW.CheckList
             }
 
             /*Генеруем вопрос для БД*/
-            DataBase.Tables.Quest a = CreateQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+           // DataBase.Tables.Quest a = CreateQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
            
 
             /*Генерируем вопрос*/
@@ -91,27 +92,39 @@ namespace GI.CS.WPF.FW.CheckList
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
             questItem.Description = questItem.ToolTypeListBox();
 
-            if (ListBox_Quest.SelectedIndex != 0)
+            if (ListBox_Quest.SelectedIndex != 0) //Изменяем существующий
             {
+                //if(ProfBox.testCurrent != null)
+                //{
+                //    var questItemDB = ProfBox.CreateNewTest(input_Comment.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+                   
+
+                //}
+
+
+
                 QuestsBox.questItems.Insert(val + 1, questItem);
                 QuestsBox.questItems.RemoveAt(val);
                 ListBox_Quest.SelectedIndex = val;
-                EditionTXT.WriteInTXT("TEMPTXT.txt");
+             //   EditionTXT.WriteInTXT("TEMPTXT.txt");
             }
-            else
+            else //создаем новый
             {
-                QuestsBox.questItems.Add(questItem);
-                EditionTXT.WriteInTXT("TEMPTXT.txt");
+                if (ProfBox.testCurrent != null)
+                {
+                    var questItemDB = ProfBox.CreateNewTest(input_Comment.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+                    questItemDB = ProfBox.AddQuestToDB(questItemDB);
+                    questItem.SetQuestDB(questItemDB);
+                    QuestsBox.questItems.Add(questItem);
+                }
+
+
+              //  QuestsBox.questItems.Add(questItem);
+              //  EditionTXT.WriteInTXT("TEMPTXT.txt");
             }
             NewTitle();
         }
-
-        private Quest CreateQuestDB(string questText, string commentText, string answerListText, string anAnswerListText)
-        {
-
-
-            return null;
-        }
+     
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -163,7 +176,19 @@ namespace GI.CS.WPF.FW.CheckList
             }
         }
 
-
+        public void ClearForm()
+        {
+            var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                QuestsBox.questItems.Clear();
+                QuestItem questItem = new QuestItem();
+                questItem.quest = "<Добавить новый вопрос>";
+                QuestsBox.questItems.Add(questItem);
+                NewTitle();
+                ListBox_Quest.SelectedIndex = 0;
+            }
+        }
 
 
 
@@ -215,16 +240,7 @@ namespace GI.CS.WPF.FW.CheckList
         /*Меню Файл-> Очистить лист*/
         private void MenuItemClear_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show($"Вы действительно хотите очистить чек-лист от всех вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                QuestsBox.questItems.Clear();
-                QuestItem questItem = new QuestItem();
-                questItem.quest = "<Добавить новый вопрос>";
-                QuestsBox.questItems.Add(questItem);
-                NewTitle();
-                ListBox_Quest.SelectedIndex = 0;
-            }
+            ClearForm();
         }
         /*Меню-Описание приложения*/
         private void MenuItemOpenDescription_Click(object sender, RoutedEventArgs e)
