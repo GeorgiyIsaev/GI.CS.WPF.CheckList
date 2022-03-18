@@ -112,8 +112,10 @@ namespace GI.CS.WPF.FW.CheckList
             {
                 if (ProfBox.testCurrent != null)
                 {
-                    var questItemDB = ProfBox.CreateNewTest(input_Comment.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+                    var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
                     questItemDB = ProfBox.AddQuestToDB(questItemDB);
+                    questItemDB = ProfBox.GetLastTest();
+
                     questItem.SetQuestDB(questItemDB);
                     QuestsBox.questItems.Add(questItem);
                 }
@@ -152,6 +154,7 @@ namespace GI.CS.WPF.FW.CheckList
             if ("Delete" == e.Key.ToString() && ListBox_Quest.SelectedIndex != 0)
                 DeleteItem();
         }
+        /*Метод выполняемый при удалении Вопроса*/
         private void DeleteItem()
         {
             if (ListBox_Quest.SelectedIndex <= 0)
@@ -168,9 +171,12 @@ namespace GI.CS.WPF.FW.CheckList
                 {
 
                     int val = ListBox_Quest.SelectedIndex;
+                    if()
+
+
                     if (val > 0) QuestsBox.questItems.RemoveAt(val);
                     ListBox_Quest.SelectedIndex = 0;
-                    EditionTXT.WriteInTXT("TEMPTXT.txt");
+                    //EditionTXT.WriteInTXT("TEMPTXT.txt");
                     NewTitle();
                 }
             }

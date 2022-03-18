@@ -36,11 +36,11 @@ namespace DataBase.Model
             String[] anAnswerMas = anAnswerListText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string text in answerMas)
             {
-                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = true, Quest= questDB });
+                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = true, /*Quest= questDB*/ });
             }
             foreach (string text in anAnswerMas)
             {
-                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = false, Quest = questDB });
+                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = false, /*Quest = questDB*/ });
             }                 
             return questDB;
         }
@@ -55,7 +55,8 @@ namespace DataBase.Model
                 {
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
-                    questDB = cont.Quests.Last();
+                  //  var questDB1 = cont.Quests.Last();
+                 //   int a = 1;
                 }
             }
             catch (Exception ex)
@@ -64,6 +65,26 @@ namespace DataBase.Model
             }
             return questDB; 
         }
+        public static DataBase.Tables.Quest GetLastTest()
+        {
+            //DataBase.Tables.Quest quest
+            if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    var questDB1 = cont.Quests.Last();
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            return null;
+        }
+
+
 
 
 
