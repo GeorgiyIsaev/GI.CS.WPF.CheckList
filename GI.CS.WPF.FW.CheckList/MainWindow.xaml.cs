@@ -171,9 +171,10 @@ namespace GI.CS.WPF.FW.CheckList
                 {
 
                     int val = ListBox_Quest.SelectedIndex;
-                    if()
-
-
+                    if(ProfBox.testCurrent != null)
+                    {
+                        ProfBox.DeleteQuesttAt(QuestsBox.questItems[val].GetQuestBD().Id);
+                    }
                     if (val > 0) QuestsBox.questItems.RemoveAt(val);
                     ListBox_Quest.SelectedIndex = 0;
                     //EditionTXT.WriteInTXT("TEMPTXT.txt");
