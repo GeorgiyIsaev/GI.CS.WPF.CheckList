@@ -55,8 +55,12 @@ namespace DataBase.Model
                 {
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
+                    var sqlWhereTeest = cont.Quests.Where(x => x.TestId == testCurrent.Id);
+                    foreach (var myQuest in sqlWhereTeest) { }
+                    questDB = testCurrent.Quests.Last();
+
                   //  var questDB1 = cont.Quests.Last();
-                 //   int a = 1;
+                  //   int a = 1;
                 }
             }
             catch (Exception ex)
@@ -73,7 +77,7 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-                    var quest = cont.Quests.Last();                    
+                    quest = cont.Quests.Last<DataBase.Tables.Quest>();                    
                 }
             }
             catch (Exception ex)

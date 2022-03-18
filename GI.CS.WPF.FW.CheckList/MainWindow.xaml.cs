@@ -114,7 +114,7 @@ namespace GI.CS.WPF.FW.CheckList
                 {
                     var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
                     questItemDB = ProfBox.AddQuestToDB(questItemDB);
-                    questItemDB = ProfBox.GetLastTest();
+                  //  questItemDB = ProfBox.GetLastTest();
 
                     questItem.SetQuestDB(questItemDB);
                     QuestsBox.questItems.Add(questItem);
