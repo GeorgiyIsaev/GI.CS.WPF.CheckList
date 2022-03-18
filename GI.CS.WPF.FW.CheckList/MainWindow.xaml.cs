@@ -1,4 +1,5 @@
-﻿using GI.CS.WPF.FW.CheckList;
+﻿using DataBase.Tables;
+using GI.CS.WPF.FW.CheckList;
 using GI.CS.WPF.FW.CheckList.FileWindow;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,7 @@ namespace GI.CS.WPF.FW.CheckList
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
-            
+            Loaded += MainWindow_Loaded;           
         }
 
 
@@ -42,15 +42,16 @@ namespace GI.CS.WPF.FW.CheckList
             EditionTXT.file_readTXT("TEMPTXT.txt");
             NewTitle();   
 
-            DataBase.Model.Notifi.mes += MesageNotConect;
+            DataBase.Model.Notifi.mes += MesageNotConectBD;
             MenuItemRefresh.Refresh(this);          
         }
 
-        private static void MesageNotConect(string text)
-        {
-            /*Метод который отрабатывает при ошибке*/
+        /*Метод который отрабатывает при ошибке БАЗЫ*/
+        private static void MesageNotConectBD(string text)
+        {           
             MessageBox.Show(text);
         }
+
 
 
 
@@ -63,11 +64,11 @@ namespace GI.CS.WPF.FW.CheckList
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             int val = ListBox_Quest.SelectedIndex;
-            if (val == 0 && EditionTXT.if_ThereQuest(input_Quest.Text))
+            /*if (val == 0 && EditionTXT.if_ThereQuest(input_Quest.Text))
             {
                 MessageBox.Show("Такой вопрос уже был добавлен ранее", "Добавление не возможно!");
                 return;
-            }
+            }*/
             if (input_Quest.Text == "")
             {
                 MessageBox.Show("Поле с вопросом не заполнено", "Добавление не возможно!");
@@ -79,9 +80,12 @@ namespace GI.CS.WPF.FW.CheckList
                 return;
             }
 
+            /*Генеруем вопрос для БД*/
+            DataBase.Tables.Quest a = CreateQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+           
 
-
-            QuestItem questItem = new QuestItem();
+            /*Генерируем вопрос*/
+            QuestItem questItem = new QuestItem();    
             questItem.quest = input_Quest.Text;
             questItem.comment = input_Comment.Text;
             questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
@@ -100,6 +104,13 @@ namespace GI.CS.WPF.FW.CheckList
                 EditionTXT.WriteInTXT("TEMPTXT.txt");
             }
             NewTitle();
+        }
+
+        private Quest CreateQuestDB(string questText, string commentText, string answerListText, string anAnswerListText)
+        {
+
+
+            return null;
         }
 
         private void ListBox_Quest_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -162,6 +162,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             ProfBox.TestRefresh(id);
             Refresh(mainWindow);
+   
+            /*Загружаем тест в контейнер вопросов приложения*/
+            if(ProfBox.testCurrent != null)
+                QuestsBox.ReadQuestDB(ProfBox.testCurrent);
         }
 
 

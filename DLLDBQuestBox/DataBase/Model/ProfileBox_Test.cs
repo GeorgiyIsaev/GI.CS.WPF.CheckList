@@ -22,6 +22,27 @@ namespace DataBase.Model
                     break;
                 }
             }
+
+        }
+
+        private static DataBase.Tables.Quest newQuestCreate (string questText,
+            string commentText, string answerListText, string anAnswerListText)
+        {
+            DataBase.Tables.Quest questDB = new Tables.Quest();
+            questDB.TextQuest = questText;
+            questDB.TextComment = commentText;
+
+            String[] answerMas = answerListText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            String[] anAnswerMas = anAnswerListText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string text in answerMas)
+            {
+                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = true, Quest= questDB });
+            }
+            foreach (string text in anAnswerMas)
+            {
+                questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = false, Quest = questDB });
+            }
+            return questDB;
         }
 
     }
