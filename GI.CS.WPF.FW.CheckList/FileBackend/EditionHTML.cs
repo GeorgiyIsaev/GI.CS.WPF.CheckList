@@ -40,7 +40,7 @@ namespace GI.CS.WPF.FW.CheckList
 										
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
-						if (tmpAnswer.if_true)
+						if (tmpAnswer.isTrue)
 							file.WriteLine($"   <div class=\"questBox__answer\"><div> &#10004;</div>{tmpAnswer.answerSTR}\n</div>\n");
 						else
 							file.WriteLine($"   <div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}\n</div>\n");

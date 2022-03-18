@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace GI.CS.WPF.FW.CheckList
 {
-	public class QuestItem
+    public class QuestItem
 	{
 		/*Для контакта с листбоксом*/
 		[JsonIgnore]
@@ -34,6 +34,23 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 		}
 
+		/*Для взаимодействия с БД*/
+		[JsonIgnore]
+		DataBase.Tables.Quest questBD; //хранит  объект квеста
+		public void SetQuestDB(DataBase.Tables.Quest questDB)
+        {
+			this.questBD = questDB;
+			quest = questDB.TextQuest;
+			comment = questBD.TextComment;
+
+			foreach(var ans in questDB.Answers)
+            {
+				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
+			}
+		}
+		public void GetQuestBD() { return questBD; }
+
+
 
 		/*Части вопроса*/
 		public string quest { get; set; } = "";
@@ -45,7 +62,7 @@ namespace GI.CS.WPF.FW.CheckList
 		public int countTrueAnswer{ get; set; } = 0;
 
 		/*Логика работы вопроса*/
-		/*Добавление верные и не верных ответов в лист*/
+		/*Добавление верныx и не верных ответов в лист*/
 		public void InputAnswerList(string answer, string anAnswer)
         {		
 			String[] answerMas = answer.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -80,7 +97,7 @@ namespace GI.CS.WPF.FW.CheckList
 				foreach (Answer answer in answerItem)
 				{
 					temp += (count++) + ". ";
-					temp += answer.if_true ? "Верный: " : "Не верный: ";
+					temp += answer.isTrue ? "Верный: " : "Не верный: ";
 					temp += answer.answerSTR +"\n";
 				}
 			}
@@ -110,7 +127,7 @@ namespace GI.CS.WPF.FW.CheckList
 			StringBuilder tempSTR = new StringBuilder();
 			foreach(Answer answer in answerItem)
             {
-				if (answer.if_true == if_answer)
+				if (answer.isTrue == if_answer)
                 {
 					if(tempSTR.Length>=1) tempSTR.Append("\n");
 					tempSTR.Append(answer.answerSTR);		
@@ -125,7 +142,7 @@ namespace GI.CS.WPF.FW.CheckList
 			intRandomQuest = rnd.Next(0, 100);
 			foreach (Answer tmpAnswer in answerItem)
 			{
-				if(tmpAnswer.if_true) countTrueAnswer++;
+				if(tmpAnswer.isTrue) countTrueAnswer++;
 				tmpAnswer.RandomAnswerIt();
 			}
 			/*Перетасовать ответы*/

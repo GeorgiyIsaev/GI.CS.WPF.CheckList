@@ -7,14 +7,14 @@ namespace GI.CS.WPF.FW.CheckList
 {
 	public class Answer
 	{
-		public bool if_true { get; set; } // 1-Верный ответ, 0-Не верный ответ.
+		public bool isTrue { get; set; } // 1-Верный ответ, 0-Не верный ответ.
 		public string answerSTR { get; set; }
 		[JsonIgnore]
 		public int random_nomer { get; set; } = 0;
 		public Answer(){}
 		public Answer(string str, bool if_answer)
 		{
-			if_true = if_answer;
+			isTrue = if_answer;
 			answerSTR = str;			
 		}
 		public void RandomAnswerIt()

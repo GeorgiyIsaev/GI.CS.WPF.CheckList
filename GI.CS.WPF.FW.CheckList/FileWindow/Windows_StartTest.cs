@@ -108,7 +108,7 @@ namespace GI.CS.WPF.FW.CheckList
             /*Проверка 2: Все выбраные ответы верные*/    
             foreach (Answer temp in ListBox_AnswerItem.SelectedItems)
             {
-                if(!temp.if_true) return false;
+                if(!temp.isTrue) return false;
             }
 
             /*Ответ дан верный!*/
@@ -121,13 +121,13 @@ namespace GI.CS.WPF.FW.CheckList
             foreach (Answer temp in ListBox_AnswerItem.Items)
             {
                 ListBoxItem lbi = (ListBoxItem)ListBox_AnswerItem.ItemContainerGenerator.ContainerFromIndex(count);
-                if (lbi.IsSelected && temp.if_true)
+                if (lbi.IsSelected && temp.isTrue)
                 {
                     
                     bool a = lbi.IsSelected;
                     lbi.Background = Brushes.Green;
                 }
-                else if (lbi.IsSelected && !temp.if_true)
+                else if (lbi.IsSelected && !temp.isTrue)
                 {                              
                     lbi.Background = Brushes.HotPink;
                 }

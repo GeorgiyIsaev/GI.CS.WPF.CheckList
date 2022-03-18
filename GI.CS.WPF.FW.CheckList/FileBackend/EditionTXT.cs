@@ -33,7 +33,7 @@ namespace GI.CS.WPF.FW.CheckList
 					file.WriteLine($"ВОПРОС: {tmp.quest}");
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
-						if (tmpAnswer.if_true)
+						if (tmpAnswer.isTrue)
 							file.WriteLine($"ВЕРНО: {tmpAnswer.answerSTR}");
 						else
 							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR}");

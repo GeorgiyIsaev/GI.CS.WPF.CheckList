@@ -24,7 +24,16 @@ namespace GI.CS.WPF.FW.CheckList
             questItems.Add(questItem);         
         }
 
-
-
+        /*Метод для вычитвания вопросов из базы в главный список*/
+        public static void ReadQuestDB(DataBase.Tables.Test testItemDB)
+        {
+            
+            foreach(var questItem in testItemBD)
+            {
+                QuestItem questItem = new QuestItem();
+                questItem.SetQuestDB(questItem);
+                questItems.Add(questItem);          
+            }     
+        }
     }
 }
