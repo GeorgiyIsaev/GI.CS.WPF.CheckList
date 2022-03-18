@@ -55,12 +55,11 @@ namespace DataBase.Model
                 {
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
-                    var sqlWhereTeest = cont.Quests.Where(x => x.TestId == testCurrent.Id);
-                    foreach (var myQuest in sqlWhereTeest) { }
-                    questDB = testCurrent.Quests.Last();
 
-                  //  var questDB1 = cont.Quests.Last();
-                  //   int a = 1;
+                    questDB = cont.Quests.Where(x => x.TestId == testCurrent.Id).LastOrDefault(); //вернуть последний эл-т очереди
+
+                    //  var questDB1 = cont.Quests.Last();
+                    //   int a = 1;
                 }
             }
             catch (Exception ex)
