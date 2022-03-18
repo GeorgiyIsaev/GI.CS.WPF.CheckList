@@ -176,7 +176,7 @@ namespace GI.CS.WPF.FW.CheckList
                         ProfBox.DeleteQuesttAt(QuestsBox.questItems[val].GetQuestBD().Id);
                     }
                     if (val > 0) QuestsBox.questItems.RemoveAt(val);
-                    ListBox_Quest.SelectedIndex = 0;
+                    ListBox_Quest.SelectedIndex = 0; 
                     //EditionTXT.WriteInTXT("TEMPTXT.txt");
                     NewTitle();
                 }
