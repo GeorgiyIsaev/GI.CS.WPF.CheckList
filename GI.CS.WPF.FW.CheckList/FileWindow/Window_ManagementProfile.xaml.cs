@@ -27,19 +27,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
     public partial class Window_ManagementProfile : Window
     {
         public class TablesTest
-        {            
-           
-            //public long Id { get; set; }
-            //public string GroupName { get; set; }
-            //public string TestName { get; set; }
+        {           
+            public Test test { get; set; }
             public int Count { get { return test.Quests.Count(); } }
             public string Open { get; set; } = "Открыть";
-            public string Delete { get; set; } = "Удалить";
-            public Test test { get; set; }
+            public string Delete { get; set; } = "Удалить";         
         }
       
-
-
+   
         public Window_ManagementProfile()
         {
             InitializeComponent();
@@ -54,6 +49,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             ResetTablesDV();
         }
 
+        /*Перерисовка таблицы*/
         private void ResetTablesDV()
         {
             if (ProfBox.profile == null) return;
@@ -68,34 +64,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.ItemsSource = tablesTest;
             Tables_TestBox.Items.Refresh();
         }
-
-
-
-        /*Удаляем тест по ID*/
-        //private void DeleteTestID(long ID)
-        //{
-        //    if (ProfBox.profile == null) return;
-        //    DataBase.Tables.Test findTest = null;
-        //    foreach (var test in ProfBox.profile.Tests)
-        //    {
-        //        if (ID == test.Id)
-        //        {
-        //            findTest = test;
-        //            break;
-        //        }
-        //    }
-        //    if (findTest != null)
-        //    {
-        //        ProfBox.profile.Tests.Remove(findTest);
-        //        ProfBox.SaveToChangeDB();
-        //    }
-        //   // ProfBox.ReConnect();
-        //}
-
-
-
-
-
 
         /*Двойное нажатие на строчку в таблице*/
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
