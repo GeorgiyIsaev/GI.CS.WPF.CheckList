@@ -127,7 +127,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         private void Button_NewPassword_Click(object sender, RoutedEventArgs e)
         {
-
+            new Window_NewPassword().ShowDialog();
         }
 
         /*Событие после изменения таблицы*/

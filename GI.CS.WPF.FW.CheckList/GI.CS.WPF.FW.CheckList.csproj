@@ -145,6 +145,9 @@
     <Compile Include="FileWindow\Window_ManagementProfile.xaml.cs">
       <DependentUpon>Window_ManagementProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileWindow\Window_NewPassword.xaml.cs">
+      <DependentUpon>Window_NewPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FileWindow\Window_ManagementProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FileWindow\Window_NewPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
