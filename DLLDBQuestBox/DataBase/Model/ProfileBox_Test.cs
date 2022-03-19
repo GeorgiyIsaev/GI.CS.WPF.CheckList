@@ -50,7 +50,6 @@ namespace DataBase.Model
         /*Записывает объект с вопросом в базу и возвращает объект уже из базы*/
         public static DataBase.Tables.Quest AddQuestToDB(DataBase.Tables.Quest questDB)
         {
-            //DataBase.Tables.Quest quest
             if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
             try
             {
@@ -59,26 +58,20 @@ namespace DataBase.Model
                    
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
-
-                   // questDB = cont.Quests.Where(x => x.TestId == testCurrent.Id).LastOrDefault(); //вернуть последний эл-т очереди
-
-                    //  var questDB1 = cont.Quests.Last();
-                    //   int a = 1;
                 }
             }
             catch (Exception ex)
             {
                 Notifi.NoConnection(ex);
             }
-           // return questDB;
             testCurrent.Refresh();
-            var q = testCurrent.Quests.Last();
-            return q;
+            var questInDB = testCurrent.Quests.Last();
+            return questInDB;
         }
 
         /*Перезапись квеста в базе данныъ*/
         public static DataBase.Tables.Quest ReplacementQuestBD(DataBase.Tables.Quest questDBbefore,
-            DataBase.Tables.Quest questDBbecame)
+            DataBase.Tables.Quest questDBnew)
         {
       
             //DataBase.Tables.Quest quest
@@ -87,11 +80,13 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
+                    /*Удаляем страый*/
                     cont.Quests.Attach(questDBbefore);
                     cont.Quests.Remove(questDBbefore);
                     cont.SaveChanges();
 
-                    cont.Tests.Find(testCurrent.Id).Quests.Add(questDBbecame);
+                    /*Сохраняем новый*/
+                    cont.Tests.Find(testCurrent.Id).Quests.Add(questDBnew);
                     cont.SaveChanges();
                 }
             }

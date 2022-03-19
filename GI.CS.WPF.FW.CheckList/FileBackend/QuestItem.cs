@@ -44,7 +44,7 @@ namespace GI.CS.WPF.FW.CheckList
 			quest = questDB.TextQuest;
 			comment = questBD.TextComment;
 
-			questDB.Answers.Clear();
+			answerItem.Clear();
 			foreach (var ans in questDB.Answers)
             {
 				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
