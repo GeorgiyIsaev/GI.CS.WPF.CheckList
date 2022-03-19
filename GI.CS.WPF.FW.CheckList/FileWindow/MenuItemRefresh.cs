@@ -74,7 +74,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             mainWindow.MenuItem_Profile.Items.Add(mi);
 
             MenuItem newCreate = new MenuItem();
-            newCreate.Header = "Добавить новый";
+            newCreate.Header = " Добавить новый";
             newCreate.FontStyle = FontStyles.Italic; //курсив
             newCreate.Click += new RoutedEventHandler(
              (sendItem, args) => { LogIn(mainWindow, true); });
@@ -101,7 +101,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 else
                 {
                     mi1.Click += new RoutedEventHandler(
-                    (sendItem, args) => { ConectPR(mainWindow, args); });
+                    (sendItem, args) => { ConectProfileNotPassword(mainWindow, args); });
                 }
                 mi.Items.Add(mi1);
             }
@@ -159,35 +159,49 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         /*Вход в тест*/
         private static void EnterTest(MainWindow mainWindow, long id)
-        {
-            /*Очистка вопросов если лист заполенен*/
-            if (ProfBox.testCurrent == null && QuestsBox.questItems.Count() > 1)
-            {
-                var result = MessageBox.Show($"Очистить форму от впросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.No) return;
-            }
-
+        {      
             ProfBox.TestRefresh(id);
             Refresh(mainWindow);
 
             /*Загружаем тест в контейнер вопросов приложения*/
             if (ProfBox.testCurrent != null)
             {      
-                mainWindow.ClearForm();
+                mainWindow.ClearForm();         
+                mainWindow.GridMain.Visibility = Visibility.Visible;
                 QuestsBox.ReadQuestDB(ProfBox.testCurrent);
             }
         }
 
 
         /*МЕНЮ - Выбора профилия из списка ВХОД*/
-        private static void ConectPR(MainWindow mainWindow, RoutedEventArgs e)
-        {        
+        private static void ConectProfileNotPassword(MainWindow mainWindow, RoutedEventArgs e)
+        {
+            /*Очистка вопросов если лист заполенен*/
+            if (ProfBox.testCurrent == null)
+            {
+                if (QuestsBox.questItems.Count() > 1)
+                {
+                    var result = MessageBox.Show($"Очистить форму от вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.No) return;
+                }
+
+                mainWindow.ClearForm();
+                if (ProfBox.testCurrent != null)
+                    mainWindow.GridMain.Visibility = Visibility.Visible;
+                else
+                    mainWindow.GridMain.Visibility = Visibility.Hidden;
+            }
+
 
             var nameProfile = ((MenuItem)e.OriginalSource).Header.ToString();
             TestConectDB(nameProfile, "");
-            if (ProfBox.profile != null) { /*isLogin = true; */Refresh(mainWindow); }
-           // else MessageBox.Show("No");
+            if (ProfBox.profile != null) {                 
+                Refresh(mainWindow);
+                mainWindow.ClearForm();            
+              
+            }          
         }
+  
 
 
 
