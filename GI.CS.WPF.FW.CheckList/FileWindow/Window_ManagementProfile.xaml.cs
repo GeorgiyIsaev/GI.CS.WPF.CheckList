@@ -66,6 +66,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
         /*Двойное нажатие на строчку в таблице*/
+        public long testId = -1;
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
@@ -75,9 +76,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                 var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                ProfBox.TestRefresh(customer.test.Id);
-                DialogResult = true; //диалог закончен выбором
-              //  MessageBox.Show("Открыт объект: " + customer.test.Id.ToString());      
+                testId = customer.test.Id;              
+                DialogResult = true; //диалог закончен выбором 
             }
             if (nameColumn == "Удалить")
             {

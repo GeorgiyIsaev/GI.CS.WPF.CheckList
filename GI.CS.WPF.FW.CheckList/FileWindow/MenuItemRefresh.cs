@@ -206,14 +206,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 if (result == MessageBoxResult.No) return;
             }
             mainWindow.ClearForm();
-
-            //if (ProfBox.testCurrent == null)
-            //    mainWindow.GridMain.IsEnabled = false;
-            //else
-            //    mainWindow.GridMain.IsEnabled = true;
-         
-
-
             ProfBox.ConnectProfile(name, password);         
         }
 
@@ -245,10 +237,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         /*Меню-Профиль -  Управление профилем*/
         private static void ManagementProfile(MainWindow mainWindow)
-        {
-            //MessageBox.Show("Управление");
-            var window = new Window_ManagementProfile().ShowDialog();
-            if(window.Value == true) { mainWindow.ClearForm();}
+        {    
+            var windowpop = new Window_ManagementProfile();
+            if(windowpop.ShowDialog() == true) {          
+                EnterTest(mainWindow, windowpop.testId);
+                mainWindow.ClearForm();            
+            }
             Refresh(mainWindow); // вызваем в любом случаии
         }
 
