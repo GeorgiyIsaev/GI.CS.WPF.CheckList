@@ -131,14 +131,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
         /*Событие после изменения таблицы*/
+        int currentIndex = -1;
         private void Tables_TestBox_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             /*
              При завершении редактирования изменение не фиксируется, но фиксируется после еще одного изменения разобратся почему так!!!
              
              */
-
-
+            int numRow = e.Row.GetIndex();
+            currentIndex = e.Row.GetIndex();
+            TablesTest customer1 = (TablesTest)e.Row.Item;
+           MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
 
             var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
@@ -155,6 +158,39 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
 
             //MessageBox.Show("Изменен объект: " + customer.test.Id.ToString());
+        }
+
+        private void Tables_TestBox_CurrentCellChanged(object sender, EventArgs e)
+        {
+           
+
+
+            TablesTest customer1 = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
+
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
+        }
+
+        private void Tables_TestBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            //int numRow = e.Row.GetIndex();
+            //TablesTest customer1 = (TablesTest)e.Row.Item;
+            //MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
+
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
+        }
+
+        private void Tables_TestBox_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+
+
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
         }
     }
 
