@@ -239,9 +239,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private static void ManagementProfile(MainWindow mainWindow)
         {    
             var windowpop = new Window_ManagementProfile();
-            if(windowpop.ShowDialog() == true) {          
-                EnterTest(mainWindow, windowpop.testId);
-                mainWindow.ClearForm();            
+            if(windowpop.ShowDialog() == true) {       
+                EnterTest(mainWindow, windowpop.testId);                     
             }
             Refresh(mainWindow); // вызваем в любом случаии
         }
