@@ -27,7 +27,11 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             //TestConectDB();
             mainWindow.MenuItem_Profile.Items.Clear();
-           // ProfilesMenuItem(mainWindow);
+
+            if(ProfBox.testCurrent != null)
+                mainWindow.GridMain.IsEnabled = true;
+
+            // ProfilesMenuItem(mainWindow);
             if (IsLogin)
             {         
                 MenuItem mi = new MenuItem();
@@ -185,11 +189,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                     if (result == MessageBoxResult.No) return;
                 }
 
+        
+
                 mainWindow.ClearForm();
-                if (ProfBox.testCurrent != null)
-                    mainWindow.GridMain.Visibility = Visibility.Visible;
+                if (ProfBox.testCurrent == null)
+                    mainWindow.GridMain.IsEnabled = false;
                 else
-                    mainWindow.GridMain.Visibility = Visibility.Hidden;
+                    mainWindow.GridMain.IsEnabled = true;
             }
 
 
