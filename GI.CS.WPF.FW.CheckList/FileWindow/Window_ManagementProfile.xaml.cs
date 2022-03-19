@@ -52,18 +52,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Title = "Управление профилем [" + ProfBox.profile.Name + "]";
             TextBox_ProfileName.Text = ProfBox.profile.Name;
             ResetTablesDV();
-
-
         }
 
         private void ResetTablesDV()
         {
-           
-            //if (ProfBox.profile == null) return;
-            //ProfBox.ReConnect();
             if (ProfBox.profile == null) return;
             ProfBox.profile.Refresh();
-            //ProfBox.ReConnect();
+  
             Tables_TestBox.ItemsSource = null; //сборс
             tablesTest = new ObservableCollection<TablesTest>();
             foreach (Test testP in ProfBox.profile.Tests)
@@ -74,44 +69,35 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.Items.Refresh();
         }
 
-        //private void ResetDBChange()
-        //{
 
+
+        /*Удаляем тест по ID*/
+        //private void DeleteTestID(long ID)
+        //{
         //    if (ProfBox.profile == null) return;
-        //    ProfBox.ReConnect();
-        //    if (ProfBox.profile == null) return;
-        //    ProfBox.profile.Refresh(); 
+        //    DataBase.Tables.Test findTest = null;
+        //    foreach (var test in ProfBox.profile.Tests)
+        //    {
+        //        if (ID == test.Id)
+        //        {
+        //            findTest = test;
+        //            break;
+        //        }
+        //    }
+        //    if (findTest != null)
+        //    {
+        //        ProfBox.profile.Tests.Remove(findTest);
+        //        ProfBox.SaveToChangeDB();
+        //    }
+        //   // ProfBox.ReConnect();
         //}
 
 
 
-        /*Удаляем тест по ID*/
-        private void DeleteTestID(long ID)
-        {
-            if (ProfBox.profile == null) return;
-            DataBase.Tables.Test findTest = null;
-            foreach (var test in ProfBox.profile.Tests)
-            {
-                if (ID == test.Id)
-                {
-                    findTest = test;
-                    break;
-                }
-            }
-            if (findTest != null)
-            {
-                ProfBox.profile.Tests.Remove(findTest);
-                ProfBox.SaveToChangeDB();
-            }
-           // ProfBox.ReConnect();
-        }
 
 
 
-
-
-
-
+        /*Двойное нажатие на строчку в таблице*/
         private void Tables_TestBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
@@ -123,19 +109,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
                 ProfBox.TestRefresh(customer.test.Id);
                 DialogResult = true; //диалог закончен выбором
-
-              //  MessageBox.Show("Открыт объект: " + customer.test.Id.ToString());
-       
-
-
-
+              //  MessageBox.Show("Открыт объект: " + customer.test.Id.ToString());      
             }
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
                 ProfBox.DeleteTestAt(customer.test.Id);
-
-               // DeleteTestID(customer.Id);
                 ResetTablesDV();
             }
         }
