@@ -47,5 +47,34 @@ using System.Threading.Tasks;
                 DataBase.Model.Notifi.NoConnection(ex);
             }
         }
+
+    public static void Refresh(this Test test)
+    {
+        try
+        {
+            using (var cont = new DataBase.MyDbContext())
+            {
+                test.Quests.Clear(); //очистка перед перезаписью
+                var sqlWhereTeest = cont.Quests.Where(x => x.TestId == test.Id);
+                foreach (var myQuest in sqlWhereTeest)
+                {
+                    test.Quests.Add(myQuest); //внезапно добавление происходит при чтении, а как это так      
+                    var sqlWhereQuest = cont.Answers.Where(x => x.QuestId == myQuest.Id);
+                    foreach (var myAnswer in sqlWhereQuest)
+                    {
+                        //myQuest.Answers.Add(myAnswer);//внезапно добавление происходит при чтении, а как это так
+                    }
+                }
+            }
+            
+        }
+        catch (Exception ex)
+        {
+            DataBase.Model.Notifi.NoConnection(ex);
+        }
     }
+
+
+
+}
 

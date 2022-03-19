@@ -25,6 +25,7 @@ namespace DataBase.Model
 
         }
 
+        /*Создает объект с вопросом но не записывает его в базу*/
         public static DataBase.Tables.Quest CreateNewTest (string questText,
             string commentText, string answerListText, string anAnswerListText)
         {
@@ -45,6 +46,7 @@ namespace DataBase.Model
             return questDB;
         }
 
+        /*Записывает объект с вопросом в базу и возвращает объект уже из базы*/
         public static DataBase.Tables.Quest AddQuestToDB(DataBase.Tables.Quest questDB)
         {
             //DataBase.Tables.Quest quest
@@ -56,7 +58,7 @@ namespace DataBase.Model
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
 
-                    questDB = cont.Quests.Where(x => x.TestId == testCurrent.Id).LastOrDefault(); //вернуть последний эл-т очереди
+                   // questDB = cont.Quests.Where(x => x.TestId == testCurrent.Id).LastOrDefault(); //вернуть последний эл-т очереди
 
                     //  var questDB1 = cont.Quests.Last();
                     //   int a = 1;
@@ -66,29 +68,11 @@ namespace DataBase.Model
             {
                 Notifi.NoConnection(ex);
             }
-            return questDB; 
-        }
-        public static DataBase.Tables.Quest GetLastTest()
-        {
-            DataBase.Tables.Quest quest = null;
-            if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    quest = cont.Quests.Last<DataBase.Tables.Quest>();                    
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-            return quest;
-        }
+           // return questDB;
+            testCurrent.Refresh();
+            var q = testCurrent.Quests.Last();
+            return q;
 
-
-
-
-
+        }    
     }
 }

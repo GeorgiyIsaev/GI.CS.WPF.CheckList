@@ -87,10 +87,10 @@ namespace GI.CS.WPF.FW.CheckList
 
             /*Генерируем вопрос*/
             QuestItem questItem = new QuestItem();    
-            questItem.quest = input_Quest.Text;
-            questItem.comment = input_Comment.Text;
-            questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
-            questItem.Description = questItem.ToolTypeListBox();
+            //questItem.quest = input_Quest.Text;
+            //questItem.comment = input_Comment.Text;
+            //questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
+            //questItem.Description = questItem.ToolTypeListBox();
 
             if (ListBox_Quest.SelectedIndex != 0) //Изменяем существующий
             {
