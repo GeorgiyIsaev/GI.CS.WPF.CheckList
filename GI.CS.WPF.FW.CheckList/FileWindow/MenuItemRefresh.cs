@@ -50,13 +50,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                  (sendItem, args) => { ManagementProfile(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi2);
 
+                mainWindow.MenuItem_Profile.Items.Add(new Separator());
                 MenuItem mi3 = new MenuItem();
-                mi3.Header = "Создать новый тест";
+                mi3.Header = "Новый безымянный тест";
+                mi3.FontStyle = FontStyles.Italic; //курсив
                 mi3.Click += new RoutedEventHandler(
                  (sendItem, args) => { CreateNewTest(mainWindow); });
                 mainWindow.MenuItem_Profile.Items.Add(mi3);
-
-                mainWindow.MenuItem_Profile.Items.Add(new Separator());
+    
                 ProfileTestsMenuItem(mainWindow);
 
             }
