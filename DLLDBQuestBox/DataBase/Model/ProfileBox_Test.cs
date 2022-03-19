@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,7 @@ namespace DataBase.Model
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
+                   
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
 
@@ -72,7 +74,35 @@ namespace DataBase.Model
             testCurrent.Refresh();
             var q = testCurrent.Quests.Last();
             return q;
+        }
 
-        }    
+        /*Перезапись квеста в базе данныъ*/
+        public static DataBase.Tables.Quest ReplacementQuestBD(DataBase.Tables.Quest questDBbefore,
+            DataBase.Tables.Quest questDBbecame)
+        {
+      
+            //DataBase.Tables.Quest quest
+            if (testCurrent == null) throw new Exception("Нет соединения с тестом БД");
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Quests.Attach(questDBbefore);
+                    cont.Quests.Remove(questDBbefore);
+                    cont.SaveChanges();
+
+                    cont.Tests.Find(testCurrent.Id).Quests.Add(questDBbecame);
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            // return questDB;
+            testCurrent.Refresh();
+            var q = testCurrent.Quests.Last();
+            return q;
+        }
     }
 }

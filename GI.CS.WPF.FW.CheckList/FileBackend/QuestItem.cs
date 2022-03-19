@@ -37,6 +37,7 @@ namespace GI.CS.WPF.FW.CheckList
 		/*Для взаимодействия с БД*/
 		[JsonIgnore]
 		DataBase.Tables.Quest questBD; //хранит  объект квеста
+		public DataBase.Tables.Quest GetQuestBD() { return questBD; }
 		public void SetQuestDB(DataBase.Tables.Quest questDB)
         {
 			this.questBD = questDB;
@@ -49,7 +50,22 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			Description = ToolTypeListBox();
 		}
-		public DataBase.Tables.Quest GetQuestBD() { return questBD; }
+		public void ResetQuestDB(DataBase.Tables.Quest questDB)
+		{
+			var tempIDQuest = this.questBD.Id;
+			this.questBD = questDB;
+
+			quest = questDB.TextQuest;
+			comment = questBD.TextComment;
+
+			questDB.Answers.Clear();
+			foreach (var ans in questDB.Answers)
+			{
+				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
+			}
+			Description = ToolTypeListBox();
+		}
+
 
 
 
