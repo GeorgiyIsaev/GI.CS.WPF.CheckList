@@ -135,7 +135,7 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
             //Подключились
-            ConnectProfile(name, password);
+            //ConnectProfile(name, password);
         }
 
   

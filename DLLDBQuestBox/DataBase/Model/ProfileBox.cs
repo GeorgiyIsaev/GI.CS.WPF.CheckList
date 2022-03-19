@@ -11,9 +11,9 @@ namespace DataBase.Model
     public static partial class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
-        static long currentTestID = -1;
-        public static long GetCurrentTestID { get { return currentTestID; } }
-        public static void SetCurrentTestID(long id) { currentTestID = id; }
+       // static long currentTestID = -1;
+       // public static long GetCurrentTestID { get { return currentTestID; } }
+      //  public static void SetCurrentTestID(long id) { currentTestID = id; }
 
 
         public static void ConnectProfile(String name, String password)
@@ -44,22 +44,22 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }           
         }
-        public static void ReConnect()
-        {
-            //Data.Tables.Profile profile = null;
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    //cont.Profiles.Attach(profile);
-                    profile.Refresh();
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-        }
+        //public static void ReConnect()
+        //{
+        //    //Data.Tables.Profile profile = null;
+        //    try
+        //    {
+        //        using (var cont = new DataBase.MyDbContext())
+        //        {
+        //            //cont.Profiles.Attach(profile);
+        //            profile.Refresh();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Notifi.NoConnection(ex);
+        //    }
+        //}
 
 
         public static void SaveToChangeDB()
@@ -85,6 +85,7 @@ namespace DataBase.Model
             profile.Refresh();  /*Обновляем списки на те что в базе*/    
         }
 
+        /*Метод проверяет что имя не занаятно, елси занято редактирует*/
         private static void nameID(MyDbContext cont)
         {    
             foreach (var p in cont.Profiles)
@@ -99,26 +100,26 @@ namespace DataBase.Model
         
         }
 
-        public static void SaveToDeleteDB()
-        {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    /*Изменяем связанные списки из кода в Базу*/
-                    cont.Profiles.Attach(profile);
-                    //profile.Tests = profile.Tests;
-                    //Attach();
-                    //cont.Entry(profile).State = EntityState.Unchanged;
-                    cont.SaveChanges();                 
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-            profile.Refresh();
-        }
+        //public static void SaveToDeleteDB()
+        //{      //Сохранить измения в базу применять только при изменении или удаление существующих записей
+        //    try
+        //    {
+        //        using (var cont = new DataBase.MyDbContext())
+        //        {
+        //            /*Изменяем связанные списки из кода в Базу*/
+        //            cont.Profiles.Attach(profile);
+        //            //profile.Tests = profile.Tests;
+        //            //Attach();
+        //            //cont.Entry(profile).State = EntityState.Unchanged;
+        //            cont.SaveChanges();                 
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Notifi.NoConnection(ex);
+        //    }
+        //    profile.Refresh();
+        //}
 
 
         public static void EndConect()

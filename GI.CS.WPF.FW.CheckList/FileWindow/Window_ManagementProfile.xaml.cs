@@ -74,43 +74,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.Items.Refresh();
         }
 
-        private void ResetDBChange()
-        {
+        //private void ResetDBChange()
+        //{
 
-            if (ProfBox.profile == null) return;
-            ProfBox.ReConnect();
-            if (ProfBox.profile == null) return;
-            ProfBox.profile.Refresh();
-
-            //foreach (TablesTest test in tablesTest)
-            //{
-            //    Test d = test.test;
-            //    ((List<Test>)(ProfBox.profile.Tests)).Find(test.test);
-
-            //}
-
-
-
-            //foreach (var test in ProfBox.profile.Tests)
-            //{
-            //    tablesTest.
-
-
-            //    test
-
-            //    if (test.Id = tablesTest.Find(test.Id)
-            //}
-
-            //    //ProfBox.ReConnect();
-            //    Tables_TestBox.ItemsSource = null; //сборс
-            //tablesTest = new List<TablesTest>();
-            //foreach (var test in ProfBox.profile.Tests)
-            //{
-            //    tablesTest.Add(new TablesTest { Id = test.Id, GroupName = test.Group, TestName = test.Name, Count = test.Quests.Count() });
-            //}
-            //Tables_TestBox.ItemsSource = tablesTest;
-            //Tables_TestBox.Items.Refresh();
-        }
+        //    if (ProfBox.profile == null) return;
+        //    ProfBox.ReConnect();
+        //    if (ProfBox.profile == null) return;
+        //    ProfBox.profile.Refresh(); 
+        //}
 
 
 

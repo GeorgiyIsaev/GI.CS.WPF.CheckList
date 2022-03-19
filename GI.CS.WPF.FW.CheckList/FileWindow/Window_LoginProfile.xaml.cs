@@ -80,14 +80,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             {
                 if (Password01 != Password02) { MessageBox.Show("Пороль не совпадает"); return; }
                 ProfBox.CreateNewProfile(ProfileName, Password01);
+                ProfBox.ConnectProfile(ProfileName, Password01);
                 if (ProfBox.profile != null) { this.DialogResult = true;  } //Если профиль получен закрываем окно
-
 
             }
             else
             {
                 /*Тут будит подключение к БД и сохранение профиля в прогу*/
-                MenuItemRefresh.TestConectDB(ProfileName, Password01);
+                ProfBox.ConnectProfile(ProfileName, Password01);          
                 if (ProfBox.profile == null) { return;}
 
                 /*Пока типа два профиля*/

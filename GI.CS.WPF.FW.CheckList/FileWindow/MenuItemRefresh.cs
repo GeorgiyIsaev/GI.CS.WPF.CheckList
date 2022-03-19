@@ -25,11 +25,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         public static void Refresh(MainWindow mainWindow)
         {
-            //TestConectDB();
+            //ConectDBProfile();
             mainWindow.MenuItem_Profile.Items.Clear();
 
             if(ProfBox.testCurrent != null)
                 mainWindow.GridMain.IsEnabled = true;
+            if(ProfBox.profile !=null && ProfBox.testCurrent == null) 
+                mainWindow.GridMain.IsEnabled = false;
 
             // ProfilesMenuItem(mainWindow);
             if (IsLogin)
@@ -179,32 +181,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         /*МЕНЮ - Выбора профилия из списка ВХОД*/
         private static void ConectProfileNotPassword(MainWindow mainWindow, RoutedEventArgs e)
-        {
-            /*Очистка вопросов если лист заполенен*/
-            if (ProfBox.testCurrent == null)
-            {
-                if (QuestsBox.questItems.Count() > 1)
-                {
-                    var result = MessageBox.Show($"Очистить форму от вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result == MessageBoxResult.No) return;
-                }
-
-        
-
-                mainWindow.ClearForm();
-                if (ProfBox.testCurrent == null)
-                    mainWindow.GridMain.IsEnabled = false;
-                else
-                    mainWindow.GridMain.IsEnabled = true;
-            }
-
-
+        { 
             var nameProfile = ((MenuItem)e.OriginalSource).Header.ToString();
-            TestConectDB(nameProfile, "");
+            ConectDBProfile(mainWindow, nameProfile, "");
             if (ProfBox.profile != null) {                 
                 Refresh(mainWindow);
-                mainWindow.ClearForm();            
-              
+                mainWindow.ClearForm();    
             }          
         }
   
@@ -215,21 +197,24 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
 
 
-        public static bool TestConectDB(string name = "Admin", string password = "0000")
+        public static void ConectDBProfile(MainWindow mainWindow, string name, string password = "")
         {
-            ProfBox.ConnectProfile(name, password);
-            if (ProfBox.profile != null)
+            /*Очистка вопросов если лист заполенен*/
+            if (QuestsBox.questItems.Count() > 1)
             {
-                String text = "profile: " + ProfBox.profile.Name + " password: " + ProfBox.profile.Password + " Id: " + ProfBox.profile.Id;
-                //MessageBox.Show(text); //!!!!!!!!!!!!!!!!!!!!!
-                //isLogin = true;
-                return true;
+                var result = MessageBox.Show($"Очистить форму от вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No) return;
             }
-            else
-            {
-                //isLogin = false;
-                return false;
-            }           
+            mainWindow.ClearForm();
+
+            //if (ProfBox.testCurrent == null)
+            //    mainWindow.GridMain.IsEnabled = false;
+            //else
+            //    mainWindow.GridMain.IsEnabled = true;
+         
+
+
+            ProfBox.ConnectProfile(name, password);         
         }
 
 
@@ -237,22 +222,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Меню-Профиль войти в профиль*/
         private static void LogIn(MainWindow mainWindow, bool isCreate, String NameProfile="")
         {
-            Window_LoginProfile windowLoginProfile = new Window_LoginProfile(isCreate, NameProfile);
-           // isLogin = true;
-            //TestConectDB();
-
+            Window_LoginProfile windowLoginProfile = new Window_LoginProfile(isCreate, NameProfile); //вход профиль внутри окна
             if (windowLoginProfile.ShowDialog() == true)
             {
-               // MessageBox.Show($"Вы вышли в профиль {windowLoginProfile.ProfileName} с паролем {windowLoginProfile.Password01}");
-              //  TestConectDB(windowLoginProfile.ProfileName, windowLoginProfile.Password01);
-                //if (ProfBox.profile != null)
-                //{               
-                //    isLogin = true;
-                //}
-            }
-            else
-            {
-               //MessageBox.Show("Авторизация не пройдена");
+                if (QuestsBox.questItems.Count() > 1)
+                {
+                    var result = MessageBox.Show($"Очистить форму от вопросов?", "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.No) return;
+                }
+                mainWindow.ClearForm();
             }
             Refresh(mainWindow);
         }
@@ -260,9 +238,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private static void LogOut(MainWindow mainWindow)
         {
             ProfBox.EndConect();
-
-            //MessageBox.Show("Действие");
-            //isLogin = false;
+            mainWindow.ClearForm();
+            mainWindow.GridMain.IsEnabled = true;
             Refresh(mainWindow);
         }
 
