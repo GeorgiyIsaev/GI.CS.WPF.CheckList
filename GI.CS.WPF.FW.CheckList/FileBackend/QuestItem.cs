@@ -44,27 +44,28 @@ namespace GI.CS.WPF.FW.CheckList
 			quest = questDB.TextQuest;
 			comment = questBD.TextComment;
 
-			foreach(var ans in questDB.Answers)
+			questDB.Answers.Clear();
+			foreach (var ans in questDB.Answers)
             {
 				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
 			}
 			Description = ToolTypeListBox();
 		}
-		public void ResetQuestDB(DataBase.Tables.Quest questDB)
-		{
-			var tempIDQuest = this.questBD.Id;
-			this.questBD = questDB;
+		//public void ResetQuestDB(DataBase.Tables.Quest questDB)
+		//{
+		//	var tempIDQuest = this.questBD.Id;
+		//	this.questBD = questDB;
 
-			quest = questDB.TextQuest;
-			comment = questBD.TextComment;
+		//	quest = questDB.TextQuest;
+		//	comment = questBD.TextComment;
 
-			questDB.Answers.Clear();
-			foreach (var ans in questDB.Answers)
-			{
-				answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
-			}
-			Description = ToolTypeListBox();
-		}
+		//	questDB.Answers.Clear();
+		//	foreach (var ans in questDB.Answers)
+		//	{
+		//		answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
+		//	}
+		//	Description = ToolTypeListBox();
+		//}
 
 
 
