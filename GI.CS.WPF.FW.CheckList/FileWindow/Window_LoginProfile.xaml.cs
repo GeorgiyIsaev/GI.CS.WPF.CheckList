@@ -79,8 +79,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (isCrateProfile)
             {
                 if (Password01 != Password02) { MessageBox.Show("Пороль не совпадает"); return; }
-                ProfBox.CreateNewProfile(ProfileName, Password01);
-                ProfBox.ConnectProfile(ProfileName, Password01);
+                ProfBox.CreateNewProfile(ProfileName, Password01);         
                 if (ProfBox.profile != null) { this.DialogResult = true;  } //Если профиль получен закрываем окно
 
             }
