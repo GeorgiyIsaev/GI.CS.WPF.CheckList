@@ -63,74 +63,7 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return parsing_quest(fullLine);
 		}
-		private static int parsing_quest2222(string str)
-		{
-			string[] separator = { "\n", "\r" };
-			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-			QuestItem questItem = null;
-			int count = 0;
-
-
-			int cursorLine = -1; //курсор строки -1 нет, 1 вопрос, 2 коментарий
-
-			foreach (string line in lineItem)
-			{
-				try
-				{
-					if (cursorLine == 1 || line.IndexOf("ВОПРОС:") >= 0)
-					{
-						if (questItem != null && line.IndexOf("ВОПРОС:") >= 0) 
-						{
-							//questItem.EndlForSpase();
-							if (!if_ThereQuest(questItem.quest))
-							{
-								questItem.Description = questItem.ToolTypeListBox();
-								QuestsBox.questItems.Add(questItem);
-								count++;
-							}
-						}
-						questItem = new QuestItem();
-						questItem.quest += line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
-						cursorLine = 1;
-					}
-					else if (line.IndexOf("ВЕРНО:") == 0)
-					{
-						Answer temp = new Answer(line.Substring(7), true);
-						questItem.answerItem.Add(temp);
-						cursorLine = -1;
-					}
-					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
-					{
-						Answer temp = new Answer(line.Substring(10), false);
-						questItem.answerItem.Add(temp);
-						cursorLine = -1;
-					}
-					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
-					{
-						questItem.comment += line.Substring(13);
-						cursorLine = 2;
-					}
-				}
-				catch (Exception e)
-				{
-					System.Windows.MessageBox.Show(e.ToString());
-					/*Просто игнорируем*/
-				}
-			}
-			if (questItem != null)
-			{
-				questItem.EndlForSpase();
-				if (!if_ThereQuest(questItem.quest))
-				{
-					questItem.Description = questItem.ToolTypeListBox();
-					QuestsBox.questItems.Add(questItem);
-					count++;
-				}
-			}
-			return count;
-		}
-
-
+		
 		private static int parsing_quest(string str)
 		{
 			string[] separator = { "\n", "\r" };
@@ -152,7 +85,7 @@ namespace GI.CS.WPF.FW.CheckList
 						countAddQuest++;
 						QuestsBox.AddQuestToDBAndQuestBox(questItemDB);
 						questItemDB = null;
-						//метод для сохранения вопроса
+						cursorLine = -1;
 					}
 
 					/*Если это вопрос но объекта нет*/
@@ -166,28 +99,29 @@ namespace GI.CS.WPF.FW.CheckList
 						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = false });
 						cursorLine = -1;
 					}
-					else if (cursorLine == 1 || line.IndexOf("ВОПРОС:") >= 0)
-					{
-						questItemDB = new DataBase.Tables.Quest();
-						if (cursorLine != 1)
-						{
-							cursorLine = 1;
-							questItemDB.TextQuest = line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
-						}
-						else
-							questItemDB.TextQuest += line;
-
-					}
 					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
 					{
-						if (cursorLine != 2)
-						{
-							cursorLine = 2;
-							questItemDB.TextQuest = line.Substring(13);
-						}
+                        if (cursorLine == 2)
+                            questItemDB.TextComment += "\n" + line;
+                        else
+                        {
+                            cursorLine = 2;
+                            questItemDB.TextComment = line.Substring(13);
+                        }
+                    }
+					else if (cursorLine == 1 || line.IndexOf("ВОПРОС:") >= 0)
+					{						
+                        if (cursorLine == 1)
+                            questItemDB.TextQuest += "\n" + line;
 						else
-							questItemDB.TextQuest += line;
-					}
+						{
+							questItemDB = new DataBase.Tables.Quest();
+							cursorLine = 1;
+                            questItemDB.TextQuest = line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
+                        }
+
+                    }
+				
 				}
 
 				/*Заглушка для добавления последнего вопроса*/
