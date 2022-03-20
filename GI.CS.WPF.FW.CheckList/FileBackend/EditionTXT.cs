@@ -34,11 +34,13 @@ namespace GI.CS.WPF.FW.CheckList
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
 						if (tmpAnswer.isTrue)
-							file.WriteLine($"ВЕРНО: {tmpAnswer.answerSTR}");
+							file.WriteLine($"ВЕРНО: {tmpAnswer.answerSTR.ToString()}");
 						else
-							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR}");
+							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR.ToString()}");
 					}
-					file.WriteLine($"КОММЕНТАРИЙ: {tmp.comment}");
+					if(tmp.comment != "")
+						file.WriteLine($"КОММЕНТАРИЙ: {tmp.comment}");
+					file.WriteLine("");
 					//count++;
 				}
 			}
