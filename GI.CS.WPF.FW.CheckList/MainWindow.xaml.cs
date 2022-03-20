@@ -53,6 +53,13 @@ namespace GI.CS.WPF.FW.CheckList
             MessageBox.Show(text);
         }
 
+        public void InputIsEnabled(bool isEnabled)
+        {
+            GridMain.IsEnabled = isEnabled;
+            MenuItemLoad.IsEnabled = isEnabled;
+            MenuItemSave.IsEnabled = isEnabled;
+        }
+
 
 
 

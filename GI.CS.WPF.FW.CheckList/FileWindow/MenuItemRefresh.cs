@@ -29,9 +29,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             mainWindow.MenuItem_Profile.Items.Clear();
 
             if(ProfBox.testCurrent != null)
-                mainWindow.GridMain.IsEnabled = true;
-            if(ProfBox.profile !=null && ProfBox.testCurrent == null) 
-                mainWindow.GridMain.IsEnabled = false;
+                mainWindow.InputIsEnabled(true);
+            if (ProfBox.profile != null && ProfBox.testCurrent == null)            
+                mainWindow.InputIsEnabled(false);
+            
 
             // ProfilesMenuItem(mainWindow);
             if (IsLogin)
@@ -232,7 +233,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             ProfBox.EndConect();
             mainWindow.ClearForm();
-            mainWindow.GridMain.IsEnabled = true;
+            mainWindow.InputIsEnabled(true);
             Refresh(mainWindow);
         }
 
