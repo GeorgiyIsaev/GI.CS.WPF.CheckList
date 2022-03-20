@@ -69,15 +69,18 @@ namespace GI.CS.WPF.FW.CheckList
 			QuestItem questItem = null;
 			int count = 0;
 
+
+			int cursorLine = -1; //курсор строки -1 нет, 1 вопрос, 2 коментарий
+
 			foreach (string line in lineItem)
 			{
 				try
 				{
-					if (line.IndexOf("ВОПРОС:") >= 0)
+					if (cursorLine == 1 || line.IndexOf("ВОПРОС:") >= 0)
 					{
-						if (questItem != null)
+						if (questItem != null && line.IndexOf("ВОПРОС:") >= 0) 
 						{
-							questItem.EndlForSpase();
+							//questItem.EndlForSpase();
 							if (!if_ThereQuest(questItem.quest))
 							{
 								questItem.Description = questItem.ToolTypeListBox();
@@ -86,21 +89,25 @@ namespace GI.CS.WPF.FW.CheckList
 							}
 						}
 						questItem = new QuestItem();
-						questItem.quest = line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
+						questItem.quest += line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
+						cursorLine = 1;
 					}
 					else if (line.IndexOf("ВЕРНО:") == 0)
 					{
 						Answer temp = new Answer(line.Substring(7), true);
 						questItem.answerItem.Add(temp);
+						cursorLine = -1;
 					}
 					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
 					{
 						Answer temp = new Answer(line.Substring(10), false);
 						questItem.answerItem.Add(temp);
+						cursorLine = -1;
 					}
-					else if (line.IndexOf("КОММЕНТАРИЙ:") == 0)
+					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
 					{
-						questItem.comment = line.Substring(13);
+						questItem.comment += line.Substring(13);
+						cursorLine = 2;
 					}
 				}
 				catch (Exception e)

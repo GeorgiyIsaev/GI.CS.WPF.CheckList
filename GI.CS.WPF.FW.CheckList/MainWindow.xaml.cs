@@ -40,7 +40,7 @@ namespace GI.CS.WPF.FW.CheckList
             NewTitle();
 
             /*Чтение из временого файла*/
-            EditionTXT.file_readTXT("TEMPTXT.txt");
+            //EditionTXT.file_readTXT("TEMPTXT.txt");
             NewTitle();   
 
             DataBase.Model.Notifi.mes += MesageNotConectBD;
