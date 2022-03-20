@@ -192,6 +192,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
             MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
         }
+
+        private void Tables_TestBox_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+            MessageBox.Show("Изменен TargetUpdated: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
+        }
     }
 
  
