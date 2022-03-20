@@ -24,7 +24,7 @@ namespace GI.CS.WPF.FW.CheckList
 		public static void WriteInTXT(string nameFile)
 		{
 			/*Запись вопросов в блакнот*/
-			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
+			using (var file = new StreamWriter(nameFile, false, Encoding.Unicode))
 			{
 				int count = 0;
 				foreach (QuestItem tmp in QuestsBox.questItems)
@@ -33,10 +33,11 @@ namespace GI.CS.WPF.FW.CheckList
 					file.WriteLine($"ВОПРОС: {tmp.quest}");
 					foreach (Answer tmpAnswer in tmp.answerItem)
 					{
+						tmpAnswer.answerSTR.ToString();
 						if (tmpAnswer.isTrue)
-							file.WriteLine($"ВЕРНО: {tmpAnswer.answerSTR.ToString()}");
+							file.WriteLine($"ВЕРНО: {tmpAnswer.answerSTR}");
 						else
-							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR.ToString()}");
+							file.WriteLine($"НЕ ВЕРНО: {tmpAnswer.answerSTR}");
 					}
 					if(tmp.comment != "")
 						file.WriteLine($"КОММЕНТАРИЙ: {tmp.comment}");
