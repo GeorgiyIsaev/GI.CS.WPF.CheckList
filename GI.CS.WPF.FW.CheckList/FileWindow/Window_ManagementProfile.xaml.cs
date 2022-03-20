@@ -141,7 +141,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             int numRow = e.Row.GetIndex();
             currentIndex = e.Row.GetIndex();
             TablesTest customer1 = (TablesTest)e.Row.Item;
-           MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
+            MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
 
             var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
