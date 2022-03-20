@@ -32,7 +32,7 @@ namespace GI.CS.WPF.FW.CheckList
                 "4. Сохранённые HTML-чек-листы можно редактировать через приложение\n"+
                 "5. Сохранённые HTML-чек-листы можно использовать для запуска активных тестов внутри приложения для проверки своих знаний";
 
-            TextBlock_sign.Text = " Made by georgiyelbaf\n  Copyright © 2020";
+            TextBlock_sign.Text = " Made by georgiyelbaf\n  Copyright © 2022";
 
         }
     }
