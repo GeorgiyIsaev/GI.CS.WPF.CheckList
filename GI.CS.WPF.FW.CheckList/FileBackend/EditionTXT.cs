@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -62,7 +63,7 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return parsing_quest(fullLine);
 		}
-		private static int parsing_quest(string str)
+		private static int parsing_quest2222(string str)
 		{
 			string[] separator = { "\n", "\r" };
 			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
@@ -128,5 +129,81 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return count;
 		}
+
+
+		private static int parsing_quest(string str)
+		{
+			string[] separator = { "\n", "\r" };
+			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+            DataBase.Tables.Quest questItemDB = null; //объект для хранения
+			int cursorLine = -1; //курсор строки -1 нет, 1 вопрос, 2 коментарий
+			int countAddQuest = 0; //колличество добавленных вопросов
+
+			try
+			{
+				foreach (string line in lineItem)
+				{
+					/*Если это вопрос но у нас уже есть объект то сохраняем*/
+					if (line.IndexOf("ВОПРОС:") >= 0 && questItemDB != null)
+					{
+						countAddQuest++;
+						QuestsBox.AddQuestToDBAndQuestBox(questItemDB);
+						questItemDB = null;
+						//метод для сохранения вопроса
+					}
+
+					/*Если это вопрос но объекта нет*/
+					if (line.IndexOf("ВЕРНО:") == 0)
+					{
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = true });
+						cursorLine = -1;
+					}
+					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
+					{
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = false });
+						cursorLine = -1;
+					}
+					else if (cursorLine == 1 || line.IndexOf("ВОПРОС:") >= 0)
+					{
+						questItemDB = new DataBase.Tables.Quest();
+						if (cursorLine != 1)
+						{
+							cursorLine = 1;
+							questItemDB.TextQuest = line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
+						}
+						else
+							questItemDB.TextQuest += line;
+
+					}
+					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
+					{
+						if (cursorLine != 2)
+						{
+							cursorLine = 2;
+							questItemDB.TextQuest = line.Substring(13);
+						}
+						else
+							questItemDB.TextQuest += line;
+					}
+				}
+
+				/*Заглушка для добавления последнего вопроса*/
+				if (questItemDB != null)
+				{
+					countAddQuest++;
+					QuestsBox.AddQuestToDBAndQuestBox(questItemDB);
+				}
+			}
+			catch (Exception e){System.Windows.MessageBox.Show(e.ToString());}	
+			return countAddQuest;
+		}
+
+
+
+
+
 	}
 }

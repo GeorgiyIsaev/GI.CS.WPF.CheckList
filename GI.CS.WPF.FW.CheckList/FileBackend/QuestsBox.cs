@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
-
+using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -35,5 +35,18 @@ namespace GI.CS.WPF.FW.CheckList
                 questItems.Add(questItem);
             }
         }
+        /*Добавляет новый вопрос в коробку и базу одновременно*/
+        public static void AddQuestToDBAndQuestBox(DataBase.Tables.Quest questItemDB)
+        {
+            /*Если есть контакт с базой*/
+            if (ProfBox.testCurrent != null)
+                questItemDB = ProfBox.AddQuestToDB(questItemDB);
+
+            QuestItem questItem = new QuestItem();
+            questItem.SetQuestDB(questItemDB);
+            questItems.Add(questItem);
+        }
+
+
     }
 }
