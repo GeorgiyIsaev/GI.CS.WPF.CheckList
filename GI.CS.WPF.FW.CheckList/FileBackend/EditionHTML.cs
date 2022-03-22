@@ -54,7 +54,7 @@ namespace GI.CS.WPF.FW.CheckList
 					count++; continue;
 				}
 				htmlCodeStr.Append("<div class=\"questBox\">");
-				htmlCodeStr.Append($"<div class=\"questBox__quest\">{count++}) {tmp.quest}\n</div>");
+				htmlCodeStr.Append($"<div class=\"questBox__quest\">{count++}) {AddTegBR(tmp.quest)}\n</div>");
 
 				foreach (Answer tmpAnswer in tmp.answerItem)
 				{
@@ -65,7 +65,7 @@ namespace GI.CS.WPF.FW.CheckList
 				}
 				if (tmp.comment.Length > 0)
 				{
-					htmlCodeStr.Append($"<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{tmp.comment}\n</div></details>\n		</div>\n");
+					htmlCodeStr.Append($"<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{AddTegBR(tmp.comment)}\n</div></details>\n		</div>\n");
 				}
 				htmlCodeStr.Append($"</div>\n");
 			}
@@ -74,6 +74,21 @@ namespace GI.CS.WPF.FW.CheckList
 			htmlCodeStr.Append("</body>\n</html>");
 			return htmlCodeStr.ToString();
 		}
+		/*Добавление и Удаление BR*/
+		private static string AddTegBR(string textFormat)
+		{	
+			while (textFormat.Contains("\n"))
+				textFormat = textFormat.Replace("\n", "<br>");
+			return textFormat;
+		}
+		private static string DeleteTegBR(string textFormat)
+		{
+			while (textFormat.Contains("<br>"))
+				textFormat = textFormat.Replace("\n", "<br>");
+			return textFormat;
+		}
+
+
 		/*Проверка на наличе спойлера у коментария*/
 		private static string spoilerOpen()
 		{
@@ -132,7 +147,7 @@ namespace GI.CS.WPF.FW.CheckList
 			using (var file = new StreamWriter(nameFile, false, Encoding.UTF8))
 			{
 				file.WriteLine(bilderHTMLCode());
-				A   }
+		    }
 		}
 
 		/*Чтение HTML файла - возвращает кол-вопросов*/
