@@ -180,9 +180,6 @@ namespace GI.CS.WPF.FW.CheckList
 			/*Разделение файла на строки*/
 			string[] separator = { "\n", "\r" };
 			string[] lineItem = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-			QuestItem questItem = null;
-			int count = 0;
-
 
 
 			DataBase.Tables.Quest questItemDB = null; //объект для хранения
@@ -204,9 +201,10 @@ namespace GI.CS.WPF.FW.CheckList
 
 					/*Если это вопрос но объекта нет*/
 					int test = line.IndexOf(AnswerBegin);
-					if (line.IndexOf(AnswerBegin) == 0)
+					if (line.IndexOf(AnswerBegin) >= 0)
 					{
-						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Replace(AnswerBegin, ""), isTrue = true });
+						int test1 = line.IndexOf(AnswerBegin);
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Remove(0, line.IndexOf(AnswerBegin) + AnswerBegin.Length), isTrue = true });
 						cursorLine = -1;
 					}
 					else if (line.IndexOf(UnAnswerBegin) == 0)
@@ -233,10 +231,8 @@ namespace GI.CS.WPF.FW.CheckList
 							questItemDB = new DataBase.Tables.Quest();
 							cursorLine = 1;
 
-
 							questItemDB.TextQuest = line.Replace(questBegin, ""); //Удаление открывающего тега
-							//	questItemDB.TextQuest = questItemDB.TextQuest.Replace(questEnd, "");//Удаление закрывающего тега
-							questItemDB.TextQuest = questItemDB.TextQuest.Remove(0, questItemDB.TextQuest.IndexOf(')') + 2); // удаление номера вопроса							
+						    questItemDB.TextQuest = questItemDB.TextQuest.Remove(0, questItemDB.TextQuest.IndexOf(')') + 2); // удаление номера вопроса							
 						}
 					}		
 				}
@@ -248,52 +244,6 @@ namespace GI.CS.WPF.FW.CheckList
 					QuestsBox.AddQuestToDBAndQuestBox(questItemDB);				
 					cursorLine = -1;
 				}
-
-
-
-
-
-				//	string temp;
-
-
-				//	if (line.IndexOf(questBegin) >= 0)
-				//	{
-				//		if (questItem != null && !EditionTXT.if_ThereQuest(questItem.quest))
-				//		{
-				//			questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;
-				//		}
-				//		questItem = new QuestItem();
-				//		temp = line.Replace(questBegin, "");
-				//		temp = temp.Replace(questEnd, "");
-				//		temp = temp.Remove(0, temp.IndexOf(')') + 2);
-				//		questItem.quest = temp;
-				//	}
-				//	else if (line.IndexOf(AnswerBegin) == 0)
-				//	{
-				//		temp = line.Replace(AnswerBegin, "");
-				//		temp = temp.Replace(AnswerEnd, "");
-				//		Answer tempAns = new Answer(temp, true);
-				//		questItem.answerItem.Add(tempAns);
-				//	}
-				//	else if (line.IndexOf(UnAnswerBegin) == 0)
-				//	{
-				//		temp = line.Replace(UnAnswerBegin, "");
-				//		temp = temp.Replace(AnswerEnd, "");
-				//		Answer tempAns = new Answer(temp, false);
-				//		questItem.answerItem.Add(tempAns);
-				//	}
-				//	else if (line.IndexOf(comentBegin) == 0)
-				//	{
-				//		temp = line.Replace(comentBegin, "");
-				//		temp = temp.Replace(comentEnd, "");
-				//		questItem.comment = temp;
-				//	}
-				//}
-				//if (questItem != null && !EditionTXT.if_ThereQuest(questItem.quest))
-				//{
-				//	questItem.Description = questItem.ToolTypeListBox(); QuestsBox.questItems.Add(questItem); count++;
-				//}
-
 			}
 			catch (Exception e)
 			{
