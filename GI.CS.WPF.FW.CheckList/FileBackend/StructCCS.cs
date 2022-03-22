@@ -13,12 +13,13 @@ namespace GI.CS.WPF.FW.CheckList
         private bool strike; //зачеркнут
         private string color;
 
+        /*Строка СSS со стилем шрифта*/
         public string FullStringCss => fullStringCss;
-        private int SizeFront => sizeFront;
-        private bool Italics => italics;
-        private bool Bold => bold;
-        private bool Strike => strike;
-        private string Color => color;
+        //private int SizeFront => sizeFront;
+        //private bool Italics => italics;
+        //private bool Bold => bold;
+        //private bool Strike => strike;
+        //private string Color => color;
 
 
         public void CreateCSS(int sizeFront, bool italics, bool bold, bool strike, string color)
@@ -33,11 +34,11 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void CreateStringCSS()
         {
-            fullStringCss = $"font-size: {SizeFront}px; ";
+            fullStringCss = $"font-size: {sizeFront}px; ";
             if (italics) fullStringCss += "font-style:italic; ";
             if (bold) fullStringCss += "font-weight: bold; " ;
             if (strike) fullStringCss += "text-decoration: line-through; ";
-            fullStringCss += $"color: {Color};";
+            fullStringCss += $"color: {color};";
         }
 
     }

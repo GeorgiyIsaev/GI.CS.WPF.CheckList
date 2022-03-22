@@ -60,7 +60,7 @@ namespace GI.CS.WPF.FW.CheckList
                     MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
                 nameANDformat += ".html";
                 setupHTML();
-                EditionHTML.bilderHTML(nameANDformat);
+                EditionHTML.WriteHTmlCodeToFile(nameANDformat);
             }
             else if(ComboBox_FormatSave.SelectedIndex == 1)
             {
