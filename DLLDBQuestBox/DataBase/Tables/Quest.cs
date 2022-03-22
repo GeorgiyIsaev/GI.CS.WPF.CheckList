@@ -23,6 +23,7 @@ namespace DataBase.Tables
         public Quest()
         {
             Answers = new List<Answer>();
+            TextComment = "";
         }
 
     }

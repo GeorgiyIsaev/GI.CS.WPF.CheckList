@@ -205,16 +205,19 @@ namespace GI.CS.WPF.FW.CheckList
                     if (line.IndexOf(questBegin) >= 0 && questItemDB != null)
                     {
                         countAddQuest++;
-                        QuestsBox.AddQuestToDBAndQuestBox(questItemDB);
+
+						questItemDB.TextQuest = DeleteTegBR(questItemDB.TextQuest);
+						questItemDB.TextComment = DeleteTegBR(questItemDB.TextComment);
+
+						QuestsBox.AddQuestToDBAndQuestBox(questItemDB);
                         questItemDB = null;
                         cursorLine = -1;
                     }
 
 					/*Если это вопрос но объекта нет*/
-					int test = line.IndexOf(AnswerBegin);
+			
 					if (line.IndexOf(AnswerBegin) >= 0)
-					{
-						int test1 = line.IndexOf(AnswerBegin);
+					{				
 						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Remove(0, line.IndexOf(AnswerBegin) + AnswerBegin.Length), isTrue = true });
 						cursorLine = -1;
 					}
