@@ -65,9 +65,9 @@ namespace GI.CS.WPF.FW.CheckList
 				}
 				if (tmp.comment.Length > 0)
 				{
-					htmlCodeStr.Append($"<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{AddTegBR(tmp.comment)}\n</div></details>\n		</div>\n");
+					htmlCodeStr.Append($"<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{AddTegBR(tmp.comment)}\n</div></details></div>");
 				}
-				htmlCodeStr.Append($"</div>\n");
+				htmlCodeStr.Append($"</div>");
 			}
 			htmlCodeStr.Append("<div class=\"questBox\"><p></p></div>");
 			htmlCodeStr.Append(footerBilder());
@@ -84,7 +84,7 @@ namespace GI.CS.WPF.FW.CheckList
 		private static string DeleteTegBR(string textFormat)
 		{
 			while (textFormat.Contains("<br>"))
-				textFormat = textFormat.Replace("\n", "<br>");
+				textFormat = textFormat.Replace("<br>", "\n");
 			return textFormat;
 		}
 
@@ -171,8 +171,8 @@ namespace GI.CS.WPF.FW.CheckList
 			/*Сператоры тегов*/
 			string questBegin = $"<div class=\"questBox__quest\">";
 			string questEnd = "</div>";
-			string AnswerBegin = $"   <div class=\"questBox__answer\"><div> &#10004;</div>";
-			string UnAnswerBegin = $"   <div class=\"questBox__unanwser\"><div> &#10008;</div>";
+			string AnswerBegin = $"<div class=\"questBox__answer\"><div> &#10004;</div>";
+			string UnAnswerBegin = $"<div class=\"questBox__unanwser\"><div> &#10008;</div>";
 			string AnswerEnd = "\n</div>\n";
 			string comentBegin = "<summary>ПОЯСНЕНИЕ:</summary><div>";
 			string comentEnd = "</div></details>";
@@ -203,6 +203,7 @@ namespace GI.CS.WPF.FW.CheckList
                     }
 
 					/*Если это вопрос но объекта нет*/
+					int test = line.IndexOf(AnswerBegin);
 					if (line.IndexOf(AnswerBegin) == 0)
 					{
 						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Replace(AnswerBegin, ""), isTrue = true });
@@ -213,10 +214,10 @@ namespace GI.CS.WPF.FW.CheckList
 						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Replace(UnAnswerBegin, ""), isTrue = false });
 						cursorLine = -1;
 					}
-					else if (line.IndexOf(comentBegin) == 0)
+					else if (cursorLine == 2 || line.IndexOf(comentBegin) == 0)
                     {
 						if (cursorLine == 2)
-							questItemDB.TextComment += "\n" + DeleteTegBR(line);
+							questItemDB.TextComment += DeleteTegBR(line);
 						else
 						{
 							cursorLine = 2;
@@ -226,7 +227,7 @@ namespace GI.CS.WPF.FW.CheckList
 					else if (cursorLine == 1 || line.IndexOf(questBegin) >= 0)
 					{
 						if (cursorLine == 1)
-							questItemDB.TextQuest += "\n" + DeleteTegBR(line);
+							questItemDB.TextQuest += DeleteTegBR(line);
 						else
 						{
 							questItemDB = new DataBase.Tables.Quest();
@@ -235,11 +236,18 @@ namespace GI.CS.WPF.FW.CheckList
 
 							questItemDB.TextQuest = line.Replace(questBegin, ""); //Удаление открывающего тега
 							//	questItemDB.TextQuest = questItemDB.TextQuest.Replace(questEnd, "");//Удаление закрывающего тега
-							questItemDB.TextQuest = questItemDB.TextQuest.Remove(0, temp.IndexOf(')') + 2); // удаление номера вопроса							
+							questItemDB.TextQuest = questItemDB.TextQuest.Remove(0, questItemDB.TextQuest.IndexOf(')') + 2); // удаление номера вопроса							
 						}
-					}
+					}		
 				}
 
+				/*Заглушка для сохранения последнего вопроса*/
+				if (questItemDB != null)
+				{
+					countAddQuest++;
+					QuestsBox.AddQuestToDBAndQuestBox(questItemDB);				
+					cursorLine = -1;
+				}
 
 
 
@@ -291,7 +299,7 @@ namespace GI.CS.WPF.FW.CheckList
 			{
 				System.Windows.MessageBox.Show(e.ToString());
 			}
-			return count;
+			return countAddQuest;
 		}
 	}
 
