@@ -202,34 +202,33 @@ namespace GI.CS.WPF.FW.CheckList
                         cursorLine = -1;
                     }
 
-                    /*Если это вопрос но объекта нет*/
-                    if (line.IndexOf("ВЕРНО:") == 0)
+					/*Если это вопрос но объекта нет*/
+					if (line.IndexOf(AnswerBegin) == 0)
 					{
-						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = true });
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Replace(AnswerBegin, ""), isTrue = true });
 						cursorLine = -1;
 					}
-					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
+					else if (line.IndexOf(UnAnswerBegin) == 0)
 					{
-						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = false });
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Replace(UnAnswerBegin, ""), isTrue = false });
 						cursorLine = -1;
 					}
-					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
-					{
+					else if (line.IndexOf(comentBegin) == 0)
+                    {
 						if (cursorLine == 2)
-							questItemDB.TextComment += "\n" + line;
+							questItemDB.TextComment += "\n" + DeleteTegBR(line);
 						else
 						{
 							cursorLine = 2;
-							questItemDB.TextComment = line.Substring(13);
-						}
-					}
+							questItemDB.TextComment = line.Replace(comentBegin, "");
+						}		
+                    }
 					else if (cursorLine == 1 || line.IndexOf(questBegin) >= 0)
 					{
 						if (cursorLine == 1)
 							questItemDB.TextQuest += "\n" + DeleteTegBR(line);
 						else
 						{
-
 							questItemDB = new DataBase.Tables.Quest();
 							cursorLine = 1;
 
@@ -239,7 +238,6 @@ namespace GI.CS.WPF.FW.CheckList
 							questItemDB.TextQuest = questItemDB.TextQuest.Remove(0, temp.IndexOf(')') + 2); // удаление номера вопроса							
 						}
 					}
-
 				}
 
 
