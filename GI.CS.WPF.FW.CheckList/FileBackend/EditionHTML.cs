@@ -43,7 +43,7 @@ namespace GI.CS.WPF.FW.CheckList
 			StringBuilder htmlCodeStr = new StringBuilder();
 
 			htmlCodeStr.Append(headBilder() + "\n");
-			htmlCodeStr.Append("<body>" + "\n");
+			htmlCodeStr.Append("<body><main>" + "\n");
 			htmlCodeStr.Append(h1Bilder() + "\n");
 			int count = 0;
 			foreach (QuestItem tmp in QuestsBox.questItems)
@@ -63,7 +63,7 @@ namespace GI.CS.WPF.FW.CheckList
 					else
 						htmlCodeStr.Append($"<div class=\"questBox__unanwser\"><div> &#10008;</div>{tmpAnswer.answerSTR}\n</div>\n");
 				}
-				if (tmp.comment.Length > 0)
+				if (tmp.comment!=null && tmp.comment.Length > 0)
 				{
 					htmlCodeStr.Append($"<div class=\"questBox__coment\"><details {spoilerOpen()}>\n<summary>ПОЯСНЕНИЕ:</summary><div>{AddTegBR(tmp.comment)}\n</div></details></div>");
 				}
@@ -114,8 +114,15 @@ namespace GI.CS.WPF.FW.CheckList
 			".questBox__unanwser{" + structCCS.falseAnswer.FullStringCss + "padding: 0px 60px 0px; }" + "\n" +
 			".questBox__answer div{" + structCCS.trueAanswerIcon.FullStringCss + "  display: inline; }" + "\n" +
 			".questBox__unanwser div{" + structCCS.falseAanswerIcon.FullStringCss + "display: inline; }" + "\n" +
-			"#footer {" + structCCS.signature.FullStringCss + " padding: 20px 0 27px 12px; text-align: center; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
+			"html {height: 100%}" + "\n" +
+			"body {min-height: 100%; display: grid; grid-template-rows:1fr auto;}" + "\n" +
+			"#text-footer {padding-top: 25px}" + "\n" +
+			"#footer {" + structCCS.signature.FullStringCss + " padding: 0 0 0 12px; text-align: center; height: 65px; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
+			//"#footer {" + structCCS.signature.FullStringCss + " padding: 20px 0 27px 12px; text-align: center; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
 			"</style></head>";
+
+
+
 			return head;
 		}
 		private static string h1Bilder()
@@ -125,7 +132,7 @@ namespace GI.CS.WPF.FW.CheckList
 		}
 		private static string footerBilder()
 		{
-			return $"<div id=footer><div><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.1.0\" by Georgiyelbaf</div>" + "\n" + sign() +
+			return $"</main><div id=\"footer\"><div id=\"text-footer\"><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.1.0\" by Georgiyelbaf</div>" + "\n" + sign() +
 			$"<div> Дата и время сборки: {DateTime.Now}</div></div></div> ";
 		}
 		private static string sign()
