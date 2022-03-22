@@ -116,9 +116,13 @@ namespace GI.CS.WPF.FW.CheckList
 			".questBox__unanwser div{" + structCCS.falseAanswerIcon.FullStringCss + "display: inline; }" + "\n" +
 			"html {height: 100%}" + "\n" +
 			"body {min-height: 100%; display: grid; grid-template-rows:1fr auto;}" + "\n" +
+			"main {min-width: 1000px;  background-color: " + structCCS.mainBackend.color + "; margin: 0 auto;}" + "\n" +
 			"#text-footer {padding-top: 25px}" + "\n" +
 			"#footer {" + structCCS.signature.FullStringCss + " padding: 0 0 0 12px; text-align: center; height: 65px; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
-			//"#footer {" + structCCS.signature.FullStringCss + " padding: 20px 0 27px 12px; text-align: center; background-color: " + structCCS.futterBackend.color + ";}" + "\n" +
+			"@media screen and (max-width: 820px) {main {min-width: 820px;}} " + "\n" +
+			"@media screen and (max-width: 660px) {main {min-width: 660px;}} " + "\n" +
+			"@media screen and (max-width: 500px) {main {min-width: 500px;}} " + "\n" +
+
 			"</style></head>";
 
 
