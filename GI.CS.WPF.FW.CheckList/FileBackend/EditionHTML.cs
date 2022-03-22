@@ -103,9 +103,9 @@ namespace GI.CS.WPF.FW.CheckList
 			$"<html><head><title> {headerHTML} </title>" + "\n" +
 			"<meta charset = \"utf-8\">" + "\n" +
 			"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: " + FrontSiseBody + "px;}" + "\n" +
-			"h1{" + structCCS.title.FullStringCss + " ;padding: 20px 0 27px 0px; margin: 0px 0 15px; text-align: center;}" + "\n" +
+			"h1{" + structCCS.title.FullStringCss + " ; margin: 0px 0 15px; text-align: center;}" + "\n" +
 			"#opisanie{" + structCCS.description.FullStringCss + ";padding: 0 110px 10px;}" + "\n" +
-			".questBox{max-width: 1000px; min-width: 320px; padding: 40px 20px 12px;margin: 0 auto;	position: relative;background-color: " + structCCS.mainBackend.color + ";}	" + "\n" +
+			".questBox{max-width: 1000px; min-width: 320px; padding: 20px 20px 12px;margin: 0 auto;	position: relative;background-color: " + structCCS.mainBackend.color + ";}	" + "\n" +
 			".questBox__coment details div{" + structCCS.comment.FullStringCss + " padding: 5px 15px 0px; }" + "\n" +
 			".questBox__coment{padding: 5px 25px 0px;}" + "\n" +
 
@@ -181,12 +181,10 @@ namespace GI.CS.WPF.FW.CheckList
 		{
 			/*Сператоры тегов*/
 			string questBegin = $"<div class=\"questBox__quest\">";
-			string questEnd = "</div>";
 			string AnswerBegin = $"<div class=\"questBox__answer\"><div> &#10004;</div>";
 			string UnAnswerBegin = $"<div class=\"questBox__unanwser\"><div> &#10008;</div>";
-			string AnswerEnd = "\n</div>\n";
 			string comentBegin = "<summary>ПОЯСНЕНИЕ:</summary><div>";
-			string comentEnd = "</div></details>";
+
 
 			/*Разделение файла на строки*/
 			string[] separator = { "\n", "\r" };
