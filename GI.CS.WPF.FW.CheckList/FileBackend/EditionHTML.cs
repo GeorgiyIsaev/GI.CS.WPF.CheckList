@@ -122,11 +122,7 @@ namespace GI.CS.WPF.FW.CheckList
 			"@media screen and (max-width: 820px) {main {min-width: 820px;}} " + "\n" +
 			"@media screen and (max-width: 660px) {main {min-width: 660px;}} " + "\n" +
 			"@media screen and (max-width: 500px) {main {min-width: 500px;}} " + "\n" +
-
 			"</style></head>";
-
-
-
 			return head;
 		}
 		private static string h1Bilder()
@@ -264,5 +260,4 @@ namespace GI.CS.WPF.FW.CheckList
 			return countAddQuest;
 		}
 	}
-
 }
