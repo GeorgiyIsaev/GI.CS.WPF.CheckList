@@ -32,7 +32,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.InputIsEnabled(true);
             if (ProfBox.profile != null && ProfBox.testCurrent == null)            
                 mainWindow.InputIsEnabled(false);
-            
+            RefreshCleanTest(); //обновить доступ к очистке теста
+
 
             // ProfilesMenuItem(mainWindow);
             if (IsLogin)
@@ -163,7 +164,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
         }
 
+        /*Метод для сокрытия меню очистки теста*/
+        private static void RefreshCleanTest(MainWindow mainWindow)
+        {
 
+            //"MenuItemСlear
+
+            if (ProfBox.testCurrent != null)
+                mainWindow.InputIsEnabled(true);
+            if (ProfBox.profile != null && ProfBox.testCurrent == null)
+                mainWindow.InputIsEnabled(false);
+        }
 
         /*Вход в тест*/
         private static void EnterTest(MainWindow mainWindow, long id)
