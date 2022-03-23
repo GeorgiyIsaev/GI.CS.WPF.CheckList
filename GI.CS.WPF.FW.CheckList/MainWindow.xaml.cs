@@ -264,7 +264,7 @@ namespace GI.CS.WPF.FW.CheckList
         }
 
 
-        private void NewTitle()
+        public void NewTitle()
         {
             Title = $"Чек-Лист [Вопросов: {QuestsBox.questItems.Count - 1}]";
         }       

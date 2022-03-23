@@ -137,7 +137,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 }
                 else TestItem.FontWeight = FontWeights.Normal;
 
-                 /*Создание групп*/         
+                 /*Создание групп и заполнение их тестами*/         
                 MenuItem tempItem = testItem.Find(t1 => t1.Header.ToString() == test.Group);
                 if (tempItem == null)
                 {
@@ -185,6 +185,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.ClearForm();         
                 mainWindow.GridMain.Visibility = Visibility.Visible;
                 QuestsBox.ReadQuestDB(ProfBox.testCurrent);
+                mainWindow.NewTitle();
             }
         }
 
