@@ -171,9 +171,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.MenuItemСlear.IsEnabled = false;
             else
                 mainWindow.MenuItemСlear.IsEnabled = true;
-            //    mainWindow.MenuItemСlear.Is = false;
-            //else
-            //    mainWindow.MenuItemСlear = true;
         }
 
         /*Вход в тест*/
