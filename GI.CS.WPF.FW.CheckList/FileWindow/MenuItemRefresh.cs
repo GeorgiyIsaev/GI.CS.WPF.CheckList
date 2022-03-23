@@ -32,7 +32,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.InputIsEnabled(true);
             if (ProfBox.profile != null && ProfBox.testCurrent == null)            
                 mainWindow.InputIsEnabled(false);
-            RefreshCleanTest(); //обновить доступ к очистке теста
+            RefreshCleanTest(mainWindow); //обновить доступ к очистке теста
 
 
             // ProfilesMenuItem(mainWindow);
@@ -166,14 +166,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         /*Метод для сокрытия меню очистки теста*/
         private static void RefreshCleanTest(MainWindow mainWindow)
-        {
-
-            //"MenuItemСlear
-
-            if (ProfBox.testCurrent != null)
-                mainWindow.InputIsEnabled(true);
-            if (ProfBox.profile != null && ProfBox.testCurrent == null)
-                mainWindow.InputIsEnabled(false);
+        {    
+            if (ProfBox.profile != null)
+                mainWindow.MenuItemСlear.IsEnabled = false;
+            else
+                mainWindow.MenuItemСlear.IsEnabled = true;
+            //    mainWindow.MenuItemСlear.Is = false;
+            //else
+            //    mainWindow.MenuItemСlear = true;
         }
 
         /*Вход в тест*/
