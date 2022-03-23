@@ -91,12 +91,12 @@ namespace GI.CS.WPF.FW.CheckList
 					/*Если это вопрос но объекта нет*/
 					if (line.IndexOf("ВЕРНО:") == 0)
 					{
-						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = true });
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Substring("ВЕРНО: ".Length), isTrue = true });
 						cursorLine = -1;
 					}
 					else if (line.IndexOf("НЕ ВЕРНО:") == 0)
 					{
-						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line, isTrue = false });
+						questItemDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = line.Substring("НЕ ВЕРНО: ".Length), isTrue = false });
 						cursorLine = -1;
 					}
 					else if (cursorLine == 2 || line.IndexOf("КОММЕНТАРИЙ:") == 0)
@@ -119,9 +119,7 @@ namespace GI.CS.WPF.FW.CheckList
 							cursorLine = 1;
                             questItemDB.TextQuest = line.Substring(line.LastIndexOf("ВОПРОС: ") + 8);
                         }
-
-                    }
-				
+                    }				
 				}
 
 				/*Заглушка для добавления последнего вопроса*/
@@ -134,10 +132,5 @@ namespace GI.CS.WPF.FW.CheckList
 			catch (Exception e){System.Windows.MessageBox.Show(e.ToString());}	
 			return countAddQuest;
 		}
-
-
-
-
-
 	}
 }
