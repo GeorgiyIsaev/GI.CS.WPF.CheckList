@@ -228,8 +228,9 @@ namespace GI.CS.WPF.FW.CheckList
             dialog.Filter = "Html documents (*.html)|*.html";
             dialog.Filter += "|Text documents(*.txt)|*.txt";
             dialog.Filter += "|JSON documents (*.json)|*.json";
+            dialog.Filter += "|All (*.json, *.txt, *.html)|*.json; *.txt; *.html";
             //dialog.Filter += "|All files (*.*)|*.*";         
-            //dialog.FilterIndex = 0;
+            dialog.FilterIndex = 4;
             Nullable<bool> result = dialog.ShowDialog();
             if (result == true)
             {          
