@@ -56,10 +56,11 @@ namespace GI.CS.WPF.FW.CheckList
                 {
                     questItemsTemp = JsonSerializer.DeserializeAsync<ObservableCollection<QuestItem>>(fs).Result;
                 }
-              //  questItemsTemp.d
+                /*Удаляем первый вопрос - который меню*/
+                if (questItemsTemp.Count > 0)
+                    questItemsTemp.RemoveAt(0);
 
-
-                //  QuestsBox.DeleteOneQuest();
+                /*Загружаем результат в контейнер*/
                 int countAddQuest = 0;
                 foreach (QuestItem questItem in questItemsTemp)
                 {
