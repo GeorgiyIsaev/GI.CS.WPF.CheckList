@@ -51,21 +51,18 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			Description = ToolTypeListBox();
 		}
-		//public void ResetQuestDB(DataBase.Tables.Quest questDB)
-		//{
-		//	var tempIDQuest = this.questBD.Id;
-		//	this.questBD = questDB;
+		public DataBase.Tables.Quest GetQuestFormDB()
+        {
+			DataBase.Tables.Quest questTempDB = new DataBase.Tables.Quest();
+			questTempDB.TextQuest = quest;
+			questTempDB.TextComment = comment;
+			foreach (var ans in answerItem)
+			{
+				questTempDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer=ans.answerSTR, isTrue = ans.isTrue})
+			}
+			return questTempDB;
+		}
 
-		//	quest = questDB.TextQuest;
-		//	comment = questBD.TextComment;
-
-		//	questDB.Answers.Clear();
-		//	foreach (var ans in questDB.Answers)
-		//	{
-		//		answerItem.Add(new Answer() { answerSTR = ans.TextAnswer, isTrue = ans.isTrue });
-		//	}
-		//	Description = ToolTypeListBox();
-		//}
 
 
 
