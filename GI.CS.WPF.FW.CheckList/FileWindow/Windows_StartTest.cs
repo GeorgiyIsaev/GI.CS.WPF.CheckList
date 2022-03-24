@@ -76,8 +76,11 @@ namespace GI.CS.WPF.FW.CheckList
                 }
                 TextBox_Comment.Text = "Верные ответы: \n";
                 TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].StrFullAnswer();
-                TextBox_Comment.Text += "\nПояснение: ";
-                TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
+                if (QuestsBoxForTest.questItemsForTest[currentItem].comment != "")
+                {
+                    TextBox_Comment.Text += "\nПояснение: ";
+                    TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
+                }
                 buttun_GetAnswer.Content = "Следующий вопрос -->";
                 if(finalItem-1 == currentItem) buttun_GetAnswer.Content = "Получить результат!";
                 currentStatus = false;
@@ -93,7 +96,7 @@ namespace GI.CS.WPF.FW.CheckList
                 }
                 else
                 {
-                    MessageBox.Show($"Тест Заверешн!\n\n Колличество верных ответов: {trueAnswerCount} из {finalItem}");
+                    MessageBox.Show($"Тест заверешен!\n\nКолличество верных ответов: {trueAnswerCount} из {finalItem}");
                     this.Close();
                 }
             }
