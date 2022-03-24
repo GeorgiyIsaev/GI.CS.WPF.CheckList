@@ -58,7 +58,7 @@ namespace GI.CS.WPF.FW.CheckList
 			questTempDB.TextComment = comment;
 			foreach (var ans in answerItem)
 			{
-				questTempDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer=ans.answerSTR, isTrue = ans.isTrue})
+				questTempDB.Answers.Add(new DataBase.Tables.Answer() { TextAnswer = ans.answerSTR, isTrue = ans.isTrue });
 			}
 			return questTempDB;
 		}

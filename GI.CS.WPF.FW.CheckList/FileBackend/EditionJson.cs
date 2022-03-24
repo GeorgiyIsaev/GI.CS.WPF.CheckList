@@ -56,21 +56,18 @@ namespace GI.CS.WPF.FW.CheckList
                 {
                     questItemsTemp = JsonSerializer.DeserializeAsync<ObservableCollection<QuestItem>>(fs).Result;
                 }
+              //  questItemsTemp.d
 
 
+                //  QuestsBox.DeleteOneQuest();
+                int countAddQuest = 0;
+                foreach (QuestItem questItem in questItemsTemp)
+                {
+                    countAddQuest++;
+                    QuestsBox.AddQuestToDBAndQuestBox(questItem.GetQuestFormDB());
+                }
 
-              //  QuestsBox.DeleteOneQuest();
-              int countAddQuest
-                //foreach (QuestItem questItem in questItemsTemp)
-                //{
-                //    DataBase.Tables.Answer answer = new Answer()
-
-
-                //    QuestsBox.AddQuestToDBAndQuestBox()
-                //}
-                //    QuestsBox.questItems.Add(questItem);
-             //   QuestsBox.AddOneQuest();
-                return (QuestsBox.questItems.Count - countBefore);
+                return countAddQuest;
             }
             catch (Exception ex)
             {
