@@ -48,11 +48,16 @@ namespace GI.CS.WPF.FW.CheckList
             }
             TextBox_Result.Text = "";
             TextBox_Comment.Text = "";
-
+          //  ListBox_AnswerItem.IsEnabled = false;
+            ListBox_AnswerItem.Focusable = false;
+     
         }
+
+
 
         private void Buttun_GetAnswer_Click(object sender, RoutedEventArgs e)
         {
+            /*Кнопка дать ответ*/
             if (currentStatus)
             {
                 if (ListBox_AnswerItem.SelectedItems.Count == 0)
@@ -86,6 +91,7 @@ namespace GI.CS.WPF.FW.CheckList
                 currentStatus = false;
 
             }
+            //Кнопка перейти к следующему ответу
             else
             {
                 currentStatus = true;
@@ -96,12 +102,16 @@ namespace GI.CS.WPF.FW.CheckList
                 }
                 else
                 {
-                    MessageBox.Show($"Тест заверешен!\n\nКолличество верных ответов: {trueAnswerCount} из {finalItem}");
+                    int procent = trueAnswerCount * 100 / finalItem;
+                    string resultTest = $"Колличество верных ответов: {trueAnswerCount} из {finalItem}\n";
+                    resultTest += $"Тест здан на {procent}% ";
+                    MessageBox.Show(resultTest, "Тест заверешен");
                     this.Close();
                 }
             }
 
         }
+
         private bool TruyOrFalse()
         {
             /*Проверка 1: Несотвествие количества ответов*/
@@ -117,6 +127,7 @@ namespace GI.CS.WPF.FW.CheckList
             /*Ответ дан верный!*/
             return true;
         }
+
         private void HighLighting()
         {
             /*Проблема с убераеним выделения эл-тов.. поэтому я просто их перезапишу*/         
