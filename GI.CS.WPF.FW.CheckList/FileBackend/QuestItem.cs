@@ -161,34 +161,17 @@ namespace GI.CS.WPF.FW.CheckList
 				tmpAnswer.RandomAnswerIt();
 			}
 			/*Перетасовать ответы*/
-			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));			
+			answerItem.Sort(new AnswerComparerRND());
 		}
+	}
 
-		/*Перетасовка ответов*/
-		public void sortAnswerRandom()
-        {
-			answerItem.Sort(delegate (Answer a, Answer b)
-			{         
-				return a.random_nomer.CompareTo(b.random_nomer);	
-			});
+	/*Компараторы для сортивки Вопросов*/
+	class QuestItemComparerRND : IComparer<QuestItem>
+	{
+		public int Compare(QuestItem q1, QuestItem q2)
+		{
+			return q1.intRandomQuest - q2.intRandomQuest;
 		}
-		/*Сортировка по алфавиту и true*/
-		//public void sortAnswerTrueFalse()
-		//{
-		//	answerItem.Sort(delegate (Answer a, Answer b)
-		//	{	
-		//		if (a.isTrue == b.isTrue) return 0;
-		//		if (a.isTrue && !b.isTrue) return -1;
-		//		if (!a.isTrue && b.isTrue) return 1;
-			
-		//		// int a213 = a.answerSTR.CompareTo(b.answerSTR);
-		//		//	if (a.isTrue == b.isTrue) return a.answerSTR.CompareTo(b.answerSTR);		
-
-		//		//if (a.isTrue && b.isTrue == false) return ;
-		//		// else return true
-		//	});
-		//}
-
-	}    
+	}
 }
 
