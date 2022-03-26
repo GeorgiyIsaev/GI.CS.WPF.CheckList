@@ -19,11 +19,11 @@ namespace GI.CS.WPF.FW.CheckList
             foreach (QuestItem tmp in questItemsForTest)
             {
                 tmp.RandomGeneratorIt();
+                а.sortAnswerRandom();
             }             
 
             questItemsForTest.Sort(delegate (QuestItem a, QuestItem b)
-            {
-                
+            {            
                 return a.intRandomQuest.CompareTo(b.intRandomQuest);
             });
        }
