@@ -48,7 +48,7 @@ namespace GI.CS.WPF.FW.CheckList
             }
             TextBox_Result.Text = "";
             TextBox_Comment.Text = "";
-          //  ListBox_AnswerItem.IsEnabled = false;
+            ListBox_AnswerItem.IsEnabled = true;
             ListBox_AnswerItem.Focusable = false;
      
         }
@@ -89,7 +89,7 @@ namespace GI.CS.WPF.FW.CheckList
                 buttun_GetAnswer.Content = "Следующий вопрос -->";
                 if(finalItem-1 == currentItem) buttun_GetAnswer.Content = "Получить результат!";
                 currentStatus = false;
-
+                ListBox_AnswerItem.IsEnabled = false;
             }
             //Кнопка перейти к следующему ответу
             else
