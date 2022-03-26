@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace GI.CS.WPF.FW.CheckList
 {
-    public class QuestItem
+    public class QuestItem 
 	{
 		/*Для контакта с листбоксом*/
 		[JsonIgnore]

@@ -19,7 +19,7 @@ namespace GI.CS.WPF.FW.CheckList
             foreach (QuestItem tmp in questItemsForTest)
             {
                 tmp.RandomGeneratorIt();
-                tmp.sortAnswerRandom();
+              //  tmp.sortAnswerRandom();
             }             
 
             questItemsForTest.Sort(delegate (QuestItem a, QuestItem b)

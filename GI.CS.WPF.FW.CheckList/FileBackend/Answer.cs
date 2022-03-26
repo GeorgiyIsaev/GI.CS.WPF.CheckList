@@ -29,4 +29,36 @@ namespace GI.CS.WPF.FW.CheckList
 			return answerSTR;
         }
     };
+
+
+
+
+	/*Компараторы для сортивки ответов*/
+	class AnswerComparerRND : IComparer<Answer>
+	{
+		public int Compare(Answer a1, Answer a2)
+		{
+			return a1.random_nomer - a2.random_nomer;
+		}
+	}
+
+	class AnswerComparerTrue : IComparer<Answer>
+	{
+		public int Compare(Answer a1, Answer a2)
+		{		
+			if(a1.isTrue == a2.isTrue)
+            {
+				return a1.answerSTR.CompareTo(a2.answerSTR);
+			}
+			else if (a1.isTrue)
+            {
+				return 999999999;
+            }
+			else if (a1.isTrue)
+			{
+				return -999999999;
+			}
+			return 0;
+		}
+	}
 }
