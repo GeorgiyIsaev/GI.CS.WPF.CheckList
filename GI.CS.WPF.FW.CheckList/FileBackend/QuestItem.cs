@@ -150,10 +150,10 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return tempSTR.ToString();
         }
-
+		Random rnd = new Random();
 		public void RandomGeneratorIt()
         {
-			Random rnd = new Random();
+		
 			intRandomQuest = rnd.Next(0, 100);
 			foreach (Answer tmpAnswer in answerItem)
 			{

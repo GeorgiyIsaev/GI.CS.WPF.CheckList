@@ -17,9 +17,9 @@ namespace GI.CS.WPF.FW.CheckList
 			isTrue = if_answer;
 			answerSTR = str;			
 		}
+		Random rnd = new Random();
 		public void RandomAnswerIt()
-        {
-			Random rnd = new Random();
+        {	
 			random_nomer = rnd.Next(0, 100);
 		}
         public override string ToString()
@@ -38,7 +38,7 @@ namespace GI.CS.WPF.FW.CheckList
 	{
 		public int Compare(Answer a1, Answer a2)
 		{
-			return a1.random_nomer - a2.random_nomer;
+			return a1.random_nomer + a2.random_nomer;
 		}
 	}
 
