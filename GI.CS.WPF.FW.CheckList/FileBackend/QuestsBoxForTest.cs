@@ -20,12 +20,9 @@ namespace GI.CS.WPF.FW.CheckList
             {
                 tmp.RandomGeneratorIt();
               //  tmp.sortAnswerRandom();
-            }             
+            }
 
-            questItemsForTest.Sort(delegate (QuestItem a, QuestItem b)
-            {            
-                return a.intRandomQuest.CompareTo(b.intRandomQuest);
-            });
+            questItemsForTest.Sort(new QuestItemComparerRND());
        }
     }
 }
