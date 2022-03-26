@@ -31,10 +31,12 @@ namespace GI.CS.WPF.FW.CheckList
         private void Windows_StartTest_Loaded(object sender, RoutedEventArgs e)
         {
             QuestsBoxForTest.createTest();
+           // QuestsBoxForTest.questItemsForTest.
             if (QuestsBoxForTest.questItemsForTest.Count < 20) finalItem = QuestsBoxForTest.questItemsForTest.Count;
             QuestNext();
         }
 
+        /*Следующий ответ*/
         void QuestNext()
         {
            
@@ -65,31 +67,8 @@ namespace GI.CS.WPF.FW.CheckList
                     MessageBox.Show("Выберите один или несколько ответов!");
                     return;
                 }
-
-                if (TruyOrFalse())
-                {
-                    HighLighting();
-                    TextBox_Result.Text = "ВЕРНО!\n";
-                    TextBox_Result.Foreground = new SolidColorBrush(Colors.Green);
-                    trueAnswerCount++;                
-                }
-                else
-                {
-                    HighLighting();
-                    TextBox_Result.Foreground = new SolidColorBrush(Colors.Red);
-                    TextBox_Result.Text = "НЕ ВЕРНО!\n";
-                }
-                TextBox_Comment.Text = "Верные ответы: \n";
-                TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].StrFullAnswer();
-                if (QuestsBoxForTest.questItemsForTest[currentItem].comment != "")
-                {
-                    TextBox_Comment.Text += "\nПояснение: ";
-                    TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
-                }
-                buttun_GetAnswer.Content = "Следующий вопрос -->";
-                if(finalItem-1 == currentItem) buttun_GetAnswer.Content = "Получить результат!";
-                currentStatus = false;
-                ListBox_AnswerItem.IsEnabled = false;
+                /*Выполнение нажатия ответа*/
+                BtnAnswer_Click();
             }
             //Кнопка перейти к следующему ответу
             else
@@ -111,6 +90,37 @@ namespace GI.CS.WPF.FW.CheckList
             }
 
         }
+
+        /*Нажата кнопка дать ответ*/
+        private void BtnAnswer_Click()
+        {
+            if (TruyOrFalse())
+            {
+                HighLighting();
+                TextBox_Result.Text = "ВЕРНО!\n";
+                TextBox_Result.Foreground = new SolidColorBrush(Colors.Green);
+                trueAnswerCount++;
+            }
+            else
+            {
+                HighLighting();
+                TextBox_Result.Foreground = new SolidColorBrush(Colors.Red);
+                TextBox_Result.Text = "НЕ ВЕРНО!\n";
+            }
+            TextBox_Comment.Text = "Верные ответы: \n";
+            TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].StrFullAnswer();
+            if (QuestsBoxForTest.questItemsForTest[currentItem].comment != "")
+            {
+                TextBox_Comment.Text += "\nПояснение: ";
+                TextBox_Comment.Text += QuestsBoxForTest.questItemsForTest[currentItem].comment;
+            }
+            buttun_GetAnswer.Content = "Следующий вопрос -->";
+            if (finalItem - 1 == currentItem) buttun_GetAnswer.Content = "Получить результат!";
+            currentStatus = false;
+            ListBox_AnswerItem.IsEnabled = false;
+        }
+
+
 
         private bool TruyOrFalse()
         {

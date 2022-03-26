@@ -161,13 +161,28 @@ namespace GI.CS.WPF.FW.CheckList
 				tmpAnswer.RandomAnswerIt();
 			}
 			/*Перетасовать ответы*/
-			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));
-
-
-
-			
+			answerItem.Sort((a,b)=> a.random_nomer.CompareTo(b.random_nomer));			
 		}
 
+		/*Перетасовка ответов*/
+		public void sortAnswerRandom()
+        {
+			answerItem.Sort(delegate (Answer a, Answer b)
+			{
+				return a.random_nomer.CompareTo(b.random_nomer)		
+			});
+		}
+		/*Сортировка по алфавиту и true*/
+		public void sortAnswerTrueFalse()
+		{
+			answerItem.Sort(delegate (Answer a, Answer b)
+			{
+				if (a.isTrue == b.isTrue) return a.answerSTR.CompareTo(b.answerSTR);		
+
+				if (a.isTrue > b.isTrue) return false;
+                else return true
+			});
+		}
 
 	}    
 }

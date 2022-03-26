@@ -23,7 +23,8 @@ namespace GI.CS.WPF.FW.CheckList
 
             questItemsForTest.Sort(delegate (QuestItem a, QuestItem b)
             {
-                 return a.intRandomQuest.CompareTo(b.intRandomQuest);
+                
+                return a.intRandomQuest.CompareTo(b.intRandomQuest);
             });
        }
     }
