@@ -55,9 +55,9 @@ namespace GI.CS.WPF.FW.CheckList
             }
             if (ComboBox_FormatSave.SelectedIndex == 0)
             {               
-                if (input_header.Text == "") {
-                    input_header.Background = Brushes.Yellow;
-                    MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
+                //if (input_header.Text == "") {
+                //    input_header.Background = Brushes.Yellow;
+                //    MessageBox.Show("Не указан заголовок для HTML чек-листа"); return; }
                 nameANDformat += ".html";
                 setupHTML();
                 EditionHTML.WriteHTmlCodeToFile(nameANDformat);
@@ -87,8 +87,9 @@ namespace GI.CS.WPF.FW.CheckList
             EditionHTML.describeHTML = input_describe.Text;
             EditionHTML.signFooterHTML = input_sign.Text;
             EditionHTML.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
-            EditionHTML.deleteAnAnswerIf = CB_lineThrough.IsChecked == true;
+            EditionHTML.deleteAnAnswerIf = (CB_lineThrough.IsChecked == true);
             EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
+            EditionHTML.SetCSSInput();
         }
       
 

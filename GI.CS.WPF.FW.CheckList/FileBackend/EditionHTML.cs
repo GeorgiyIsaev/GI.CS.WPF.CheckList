@@ -26,12 +26,29 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.title.CreateCSS(26, false, false, false, "#520000");
 			structCCS.description.CreateCSS(16, true, false, false, "#520000");
 			structCCS.question.CreateCSS(16, false, false, false, "#520000");
-			structCCS.trueAanswer.CreateCSS(16, false, true, false, "#520000");
+			structCCS.trueAanswer.CreateCSS(16, false, false, false, "#520000");
 			structCCS.falseAnswer.CreateCSS(16, false, false, true, "#520000");
 			structCCS.trueAanswerIcon.CreateCSS(18, false, true, false, "#1eaf1e");
 			structCCS.falseAanswerIcon.CreateCSS(18, false, true, false, "#ff0000");
 			structCCS.comment.CreateCSS(16, false, false, false, "#520000");
 			structCCS.signature.CreateCSS(10, true, true, false, "#520000");
+		}
+
+		public static void SetCSSInput()
+		{
+			structCCS.baseBackend.color = "#c4d0c7";
+			structCCS.mainBackend.color = "#ffffff";
+			structCCS.futterBackend.color = "#a9a9a9";
+
+			structCCS.title.CreateCSS(FrontSiseBody+10, false, false, false, "#520000");
+			structCCS.description.CreateCSS(FrontSiseBody, true, false, false, "#520000");
+			structCCS.question.CreateCSS(FrontSiseBody, false, false, false, "#520000");
+			structCCS.trueAanswer.CreateCSS(FrontSiseBody, false, false, false, "#520000");
+			structCCS.falseAnswer.CreateCSS(FrontSiseBody, false, false, deleteAnAnswerIf, "#520000");
+			structCCS.trueAanswerIcon.CreateCSS(FrontSiseBody+2, false, true, false, "#1eaf1e");
+			structCCS.falseAanswerIcon.CreateCSS(FrontSiseBody+2, false, true, false, "#ff0000");
+			structCCS.comment.CreateCSS(FrontSiseBody, false, false, false, "#520000");
+			structCCS.signature.CreateCSS(FrontSiseBody-6, true, true, false, "#520000");
 		}
 
 
