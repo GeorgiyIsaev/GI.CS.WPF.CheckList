@@ -23,9 +23,10 @@
             <Button Name="Button_DeleteProfile" Click="Button_DeleteProfile_Click" Content="Удалить" HorizontalAlignment="Right" Margin="0,6,10,0" VerticalAlignment="Top" Width="101"/>
         </Grid>
         <Grid Background="Lavender" Grid.Row="1" >
-            <DataGrid PreviewMouseRightButtonDown="Tables_TestBox_PreviewMouseRightButtonDown"  CellEditEnding="Tables_TestBox_CellEditEnding"  CanUserAddRows="False"  CanUserDeleteRows="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-                x:Name="Tables_TestBox" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray" 
-                      MouseDoubleClick="Tables_TestBox_MouseDoubleClick" AlternatingRowBackground="White">
+            <DataGrid CellEditEnding="Tables_TestBox_CellEditEnding"  MouseDoubleClick="Tables_TestBox_MouseDoubleClick" SelectedCellsChanged="Tables_TestBox_SelectedCellsChanged"
+                      CanUserAddRows="False"  CanUserDeleteRows="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                      x:Name="Tables_TestBox" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray" 
+                      AlternatingRowBackground="White">
                 <DataGrid.Resources>
                 </DataGrid.Resources>
                 <DataGrid.Columns>

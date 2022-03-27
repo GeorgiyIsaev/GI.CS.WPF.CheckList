@@ -102,14 +102,37 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Кнопка что бы убрать все выделения*/
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
+            Tables_TestBox.SelectedItem = null;
             TextBox_GroupName.Text = "";
             TextBox_TestName.Text = "";        
             Button_AddNewTest.Margin = new Thickness(5, -5, 10, 5);
-            Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна
-            Button_Back.Content = "Добавить новый тест";
-
-            Tables_TestBox.SelectedItem = null;
+            Button_AddNewTest.Content = "Добавить новый тест";
+            Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна       
+     
         }
+        /*Cобытие выбора строки*/
+        private void Tables_TestBox_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            Button_AddNewTest.Content = "Изменить";
+            Button_AddNewTest.Margin = new Thickness(5, -5, 57, 5);
+            Button_Back.Visibility = Visibility.Visible;
+
+
+           // var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+           // MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
+
+            if(Tables_TestBox.SelectedItem != null) {
+                TextBox_GroupName.Text = ((TablesTest)Tables_TestBox.SelectedItem).test.Group;
+                TextBox_TestName.Text = ((TablesTest)Tables_TestBox.SelectedItem).test.Name;
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -119,8 +142,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
             Title = "Управление профилем [" + TextBox_ProfileName.Text + "]";
         }
-
-
         /*Форма закрывается изменения сохраняются*/
         private void Form_Closing(object sender, EventArgs e)
         {
@@ -132,13 +153,13 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
 
 
-        /*Удалить профиль*/
+        /*Кнопка - Удалить профиль*/
         private void Button_DeleteProfile_Click(object sender, RoutedEventArgs e)
         {
             ProfBox.DeleteProfileAt();
             DialogResult = false;
         }
-
+        /*Кнопка  - смена пароля */
         private void Button_NewPassword_Click(object sender, RoutedEventArgs e)
         {
             new Window_NewPassword().ShowDialog();
