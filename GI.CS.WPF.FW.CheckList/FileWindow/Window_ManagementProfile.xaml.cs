@@ -43,6 +43,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         ObservableCollection<TablesTest> tablesTest = new ObservableCollection<TablesTest>();
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
         {
+            Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна       
+            Button_Сhange.Visibility = Visibility.Collapsed;// кнопка не видна     
             if (ProfBox.profile == null) return;
             Title = "Управление профилем [" + ProfBox.profile.Name + "]";
             TextBox_ProfileName.Text = ProfBox.profile.Name;
@@ -98,6 +100,11 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
             ResetTablesDV(); //обновить таблицу
         }
+        /*Кнопка изменить вопрос*/
+        private void Button_Сhange_Click(object sender, RoutedEventArgs e)
+        {
+            // Button_Сhange
+        }
 
         /*Кнопка что бы убрать все выделения*/
         private void Button_Back_Click(object sender, RoutedEventArgs e)
@@ -105,20 +112,24 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             Tables_TestBox.SelectedItem = null;
             TextBox_GroupName.Text = "";
             TextBox_TestName.Text = "";        
-            Button_AddNewTest.Margin = new Thickness(5, -5, 10, 5);
-            Button_AddNewTest.Content = "Добавить новый тест";
+           // Button_AddNewTest.Margin = new Thickness(5, -5, 10, 5);
+           // Button_AddNewTest.Content = "Добавить новый тест";
             Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна       
-     
+            Button_Сhange.Visibility = Visibility.Collapsed;// кнопка не видна     
+            Button_AddNewTest.Visibility = Visibility.Visible;// кнопка не видна     
         }
+
+
+
         /*Cобытие выбора строки*/
         private void Tables_TestBox_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            Button_AddNewTest.Content = "Изменить";
-            Button_AddNewTest.Margin = new Thickness(5, -5, 57, 5);
-            Button_Back.Visibility = Visibility.Visible;
+            Button_Back.Visibility = Visibility.Visible;// кнопка не видна       
+            Button_Сhange.Visibility = Visibility.Visible;// кнопка не видна     
+            Button_AddNewTest.Visibility = Visibility.Collapsed;// кнопка не видна     
 
 
-           // var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+            // var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
            // MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
 
@@ -251,9 +262,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Tables_TestBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Правая на элемент");
-        }
-
-
+        }  
     }
 
  

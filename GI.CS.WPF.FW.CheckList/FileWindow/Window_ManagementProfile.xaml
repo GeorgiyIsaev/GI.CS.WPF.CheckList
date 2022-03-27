@@ -51,8 +51,9 @@
             <TextBox Grid.Column="1"  Name="TextBox_GroupName" Margin="10,-2,10,5" TextWrapping="Wrap" Text="" Height="27" VerticalAlignment="Bottom" />
             <Label Grid.Column="2"  Content="Имя теста:"  Margin="3,-4,0,5" FontWeight="Bold" Height="29" HorizontalAlignment="Left" Width="96" />
             <TextBox Grid.Column="3"   Name="TextBox_TestName"  Margin="10,-2,10,5" TextWrapping="Wrap" Text="" Height="27" VerticalAlignment="Bottom"/>
-            <Button Grid.Column="4" Name="Button_AddNewTest" Click="Button_AddNewTest_Click"  Margin="5,-5,57,5" Content="Добавить новый тест"/>
+            <Button Grid.Column="4" Name="Button_Сhange" Click="Button_Сhange_Click"  Margin="5,-5,57,5" Content="Изменить"/>
             <Button Grid.Column="4" Name="Button_Back" Click="Button_Back_Click"  Margin="152,-5,6,5" Content="⬅" FontWeight="Bold"/>
+            <Button Grid.Column="4" Name="Button_AddNewTest" Click="Button_AddNewTest_Click"  Margin="5,-5,6,5" Content="Добавить новый тест"/>
 
         </Grid>
     </Grid>
