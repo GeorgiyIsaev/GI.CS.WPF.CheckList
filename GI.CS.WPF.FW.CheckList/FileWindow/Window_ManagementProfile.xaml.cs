@@ -99,6 +99,20 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             ResetTablesDV(); //обновить таблицу
         }
 
+        /*Кнопка что бы убрать все выделения*/
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_GroupName.Text = "";
+            TextBox_TestName.Text = "";        
+            Button_AddNewTest.Margin = new Thickness(5, -5, 10, 5);
+            Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна
+            Button_Back.Content = "Добавить новый тест";
+
+            Tables_TestBox.SelectedItem = null;
+        }
+
+
+
 
         /*Метод вызвающийся при каждом изменении имени*/
         private void TextBox_ProfileName_TextChanged(object sender, TextChangedEventArgs e)
@@ -199,6 +213,26 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
             MessageBox.Show("Изменен TargetUpdated: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /*Нажатие правой клавишей миши*/
+        private void Tables_TestBox_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Правая");
+        }
+
+
+        /*Нажатие правой на элетмет*/
+        private void Tables_TestBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Правая на элемент");
+        }
+
+
     }
 
  
