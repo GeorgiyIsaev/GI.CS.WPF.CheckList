@@ -74,18 +74,21 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             //int selectedColumn = Tables_TestBox.CurrentCell.Column.DisplayIndex; //индеск колонки
             //if (selectedColumn == 1 || selectedColumn == 2) return;
             var nameColumn = Tables_TestBox.CurrentCell.Column.Header.ToString();
-            if (nameColumn == "Открыть")
-            {
-                var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-                TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                testId = customer.test.Id;              
-                DialogResult = true; //диалог закончен выбором 
-            }
+            //if (nameColumn == "Открыть") {}
+
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
                 ProfBox.DeleteTestAt(customer.test.Id);
                 ResetTablesDV();
+            }
+            else
+            {
+                /*Если не удалить то открыть тест*/
+                var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
+                TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
+                testId = customer.test.Id;
+                DialogResult = true; //диалог закончен выбором 
             }
         }
 
