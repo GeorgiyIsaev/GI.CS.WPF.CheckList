@@ -106,17 +106,30 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Кнопка изменить вопрос*/
         private void Button_Сhange_Click(object sender, RoutedEventArgs e)
         {
-            // Button_Сhange
+            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem;
+
+            var a1 = customer.test.Group;
+            var a = customer.test.Name;
+
+            
+
+            BackSelect();
+            ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
+            ResetTablesDV(); //обновить таблицу
         }
 
         /*Кнопка что бы убрать все выделения*/
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
+            BackSelect();
+        }
+
+        private void BackSelect()
+        {
+            /*Отмена выделения*/
             Tables_TestBox.SelectedItem = null;
             TextBox_GroupName.Text = "";
-            TextBox_TestName.Text = "";        
-           // Button_AddNewTest.Margin = new Thickness(5, -5, 10, 5);
-           // Button_AddNewTest.Content = "Добавить новый тест";
+            TextBox_TestName.Text = "";
             Button_Back.Visibility = Visibility.Collapsed;// кнопка не видна       
             Button_Сhange.Visibility = Visibility.Collapsed;// кнопка не видна     
             Button_AddNewTest.Visibility = Visibility.Visible;// кнопка не видна     
