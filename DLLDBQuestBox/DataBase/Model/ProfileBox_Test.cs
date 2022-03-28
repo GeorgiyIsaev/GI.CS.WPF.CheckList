@@ -109,14 +109,6 @@ namespace DataBase.Model
                 {
                     cont.Tests.Attach(testSelect);
                     cont.Entry(testSelect).State = EntityState.Modified;
-                  //  cont.Tests.Attach(testSelect);
-
-                    //var a = cont.Tests.Find(testSelect.Id);
-                    //a.Refresh();
-                    //a.Name = testSelect.Name;
-                    //a.Group = testSelect.Group;
-
-                    // cont.Profiles.Find(profile.Id).Tests.Add(new DataBase.Tables.Test { Group = groupName, Name = testName });
                     cont.SaveChanges();
                 }
             }

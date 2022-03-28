@@ -111,8 +111,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             customer.test.Name = TextBox_TestName.Text;
             ProfBox.ChangeTestName(customer.test);
 
-            BackSelect();
-           // ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
+            BackSelect(); //сборсить выделение таблицы      
             ResetTablesDV(); //обновить таблицу
         }
 
@@ -190,93 +189,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             new Window_NewPassword().ShowDialog();
         }
 
-        /*Событие после изменения таблицы*/
-        int currentIndex = -1;
-        private void Tables_TestBox_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            /*
-             При завершении редактирования изменение не фиксируется, но фиксируется после еще одного изменения разобратся почему так!!!
-             
-             */
-            int numRow = e.Row.GetIndex();
-            currentIndex = e.Row.GetIndex();
-            TablesTest customer1 = (TablesTest)e.Row.Item;
-            MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
-
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
-            //var tests = ProfBox.profile.Tests;
-            foreach (var test in ProfBox.profile.Tests)
-            {
-                if(test.Id == customer.test.Id)
-                {
-                    test.Group = customer.test.Group;
-                    test.Name = customer.test.Name;
-                    break;
-                }
-            }
-
-            //MessageBox.Show("Изменен объект: " + customer.test.Id.ToString());
-        }
-
-        private void Tables_TestBox_CurrentCellChanged(object sender, EventArgs e)
-        {
-           
-
-
-            TablesTest customer1 = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
-
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
-        }
-
-        private void Tables_TestBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //int numRow = e.Row.GetIndex();
-            //TablesTest customer1 = (TablesTest)e.Row.Item;
-            //MessageBox.Show("Изменен объект: " + customer1.test.Group.ToString() + " " + customer1.test.Name.ToString());
-
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
-        }
-
-        private void Tables_TestBox_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-
-
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен объект: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
-        }
-
-        private void Tables_TestBox_TargetUpdated(object sender, DataTransferEventArgs e)
-        {
-            var indexSelect = Tables_TestBox.SelectedIndex; //индекс строки
-            TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-            MessageBox.Show("Изменен TargetUpdated: " + customer.test.Group.ToString() + " " + customer.test.Name.ToString());
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /*Нажатие правой клавишей миши*/
-        private void Tables_TestBox_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Правая");
-        }
-
-
-        /*Нажатие правой на элетмет*/
-        private void Tables_TestBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Правая на элемент");
-        }  
+       
     }
 
  
