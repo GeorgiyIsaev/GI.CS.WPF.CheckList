@@ -32,7 +32,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             public Test test { get; set; }
             public int Count { get { return test.Quests.Count(); } }
             public string Open { get; set; } = "Открыть";
-            public string Delete { get; set; } = "Удалить";         
+            public string Delete { get; set; } = "     [X]";         
         }
       
    
