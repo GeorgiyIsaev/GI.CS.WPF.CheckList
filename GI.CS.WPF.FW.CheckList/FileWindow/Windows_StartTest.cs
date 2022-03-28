@@ -83,7 +83,7 @@ namespace GI.CS.WPF.FW.CheckList
                 {
                     int procent = trueAnswerCount * 100 / finalItem;
                     string resultTest = $"Колличество верных ответов: {trueAnswerCount} из {finalItem}\n";
-                    resultTest += $"Тест здан на {procent}% ";
+                    resultTest += $"Тест сдан на {procent}% ";
                     MessageBox.Show(resultTest, "Тест заверешен");
                     this.Close();
                 }
