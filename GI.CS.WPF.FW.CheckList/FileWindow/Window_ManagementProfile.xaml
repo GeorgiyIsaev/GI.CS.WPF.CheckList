@@ -32,10 +32,10 @@
                 <DataGrid.Resources>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" IsReadOnly="True"  Binding="{Binding Path=test.Id}" Width="50" MinWidth="50"/>
-                    <DataGridTextColumn Header="Группа" IsReadOnly="True" Binding="{Binding Path=test.Group}" Width="150" MinWidth="50" />
-                    <DataGridTextColumn Header="Название Теста" IsReadOnly="True" Binding="{Binding Path=test.Name}" Width="190" MinWidth="50"/>
-                    <DataGridTextColumn Header="Вопросов" IsReadOnly="True"   Binding="{Binding Path=Count}" Width="100" MinWidth="50" />
+                    <DataGridTextColumn Header="Id" IsReadOnly="True"  Binding="{Binding Path=test.Id}" MaxWidth="50" MinWidth="50"/>
+                    <DataGridTextColumn Header="Группа" IsReadOnly="True" Binding="{Binding Path=test.Group}" Width="270"  MaxWidth="270" MinWidth="50" />
+                    <DataGridTextColumn Header="Название Теста" IsReadOnly="True" Binding="{Binding Path=test.Name}" Width="310" MaxWidth="310"  MinWidth="50"/>
+                    <DataGridTextColumn Header="Вопросов" IsReadOnly="True"   Binding="{Binding Path=Count}" MaxWidth="80" MinWidth="80" />
                     <!--<DataGridTextColumn Header="Открыть"  IsReadOnly="True"   Binding="{Binding Path=Open}" Width="100" FontWeight="Bold" />-->
                     <DataGridTextColumn Header="Удалить"  IsReadOnly="True"  Binding="{Binding Path=Delete}" MaxWidth="68" MinWidth="68" FontWeight="Bold">
                   
