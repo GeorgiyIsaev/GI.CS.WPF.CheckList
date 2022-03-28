@@ -107,14 +107,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Button_Сhange_Click(object sender, RoutedEventArgs e)
         {
             TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem;
-
-            var a1 = customer.test.Group;
-            var a = customer.test.Name;
-
-            
+            customer.test.Group = TextBox_GroupName.Text;
+            customer.test.Name = TextBox_TestName.Text;
+            ProfBox.ChangeTestName(customer.test);
 
             BackSelect();
-            ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
+           // ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
             ResetTablesDV(); //обновить таблицу
         }
 
