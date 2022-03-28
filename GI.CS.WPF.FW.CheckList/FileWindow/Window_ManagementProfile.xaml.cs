@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -189,9 +190,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             new Window_NewPassword().ShowDialog();
         }
 
-       
     }
 
- 
+
 }
 

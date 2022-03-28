@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataBase.Model
 {
     public static partial class ProfileBox
@@ -54,8 +55,7 @@ namespace DataBase.Model
             try
             {
                 using (var cont = new DataBase.MyDbContext())
-                {
-                   
+                {                   
                     cont.Tests.Find(testCurrent.Id).Quests.Add(questDB);
                     cont.SaveChanges();
                 }
@@ -118,5 +118,6 @@ namespace DataBase.Model
             }
             profile.Refresh();
         }
+
     }
 }
