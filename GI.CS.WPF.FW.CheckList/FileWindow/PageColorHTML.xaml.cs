@@ -188,9 +188,28 @@ namespace GI.CS.WPF.FW.CheckList
         private void EventChangeCSS()
         {
             var a = MyTitle.GetCSS();
+                   
+            /*Меняем цвет шрифта*/
+            RTB_Head.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyTitle.GetCSS().Color);
+            RTB_Discript.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyDiscription.GetCSS().Color);
+            RTB_Quest.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyQuest.GetCSS().Color);
 
-            MessageBox.Show(a.GetCreateStringCSS());
+            RTB_AnswerTrue2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswer.GetCSS().Color);
+            RTB_AnswerTrue1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswer.GetCSS().Color);
+            RTB_AnswerTrueIcon2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswerItem.GetCSS().Color);
+            RTB_AnswerTrueIcon1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswerItem.GetCSS().Color);
 
+            RTB_AnswerFalse1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswer.GetCSS().Color);
+            RTB_AnswerFalse2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswer.GetCSS().Color);
+            RTB_AnswerFalseIcon2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswerItem.GetCSS().Color);
+            RTB_AnswerFalseIcon1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswerItem.GetCSS().Color);
+
+            RTB_Comment.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyComment.GetCSS().Color);
+
+
+
+            
+               //MessageBox.Show(a.GetCreateStringCSS());
             // FontSizeInit();
 
             //<!--dsd  MyDiscription  MyQuest MyAnswer MyAnswerItem MyAnAnswer MyAnAnswerItem MyComment-->
@@ -203,7 +222,10 @@ namespace GI.CS.WPF.FW.CheckList
         {
             string text = ColorPicker_SignFon.SelectedColor.Value.ToString();
 
-                      MessageBox.Show(text);
+
+
+            var br = (SolidColorBrush)new BrushConverter().ConvertFrom("#ffaacc");
+            MessageBox.Show(text);
         }
 
 
