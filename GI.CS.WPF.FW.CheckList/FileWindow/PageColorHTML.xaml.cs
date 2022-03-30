@@ -35,7 +35,9 @@ namespace GI.CS.WPF.FW.CheckList
             CreateComboBox_FontSize();
             FontStyleInit();
             ColorPickerInitialize();
-            Contol.InitCSS(true, true, false, 6);
+            //Contol.InitCSS(true, true, false, 6);
+            //Contol.InitCSSColor("#c4d0c7");
+            Contol.InitCSS(EditionHTML.structCCS.title);
         }
 
 

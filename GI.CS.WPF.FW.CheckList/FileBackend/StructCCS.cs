@@ -15,13 +15,13 @@ namespace GI.CS.WPF.FW.CheckList
 
         /*Строка СSS со стилем шрифта*/
         public string FullStringCss => fullStringCss;
-        //private int SizeFront => sizeFront;
-        //private bool Italics => italics;
-        //private bool Bold => bold;
-        //private bool Strike => strike;
-        //private string Color => color;
+        public int SizeFront => sizeFront;
+        public bool Italics => italics;
+        public bool Bold => bold;
+        public bool Strike => strike;
+        public string Color => color;
 
-
+      
         public void CreateCSS(int sizeFront, bool italics, bool bold, bool strike, string color)
         {
             this.sizeFront = sizeFront;

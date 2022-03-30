@@ -63,6 +63,23 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 ComboBox_FontSize.SelectedIndex = index;
             }              
         }
+        public void InitCSSColor(String colorCode)
+        {
+            colorCode = colorCode.Substring(1);
+            colorCode = "#ff" + colorCode;
+            try
+            {
+                ColorPickerInit.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);
+            }
+            catch { }
+        }
+        public void InitCSS(CCSFont ccsFont)
+        {     
+            InitCSS(ccsFont.Bold, ccsFont.Strike, ccsFont.Italics, ccsFont.SizeFront);
+            InitCSSColor(ccsFont.Color);
+        }
+
+
 
 
 
