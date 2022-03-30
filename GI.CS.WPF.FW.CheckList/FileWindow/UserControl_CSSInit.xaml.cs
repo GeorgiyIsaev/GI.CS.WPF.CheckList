@@ -34,25 +34,14 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             CreateComboBox_FontSize(); //запалнение шрифтов      
         }
 
-      
-
-
+        /*Создание доступных шрифтов*/
         private void CreateComboBox_FontSize()
         {
             for (int i = 6; i < 42; i += 2)       
                 ComboBox_FontSize.Items.Add(i);                
         }
-        private void DefaultCSS()
-        {
-            Button_G.IsChecked = false;
-            Button_Z.IsChecked = false;
-            Button_I.IsChecked = false;
-            int baseSize = 5;
-            ComboBox_FontSize.SelectedIndex = baseSize;
-            ColorPickerInit.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        }
 
-        /*Метод для заполнения состояния из вне*/
+        /*Методы для заполнения стиля по умолчанию*/
         public void InitCSS(bool bold, bool crossed, bool italic, int fontSize)
         {
             Button_G.IsChecked = bold;
@@ -81,6 +70,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             InitCSS(ccsFont.Bold, ccsFont.Strike, ccsFont.Italic, ccsFont.SizeFront);
             InitCSSColor(ccsFont.Color);
         }
+        /*Вернуть текуший стиль контрола*/
         public CCSFont GetCSS()
         {
             CCSFont ccsFont = new CCSFont();
@@ -90,10 +80,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             ccsFont.CreateCSS(siseFont, Button_I.IsChecked.Value, Button_G.IsChecked.Value, Button_Z.IsChecked.Value, color);
 ;           return ccsFont;
         }
-
-
-
-
 
 
         /*Событие которое будит  вызватся при изменении*/
@@ -114,11 +100,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ChangeCSS != null) ChangeCSS();
         }
     
-
-
-
-
-
 
 
 
