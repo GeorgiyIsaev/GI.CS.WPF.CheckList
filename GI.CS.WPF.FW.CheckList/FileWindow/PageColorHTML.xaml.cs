@@ -231,6 +231,34 @@ namespace GI.CS.WPF.FW.CheckList
             RTB_AnswerFalseIcon1.FontWeight = (MyAnAnswerItem.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
             RTB_Comment.FontWeight = (MyComment.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
 
+            /*Курсив*/
+            RTB_Head.FontStyle = (MyTitle.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Discript.FontStyle = (MyDiscription.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Quest.FontStyle = (MyQuest.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrue2.FontStyle = (MyAnswer.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrue1.FontStyle = (MyAnswer.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrueIcon2.FontStyle = (MyAnswerItem.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerTrueIcon1.FontStyle = (MyAnswerItem.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalse1.FontStyle = (MyAnAnswer.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalse2.FontStyle = (MyAnAnswer.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalseIcon2.FontStyle = (MyAnAnswerItem.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_AnswerFalseIcon1.FontStyle = (MyAnAnswerItem.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+            RTB_Comment.FontStyle = (MyComment.GetCSS().Italic == true) ? FontStyles.Italic : FontStyles.Normal;
+
+            /*Зачеркнут*/
+            RTB_Head.TextDecorations = (MyTitle.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_Discript.TextDecorations = (MyDiscription.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_Quest.TextDecorations = (MyQuest.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerTrue2.TextDecorations = (MyAnswer.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerTrue1.TextDecorations = (MyAnswer.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerTrueIcon2.TextDecorations = (MyAnswerItem.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerTrueIcon1.TextDecorations = (MyAnswerItem.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerFalse1.TextDecorations = (MyAnAnswer.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerFalse2.TextDecorations = (MyAnAnswer.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerFalseIcon2.TextDecorations = (MyAnAnswerItem.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_AnswerFalseIcon1.TextDecorations = (MyAnAnswerItem.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+            RTB_Comment.TextDecorations = (MyComment.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
+
             ////    RTB_Head.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
             //    RTB_Head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
             //    RTB_Head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;

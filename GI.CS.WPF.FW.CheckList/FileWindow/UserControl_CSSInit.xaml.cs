@@ -81,7 +81,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         public void InitCSS(CCSFont ccsFont)
         {     
-            InitCSS(ccsFont.Bold, ccsFont.Strike, ccsFont.Italics, ccsFont.SizeFront);
+            InitCSS(ccsFont.Bold, ccsFont.Strike, ccsFont.Italic, ccsFont.SizeFront);
             InitCSSColor(ccsFont.Color);
         }
         public CCSFont GetCSS()

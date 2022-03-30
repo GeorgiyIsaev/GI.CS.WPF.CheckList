@@ -16,7 +16,7 @@ namespace GI.CS.WPF.FW.CheckList
         /*Строка СSS со стилем шрифта*/
         public string FullStringCss => fullStringCss;
         public int SizeFront => sizeFront;
-        public bool Italics => italics;
+        public bool Italic => italics;
         public bool Bold => bold;
         public bool Strike => strike;
         public string Color => color;

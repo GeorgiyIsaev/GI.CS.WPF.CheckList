@@ -27,7 +27,7 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.description.CreateCSS(16, true, false, false, "#520000");
 			structCCS.question.CreateCSS(16, false, false, false, "#520000");
 			structCCS.trueAanswer.CreateCSS(16, false, false, false, "#520000");
-			structCCS.falseAnswer.CreateCSS(16, false, false, true, "#520000");
+			structCCS.falseAnswer.CreateCSS(16, false, false, false, "#520000");
 			structCCS.trueAanswerIcon.CreateCSS(18, false, true, false, "#1eaf1e");
 			structCCS.falseAanswerIcon.CreateCSS(18, false, true, false, "#ff0000");
 			structCCS.comment.CreateCSS(16, false, false, false, "#520000");
