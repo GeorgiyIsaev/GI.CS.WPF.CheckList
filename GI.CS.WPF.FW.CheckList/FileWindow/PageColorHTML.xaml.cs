@@ -217,8 +217,23 @@ namespace GI.CS.WPF.FW.CheckList
             RTB_AnswerFalseIcon1.FontSize = MyAnAnswerItem.GetCSS().SizeFront;
             RTB_Comment.FontSize = MyComment.GetCSS().SizeFront;
 
+            /*Жриный шрифт*/
+            RTB_Head.FontWeight = (MyTitle.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal; 
+            RTB_Discript.FontWeight = (MyDiscription.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Quest.FontWeight = (MyQuest.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrue2.FontWeight = (MyAnswer.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrue1.FontWeight = (MyAnswer.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrueIcon2.FontWeight = (MyAnswerItem.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerTrueIcon1.FontWeight = (MyAnswerItem.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalse1.FontWeight = (MyAnAnswer.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalse2.FontWeight = (MyAnAnswer.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalseIcon2.FontWeight = (MyAnAnswerItem.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_AnswerFalseIcon1.FontWeight = (MyAnAnswerItem.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
+            RTB_Comment.FontWeight = (MyComment.GetCSS().Bold == true) ? FontWeights.Bold : FontWeights.Normal;
 
-
+            ////    RTB_Head.FontWeight = (Button_head_G.IsChecked == true) ? FontWeights.Bold : FontWeights.Normal;
+            //    RTB_Head.FontStyle = (Button_head_I.IsChecked == true) ? FontStyles.Italic : FontStyles.Normal;
+            //    RTB_Head.TextDecorations = (Button_head_Z.IsChecked == true) ? TextDecorations.Strikethrough : null;
             //MessageBox.Show(a.GetCreateStringCSS());
             // FontSizeInit();
 
