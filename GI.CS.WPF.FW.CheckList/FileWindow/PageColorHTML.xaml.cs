@@ -183,6 +183,14 @@ namespace GI.CS.WPF.FW.CheckList
 
         }
 
+        /*Событие которые происходит при изменении свойств*/
+        private void EventChangeCSS()
+        {
+            var a = MyTitle.GetCSS();
+
+          //  MessageBox.Show("Djq");
+        }
+
         //private void ColorPickerInitialize()
         //{
         //    ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffffffff");

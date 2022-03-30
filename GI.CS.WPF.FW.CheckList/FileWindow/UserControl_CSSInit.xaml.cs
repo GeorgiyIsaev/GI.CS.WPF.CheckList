@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 
 namespace GI.CS.WPF.FW.CheckList.FileWindow
 {
+    public delegate void EventChangeCSS();
     /// <summary>
     /// Логика взаимодействия для UserControl_CSSInit.xaml
     /// </summary>
@@ -83,31 +84,42 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             InitCSS(ccsFont.Bold, ccsFont.Strike, ccsFont.Italics, ccsFont.SizeFront);
             InitCSSColor(ccsFont.Color);
         }
+        public CCSFont GetCSS()
+        {
+            CCSFont ccsFont = new CCSFont();
+            int siseFont = (ComboBox_FontSize.SelectedIndex * 2) + 6; 
+            string color = ColorPickerInit.SelectedColor.ToString();
+            color = "#" + color.Substring(3);
+            ccsFont.CreateCSS(siseFont, Button_I.IsChecked.Value, Button_G.IsChecked.Value, Button_Z.IsChecked.Value, color);
+;           return ccsFont;
+        }
 
 
 
 
 
 
-
-
+        /*Событие которое будит  вызватся при изменении*/
+        public event EventChangeCSS ChangeCSS;
         /*Нажатие на Ж К З*/
         private void ButtonClick_CSS(object sender, RoutedEventArgs e)
         {
-
+            if (ChangeCSS != null) ChangeCSS();
         }
-
         /*Выбор шрифта*/
         private void SelectionChanged_FontSize(object sender, SelectionChangedEventArgs e)
         {
-          
+            if (ChangeCSS != null) ChangeCSS();
         }
-
         /*Выбор Цвета*/
         private void ColorPicker_ColorInitialize(object sender, MouseEventArgs e)
         {
-           
+            if (ChangeCSS != null) ChangeCSS();
         }
+
+
+
+    
 
 
 

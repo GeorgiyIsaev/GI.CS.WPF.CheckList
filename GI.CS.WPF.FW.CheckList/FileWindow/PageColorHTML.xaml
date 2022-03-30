@@ -78,14 +78,14 @@
                 <StackPanel Grid.Row="0"  Orientation="Horizontal">
                     <TextBlock Margin="0,0,0,1" Text="ШРИФТ "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
                 </StackPanel>
-                <FileWindow:UserControl_CSSInit x:Name="MyTitle" Grid.Row="1" HorizontalAlignment="Left" TextTitle="Заголовок: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyDiscription" Grid.Row="2" HorizontalAlignment="Left" TextTitle="Описание: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyQuest" Grid.Row="3" HorizontalAlignment="Left" TextTitle="Вопрос: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyAnswer" Grid.Row="4" HorizontalAlignment="Left" TextTitle="Верный ответ: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyAnswerItem" Grid.Row="5" HorizontalAlignment="Left" TextTitle="Значек ответа [✔]: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswer" Grid.Row="6" HorizontalAlignment="Left" TextTitle="Не верный ответ: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswerItem" Grid.Row="7" HorizontalAlignment="Left" TextTitle="Значек ответа [&#10008;]: " WidthTitle="145" Width="430"   />
-                <FileWindow:UserControl_CSSInit x:Name="MyComment" Grid.Row="8" HorizontalAlignment="Left" TextTitle="Пояснение: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyTitle" Grid.Row="1" HorizontalAlignment="Left" TextTitle="Заголовок: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"  />
+                <FileWindow:UserControl_CSSInit x:Name="MyDiscription" Grid.Row="2" HorizontalAlignment="Left" TextTitle="Описание: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyQuest" Grid.Row="3" HorizontalAlignment="Left" TextTitle="Вопрос: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnswer" Grid.Row="4" HorizontalAlignment="Left" TextTitle="Верный ответ: " WidthTitle="145" Width="430"  ChangeCSS="EventChangeCSS"  />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnswerItem" Grid.Row="5" HorizontalAlignment="Left" TextTitle="Значек ответа [✔]: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswer" Grid.Row="6" HorizontalAlignment="Left" TextTitle="Не верный ответ: " WidthTitle="145" Width="430"  ChangeCSS="EventChangeCSS"  />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswerItem" Grid.Row="7" HorizontalAlignment="Left" TextTitle="Значек ответа [&#10008;]: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyComment" Grid.Row="8" HorizontalAlignment="Left" TextTitle="Пояснение: " WidthTitle="145" Width="430" ChangeCSS="EventChangeCSS"   />
              
 
                 <!-- Фон страницы -->
