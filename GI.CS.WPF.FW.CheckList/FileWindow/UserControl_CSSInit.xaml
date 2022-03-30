@@ -21,7 +21,7 @@
             <!--зачеркнут 3-->
             <ColumnDefinition Width="55" />
             <!--размер 4-->
-            <ColumnDefinition Width="105" />
+            <ColumnDefinition Width="115" />
             <!--цвет 5-->
         </Grid.ColumnDefinitions>
 

@@ -59,7 +59,7 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -74,97 +74,19 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <!-- Заголовок -->
+                <!-- Шрифты -->
                 <StackPanel Grid.Row="0"  Orientation="Horizontal">
-                    <TextBlock Margin="0,0,0,1" Text="ТЕКСТ "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
+                    <TextBlock Margin="0,0,0,1" Text="ШРИФТ "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Заголовок: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_head_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_head_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_head_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeHead" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Head" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
-                <!-- Описание -->
-                <StackPanel Grid.Row="2"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Описание: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_discript_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_discript_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_discript_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Discript" Margin="5,0,0,6" FontSize="10" Width="91"  MouseLeave="ColorPicker_ColorInitialize" />
-                </StackPanel>
-                <!-- Вопрос -->
-                <StackPanel Grid.Row="3"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Вопрос: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_Quest_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_Quest_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_Quest_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeQuest" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_Quest" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
-                <!-- Верный ответ -->
-                <StackPanel Grid.Row="4"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Верный ответ: " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_Answer_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_Answer_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_Answer_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_Answer" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
-                <!-- Верный ответ значек-->
-                <StackPanel Grid.Row="5"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [✔]:  " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_AnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_AnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_AnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_AnswerI" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
-                <!-- Не верный ответ -->
-                <StackPanel Grid.Row="6"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,5" Text="Не верный ответ: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_AnAnswer_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_AnAnswer_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_AnAnswer_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnAnswer" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_AnAnswer" Margin="5,0,0,6" FontSize="10" Width="91"  MouseLeave="ColorPicker_ColorInitialize" />
-                </StackPanel>
-                <!-- НеВерный ответ значек -->
-                <StackPanel Grid.Row="7"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Значек ответа [&#10008;]: " VerticalAlignment="Top" Height="24" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_AnAnswerI_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_AnAnswerI_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_AnAnswerI_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeAnAnswerI" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-                    <p:ColorPicker x:Name="ColorPicker_AnAnswerI" Margin="5,0,0,6" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
-                <!-- Коментарий -->
-                <StackPanel Grid.Row="8"  Orientation="Horizontal">
-                    <TextBlock Margin="10,3,5,0" Text="Пояснение: " VerticalAlignment="Top" Height="21" Width="120" FontWeight="Normal" FontSize="14"/>
-                    <ToggleButton x:Name="Button_Comment_G" Content="Ж" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Bold" FontSize="14" Click="ButtonClick_CSS" RenderTransformOrigin="5.49,2.289"/>
-                    <ToggleButton x:Name="Button_Comment_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
-                    <ToggleButton x:Name="Button_Comment_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
-                        <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>
-                    <ComboBox x:Name="ComboBox_FontSizeComment" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
-                    <p:ColorPicker x:Name="ColorPicker_Comment" Margin="5,0,0,1" FontSize="10" Width="91" MouseLeave="ColorPicker_ColorInitialize"  />
-                </StackPanel>
+                <FileWindow:UserControl_CSSInit x:Name="MyTitle" Grid.Row="1" HorizontalAlignment="Left" TextTitle="Заголовок: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyDiscription" Grid.Row="2" HorizontalAlignment="Left" TextTitle="Описание: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyQuest" Grid.Row="3" HorizontalAlignment="Left" TextTitle="Вопрос: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnswer" Grid.Row="4" HorizontalAlignment="Left" TextTitle="Верный ответ: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnswerItem" Grid.Row="5" HorizontalAlignment="Left" TextTitle="Значек ответа [✔]: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswer" Grid.Row="6" HorizontalAlignment="Left" TextTitle="Не верный ответ: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyAnAnswerItem" Grid.Row="7" HorizontalAlignment="Left" TextTitle="Значек ответа [&#10008;]: " WidthTitle="145" Width="430"   />
+                <FileWindow:UserControl_CSSInit x:Name="MyComment" Grid.Row="8" HorizontalAlignment="Left" TextTitle="Пояснение: " WidthTitle="145" Width="430"   />
+             
 
                 <!-- Фон страницы -->
                 <StackPanel Grid.Row="9"  Orientation="Horizontal">
@@ -177,20 +99,9 @@
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Бок: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
                     <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
 
-
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Низ:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" />
                     <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" MouseLeave="ColorPicker_ColorInitialize" />
-
-                </StackPanel>
-
-                <FileWindow:UserControl_CSSInit x:Name="Contol" Grid.Row="11" HorizontalAlignment="Left" TextTitle="Заголовок: " WidthTitle="135" Width="430"   />
-
-                <!--<StackPanel Grid.Row="11" Orientation="Horizontal">
-                    <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
-                    <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
-                    <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top"  Width="100"/>
-                </StackPanel>-->
-
+                </StackPanel>     
             </Grid>
         </Grid>
     </Grid>
