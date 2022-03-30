@@ -30,28 +30,23 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
             CreateComboBox_FontSize(); //запалнение шрифтов
-           // FontStyleInit();
-          //  ColorPickerInitialize();
+            DefaultCSS();
         }
 
 
         private void CreateComboBox_FontSize()
         {
-            for (int i = 6; i < 42; i += 2)
-            {
-                ComboBox_FontSize.Items.Add(i);
-            }
-            StandartStileButton();
+            for (int i = 6; i < 42; i += 2)       
+                ComboBox_FontSize.Items.Add(i);                
         }
-        private void StandartStileButton()
+        private void DefaultCSS()
         {
-
-            Button_G.IsChecked = true;
-            Button_Z.IsChecked = true;
-            Button_I.IsChecked = true;
-
+            Button_G.IsChecked = false;
+            Button_Z.IsChecked = false;
+            Button_I.IsChecked = false;
             int baseSize = 5;
             ComboBox_FontSize.SelectedIndex = baseSize;
+            ColorPickerInit.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
         }
 
 
