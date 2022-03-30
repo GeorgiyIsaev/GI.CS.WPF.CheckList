@@ -31,8 +31,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateComboBox_FontSize(); //запалнение шрифтов
-                                       // DefaultCSS();
+            CreateComboBox_FontSize(); //запалнение шрифтов      
 
             //widthTitle = 190;
         }

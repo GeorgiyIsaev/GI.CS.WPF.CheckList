@@ -88,13 +88,9 @@ namespace GI.CS.WPF.FW.CheckList
         {
             EditionHTML.headerHTML = input_header.Text;
             EditionHTML.describeHTML = input_describe.Text;
-            EditionHTML.signFooterHTML = input_sign.Text;
-            EditionHTML.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
+            EditionHTML.signFooterHTML = input_sign.Text;       
             EditionHTML.deleteAnAnswerIf = (CB_lineThrough.IsChecked == true);
             EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
-           // EditionHTML.SetCSSInput();
-
-            //ChangeFullFontSize
         }
 
 
