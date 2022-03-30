@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,12 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
             CreateComboBox_FontSize(); //запалнение шрифтов
-           // DefaultCSS();
+                                       // DefaultCSS();
+
+            //widthTitle = 190;
         }
+
+      
 
 
         private void CreateComboBox_FontSize()
@@ -103,5 +108,39 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         {
            
         }
+
+
+
+
+        /*Свовства*/
+        [DisplayName(@"TextTitle"), Description("Тектс заголовка"), Category("New"), DefaultValue(false)]
+        public string TextTitle
+        {
+            get
+            {
+                return TextContorl.Text;
+            }
+            set
+            {
+                TextContorl.Text = value;
+            }
+        }
+
+       // public double widthTitle { get; set; } = 170;
+        [DisplayName(@"WidthTitle"), Description("Ширина заголовка"), Category("New"), DefaultValue(false)]
+        public GridLength WidthTitle
+        {
+            get
+            {     
+                return TitleColumn.Width; 
+            }
+            set
+            {
+                TitleColumn.Width = value;
+            }
+        }
+
+
+
     }
 }

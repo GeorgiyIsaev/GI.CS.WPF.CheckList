@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GI.CS.WPF.FW.CheckList"
       xmlns:p="http://propertytools.org/wpf"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageColorHTML">
+      mc:Ignorable="d"
+      Title="PageColorHTML" Height="356.25" Width="740.234">
 
     <Grid>
         <Grid Background="#FFE5E5E5">
@@ -20,7 +19,7 @@
             <Grid Grid.Column="0">
                 <Border x:Name="BackFon" BorderThickness="1" BorderBrush="Black" Margin="0,0,0,0" Background="BlueViolet"/>
                 <RichTextBox x:Name="RichTextBox_Fon" Margin="25,0,25,0" VerticalAlignment="Stretch" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <FlowDocument>                    
+                    <FlowDocument>
                         <Paragraph x:Name="RTB_Head" Margin="0,0,0,0" TextAlignment="Center">
                             <Run Text="Заголовок"/>
                         </Paragraph>
@@ -96,7 +95,7 @@
                     <ToggleButton x:Name="Button_discript_I" Content="К" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" FontWeight="Normal" FontSize="14" FontStyle="Italic" Click="ButtonClick_CSS"/>
                     <ToggleButton x:Name="Button_discript_Z" Margin="5,0,0,0" VerticalAlignment="Top" Width="37" Height="24" Click="ButtonClick_CSS">
                         <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
-                    </ToggleButton>                    
+                    </ToggleButton>
                     <ComboBox x:Name="ComboBox_FontSizeDiscript" HorizontalAlignment="Left"  ToolTip="Размер шрифта"  Height="24" Margin="5,0,0,0" VerticalAlignment="Top" FontSize="14" Width="53" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize"/>
                     <p:ColorPicker x:Name="ColorPicker_Discript" Margin="5,0,0,6" FontSize="10" Width="91"  MouseLeave="ColorPicker_ColorInitialize" />
                 </StackPanel>
@@ -171,7 +170,7 @@
                 <StackPanel Grid.Row="9"  Orientation="Horizontal">
                     <TextBlock Margin="0,0,0,1" Text="ФОН "  Height="21" Width="416" FontWeight="Normal" FontSize="18" TextAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Margin="0,5,0,0" Grid.Row="10" Orientation="Horizontal">                    
+                <StackPanel Margin="0,5,0,0" Grid.Row="10" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Главный: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
                     <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
 
@@ -181,17 +180,17 @@
 
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Низ:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" />
                     <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" MouseLeave="ColorPicker_ColorInitialize" />
-                
+
                 </StackPanel>
-            
-                <FileWindow:UserControl_CSSInit x:Name="Contol" Grid.Row="11" Margin="0,0,95,0" />
-           
+
+                <FileWindow:UserControl_CSSInit x:Name="Contol" Grid.Row="11" HorizontalAlignment="Left" TextTitle="Заголовок: " WidthTitle="135" Width="430"   />
+
                 <!--<StackPanel Grid.Row="11" Orientation="Horizontal">
                     <ComboBox x:Name="CB_FonFace" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
                     <ComboBox x:Name="CB_Sign" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top" Width="100"/>
                     <ComboBox x:Name="CB_FonBack" HorizontalAlignment="Left" Margin="10,0,5,0" VerticalAlignment="Top"  Width="100"/>
                 </StackPanel>-->
-                    
+
             </Grid>
         </Grid>
     </Grid>
