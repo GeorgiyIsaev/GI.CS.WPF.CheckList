@@ -32,12 +32,26 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
+            /*Передаем стили СSS в постройку*/
+            MyTitle.InitCSS(EditionHTML.structCCS.title);
+            MyDiscription.InitCSS(EditionHTML.structCCS.description);
+            MyQuest.InitCSS(EditionHTML.structCCS.question);
+            MyAnswer.InitCSS(EditionHTML.structCCS.trueAanswer);
+            MyAnswerItem.InitCSS(EditionHTML.structCCS.trueAanswerIcon);
+            MyAnAnswer.InitCSS(EditionHTML.structCCS.falseAnswer);
+            MyAnAnswerItem.InitCSS(EditionHTML.structCCS.falseAanswerIcon);
+            MyComment.InitCSS(EditionHTML.structCCS.comment);
+
+
+
+
             //CreateComboBox_FontSize();
-          //  FontStyleInit();
-          //  ColorPickerInitialize();
+            //  FontStyleInit();
+            //  ColorPickerInitialize();
             //Contol.InitCSS(true, true, false, 6);
             //Contol.InitCSSColor("#c4d0c7");
-         //   Contol.InitCSS(EditionHTML.structCCS.title);
+
+            //   Contol.InitCSS(EditionHTML.structCCS.title);
         }
 
 
