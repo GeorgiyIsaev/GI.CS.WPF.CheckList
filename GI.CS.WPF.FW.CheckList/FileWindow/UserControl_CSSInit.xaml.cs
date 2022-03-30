@@ -31,10 +31,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateComboBox_FontSize(); //запалнение шрифтов      
+            CreateComboBox_FontSize(); //заполнение размеров шрифта     
         }
 
-        /*Создание доступных шрифтов*/
+        /*Создание доступных размеров шрифтов*/
         private void CreateComboBox_FontSize()
         {
             for (int i = 6; i < 42; i += 2)       
