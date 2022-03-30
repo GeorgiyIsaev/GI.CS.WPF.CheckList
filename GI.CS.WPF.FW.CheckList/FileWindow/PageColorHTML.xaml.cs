@@ -193,23 +193,33 @@ namespace GI.CS.WPF.FW.CheckList
             RTB_Head.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyTitle.GetCSS().Color);
             RTB_Discript.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyDiscription.GetCSS().Color);
             RTB_Quest.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyQuest.GetCSS().Color);
-
             RTB_AnswerTrue2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswer.GetCSS().Color);
             RTB_AnswerTrue1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswer.GetCSS().Color);
             RTB_AnswerTrueIcon2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswerItem.GetCSS().Color);
             RTB_AnswerTrueIcon1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnswerItem.GetCSS().Color);
-
             RTB_AnswerFalse1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswer.GetCSS().Color);
             RTB_AnswerFalse2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswer.GetCSS().Color);
             RTB_AnswerFalseIcon2.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswerItem.GetCSS().Color);
             RTB_AnswerFalseIcon1.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyAnAnswerItem.GetCSS().Color);
-
             RTB_Comment.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyComment.GetCSS().Color);
 
+            /*Меняем размер шрифта*/
+            RTB_Head.FontSize = MyTitle.GetCSS().SizeFront;
+            RTB_Discript.FontSize = MyDiscription.GetCSS().SizeFront;
+            RTB_Quest.FontSize = MyQuest.GetCSS().SizeFront;
+            RTB_AnswerTrue2.FontSize = MyAnswer.GetCSS().SizeFront;
+            RTB_AnswerTrue1.FontSize = MyAnswer.GetCSS().SizeFront;
+            RTB_AnswerTrueIcon2.FontSize = MyAnswerItem.GetCSS().SizeFront;
+            RTB_AnswerTrueIcon1.FontSize = MyAnswerItem.GetCSS().SizeFront;
+            RTB_AnswerFalse1.FontSize = MyAnAnswer.GetCSS().SizeFront;
+            RTB_AnswerFalse2.FontSize = MyAnAnswer.GetCSS().SizeFront;
+            RTB_AnswerFalseIcon2.FontSize = MyAnAnswerItem.GetCSS().SizeFront;
+            RTB_AnswerFalseIcon1.FontSize = MyAnAnswerItem.GetCSS().SizeFront;
+            RTB_Comment.FontSize = MyComment.GetCSS().SizeFront;
 
 
-            
-               //MessageBox.Show(a.GetCreateStringCSS());
+
+            //MessageBox.Show(a.GetCreateStringCSS());
             // FontSizeInit();
 
             //<!--dsd  MyDiscription  MyQuest MyAnswer MyAnswerItem MyAnAnswer MyAnAnswerItem MyComment-->
