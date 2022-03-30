@@ -128,6 +128,9 @@
     <Compile Include="FileBackend\QuestsBox.cs" />
     <Compile Include="FileBackend\QuestsBoxForTest.cs" />
     <Compile Include="FileWindow\MenuItemRefresh.cs" />
+    <Compile Include="FileWindow\UserControl_CSSInit.xaml.cs">
+      <DependentUpon>UserControl_CSSInit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileWindow\Window_LoginProfile.xaml.cs">
       <DependentUpon>Window_LoginProfile.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FileWindow\UserControl_CSSInit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FileWindow\Window_LoginProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
