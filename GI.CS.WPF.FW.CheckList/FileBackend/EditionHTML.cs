@@ -34,6 +34,20 @@ namespace GI.CS.WPF.FW.CheckList
 			structCCS.signature.CreateCSS(10, true, true, false, "#520000");
 		}
 
+		public static void ChangeFullFontSize(int sizeFont)
+        {
+			structCCS.title.ChangeSizeFont(sizeFont+10);
+			structCCS.description.ChangeSizeFont(sizeFont);
+			structCCS.question.ChangeSizeFont(sizeFont);
+			structCCS.trueAanswer.ChangeSizeFont(sizeFont);
+			structCCS.falseAnswer.ChangeSizeFont(sizeFont);
+			structCCS.trueAanswerIcon.ChangeSizeFont(sizeFont+2);
+			structCCS.falseAanswerIcon.ChangeSizeFont(sizeFont+2);
+			structCCS.comment.ChangeSizeFont(sizeFont);
+			structCCS.signature.ChangeSizeFont(sizeFont-6);
+		}
+
+
 		public static void SetCSSInput()
 		{
 			structCCS.baseBackend.color = "#c4d0c7";

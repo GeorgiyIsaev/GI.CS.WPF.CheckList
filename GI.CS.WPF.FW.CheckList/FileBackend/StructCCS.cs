@@ -21,7 +21,11 @@ namespace GI.CS.WPF.FW.CheckList
         public bool Strike => strike;
         public string Color => color;
 
-      
+        public void ChangeSizeFont(int newSizeFront)
+        {
+            sizeFront = newSizeFront;
+        }
+
         public void CreateCSS(int sizeFront, bool italics, bool bold, bool strike, string color)
         {
             this.sizeFront = sizeFront;
