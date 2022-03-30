@@ -17,6 +17,9 @@ namespace GI.CS.WPF.FW.CheckList
     /// </summary>
     public partial class Window_SaveCheckList : Window
     {
+        PageColorHTML PageColorHTML = new PageColorHTML();
+
+
         public Window_SaveCheckList()
         {
             InitializeComponent();
@@ -27,8 +30,8 @@ namespace GI.CS.WPF.FW.CheckList
         private void Windows_HTNLSetup_Loaded(object sender, RoutedEventArgs e)
         {
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
-            CreateComboBox_FontSize();         
-            TabHTMLColor.Content = new PageColorHTML();
+            CreateComboBox_FontSize();
+            TabHTMLColor.Content = PageColorHTML;
         }
         private void CreateComboBox_FontSize()
         {
@@ -89,9 +92,11 @@ namespace GI.CS.WPF.FW.CheckList
             EditionHTML.FrontSiseBody = ((ComboBox_FontSize.SelectedIndex) * 2) + 8;
             EditionHTML.deleteAnAnswerIf = (CB_lineThrough.IsChecked == true);
             EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
-            EditionHTML.SetCSSInput();
+           // EditionHTML.SetCSSInput();
+
+            //ChangeFullFontSize
         }
-      
+
 
 
 
@@ -144,6 +149,12 @@ namespace GI.CS.WPF.FW.CheckList
                                        "по умолчанию используется Escape-последовательность";
             }
 
+        }
+
+        private void ComboBox_FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int siseFont = (ComboBox_FontSize.SelectedIndex * 2) + 8;
+            EditionHTML.ChangeFullFontSize(siseFont);        
         }
     }
 }
