@@ -131,8 +131,8 @@
     <Compile Include="FileWindow\Window_LoginProfile.xaml.cs">
       <DependentUpon>Window_LoginProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileWindow\Window_HTNLSetup.xaml.cs">
-      <DependentUpon>Window_HTNLSetup.xaml</DependentUpon>
+    <Compile Include="FileWindow\Window_SaveCheckList.xaml.cs">
+      <DependentUpon>Window_SaveCheckList.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileWindow\Window_Load.xaml.cs">
       <DependentUpon>Window_Load.xaml</DependentUpon>
@@ -186,7 +186,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FileWindow\Window_HTNLSetup.xaml">
+    <Page Include="FileWindow\Window_SaveCheckList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

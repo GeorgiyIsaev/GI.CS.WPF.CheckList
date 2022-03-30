@@ -207,7 +207,7 @@ namespace GI.CS.WPF.FW.CheckList
         /*Меню Файл-> Сохранить в файл*/
         private void MenuItemSaveHTML_Click(object sender, RoutedEventArgs e)
         {
-            new Window_HTNLSetup().ShowDialog();          
+            new Window_SaveCheckList().ShowDialog();          
         }
         /*Меню Файл-> Открыть католок*/
         private void MenuItemOpenDirectoriy_Click(object sender, RoutedEventArgs e)
