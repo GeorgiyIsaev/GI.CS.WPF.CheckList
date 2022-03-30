@@ -140,7 +140,8 @@ namespace GI.CS.WPF.FW.CheckList
         //{
         //    try
         //    {
-        //        if(ComboBox_FontSizeHead.SelectedValue.ToString() != null) 
+        //        //< !--dsd  MyDiscription MyQuest MyAnswer MyAnswerItem MyAnAnswer MyAnAnswerItem MyComment-- >
+        //        if (ComboBox_FontSizeHead.SelectedValue.ToString() != null)
         //            RTB_Head.FontSize = Convert.ToInt32(ComboBox_FontSizeHead.SelectedValue.ToString());
         //        if (ComboBox_FontSizeDiscript.SelectedItem != null)
         //            RTB_Discript.FontSize = Convert.ToInt32(ComboBox_FontSizeDiscript.SelectedValue.ToString());
@@ -148,18 +149,18 @@ namespace GI.CS.WPF.FW.CheckList
         //            RTB_Quest.FontSize = Convert.ToInt32(ComboBox_FontSizeQuest.SelectedValue.ToString());
 
         //        if (ComboBox_FontSizeAnswer.SelectedItem != null)
-        //        {    
+        //        {
         //            RTB_AnswerTrue1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
         //            RTB_AnswerTrue2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswer.SelectedValue.ToString());
         //        }
         //        if (ComboBox_FontSizeAnswerI.SelectedItem != null)
         //        {
         //            RTB_AnswerTrueIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswerI.SelectedValue.ToString());
-        //            RTB_AnswerTrueIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswerI.SelectedValue.ToString());            
+        //            RTB_AnswerTrueIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnswerI.SelectedValue.ToString());
         //        }
 
         //        if (ComboBox_FontSizeAnAnswer.SelectedItem != null)
-        //        {                 
+        //        {
         //            RTB_AnswerFalse1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
         //            RTB_AnswerFalse2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswer.SelectedValue.ToString());
         //        }
@@ -168,10 +169,10 @@ namespace GI.CS.WPF.FW.CheckList
         //            RTB_AnswerFalseIcon2.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
         //            RTB_AnswerFalseIcon1.FontSize = Convert.ToInt32(ComboBox_FontSizeAnAnswerI.SelectedValue.ToString());
         //        }
-        //        if (ComboBox_FontSizeComment.SelectedItem != null)                
-        //            RTB_Comment.FontSize = Convert.ToInt32(ComboBox_FontSizeComment.SelectedValue.ToString());              
+        //        if (ComboBox_FontSizeComment.SelectedItem != null)
+        //            RTB_Comment.FontSize = Convert.ToInt32(ComboBox_FontSizeComment.SelectedValue.ToString());
         //    }
-        //    catch(Exception ex)
+        //    catch (Exception ex)
         //    {
         //        MessageBox.Show(ex.Message);
         //    }
@@ -188,34 +189,32 @@ namespace GI.CS.WPF.FW.CheckList
         {
             var a = MyTitle.GetCSS();
 
-          //  MessageBox.Show("Djq");
+            MessageBox.Show(a.GetCreateStringCSS());
+
+            // FontSizeInit();
+
+            //<!--dsd  MyDiscription  MyQuest MyAnswer MyAnswerItem MyAnAnswer MyAnAnswerItem MyComment-->
+            //ColorInitialize();
+
+            //  MessageBox.Show("Djq");
         }
 
-        //private void ColorPickerInitialize()
-        //{
-        //    ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffffffff");
-        //    ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffc4d0c7");
-        //    ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffa9a9a9");
+        private void ColorPicker_SignFon_DropDownClosed(object sender, EventArgs e)
+        {
+            string text = ColorPicker_SignFon.SelectedColor.Value.ToString();
 
-        //    ColorPicker_Head.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorPicker_Discript.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorPicker_Quest.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorPicker_Answer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorPicker_AnAnswer.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorPicker_AnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff1eaf1e");
-        //    ColorPicker_AnAnswerI.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ffff0000");
-        //    ColorPicker_Comment.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
-        //    ColorInitialize();
-        //}
+                      MessageBox.Show(text);
+        }
+
 
         //private void ColorInitialize()
         //{
         //    Color? colorTemp;
         //    SolidColorBrush brushTemp;
 
-        //    colorTemp = ColorPicker_BeckFon.SelectedColor;        
+        //    colorTemp = ColorPicker_BeckFon.SelectedColor;
         //    if (colorTemp.Value != null)
-        //    {               
+        //    {
         //        brushTemp = new SolidColorBrush((Color)colorTemp.Value);
         //        BackFon.Background = brushTemp;
         //    }
@@ -224,7 +223,7 @@ namespace GI.CS.WPF.FW.CheckList
         //    if (colorTemp.Value != null)
         //    {
         //        brushTemp = new SolidColorBrush((Color)colorTemp.Value);
-        //        RichTextBox_Fon.Background = brushTemp;                
+        //        RichTextBox_Fon.Background = brushTemp;
         //    }
 
 
@@ -232,7 +231,7 @@ namespace GI.CS.WPF.FW.CheckList
         //    if (colorTemp.Value != null)
         //    {
         //        brushTemp = new SolidColorBrush((Color)colorTemp.Value);
-        //        RTB_Head.Foreground = brushTemp;              
+        //        RTB_Head.Foreground = brushTemp;
         //    }
         //    colorTemp = ColorPicker_Discript.SelectedColor;
         //    if (colorTemp.Value != null)

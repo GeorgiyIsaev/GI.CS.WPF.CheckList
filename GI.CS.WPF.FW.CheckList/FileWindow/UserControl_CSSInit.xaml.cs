@@ -112,14 +112,15 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (ChangeCSS != null) ChangeCSS();
         }
         /*Выбор Цвета*/
-        private void ColorPicker_ColorInitialize(object sender, MouseEventArgs e)
+        private void ColorPickerInit_DropDownClosed(object sender, EventArgs e)
         {
             if (ChangeCSS != null) ChangeCSS();
         }
-
-
-
     
+
+
+
+
 
 
 
@@ -152,7 +153,6 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             }
         }
 
-
-
+      
     }
 }

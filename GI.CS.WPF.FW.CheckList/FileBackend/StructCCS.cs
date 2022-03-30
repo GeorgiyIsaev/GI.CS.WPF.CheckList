@@ -30,15 +30,16 @@ namespace GI.CS.WPF.FW.CheckList
             this.bold = bold;
             this.strike = strike;
             this.color = color;
-            CreateStringCSS();
+            GetCreateStringCSS();
         }
-        private void CreateStringCSS()
+        public string GetCreateStringCSS()
         {
             fullStringCss = $"font-size: {sizeFront}px; ";
             if (italics) fullStringCss += "font-style:italic; ";
             if (bold) fullStringCss += "font-weight: bold; " ;
             if (strike) fullStringCss += "text-decoration: line-through; ";
             fullStringCss += $"color: {color};";
+            return fullStringCss;
         }
 
     }

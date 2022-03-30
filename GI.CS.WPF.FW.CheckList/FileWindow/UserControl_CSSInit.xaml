@@ -33,7 +33,7 @@
             <TextBlock TextDecorations="Strikethrough" Text="З" FontWeight="Normal" FontSize="14" />
         </ToggleButton>
         <ComboBox  Grid.Column="4" x:Name="ComboBox_FontSize" ToolTip="Размер шрифта" Margin="2,1,2,2"  FontSize="14" FontWeight="Normal" SelectionChanged="SelectionChanged_FontSize" />
-        <pt:ColorPicker  Grid.Column="5" x:Name="ColorPickerInit" FontSize="10" MouseLeave="ColorPicker_ColorInitialize" Margin="2,1,15,2"/>
+        <pt:ColorPicker  Grid.Column="5" x:Name="ColorPickerInit" FontSize="10" DropDownClosed="ColorPickerInit_DropDownClosed" Margin="2,1,15,2"/>
 
     </Grid>
 </UserControl>

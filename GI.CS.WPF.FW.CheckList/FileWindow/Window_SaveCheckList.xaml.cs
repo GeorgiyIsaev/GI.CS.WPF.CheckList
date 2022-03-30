@@ -73,7 +73,7 @@ namespace GI.CS.WPF.FW.CheckList
                 EditionJson.WriteJSON(nameANDformat, (bool)CB_spoilerIf.IsChecked, (bool)CB_lineThrough.IsChecked);
             }
 
-            var result = MessageBox.Show($"Файл {nameANDformat} успешно создан\n Хотите открыть файл?", 
+            var result = MessageBox.Show($"Чек-Лист {nameANDformat} успешно создан\n Хотите открыть файл?", 
                 "Информация", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
