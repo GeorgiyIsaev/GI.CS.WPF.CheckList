@@ -95,13 +95,13 @@
                 </StackPanel>
                 <StackPanel Margin="0,5,0,0" Grid.Row="10" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Главный: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
-                    <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
+                    <p:ColorPicker x:Name="ColorPicker_MainFon" Margin="5,0,0,6" FontSize="10" Width="89" DropDownClosed="ColorPicker_SignFon_DropDownClosed"  />
 
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Бок: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21"/>
-                    <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="89" MouseLeave="ColorPicker_ColorInitialize"  />
+                    <p:ColorPicker x:Name="ColorPicker_BeckFon" Margin="5,0,0,6" FontSize="10" Width="89" DropDownClosed="ColorPicker_SignFon_DropDownClosed"  />
 
                     <TextBlock HorizontalAlignment="Left"  Margin="5,0,0,0" Text="Низ:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="21" />
-                    <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" DropDownClosed="ColorPicker_SignFon_DropDownClosed"  MouseLeave="ColorPicker_ColorInitialize" />
+                    <p:ColorPicker x:Name="ColorPicker_SignFon" Margin="5,0,0,6" FontSize="10" Width="88" DropDownClosed="ColorPicker_SignFon_DropDownClosed" />
                 </StackPanel>     
             </Grid>
         </Grid>

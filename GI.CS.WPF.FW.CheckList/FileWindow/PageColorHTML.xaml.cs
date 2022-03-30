@@ -44,7 +44,7 @@ namespace GI.CS.WPF.FW.CheckList
 
             colorCode = "#ff" + EditionHTML.structCCS.futterBackend.color.Substring(1);
             ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);
-
+            ChangeFon();
         }
 
         /*Передаем стили СSS в постройку*/
@@ -60,17 +60,29 @@ namespace GI.CS.WPF.FW.CheckList
             MyComment.InitCSS(EditionHTML.structCCS.comment);
         }
 
-        /*Меняет цвет фона*/
-        private void ColorPicker_ColorInitialize(object sender, MouseEventArgs e)
+        /*Для замены фонов на доске примера*/
+        public void ChangeFon()
         {
-      
+            BackFon.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(
+                EditionHTML.structCCS.baseBackend.color);
+            RichTextBox_Fon.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(
+                EditionHTML.structCCS.mainBackend.color);
         }
+ 
 
         /*Событие которые происходит при изменении свойств*/
         private void EventChangeCSS()
         {
-            var a = MyTitle.GetCSS();
-                   
+            /*Сохраняем стили в каталог*/
+            EditionHTML.structCCS.title = MyTitle.GetCSS();
+            EditionHTML.structCCS.description = MyDiscription.GetCSS();
+            EditionHTML.structCCS.question = MyQuest.GetCSS();
+            EditionHTML.structCCS.trueAanswer = MyAnswer.GetCSS();
+            EditionHTML.structCCS.trueAanswerIcon = MyAnswerItem.GetCSS();
+            EditionHTML.structCCS.falseAnswer = MyAnAnswer.GetCSS();
+            EditionHTML.structCCS.falseAanswerIcon = MyAnAnswerItem.GetCSS();
+            EditionHTML.structCCS.comment = MyComment.GetCSS();
+
             /*Меняем цвет шрифта*/
             RTB_Head.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyTitle.GetCSS().Color);
             RTB_Discript.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyDiscription.GetCSS().Color);
@@ -142,30 +154,15 @@ namespace GI.CS.WPF.FW.CheckList
             RTB_Comment.TextDecorations = (MyComment.GetCSS().Strike == true) ? TextDecorations.Strikethrough : null;
         }
 
+        /*Событие при смене цвета фона*/
         private void ColorPicker_SignFon_DropDownClosed(object sender, EventArgs e)
-        {
-            Color? colorTemp;
-            SolidColorBrush brushTemp;
+        {    
+            /*Новый фон*/
+            EditionHTML.structCCS.mainBackend.color = "#" + ColorPicker_MainFon.SelectedColor.ToString().Substring(3);
+            EditionHTML.structCCS.baseBackend.color = "#" + ColorPicker_BeckFon.SelectedColor.ToString().Substring(3);
+            EditionHTML.structCCS.futterBackend.color = "#" + ColorPicker_SignFon.SelectedColor.ToString().Substring(3);
 
-            colorTemp = ColorPicker_BeckFon.SelectedColor;
-            if (colorTemp.Value != null)
-            {
-                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
-                BackFon.Background = brushTemp;
-            }
-
-            colorTemp = ColorPicker_MainFon.SelectedColor;
-            if (colorTemp.Value != null)
-            {
-                brushTemp = new SolidColorBrush((Color)colorTemp.Value);
-                RichTextBox_Fon.Background = brushTemp;
-            }
-
-
-
-            //string text = ColorPicker_SignFon.SelectedColor.Value.ToString();
-            //var br = (SolidColorBrush)new BrushConverter().ConvertFrom("#ffaacc");
-            //MessageBox.Show(text);
+            ChangeFon(); //обновить фон
         }
     }
 
