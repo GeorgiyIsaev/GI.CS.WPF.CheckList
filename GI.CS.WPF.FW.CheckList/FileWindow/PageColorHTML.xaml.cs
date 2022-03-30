@@ -35,6 +35,7 @@ namespace GI.CS.WPF.FW.CheckList
             CreateComboBox_FontSize();
             FontStyleInit();
             ColorPickerInitialize();
+            Contol.InitCSS(true, true, false, 6);
         }
 
 
@@ -52,6 +53,7 @@ namespace GI.CS.WPF.FW.CheckList
                 ComboBox_FontSizeComment.Items.Add(i);
             }
             StandartStileButton();
+          
         }
         private void StandartStileButton()
         {

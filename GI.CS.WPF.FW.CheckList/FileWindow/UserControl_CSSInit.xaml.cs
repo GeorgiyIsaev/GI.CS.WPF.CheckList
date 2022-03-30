@@ -30,7 +30,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
             CreateComboBox_FontSize(); //запалнение шрифтов
-            DefaultCSS();
+           // DefaultCSS();
         }
 
 
@@ -47,6 +47,21 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             int baseSize = 5;
             ComboBox_FontSize.SelectedIndex = baseSize;
             ColorPickerInit.SelectedColor = (Color?)ColorConverter.ConvertFromString("#ff000000");
+        }
+
+        /*Метод для заполнения состояния из вне*/
+        public void InitCSS(bool bold, bool crossed, bool italic, int fontSize)
+        {
+            Button_G.IsChecked = bold;
+            Button_Z.IsChecked = crossed;
+            Button_I.IsChecked = italic;
+
+            if(fontSize >=6 && fontSize <= 42)
+            {
+                int index = fontSize  - 6;
+                index = index / 2;
+                ComboBox_FontSize.SelectedIndex = index;
+            }              
         }
 
 
