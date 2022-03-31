@@ -170,7 +170,7 @@ namespace GI.CS.WPF.FW.CheckList
 	{
 		public int Compare(QuestItem q1, QuestItem q2)
 		{
-			return q1.intRandomQuest + q2.intRandomQuest;
+			return String.Compare(q1, q2);
 		}
 	}
 }

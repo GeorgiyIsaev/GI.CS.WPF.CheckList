@@ -35,7 +35,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             /*Контейнер с привязкой к листбоксу*/
             ListBox_Quest.ItemsSource = QuestsBox.questItems;
-            QuestsBox.AddOneQuest();
+            QuestsBox.AddFirstQuest();
             ListBox_Quest.SelectedIndex = 0;
             NewTitle();
 
@@ -197,7 +197,12 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void MenuItemSort_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (QuestsBox.questItems.Count < 1) return;
+            QuestsBox.DeleteFirstQuest(); // удалем первый вопрос
+          
+            //сортируем
+        
+            QuestsBox.AddFirstQuest(); //добавить первый вопрос
         }
 
 

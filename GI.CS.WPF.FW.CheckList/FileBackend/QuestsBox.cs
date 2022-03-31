@@ -11,18 +11,41 @@ namespace GI.CS.WPF.FW.CheckList
     {		
 		public static ObservableCollection<QuestItem> questItems = new ObservableCollection<QuestItem>();
 
-		public static void DeleteOneQuest()
+        /*Убрать первый вопрос*/
+		public static void DeleteFirstQuest()
         {
             if (questItems.Count > 0)
                 questItems.RemoveAt(0);
         }
-        public static void AddOneQuest() //QuestsBox.AddOneQuest() DeleteOneQuest()
+        /*Добавить первый вопрос*/
+        public static void AddFirstQuest() //QuestsBox.AddOneQuest() DeleteOneQuest()
         {
             /*Нулевой эл-т для новых вопросов*/
             QuestItem questItem = new QuestItem();
             questItem.quest = "<Добавить новый вопрос>";
-            questItems.Add(questItem);         
+            questItems.Insert(0, questItem);         
         }
+        public static void Sort() //QuestsBox.AddOneQuest() DeleteOneQuest()
+        {
+            //questItems.Sort((a, b) => { return a.CompareTo(b); });
+
+            //var a = questItems.OrderBy(new QuestItemComparerRND()).ToList();
+            //questItems.Clear();
+            //foreach (var b in a)
+            //{
+            //    questItems.Add(b);
+            //}
+
+
+            //ObservableCollection<QuestItem> temp;
+            //temp = new ObservableCollection<string>(questItems.OrderBy(p => p));
+            //questItems.Clear();
+            //foreach (QuestItem j in temp) questItems.Add(j);
+           // return orderThoseGroups;
+
+        }
+
+
 
         /*Метод для вычитвания вопросов из базы в главный список*/
         public static void ReadQuestDB(DataBase.Tables.Test testItemDB)

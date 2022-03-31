@@ -35,7 +35,7 @@
                 <MenuItem Name="MenuItemSort" Header="Сортировать Чек-лист" Click="MenuItemSort_Click"></MenuItem>
                 <MenuItem Name="MenuItemLoad" Header="Добавить из файла" Click="MenuItemLoad2_Click"></MenuItem>
                 <MenuItem Name="MenuItemSave" Header="Сохранить в файл" Click="MenuItemSaveHTML_Click"></MenuItem>
-                <MenuItem Header="Открыть каталог" ToolTip="Открыть папку с приложением" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
+                <MenuItem Header="Открыть каталог" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
                 <MenuItem Header="Настройка" ToolTip="Этот функционал еще в разработке"></MenuItem>                
             </MenuItem>
             <MenuItem Name="MenuItem_Profile" Header="Профиль" Width="93">
