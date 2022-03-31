@@ -8,10 +8,20 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen"
         Title="Описание приложения" Height="467" Width="804">
-    <Grid>
-        <TextBlock HorizontalAlignment="Center" Height="64" Margin="0,10,0,0" Text="Сборщик тестов – версия 0.8" TextWrapping="Wrap" VerticalAlignment="Top" Width="784" TextAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="#FF1838FF"/>
-        <TextBlock x:Name="TextBlock_info" HorizontalAlignment="Center" Height="286" Margin="0,79,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="728" FontSize="18"/>
-        <TextBlock x:Name="TextBlock_sign"  HorizontalAlignment="Center" Height="64" Margin="0,377,0,0" Text="Made by georgiyelbaf Copyright © 2020 " TextWrapping="Wrap" VerticalAlignment="Top" Width="766" FontSize="16" TextAlignment="Right"/>
+    <Grid>      
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>        
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock x:Name="TextBlock_Title"  Grid.Row="0"  HorizontalAlignment="Center" Height="85" Margin="7,10,7,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="784" TextAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="#FF1838FF"><Run Text="Сборщик тестов "/><LineBreak/><Run Text="– версия 0.8"/></TextBlock>
+        <TextBlock x:Name="TextBlock_info"  Grid.Row="1"  HorizontalAlignment="Center" Height="265" Margin="41,100,35,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="722" FontSize="18"/>
+        <TextBlock x:Name="TextBlock_sign"  Grid.Row="2"  HorizontalAlignment="Center" Height="64" Margin="0,377,0,0" Text="Made by georgiyelbaf Copyright © 2020 " TextWrapping="Wrap" VerticalAlignment="Top" Width="766" FontSize="16" TextAlignment="Right"/>
 
     </Grid>
 </Window>
