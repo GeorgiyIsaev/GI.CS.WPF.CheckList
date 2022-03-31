@@ -19,10 +19,17 @@
 
 
 
-        <TextBlock x:Name="TextBlock_Title"  Grid.Row="0" Text="Название" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="#FF1838FF"/>
+        <TextBlock x:Name="TextBlock_Title"  Grid.Row="0" Text="Название" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="#FF0A1691"/>
         <TextBlock x:Name="TextBlock_TitleInfo"  Grid.Row="1"  Text="Обеспечивает" TextWrapping="Wrap" FontSize="18" FontWeight="Bold" Margin="15,2,15,2"/>
         <TextBlock x:Name="TextBlock_info"  Grid.Row="2"  Text="Функционал" TextWrapping="Wrap" FontSize="18" Margin="35,2,25,2"/>
-        <TextBlock x:Name="TextBlock_sign"  Grid.Row="3"  Text="Made by georgiyelbaf Copyright © 2022 " TextWrapping="Wrap" FontSize="16" TextAlignment="Right" Margin="35,2,25,2"/>
+        <TextBlock x:Name="TextBlock_info2"  Grid.Row="3" TextWrapping="Wrap" FontSize="18" Margin="35,2,25,2" TextAlignment="Right" >
+            Ссылка на проект:  <Hyperlink Click="Hyperlink_Click">GitHub</Hyperlink>
+        </TextBlock>
+
+
+      
+      
+        <TextBlock x:Name="TextBlock_sign"  Grid.Row="5"  Text="Made by georgiyelbaf Copyright © 2022 " TextWrapping="Wrap" FontSize="14" TextAlignment="Right" Margin="35,2,25,2"/>
 
     </Grid>
 </Window>

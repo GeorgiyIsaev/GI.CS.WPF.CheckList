@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GI.CS.WPF.FW.CheckList
@@ -21,6 +22,10 @@ namespace GI.CS.WPF.FW.CheckList
         {
             InitializeComponent();
             Loaded += Window_DescriptionForApplication_Loaded;
+
+
+
+
         }
 
         private void Window_DescriptionForApplication_Loaded(object sender, RoutedEventArgs e)
@@ -35,10 +40,15 @@ namespace GI.CS.WPF.FW.CheckList
 "   4. Редактирование профилей, каталогов и чек-листов; \n" +
 "   5. Тестирование знаний пользователя на основе собранных чек-листов с предоставлением итогового результата; \n";
 
-       
+
 
             TextBlock_sign.Text = " Made by georgiyelbaf\n  Copyright © 2022";
+        }
 
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/GeorgiyIsaev/GI.CS.WPF.CheckList"); //открытие ссылки в браузере
         }
     }
 }
