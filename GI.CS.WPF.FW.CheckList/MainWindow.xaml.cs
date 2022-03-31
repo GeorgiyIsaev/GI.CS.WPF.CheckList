@@ -199,9 +199,10 @@ namespace GI.CS.WPF.FW.CheckList
         {
             if (QuestsBox.questItems.Count < 1) return;
             QuestsBox.DeleteFirstQuest(); // удалем первый вопрос
-          
-            //сортируем
-        
+
+            QuestsBox.Sort(); //сортируем
+
+
             QuestsBox.AddFirstQuest(); //добавить первый вопрос
         }
 

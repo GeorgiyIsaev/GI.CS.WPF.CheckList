@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using ProfBox = DataBase.Model.ProfileBox;
 
@@ -29,19 +30,21 @@ namespace GI.CS.WPF.FW.CheckList
         {
             //questItems.Sort((a, b) => { return a.CompareTo(b); });
 
-            //var a = questItems.OrderBy(new QuestItemComparerRND()).ToList();
+            //var a = questItems.ToList(); //.OrderBy(new QuestItemComparerRND()).ToList();
             //questItems.Clear();
             //foreach (var b in a)
             //{
             //    questItems.Add(b);
             //}
-
-
+            var tempBox = new ObservableCollection<QuestItem>(questItems.OrderBy(i => i, new QuestItemComparerABSD()));
+            questItems.Clear();
+            foreach (var q in tempBox)
+                questItems.Add(q);
             //ObservableCollection<QuestItem> temp;
             //temp = new ObservableCollection<string>(questItems.OrderBy(p => p));
             //questItems.Clear();
             //foreach (QuestItem j in temp) questItems.Add(j);
-           // return orderThoseGroups;
+            // return orderThoseGroups;
 
         }
 
@@ -56,6 +59,7 @@ namespace GI.CS.WPF.FW.CheckList
                 QuestItem questItem = new QuestItem();
                 questItem.SetQuestDB(questItemDB);
                 questItems.Add(questItem);
+                //questItems.InsertSorted(questItem, new QuestItemComparerABSD());
             }
         }
         /*Добавляет новый вопрос в коробку и базу одновременно*/

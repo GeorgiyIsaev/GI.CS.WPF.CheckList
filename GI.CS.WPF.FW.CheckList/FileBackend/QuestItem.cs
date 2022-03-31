@@ -165,12 +165,20 @@ namespace GI.CS.WPF.FW.CheckList
 		}
 	}
 
-	/*Компараторы для сортивки Вопросов*/
+	/*Компараторы для сортивки Вопросов по рандому*/
 	class QuestItemComparerRND : IComparer<QuestItem>
 	{
 		public int Compare(QuestItem q1, QuestItem q2)
 		{
-			return String.Compare(q1, q2);
+			return q1.intRandomQuest + q2.intRandomQuest;
+		}
+	}
+	/*Компараторы для сортивки Вопросов по алфавиту*/
+	class QuestItemComparerABSD : IComparer<QuestItem>
+	{
+		public int Compare(QuestItem q1, QuestItem q2)
+		{
+			return String.Compare(q1.quest, q2.quest);
 		}
 	}
 }
