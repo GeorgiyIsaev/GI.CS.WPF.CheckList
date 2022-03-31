@@ -186,6 +186,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 mainWindow.GridMain.Visibility = Visibility.Visible;
                 QuestsBox.ReadQuestDB(ProfBox.testCurrent);
                 mainWindow.NewTitle();
+                mainWindow.ClearInput();
             }
         }
 

@@ -177,6 +177,7 @@ namespace GI.CS.WPF.FW.CheckList
             input_Answer.Text = "";
             input_Comment.Text = "";
             input_Quest.Text = "";
+            ListBox_Quest.SelectedIndex = 0;
         }
 
 
