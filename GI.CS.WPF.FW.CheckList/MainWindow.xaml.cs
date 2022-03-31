@@ -197,13 +197,7 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void MenuItemSort_Click(object sender, RoutedEventArgs e)
         {
-            if (QuestsBox.questItems.Count < 1) return;
-            QuestsBox.DeleteFirstQuest(); // удалем первый вопрос
-
             QuestsBox.Sort(); //сортируем
-
-
-            QuestsBox.AddFirstQuest(); //добавить первый вопрос
         }
 
 

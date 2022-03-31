@@ -28,24 +28,14 @@ namespace GI.CS.WPF.FW.CheckList
         }
         public static void Sort() //QuestsBox.AddOneQuest() DeleteOneQuest()
         {
-            //questItems.Sort((a, b) => { return a.CompareTo(b); });
+            DeleteFirstQuest(); // удалем первый вопрос
 
-            //var a = questItems.ToList(); //.OrderBy(new QuestItemComparerRND()).ToList();
-            //questItems.Clear();
-            //foreach (var b in a)
-            //{
-            //    questItems.Add(b);
-            //}
             var tempBox = new ObservableCollection<QuestItem>(questItems.OrderBy(i => i, new QuestItemComparerABSD()));
             questItems.Clear();
             foreach (var q in tempBox)
                 questItems.Add(q);
-            //ObservableCollection<QuestItem> temp;
-            //temp = new ObservableCollection<string>(questItems.OrderBy(p => p));
-            //questItems.Clear();
-            //foreach (QuestItem j in temp) questItems.Add(j);
-            // return orderThoseGroups;
 
+            AddFirstQuest(); //добавить первый вопрос
         }
 
 
