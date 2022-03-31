@@ -166,7 +166,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
         /*Метод для сокрытия меню очистки теста*/
         private static void RefreshCleanTest(MainWindow mainWindow)
-        {    
+        {
             if (ProfBox.profile != null)
                 mainWindow.MenuItemСlear.IsEnabled = false;
             else

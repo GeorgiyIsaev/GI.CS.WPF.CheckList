@@ -190,7 +190,8 @@ namespace GI.CS.WPF.FW.CheckList
             NewTitle();
             ListBox_Quest.SelectedIndex = 0;
             ClearInput();
-
+            //if(ProfBox.testCurrent != null)
+            //    ProfBox.ClearTest();
         }
 
 

@@ -56,6 +56,7 @@ namespace DataBase.Model
                 {
                     cont.Tests.Attach(testCurrent);
                     cont.Entry(testCurrent).State = EntityState.Modified;
+                    cont.SaveChanges();
                     testCurrent.Quests.Clear();
                     cont.SaveChanges();
                 }
