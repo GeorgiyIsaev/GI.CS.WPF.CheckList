@@ -47,6 +47,27 @@ namespace DataBase.Model
             profile.Refresh();
         }
 
+        /*Очистить текущий тест от вопросов*/
+        public static void ClearTest()
+        {
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    cont.Tests.Attach(testCurrent);
+                    cont.Entry(testCurrent).State = EntityState.Modified;
+                    testCurrent.Quests.Clear();
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            profile.Refresh();
+        }
+
+
 
 
         /*Создать новый ТЕСТ на основе имяни пароле*/
