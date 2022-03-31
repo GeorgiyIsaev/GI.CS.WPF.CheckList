@@ -67,8 +67,8 @@
     <Compile Include="DataBase\Model\DBTestBox.cs" />
     <Compile Include="DataBase\Model\Notifi.cs" />
     <Compile Include="DataBase\Model\ProfileBox.cs" />
-    <Compile Include="DataBase\Model\ProfileBoxDellAdd.cs" />
     <Compile Include="DataBase\Model\ProfileBox_Test.cs" />
+    <Compile Include="DataBase\Model\ProfileBox_Quest.cs" />
     <Compile Include="DataBase\Model\ProfilesMenu.cs" />
     <Compile Include="DataBase\MyDBContext.cs" />
     <Compile Include="DataBase\MyDbContextInitializer.cs" />

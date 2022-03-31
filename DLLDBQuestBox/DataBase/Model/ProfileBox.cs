@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using DataBase.Tables;
 
 namespace DataBase.Model
-{
+{  
+    /*Взаимодействие с ПРОФИЛЕМ из БД*/
     public static partial class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
@@ -85,7 +86,56 @@ namespace DataBase.Model
                 }
             }        
         }
- 
+
+
+        /*Удалить Активный профиль*/
+        public static void DeleteProfileAt()
+        {
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+
+                    cont.Profiles.Attach(profile);
+                    cont.Entry(profile).State = EntityState.Modified;
+                    cont.Profiles.Remove(profile);
+                    cont.SaveChanges();
+                    profile = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+        }
+
+        /*Создать новый профиль на основе имяни пароле*/
+        public static void CreateNewProfile(String name, String password)
+        {
+            //Создали профиль
+            try
+            {
+                using (var cont = new DataBase.MyDbContext())
+                {
+                    foreach (var p in cont.Profiles)
+                    {
+                        if (p.Name == name)
+                        {
+                            throw new Exception("Профиль с таким именем уже существует");
+                        }
+                    }
+                    cont.Profiles.Add(new DataBase.Tables.Profile { Name = name, Password = password });
+                    cont.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Notifi.NoConnection(ex);
+            }
+            //Подключились
+            ConnectProfile(name, password);
+        }
+
 
     }
 }
