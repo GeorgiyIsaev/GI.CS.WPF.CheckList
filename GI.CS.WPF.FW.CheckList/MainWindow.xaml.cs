@@ -88,47 +88,32 @@ namespace GI.CS.WPF.FW.CheckList
                 return;
             }
 
-            /*Генеруем вопрос для БД*/
-           // DataBase.Tables.Quest a = CreateQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
-           
 
-            /*Генерируем вопрос*/
-            QuestItem questItem = new QuestItem();    
-            //questItem.quest = input_Quest.Text;
-            //questItem.comment = input_Comment.Text;
-            //questItem.InputAnswerList(input_Answer.Text, input_AnAnswer.Text);
-            //questItem.Description = questItem.ToolTypeListBox();
-
-            if (ListBox_Quest.SelectedIndex != 0) //Изменяем существующий
+      
+            /*Выполнение события - Изменить*/
+            if (ListBox_Quest.SelectedIndex != 0)
             {
                 var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);         
 
                 if (ProfBox.testCurrent != null)
-                    /*questItemDB =*/ ProfBox.ReplacementQuestBD(QuestsBox.questItems[val].GetQuestBD(), questItemDB);
+                    questItemDB = ProfBox.ReplacementQuestBD(QuestsBox.questItems[val].GetQuestBD(), questItemDB);
 
                 QuestsBox.questItems[val].SetQuestDB(questItemDB);
-
-           //  QuestsBox.questItems.Insert(val + 1, questItem);
-            //    QuestsBox.questItems.RemoveAt(val);
-                ListBox_Quest.SelectedIndex = val;
-             //   EditionTXT.WriteInTXT("TEMPTXT.txt");
+                ListBox_Quest.SelectedIndex = val; //переход к добавленному эл-ту
             }
-            else //создаем новый
+            /*Выполнение события - Добавить*/
+            else 
             {
-        
+                QuestItem questItem = new QuestItem();
                 var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
 
                 if (ProfBox.testCurrent != null)
-                    questItemDB = ProfBox.AddQuestToDB(questItemDB);
-   
+                    questItemDB = ProfBox.AddQuestToDB(questItemDB);   
 
                 questItem.SetQuestDB(questItemDB);
                 QuestsBox.questItems.Add(questItem);
-                ListBox_Quest.SelectedIndex = QuestsBox.questItems.Count() - 1;
-
-
-                //  QuestsBox.questItems.Add(questItem);
-                //  EditionTXT.WriteInTXT("TEMPTXT.txt");
+                ClearInput();
+                // ListBox_Quest.SelectedIndex = QuestsBox.questItems.Count() - 1; // переход к добавленному эл-ту
             }
             NewTitle();
         }
@@ -166,10 +151,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             if (ListBox_Quest.SelectedIndex <= 0)
             {
-                input_AnAnswer.Text = "";
-                input_Answer.Text = "";
-                input_Comment.Text = "";
-                input_Quest.Text = "";
+                ClearInput();
             }
             else
             {
@@ -189,6 +171,14 @@ namespace GI.CS.WPF.FW.CheckList
                 }
             }
         }
+        public void ClearInput()
+        {
+            input_AnAnswer.Text = "";
+            input_Answer.Text = "";
+            input_Comment.Text = "";
+            input_Quest.Text = "";
+        }
+
 
         /*Очистка формы и презаполнение листа*/
         public void ClearForm()
