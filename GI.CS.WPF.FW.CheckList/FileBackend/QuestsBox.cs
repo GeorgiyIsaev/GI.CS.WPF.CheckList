@@ -51,6 +51,7 @@ namespace GI.CS.WPF.FW.CheckList
                 questItems.Add(questItem);
                 //questItems.InsertSorted(questItem, new QuestItemComparerABSD());
             }
+            Sort();
         }
         /*Добавляет новый вопрос в коробку и базу одновременно*/
         public static void AddQuestToDBAndQuestBox(DataBase.Tables.Quest questItemDB)
