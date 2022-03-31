@@ -183,12 +183,14 @@ namespace GI.CS.WPF.FW.CheckList
         /*Очистка формы и презаполнение листа*/
         public void ClearForm()
         {    
-                QuestsBox.questItems.Clear();
-                QuestItem questItem = new QuestItem();
-                questItem.quest = "<Добавить новый вопрос>";
-                QuestsBox.questItems.Add(questItem);
-                NewTitle();
-                ListBox_Quest.SelectedIndex = 0;            
+            QuestsBox.questItems.Clear();
+            QuestItem questItem = new QuestItem();
+            questItem.quest = "<Добавить новый вопрос>";
+            QuestsBox.questItems.Add(questItem);
+            NewTitle();
+            ListBox_Quest.SelectedIndex = 0;
+            ClearInput();
+
         }
 
 
