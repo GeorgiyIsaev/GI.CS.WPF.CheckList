@@ -11,15 +11,18 @@ namespace DataBase.Model
     public static partial class ProfileBox
     {
         public static DataBase.Tables.Profile profile;
-       // static long currentTestID = -1;
-       // public static long GetCurrentTestID { get { return currentTestID; } }
-      //  public static void SetCurrentTestID(long id) { currentTestID = id; }
 
+        /*Завершения соединения с профилем*/
+        public static void EndConect()
+        {
+            profile = null;
+            testCurrent = null;
+        }
 
+        /*Подключение к профилю*/
         public static void ConnectProfile(String name, String password)
         {
-            EndConect();
-            //Data.Tables.Profile profile = null;
+            EndConect();   
             try
             {
                 using (var cont = new DataBase.MyDbContext())
@@ -44,24 +47,8 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }           
         }
-        //public static void ReConnect()
-        //{
-        //    //Data.Tables.Profile profile = null;
-        //    try
-        //    {
-        //        using (var cont = new DataBase.MyDbContext())
-        //        {
-        //            //cont.Profiles.Attach(profile);
-        //            profile.Refresh();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Notifi.NoConnection(ex);
-        //    }
-        //}
-
-
+      
+        /*Сохранить изменение профиля*/
         public static void SaveToChangeDB()
         {      //Сохранить измения в базу применять только при изменении или удаление существующих записей
             try
@@ -96,38 +83,9 @@ namespace DataBase.Model
                     nameID(cont);
                     break;
                 }
-            }
-        
+            }        
         }
-
-        //public static void SaveToDeleteDB()
-        //{      //Сохранить измения в базу применять только при изменении или удаление существующих записей
-        //    try
-        //    {
-        //        using (var cont = new DataBase.MyDbContext())
-        //        {
-        //            /*Изменяем связанные списки из кода в Базу*/
-        //            cont.Profiles.Attach(profile);
-        //            //profile.Tests = profile.Tests;
-        //            //Attach();
-        //            //cont.Entry(profile).State = EntityState.Unchanged;
-        //            cont.SaveChanges();                 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Notifi.NoConnection(ex);
-        //    }
-        //    profile.Refresh();
-        //}
-
-
-        public static void EndConect()
-        { //Очистить профиль
-            profile = null;
-            testCurrent = null;
-            //currentTestID = -1;
-        }
+ 
 
     }
 }

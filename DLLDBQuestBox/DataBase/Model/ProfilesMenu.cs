@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataBase.Model
 {
-    public class ProfilesGet
+    /*Класс для получения списка профилей формирующих меню профилей*/
+    public class ProfilesMenu
     {
         public static List<Profile> profiles;    
 
@@ -33,6 +34,5 @@ namespace DataBase.Model
         {
             profiles = null;
         }
-
     }
 }

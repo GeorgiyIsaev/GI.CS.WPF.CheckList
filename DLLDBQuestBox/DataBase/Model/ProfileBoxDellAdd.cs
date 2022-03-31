@@ -10,18 +10,18 @@ namespace DataBase.Model
 {
     public static partial class ProfileBox
     {
-        
-        
-        
+
+
+        /*Удалить Активный профиль*/
         public static void DeleteProfileAt()
         {
             try
             {
                 using (var cont = new DataBase.MyDbContext())
                 {
-  
-                    cont.Profiles.Attach(profile);     
-                    cont.Entry(profile).State = EntityState.Modified;       
+
+                    cont.Profiles.Attach(profile);
+                    cont.Entry(profile).State = EntityState.Modified;
                     cont.Profiles.Remove(profile);
                     cont.SaveChanges();
                     profile = null;
@@ -34,23 +34,7 @@ namespace DataBase.Model
         }
 
 
-        public static void DeleteProfileAt(long Id)
-        {       
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    var prof = cont.Profiles.Find(Id);
-                    prof.Refresh();
-                    cont.Profiles.Remove(prof);
-                    cont.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-        }
+        /*Удалить тест по ID*/
         public static void DeleteTestAt(long Id)
         {
             try
@@ -69,6 +53,7 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
         }
+        /*Удалить вопрос по ID*/
         public static void DeleteQuesttAt(long Id)
         {
             try
@@ -87,31 +72,10 @@ namespace DataBase.Model
                 Notifi.NoConnection(ex);
             }
         }
-        public static void DeleteAnswertAt(long Id)
-        {
-            try
-            {
-                using (var cont = new DataBase.MyDbContext())
-                {
-                    var answer = cont.Answers.Find(Id);
-
-                    //test.Refresh();
-                    cont.Answers.Remove(answer);
-                    cont.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                Notifi.NoConnection(ex);
-            }
-        }
 
 
 
-
-
-
-
+        /*Создать новый профиль на основе имяни пароле*/
         public static void CreateNewProfile(String name, String password)
         {
             //Создали профиль
@@ -138,7 +102,7 @@ namespace DataBase.Model
             ConnectProfile(name, password);       
         }
 
-  
+        /*Создать новый ТЕСТ на основе имяни пароле*/
         public static Test CreateNewTest(String groupName, String testName)
         {
             //Создали профиль

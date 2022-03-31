@@ -12,23 +12,24 @@ namespace DataBase.Model
     {
         public static DataBase.Tables.Test testCurrent;
         public static void EndTest() { testCurrent = null; }
-        public static void TestRefresh(long id)
+
+        /*Подключиться к тесту по ID*/
+        public static void ConnectTest(long id)
         {
             if (profile == null) return;
             profile.Refresh();
             foreach (var testIt in profile.Tests)
             {
-                if(testIt.Id == id)
+                if (testIt.Id == id)
                 {
                     testCurrent = testIt;
                     break;
                 }
             }
-
         }
 
         /*Создает объект с вопросом но не записывает его в базу*/
-        public static DataBase.Tables.Quest CreateNewTest (string questText,
+        public static DataBase.Tables.Quest CreateNewQuestDB (string questText,
             string commentText, string answerListText, string anAnswerListText)
         {
             DataBase.Tables.Quest questDB = new Tables.Quest();
@@ -69,7 +70,7 @@ namespace DataBase.Model
             return questInDB;
         }
 
-        /*Перезапись квеста в базе данныъ*/
+        /*Перезапись вопрос в базе данных*/
         public static DataBase.Tables.Quest ReplacementQuestBD(DataBase.Tables.Quest questDBbefore,
             DataBase.Tables.Quest questDBnew)
         {

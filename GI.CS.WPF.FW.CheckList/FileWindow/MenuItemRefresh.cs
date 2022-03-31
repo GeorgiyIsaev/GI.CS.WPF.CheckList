@@ -91,8 +91,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
 
 
 
-            DataBase.Model.ProfilesGet.Connect();
-            foreach(var profile in DataBase.Model.ProfilesGet.profiles)
+            DataBase.Model.ProfilesMenu.Connect();
+            foreach(var profile in DataBase.Model.ProfilesMenu.profiles)
             {
                // if (profile.Password != "") continue; //пропуск если с паролем                
                 
@@ -176,7 +176,7 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
         /*Вход в тест*/
         private static void EnterTest(MainWindow mainWindow, long id)
         {      
-            ProfBox.TestRefresh(id);
+            ProfBox.ConnectTest(id);
             Refresh(mainWindow);
 
             /*Загружаем тест в контейнер вопросов приложения*/

@@ -93,7 +93,7 @@ namespace GI.CS.WPF.FW.CheckList
             /*Выполнение события - Изменить*/
             if (ListBox_Quest.SelectedIndex != 0)
             {
-                var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);         
+                var questItemDB = ProfBox.CreateNewQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);         
 
                 if (ProfBox.testCurrent != null)
                     questItemDB = ProfBox.ReplacementQuestBD(QuestsBox.questItems[val].GetQuestBD(), questItemDB);
@@ -105,7 +105,7 @@ namespace GI.CS.WPF.FW.CheckList
             else 
             {
                 QuestItem questItem = new QuestItem();
-                var questItemDB = ProfBox.CreateNewTest(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
+                var questItemDB = ProfBox.CreateNewQuestDB(input_Quest.Text, input_Comment.Text, input_Answer.Text, input_AnAnswer.Text);
 
                 if (ProfBox.testCurrent != null)
                     questItemDB = ProfBox.AddQuestToDB(questItemDB);   
