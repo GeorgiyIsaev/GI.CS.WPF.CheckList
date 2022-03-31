@@ -195,6 +195,11 @@ namespace GI.CS.WPF.FW.CheckList
         }
 
 
+        private void MenuItemSort_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
 
 
         /*Меню Файл-> Сохранить в файл*/

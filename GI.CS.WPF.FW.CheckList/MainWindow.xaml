@@ -30,8 +30,9 @@
     <Grid>
         <!--Меню приложения-->
         <Menu  FontSize="14" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <MenuItem Header="Файл" ToolTip="Сохранение/Загрузка/Настройки" Width="73">
-                <MenuItem Name="MenuItemСlear" Header="Удалить все вопросы" Click="MenuItemClear_Click"></MenuItem>
+            <MenuItem Header="Файл" Width="73">
+                <MenuItem Name="MenuItemСlear" Header="Очистить Чек-лист" Click="MenuItemClear_Click"></MenuItem>
+                <MenuItem Name="MenuItemSort" Header="Сортировать Чек-лист" Click="MenuItemSort_Click"></MenuItem>
                 <MenuItem Name="MenuItemLoad" Header="Добавить из файла" Click="MenuItemLoad2_Click"></MenuItem>
                 <MenuItem Name="MenuItemSave" Header="Сохранить в файл" Click="MenuItemSaveHTML_Click"></MenuItem>
                 <MenuItem Header="Открыть каталог" ToolTip="Открыть папку с приложением" Click="MenuItemOpenDirectoriy_Click"></MenuItem>
