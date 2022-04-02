@@ -181,6 +181,8 @@ namespace GI.CS.WPF.FW.CheckList
                 case 1:
                     //Класический стиль
                     ComboBox_FontSize.SelectedIndex = 4;
+                    //PageColorHTML = new PageColorHTML(this);
+                    TabHTMLColor.Content = PageColorHTML;
                     EditionHTML.DefaultCSS();                   
                     break;
             }
