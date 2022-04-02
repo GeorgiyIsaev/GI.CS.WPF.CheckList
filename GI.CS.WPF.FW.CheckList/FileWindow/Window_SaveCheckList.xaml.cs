@@ -105,49 +105,58 @@ namespace GI.CS.WPF.FW.CheckList
         {
             switch (ComboBox_FormatSave.SelectedIndex)
             {
-                case 0:
+                case 0: //HTML
                     WinIsEnabled();
+                    DecorationHTML();
                     break;
-                case 1:
-                    WinIsEnabled(false);                
+                case 1: //TXT
+                    WinIsEnabled(false);
+                    DecorationTXT();
                     break;
-                case 2:
-                    WinIsEnabled(false,true);                
+                case 2: //JSON
+                    WinIsEnabled(false);
+                    DecorationJSON();
                     break;
             }
         }
+        private void DecorationHTML()
+        {
+            CB_lineThrough.Visibility = Visibility.Collapsed;
+            ComboBox_StileCSS.Visibility = Visibility.Visible;
+            CB_spoilerIf.Visibility = Visibility.Visible;
+            CB_spoilerIf.IsChecked = true;
+            CB_spoilerIf.Content = "Открытый спойлер";
+            CB_spoilerIf.ToolTip = "Если активен: Спойлер с пояснением открыт";      
+        }
+        private void DecorationJSON()
+        {
+            CB_lineThrough.Visibility = Visibility.Visible;
+            CB_spoilerIf.Visibility = Visibility.Visible;
+            ComboBox_StileCSS.Visibility = Visibility.Collapsed;
+   
+            CB_spoilerIf.IsChecked = false;
+            CB_spoilerIf.Content = "Многострочный JSON";
+            CB_spoilerIf.ToolTip = "Если активен: JSON генерирует переносы и табуляцию";
 
-        private void WinIsEnabled(bool ifnow = true, bool ifJson = false)
+            CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности            
+            CB_lineThrough.ToolTip = "Если активен: Cодержимое JSON в Unicode;\n" +
+                                     "По умолчанию: Escape-последовательность";
+        }
+        private void DecorationTXT()
+        {
+            CB_lineThrough.Visibility = Visibility.Collapsed;
+            ComboBox_StileCSS.Visibility = Visibility.Collapsed;
+            CB_spoilerIf.Visibility = Visibility.Collapsed; 
+        }
+        private void WinIsEnabled(bool isEnabled = true)
         {
             TabControl_Edition.SelectedIndex = 0;
-            Board_Base.IsEnabled = ifnow;
-            Board_Coolor.IsEnabled = ifnow;
-            input_header.IsEnabled = ifnow;
-            input_describe.IsEnabled = ifnow;
-            input_sign.IsEnabled = ifnow;
-            ComboBox_FontSize.IsEnabled = ifnow;            
-            CB_spoilerIf.IsEnabled = ifnow || ifJson;
-            CB_lineThrough.IsEnabled = ifnow || ifJson;
-            if (!ifJson)
-            {
-                CB_spoilerIf.IsChecked = true;
-                CB_spoilerIf.Content = "Открытый спойлер";
-                CB_spoilerIf.ToolTip = "Если активен: Спойлер с пояснением открыт";
-                CB_lineThrough.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                CB_spoilerIf.IsChecked = false;
-                CB_lineThrough.Visibility = Visibility.Hidden;
-                CB_spoilerIf.Content = "Многострочный JSON";
-                CB_spoilerIf.ToolTip = "Если активен: JSON генерирует переносы и табуляцию";
-             
-
-                CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности            
-                CB_lineThrough.ToolTip = "Если активен: Cодержимое JSON в Unicode;\n" +                 
-                                         "По умолчанию: Escape-последовательность";
-            }
-
+            Board_Base.IsEnabled = isEnabled;
+            Board_Coolor.IsEnabled = isEnabled;
+            input_header.IsEnabled = isEnabled;
+            input_describe.IsEnabled = isEnabled;
+            input_sign.IsEnabled = isEnabled;
+            ComboBox_FontSize.IsEnabled = isEnabled;  
         }
 
         private void ComboBox_FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
