@@ -11,7 +11,7 @@ namespace GI.CS.WPF.FW.CheckList
 		public static string headerHTML { get; set; }
 		public static string describeHTML { get; set; }
 		public static string signFooterHTML { get; set; }
-		public static int FrontSiseBody { get; set; }
+		//public static int FrontSiseBody { get; set; }
 		public static bool deleteAnAnswerIf { get; set; }
 		public static bool spoilerIf { get; set; }
 
@@ -48,22 +48,6 @@ namespace GI.CS.WPF.FW.CheckList
 		}
 
 
-		public static void SetCSSInput()
-		{
-			structCCS.baseBackend.color = "#c4d0c7";
-			structCCS.mainBackend.color = "#ffffff";
-			structCCS.futterBackend.color = "#a9a9a9";
-
-			structCCS.title.CreateCSS(FrontSiseBody+10, false, false, false, "#520000");
-			structCCS.description.CreateCSS(FrontSiseBody, true, false, false, "#520000");
-			structCCS.question.CreateCSS(FrontSiseBody, false, false, false, "#520000");
-			structCCS.trueAanswer.CreateCSS(FrontSiseBody, false, false, false, "#520000");
-			structCCS.falseAnswer.CreateCSS(FrontSiseBody, false, false, deleteAnAnswerIf, "#520000");
-			structCCS.trueAanswerIcon.CreateCSS(FrontSiseBody+2, false, true, false, "#1eaf1e");
-			structCCS.falseAanswerIcon.CreateCSS(FrontSiseBody+2, false, true, false, "#ff0000");
-			structCCS.comment.CreateCSS(FrontSiseBody, false, false, false, "#520000");
-			structCCS.signature.CreateCSS(FrontSiseBody-6, true, true, false, "#520000");
-		}
 
 
 
@@ -133,7 +117,7 @@ namespace GI.CS.WPF.FW.CheckList
 			string head = @"<!DOCTYPE html>" + "\n" +
 			$"<html><head><title> {headerHTML} </title>" + "\n" +
 			"<meta charset = \"utf-8\">" + "\n" +
-			"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: " + FrontSiseBody + "px;}" + "\n" +
+			"<style>html, body{margin: 0;padding: 0;font-family: Arial;	background-color: " + structCCS.baseBackend.color + "; text-align: justify;font-size: " + structCCS.comment.SizeFront + "px;}" + "\n" +
 			"h1{" + structCCS.title.FullStringCss + " ; margin: 0px 0 15px; text-align: center;}" + "\n" +
 			"#opisanie{" + structCCS.description.FullStringCss + ";padding: 0 110px 10px;}" + "\n" +
 			".questBox{max-width: 1000px; min-width: 320px; padding: 20px 20px 12px;margin: 0 auto;	position: relative;background-color: " + structCCS.mainBackend.color + ";}	" + "\n" +
