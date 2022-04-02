@@ -23,11 +23,12 @@ namespace GI.CS.WPF.FW.CheckList
     /// </summary>
     public partial class PageColorHTML : Page
     {
-        public PageColorHTML()
+        Window_SaveCheckList window_SaveCheckList;
+        public PageColorHTML(Window_SaveCheckList window_SaveCheckList)
         {
             InitializeComponent();
             Loaded += Windows_Loaded;
-            
+            this.window_SaveCheckList = window_SaveCheckList;
 
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
@@ -68,11 +69,13 @@ namespace GI.CS.WPF.FW.CheckList
             RichTextBox_Fon.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(
                 EditionHTML.structCCS.mainBackend.color);
         }
- 
+
 
         /*Событие которые происходит при изменении свойств*/
-        private void EventChangeCSS()
+        public void EventChangeCSS()
         {
+            window_SaveCheckList.ComboBox_StileCSS.SelectedIndex = 0; //смена на пользовательский стиль
+
             /*Сохраняем стили в каталог*/
             EditionHTML.structCCS.title = MyTitle.GetCSS();
             EditionHTML.structCCS.description = MyDiscription.GetCSS();
@@ -156,7 +159,8 @@ namespace GI.CS.WPF.FW.CheckList
 
         /*Событие при смене цвета фона*/
         private void ColorPicker_SignFon_DropDownClosed(object sender, EventArgs e)
-        {    
+        {
+            window_SaveCheckList.ComboBox_StileCSS.SelectedIndex = 0; //смена на пользовательский стиль
             /*Новый фон*/
             EditionHTML.structCCS.mainBackend.color = "#" + ColorPicker_MainFon.SelectedColor.ToString().Substring(3);
             EditionHTML.structCCS.baseBackend.color = "#" + ColorPicker_BeckFon.SelectedColor.ToString().Substring(3);

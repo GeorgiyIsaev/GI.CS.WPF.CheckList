@@ -17,7 +17,7 @@ namespace GI.CS.WPF.FW.CheckList
     /// </summary>
     public partial class Window_SaveCheckList : Window
     {
-        PageColorHTML PageColorHTML = new PageColorHTML();
+        PageColorHTML PageColorHTML;
 
 
         public Window_SaveCheckList()
@@ -31,6 +31,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
             CreateComboBox_FontSize();
+            PageColorHTML = new PageColorHTML(this);
             TabHTMLColor.Content = PageColorHTML;
         }
         private void CreateComboBox_FontSize()
@@ -40,6 +41,10 @@ namespace GI.CS.WPF.FW.CheckList
                 ComboBox_FontSize.Items.Add($"Шрифт: {i}");
             }
             ComboBox_FontSize.SelectedIndex = 4;
+
+            ComboBox_StileCSS.Items.Add("<< Пользовательский стиль >>");
+            ComboBox_StileCSS.Items.Add("Классический стиль оформления");
+            ComboBox_StileCSS.SelectedIndex = 1;
         }
 
 
@@ -136,7 +141,7 @@ namespace GI.CS.WPF.FW.CheckList
    
             CB_spoilerIf.IsChecked = false;
             CB_spoilerIf.Content = "Многострочный JSON";
-            CB_spoilerIf.ToolTip = "Если активен: JSON генерирует переносы и табуляцию";
+            CB_spoilerIf.ToolTip = "Если активен: JSON генерирует переносы строки и табуляцию";
 
             CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности            
             CB_lineThrough.ToolTip = "Если активен: Cодержимое JSON в Unicode;\n" +
@@ -162,7 +167,23 @@ namespace GI.CS.WPF.FW.CheckList
         private void ComboBox_FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int siseFont = (ComboBox_FontSize.SelectedIndex * 2) + 8;
-            EditionHTML.ChangeFullFontSize(siseFont);        
+            EditionHTML.ChangeFullFontSize(siseFont);
+            ComboBox_StileCSS.SelectedIndex = 0;
+        }
+
+        private void ComboBox_StileCSS_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ComboBox_StileCSS.SelectedIndex)
+            {
+                case 0: 
+                    //Пользовательский
+                    break;
+                case 1:
+                    //Класический стиль
+                    ComboBox_FontSize.SelectedIndex = 4;
+                    EditionHTML.DefaultCSS();                   
+                    break;
+            }
         }
     }
 }
