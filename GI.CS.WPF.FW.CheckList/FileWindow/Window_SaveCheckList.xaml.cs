@@ -17,7 +17,7 @@ namespace GI.CS.WPF.FW.CheckList
     /// </summary>
     public partial class Window_SaveCheckList : Window
     {
-        PageColorHTML PageColorHTML;
+        PageColorHTML pageColorHTML;
 
 
         public Window_SaveCheckList()
@@ -31,8 +31,10 @@ namespace GI.CS.WPF.FW.CheckList
         {
             EditionHTML.DefaultCSS(); //устанавливает css по умолчанию
             CreateComboBox_FontSize();
-            PageColorHTML = new PageColorHTML(this);
-            TabHTMLColor.Content = PageColorHTML;
+            pageColorHTML = new PageColorHTML(this);      
+            TabHTMLColor.Content = pageColorHTML;
+         //   TabControl_Edition.SelectedIndex = 1;
+          //  TabControl_Edition.SelectedIndex = 0;
         }
         private void CreateComboBox_FontSize()
         {
@@ -95,6 +97,30 @@ namespace GI.CS.WPF.FW.CheckList
             EditionHTML.describeHTML = input_describe.Text;
             EditionHTML.signFooterHTML = input_sign.Text;    
             EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == false;
+
+            //if (TabHTMLColor.Content != null)
+            //{
+            //    var f = 1;
+            //}
+
+            //if (ComboBox_StileCSS.SelectedIndex == 1)
+            //{
+            //    var f = 1;
+            //}
+            //pageColorHTML.FullRefrech();
+            if (pageColorHTML.MyTitle.GetCSS().SizeFront > 8)
+            {
+                EditionHTML.structCCS.title = pageColorHTML.MyTitle.GetCSS();
+                EditionHTML.structCCS.description = pageColorHTML.MyDiscription.GetCSS();
+                EditionHTML.structCCS.question = pageColorHTML.MyQuest.GetCSS();
+                EditionHTML.structCCS.trueAanswer = pageColorHTML.MyAnswer.GetCSS();
+                EditionHTML.structCCS.trueAanswerIcon = pageColorHTML.MyAnswerItem.GetCSS();
+                EditionHTML.structCCS.falseAnswer = pageColorHTML.MyAnAnswer.GetCSS();
+                EditionHTML.structCCS.falseAanswerIcon = pageColorHTML.MyAnAnswerItem.GetCSS();
+                EditionHTML.structCCS.comment = pageColorHTML.MyComment.GetCSS();
+            }
+            else { EditionHTML.ChangeFullFontSize((ComboBox_FontSize.SelectedIndex * 2) + 8); }
+
         }
 
 
@@ -166,9 +192,8 @@ namespace GI.CS.WPF.FW.CheckList
 
         private void ComboBox_FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int siseFont = (ComboBox_FontSize.SelectedIndex * 2) + 8;
-            EditionHTML.ChangeFullFontSize(siseFont);
-            ComboBox_StileCSS.SelectedIndex = 0;
+            ComboBox_StileCSS.SelectedIndex = 0;       
+            EditionHTML.ChangeFullFontSize((ComboBox_FontSize.SelectedIndex * 2) + 8);
         }
 
         private void ComboBox_StileCSS_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -180,10 +205,9 @@ namespace GI.CS.WPF.FW.CheckList
                     break;
                 case 1:
                     //Класический стиль
-                    ComboBox_FontSize.SelectedIndex = 4;
-                    //PageColorHTML = new PageColorHTML(this);
-                    TabHTMLColor.Content = PageColorHTML;
-                    EditionHTML.DefaultCSS();                   
+                    ComboBox_FontSize.SelectedIndex = 4; 
+                    EditionHTML.DefaultCSS();
+                    ComboBox_StileCSS.SelectedIndex = 1;
                     break;
             }
         }

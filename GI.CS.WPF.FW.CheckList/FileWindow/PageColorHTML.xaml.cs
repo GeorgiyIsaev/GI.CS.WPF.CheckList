@@ -33,12 +33,13 @@ namespace GI.CS.WPF.FW.CheckList
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
-            /*Передаем стили СSS в постройку*/
-            InitCssMyHTML();
-
+            FullRefrech();
+        }
+        public void FullRefrech()
+        {
             /*Задать состояние фона для таблицы*/
-            string colorCode = "#ff" + EditionHTML.structCCS.mainBackend.color.Substring(1);        
-            ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);         
+            string colorCode = "#ff" + EditionHTML.structCCS.mainBackend.color.Substring(1);
+            ColorPicker_MainFon.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);
 
             colorCode = "#ff" + EditionHTML.structCCS.baseBackend.color.Substring(1);
             ColorPicker_BeckFon.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);
@@ -46,7 +47,13 @@ namespace GI.CS.WPF.FW.CheckList
             colorCode = "#ff" + EditionHTML.structCCS.futterBackend.color.Substring(1);
             ColorPicker_SignFon.SelectedColor = (Color?)ColorConverter.ConvertFromString(colorCode);
             ChangeFon();
+
+            /*Передаем стили СSS в постройку*/
+            InitCssMyHTML();
+            EventChangeCSS();
         }
+
+
 
         /*Передаем стили СSS в постройку*/
         public void InitCssMyHTML() {
@@ -77,14 +84,14 @@ namespace GI.CS.WPF.FW.CheckList
             window_SaveCheckList.ComboBox_StileCSS.SelectedIndex = 0; //смена на пользовательский стиль
 
             /*Сохраняем стили в каталог*/
-            EditionHTML.structCCS.title = MyTitle.GetCSS();
-            EditionHTML.structCCS.description = MyDiscription.GetCSS();
-            EditionHTML.structCCS.question = MyQuest.GetCSS();
-            EditionHTML.structCCS.trueAanswer = MyAnswer.GetCSS();
-            EditionHTML.structCCS.trueAanswerIcon = MyAnswerItem.GetCSS();
-            EditionHTML.structCCS.falseAnswer = MyAnAnswer.GetCSS();
-            EditionHTML.structCCS.falseAanswerIcon = MyAnAnswerItem.GetCSS();
-            EditionHTML.structCCS.comment = MyComment.GetCSS();
+            //EditionHTML.structCCS.title = MyTitle.GetCSS();
+            //EditionHTML.structCCS.description = MyDiscription.GetCSS();
+            //EditionHTML.structCCS.question = MyQuest.GetCSS();
+            //EditionHTML.structCCS.trueAanswer = MyAnswer.GetCSS();
+            //EditionHTML.structCCS.trueAanswerIcon = MyAnswerItem.GetCSS();
+            //EditionHTML.structCCS.falseAnswer = MyAnAnswer.GetCSS();
+            //EditionHTML.structCCS.falseAanswerIcon = MyAnAnswerItem.GetCSS();
+            //EditionHTML.structCCS.comment = MyComment.GetCSS();
 
             /*Меняем цвет шрифта*/
             RTB_Head.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(MyTitle.GetCSS().Color);
