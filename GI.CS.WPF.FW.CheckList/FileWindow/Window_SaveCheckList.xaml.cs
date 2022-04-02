@@ -88,9 +88,8 @@ namespace GI.CS.WPF.FW.CheckList
         {
             EditionHTML.headerHTML = input_header.Text;
             EditionHTML.describeHTML = input_describe.Text;
-            EditionHTML.signFooterHTML = input_sign.Text;       
-            EditionHTML.deleteAnAnswerIf = (CB_lineThrough.IsChecked == true);
-            EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == true;
+            EditionHTML.signFooterHTML = input_sign.Text;    
+            EditionHTML.spoilerIf = CB_spoilerIf.IsChecked == false;
         }
 
 
@@ -131,18 +130,22 @@ namespace GI.CS.WPF.FW.CheckList
             CB_lineThrough.IsEnabled = ifnow || ifJson;
             if (!ifJson)
             {
-                CB_spoilerIf.Content = "Скрыть пояснения под спойлер";
-                CB_lineThrough.Content = "Зачеркнуть неверные ответы";
-                CB_spoilerIf.ToolTip = "При использовании скроет поясения по спойлер";
-                CB_lineThrough.ToolTip = "При использовании зачернет не верные ответы";
+                CB_spoilerIf.IsChecked = true;
+                CB_spoilerIf.Content = "Открытый спойлер";
+                CB_spoilerIf.ToolTip = "Если активен: Спойлер с пояснением открыт";
+                CB_lineThrough.Visibility = Visibility.Collapsed;
             }
             else
             {
-                CB_spoilerIf.Content = "Добавить в JSON файл переносы";
-                CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности
-                CB_spoilerIf.ToolTip = "При использовании в файл JSON будут добавлены пробелы и переносы!";
-                CB_lineThrough.ToolTip = "При использовании файл JSON будит записан в Unicode,\n" +
-                                       "по умолчанию используется Escape-последовательность";
+                CB_spoilerIf.IsChecked = false;
+                CB_lineThrough.Visibility = Visibility.Hidden;
+                CB_spoilerIf.Content = "Многострочный JSON";
+                CB_spoilerIf.ToolTip = "Если активен: JSON генерирует переносы и табуляцию";
+             
+
+                CB_lineThrough.Content = "Записать в Unicode"; //Unicode Escape-последовательности            
+                CB_lineThrough.ToolTip = "Если активен: Cодержимое JSON в Unicode;\n" +                 
+                                         "По умолчанию: Escape-последовательность";
             }
 
         }

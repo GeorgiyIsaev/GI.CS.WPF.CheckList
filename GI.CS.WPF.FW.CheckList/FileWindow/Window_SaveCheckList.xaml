@@ -62,7 +62,7 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <ComboBox x:Name="ComboBox_FontSize" HorizontalAlignment="Left"  ToolTip="Основной шрифт теста"  Height="26" Margin="0,65,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149" Grid.Column="1" FontWeight="Normal" SelectionChanged="ComboBox_FontSize_SelectionChanged"/>
-                    <CheckBox x:Name="CB_spoilerIf" Content="Открытый спойлер Пояснения" ToolTip="Закрыть/открыть спойлеры с пояснениями"   Grid.Column="1" HorizontalAlignment="Left" Margin="446,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="252" FontWeight="Normal"/>
+                    <CheckBox x:Name="CB_spoilerIf" Content="Многострочный JSON" ToolTip="Закрыть/открыть спойлеры с пояснениями"   Grid.Column="1" HorizontalAlignment="Left" Margin="509,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="205" FontWeight="Normal"/>
                     <CheckBox x:Name="CB_lineThrough" Content="Зачеркнуть неверные ответы" ToolTip="Применения стиля с зачеркиванием для не верных ответов" Grid.Column="1" HorizontalAlignment="Left" Margin="163,68,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="252" FontWeight="Normal"/>
                 </Grid>
             </TabItem>
