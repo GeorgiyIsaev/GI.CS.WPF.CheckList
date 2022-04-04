@@ -23,10 +23,12 @@ namespace DataBase.Model
             String[] anAnswerMas = anAnswerListText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string text in answerMas)
             {
+                if (text == "\r" || text == " \r") continue;
                 questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = true, /*Quest= questDB*/ });
             }
             foreach (string text in anAnswerMas)
             {
+                if (text == "\r" || text == " \r") continue;
                 questDB.Answers.Add(new Tables.Answer() { TextAnswer = text, isTrue = false, /*Quest = questDB*/ });
             }                 
             return questDB;
