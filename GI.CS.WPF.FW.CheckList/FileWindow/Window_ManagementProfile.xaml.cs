@@ -111,6 +111,8 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
                 return;
             }
             ProfBox.CreateNewTest(TextBox_GroupName.Text, TextBox_TestName.Text);   //добавить   
+            TextBox_GroupName.Text = "";
+            TextBox_TestName.Text = "";
             ResetTablesDV(); //обновить таблицу
         }
         /*Кнопка изменить вопрос*/
