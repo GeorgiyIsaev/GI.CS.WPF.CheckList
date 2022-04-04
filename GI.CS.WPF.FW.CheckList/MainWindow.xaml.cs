@@ -100,6 +100,9 @@ namespace GI.CS.WPF.FW.CheckList
 
                 QuestsBox.questItems[val].SetQuestDB(questItemDB);
                 ListBox_Quest.SelectedIndex = val; //переход к добавленному эл-ту
+                ListBox_Quest.Items.Refresh();
+                //ListBox_Quest.SelectedIndex = 0;
+                //ListBox_Quest.SelectedIndex = val;
             }
             /*Выполнение события - Добавить*/
             else 
