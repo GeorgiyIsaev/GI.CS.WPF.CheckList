@@ -80,8 +80,17 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             if (nameColumn == "Удалить")
             {
                 TablesTest customer = (TablesTest)Tables_TestBox.SelectedItem; //Получиль объект из таблицы
-                ProfBox.DeleteTestAt(customer.test.Id);
-                ResetTablesDV();
+
+                if (customer.Count > 0)
+                {
+                    var result = MessageBox.Show($"Вы собираетесь удалить тест и связанные с ним вопросы. Подтвердите удаление!",
+                        "Предуприждение!", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        ProfBox.DeleteTestAt(customer.test.Id);
+                        ResetTablesDV();
+                    }
+                }
             }
             else
             {
