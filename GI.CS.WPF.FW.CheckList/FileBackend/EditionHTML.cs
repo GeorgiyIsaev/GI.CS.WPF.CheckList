@@ -147,7 +147,12 @@ namespace GI.CS.WPF.FW.CheckList
 		}
 		private static string footerBilder()
 		{
-			return $"</main><div id=\"footer\"><div id=\"text-footer\"><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.1.0\" by Georgiyelbaf</div>" + "\n" + sign() +
+			string newCSS = "";
+			if(signFooterHTML.Length > 0)
+            {
+				newCSS = "style=\"height: 80px;\"";
+			}	
+			return $"</main><div id=\"footer\" {newCSS}><div id=\"text-footer\"><div>Чек-лист собран в приложении \"Верстальщик чек-листов v.1.0\" by Georgiyelbaf</div>" + "\n" + sign() +
 			$"<div> Дата и время сборки: {DateTime.Now}</div></div></div> ";
 		}
 		private static string sign()
