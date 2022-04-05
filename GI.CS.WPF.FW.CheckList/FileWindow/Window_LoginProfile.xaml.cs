@@ -29,6 +29,10 @@ namespace GI.CS.WPF.FW.CheckList.FileWindow
             isCrateProfile = isCrate;
             TB_Login.Text = name;
             ReplaceWindow();
+
+            LblHelp.ToolTip = "Допустимо создание профиля без пароля!\n" +
+            "Вход из меню в профиль без пароля осуществляется без окна авторизации!";
+
         }
 
         void ReplaceWindow()
