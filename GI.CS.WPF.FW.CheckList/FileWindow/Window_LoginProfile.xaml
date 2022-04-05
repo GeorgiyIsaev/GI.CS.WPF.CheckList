@@ -10,13 +10,15 @@
         MinHeight="194" MinWidth="300">
     <Grid>
         <Button Name="Buttun_CreateProfile"  Content="Создать новый профиль" Margin="0,10,19,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="161" Click="Buttun_CreateProfile_Click"  />
-        <TextBlock HorizontalAlignment="Left" Margin="10,39,0,0" TextWrapping="Wrap" Text="Логин:" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.312" FontWeight="Bold" FontSize="14" Height="23" Width="60"/>
-        <TextBox Name="TB_Login" Height="23" Margin="82,39,19,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,39,0,0" TextWrapping="Wrap" Text="Профиль:" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.312" FontWeight="Bold" FontSize="14" Height="23" Width="76"/>
+        <TextBox Name="TB_Login" Height="23" Margin="99,39,19,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Пароль:" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.312" FontWeight="Bold" FontSize="14" Height="23" Width="60"/>
-        <PasswordBox Name="TB_Pass01" Height="23" Margin="82,67,19,0" VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
+        <PasswordBox Name="TB_Pass01" Height="23" Margin="99,67,19,0" VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
         <TextBlock Name="TB_Pass02i" HorizontalAlignment="Left" Margin="10,95,0,0" TextWrapping="Wrap" Text="Пароль:" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.312" FontWeight="Bold" FontSize="14" Height="23" Width="60"/>
-        <PasswordBox  Name="TB_Pass02" Height="23" Margin="82,95,19,0"  VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
+        <PasswordBox  Name="TB_Pass02" Height="23" Margin="99,95,19,0"  VerticalAlignment="Top" RenderTransformOrigin="0.679,0.63"/>
         <Button Name="Buttun_EnterProfile" IsDefault="True" Click="Buttun_EnterProfile_Click" Content="Войти" Margin="0,131,19,0" HorizontalAlignment="Right" Width="161" Height="22" VerticalAlignment="Top" FontWeight="Bold"/>
-<!--TextWrapping="Wrap" Text=""-->
+        <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="26" Margin="10,8,0,0" Stroke="Black" VerticalAlignment="Top" Width="62"/>
+        <Label Name="LblHelp"  Content="  ! " HorizontalAlignment="Left" Margin="19,-1,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Foreground="#FFF12626" Height="40" Width="51"/>
+             <!--TextWrapping="Wrap" Text=""-->
     </Grid>
 </Window>
