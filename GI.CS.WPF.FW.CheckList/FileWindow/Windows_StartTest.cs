@@ -151,6 +151,10 @@ namespace GI.CS.WPF.FW.CheckList
                     bool a = lbi.IsSelected;
                     lbi.Background = Brushes.Green;
                 }
+                else if (!lbi.IsSelected && temp.isTrue)
+                {                 
+                    lbi.Background = Brushes.LightGreen;
+                }
                 else if (lbi.IsSelected && !temp.isTrue)
                 {
                     //lbi.Background = Brushes.HotPink;
