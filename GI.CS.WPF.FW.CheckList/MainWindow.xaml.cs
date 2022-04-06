@@ -57,7 +57,11 @@ namespace GI.CS.WPF.FW.CheckList
         {      
             if (msg == WM_HOTKEY)
             {
-                //System.Windows.Forms.SendKeys.Send("^c");
+                //object p = SendKeys.SendWait("^{c}");
+                System.Windows.Forms.SendKeys.SendWait("^c");
+                //try { System.Windows.Forms.SendKeys.Send(System.Windows.Forms.Keys.Control.ToString() + "c"); }
+                //catch { }
+                //Keys.Alt.ToString()
                 if (Clipboard.ContainsText() == true)
                     input_Quest.Text = Clipboard.GetText(); //получаем текст из буфера копирования
             
