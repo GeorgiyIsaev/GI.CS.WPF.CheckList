@@ -55,8 +55,6 @@ namespace GI.CS.WPF.FW.CheckList
      
         }
 
-
-
         private void Buttun_GetAnswer_Click(object sender, RoutedEventArgs e)
         {
             /*Кнопка дать ответ*/
@@ -164,12 +162,5 @@ namespace GI.CS.WPF.FW.CheckList
             }
             ListBox_AnswerItem.SelectedIndex = -1;
         }
-
-
-
-
-    }
-
-
-    
+    }    
 }
