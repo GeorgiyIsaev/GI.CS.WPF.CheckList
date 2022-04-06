@@ -4,6 +4,7 @@ using GI.CS.WPF.FW.CheckList.FileWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -26,8 +28,62 @@ namespace GI.CS.WPF.FW.CheckList
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;           
+            Loaded += MainWindow_Loaded;
+            Loaded += Window_LoadedKey;
         }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        //необходимые константы
+        public const int MOD_CONTROL = 0x2;
+        public const int WM_HOTKEY = 0x312;
+        public const uint MOD_NOREPEAT = 0;
+
+        //несколько примеров виртуальных кодов
+        public const uint KEY_1 = 0x31;
+        public const uint KEY_2 = 0x32;
+        public const uint KEY_3 = 0x33;
+        public const uint KEY_5 = 0x34;
+
+        public const uint KEY_Q = 0x51;
+        public const uint KEY_W = 0x57;
+        public const uint KEY_E = 0x45;
+        public const uint KEY_R = 0x52;
+
+        //обработчик сообщений для окна
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+
+            if (msg == WM_HOTKEY)
+            {
+                input_Quest.Text += DateTime.Now.ToString() + " WM_HOTKEY message, ID: 0x" + wParam.ToString("X");
+                input_Quest.Text += Environment.NewLine;
+                handled = true;
+            }
+
+            return IntPtr.Zero;
+        } 
+
+        private void Window_LoadedKey(object sender, RoutedEventArgs e)
+        {
+            WindowInteropHelper h = new WindowInteropHelper(this);
+            HwndSource source = HwndSource.FromHwnd(h.Handle);
+            source.AddHook(new HwndSourceHook(WndProc));//регистрируем обработчик сообщений
+
+            bool re3s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 0x42);  //0x42 is 'b'
+            if (re3s == false) MessageBox.Show("RegisterHotKey failed re2s");
+
+            bool re4s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 0x31);  //0x42 is 'b'
+            if (re4s == false) MessageBox.Show("RegisterHotKey failed re2s");
+
+            //bool re45s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 48);  //0x42 is 'b'
+            //if (re45s == false) MessageBox.Show("RegisterHotKey failed re2s");
+        }
+
+
+
 
 
 
