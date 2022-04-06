@@ -29,7 +29,7 @@ namespace GI.CS.WPF.FW.CheckList
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-            Loaded += Window_LoadedKey;
+            Loaded += Window_LoadedKeyQ;
         }
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -53,33 +53,27 @@ namespace GI.CS.WPF.FW.CheckList
         public const uint KEY_R = 0x52;
 
         //обработчик сообщений для окна
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-
+        private IntPtr WndProcQ(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {      
             if (msg == WM_HOTKEY)
             {
-                input_Quest.Text += DateTime.Now.ToString() + " WM_HOTKEY message, ID: 0x" + wParam.ToString("X");
-                input_Quest.Text += Environment.NewLine;
+                input_Quest.Text = Clipboard.GetText(); //получаем текст из буфера копирования
+            
+
+                // input_Quest.Text = DateTime.Now.ToString() + " WM_HOTKEY message, ID: 0x" + wParam.ToString("X");
+                // input_Quest.Text += Environment.NewLine;
                 handled = true;
             }
-
             return IntPtr.Zero;
         } 
-
-        private void Window_LoadedKey(object sender, RoutedEventArgs e)
+        private void Window_LoadedKeyQ(object sender, RoutedEventArgs e)
         {
             WindowInteropHelper h = new WindowInteropHelper(this);
             HwndSource source = HwndSource.FromHwnd(h.Handle);
-            source.AddHook(new HwndSourceHook(WndProc));//регистрируем обработчик сообщений
+            source.AddHook(new HwndSourceHook(WndProcQ));//регистрируем обработчик сообщений
 
-            bool re3s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 0x42);  //0x42 is 'b'
-            if (re3s == false) MessageBox.Show("RegisterHotKey failed re2s");
-
-            bool re4s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 0x31);  //0x42 is 'b'
-            if (re4s == false) MessageBox.Show("RegisterHotKey failed re2s");
-
-            //bool re45s = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, 48);  //0x42 is 'b'
-            //if (re45s == false) MessageBox.Show("RegisterHotKey failed re2s");
+            bool res = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, KEY_Q);  
+            if (res == false) MessageBox.Show("RegisterHotKey failed re2s");
         }
 
 
