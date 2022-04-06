@@ -57,7 +57,9 @@ namespace GI.CS.WPF.FW.CheckList
         {      
             if (msg == WM_HOTKEY)
             {
-                input_Quest.Text = Clipboard.GetText(); //получаем текст из буфера копирования
+                //System.Windows.Forms.SendKeys.Send("^c");
+                if (Clipboard.ContainsText() == true)
+                    input_Quest.Text = Clipboard.GetText(); //получаем текст из буфера копирования
             
 
                 // input_Quest.Text = DateTime.Now.ToString() + " WM_HOTKEY message, ID: 0x" + wParam.ToString("X");
