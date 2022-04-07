@@ -18,7 +18,7 @@ namespace GI.CS.WPF.FW.CheckList
             foreach (var q in questItemsForTest)
                 q.RandomGeneratorIt();
 
-            var tempBox = new ObservableCollection<QuestItem>(questItemsForTest.OrderBy(i => i, new QuestItemComparerABSD()));
+            var tempBox = new ObservableCollection<QuestItem>(questItemsForTest.OrderBy(i => i, new QuestItemComparerRND()));
             questItemsForTest.Clear();
             foreach (var q in tempBox)
                 questItemsForTest.Add(q);
