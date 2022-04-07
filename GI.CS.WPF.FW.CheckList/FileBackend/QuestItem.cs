@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Text.Json.Serialization;
+using System.Linq;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -150,18 +151,21 @@ namespace GI.CS.WPF.FW.CheckList
 			}
 			return tempSTR.ToString();
         }
-		Random rnd = new Random();
 		public void RandomGeneratorIt()
         {
 			countTrueAnswer = 0;
-				intRandomQuest = rnd.Next(0, 100);
+			intRandomQuest = RND.GetRandomInt(); 
 			foreach (Answer tmpAnswer in answerItem)
 			{
 				if(tmpAnswer.isTrue) countTrueAnswer++;
 				tmpAnswer.RandomAnswerIt();
 			}
+
 			/*Перетасовать ответы*/
-			answerItem.Sort(new AnswerComparerRND());
+			var tempBox = new List<Answer>(answerItem.OrderBy(i => i, new AnswerComparerRND()));
+			answerItem.Clear();
+			foreach (var q in tempBox)
+				answerItem.Add(q);
 		}
 	}
 
@@ -170,7 +174,7 @@ namespace GI.CS.WPF.FW.CheckList
 	{
 		public int Compare(QuestItem q1, QuestItem q2)
 		{
-			return q1.intRandomQuest + q2.intRandomQuest;
+			return q1.intRandomQuest - q2.intRandomQuest;
 		}
 	}
 	/*Компараторы для сортивки Вопросов по алфавиту*/

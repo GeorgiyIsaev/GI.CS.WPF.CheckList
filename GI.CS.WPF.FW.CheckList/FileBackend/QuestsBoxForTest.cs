@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace GI.CS.WPF.FW.CheckList
 {
@@ -13,16 +14,19 @@ namespace GI.CS.WPF.FW.CheckList
        {          
             questItemsForTest = new List<QuestItem>(QuestsBox.questItems);         
             questItemsForTest.RemoveAt(0);
-            string val =  questItemsForTest[0].ToolTypeListBox();
 
+            foreach (var q in questItemsForTest)
+                q.RandomGeneratorIt();
 
-            foreach (QuestItem tmp in questItemsForTest)
-            {
-                tmp.RandomGeneratorIt();
-              //  tmp.sortAnswerRandom();
-            }
+            var tempBox = new ObservableCollection<QuestItem>(questItemsForTest.OrderBy(i => i, new QuestItemComparerABSD()));
+            questItemsForTest.Clear();
+            foreach (var q in tempBox)
+                questItemsForTest.Add(q);
 
-            questItemsForTest.Sort(new QuestItemComparerRND());
+            //foreach (QuestItem tmp in questItemsForTest)
+            //{
+            //    tmp.RandomGeneratorIt();     
+            //}
        }
     }
 }

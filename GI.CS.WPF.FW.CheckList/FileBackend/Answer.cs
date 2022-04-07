@@ -5,6 +5,16 @@ using System.Text.Json.Serialization;
 
 namespace GI.CS.WPF.FW.CheckList
 {
+	public static class RND{
+		static Random rnd = new Random();
+		public static int GetRandomInt()
+		{
+			return rnd.Next(0, 100);
+		}
+	}
+
+	
+	
 	public class Answer
 	{
 		public bool isTrue { get; set; } // 1-Верный ответ, 0-Не верный ответ.
@@ -17,10 +27,9 @@ namespace GI.CS.WPF.FW.CheckList
 			isTrue = if_answer;
 			answerSTR = str;			
 		}
-		Random rnd = new Random();
 		public void RandomAnswerIt()
         {	
-			random_nomer = rnd.Next(0, 100);
+			random_nomer = RND.GetRandomInt();
 		}
         public override string ToString()
         {
@@ -38,7 +47,7 @@ namespace GI.CS.WPF.FW.CheckList
 	{
 		public int Compare(Answer a1, Answer a2)
 		{
-			return a1.random_nomer + a2.random_nomer;
+			return a1.random_nomer - a2.random_nomer;
 		}
 	}
 
