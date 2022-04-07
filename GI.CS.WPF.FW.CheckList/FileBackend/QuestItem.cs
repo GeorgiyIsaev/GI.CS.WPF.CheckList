@@ -153,8 +153,8 @@ namespace GI.CS.WPF.FW.CheckList
 		Random rnd = new Random();
 		public void RandomGeneratorIt()
         {
-		
-			intRandomQuest = rnd.Next(0, 100);
+			countTrueAnswer = 0;
+				intRandomQuest = rnd.Next(0, 100);
 			foreach (Answer tmpAnswer in answerItem)
 			{
 				if(tmpAnswer.isTrue) countTrueAnswer++;
