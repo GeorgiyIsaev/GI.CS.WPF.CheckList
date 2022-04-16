@@ -2,21 +2,13 @@
 using GI.CS.WPF.FW.CheckList;
 using GI.CS.WPF.FW.CheckList.FileWindow;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using ProfBox = DataBase.Model.ProfileBox;
 
 namespace GI.CS.WPF.FW.CheckList
@@ -29,61 +21,18 @@ namespace GI.CS.WPF.FW.CheckList
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-            Loaded += Window_LoadedKeyQ;
+            Loaded += Window_LoadedKeyPaste;
         }
-
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-
-        //необходимые константы
-        public const int MOD_CONTROL = 0x2;
-        public const int WM_HOTKEY = 0x312;
-        public const uint MOD_NOREPEAT = 0;
-
-        //несколько примеров виртуальных кодов
-        public const uint KEY_1 = 0x31;
-        public const uint KEY_2 = 0x32;
-        public const uint KEY_3 = 0x33;
-        public const uint KEY_5 = 0x34;
-
-        public const uint KEY_Q = 0x51;
-        public const uint KEY_W = 0x57;
-        public const uint KEY_E = 0x45;
-        public const uint KEY_R = 0x52;
-
-        //обработчик сообщений для окна
-        private IntPtr WndProcQ(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {      
-            if (msg == WM_HOTKEY)
-            {
-                //object p = SendKeys.SendWait("^{c}");
-                System.Windows.Forms.SendKeys.SendWait("^c");
-                //try { System.Windows.Forms.SendKeys.Send(System.Windows.Forms.Keys.Control.ToString() + "c"); }
-                //catch { }
-                //Keys.Alt.ToString()
-                if (Clipboard.ContainsText() == true)
-                    input_Quest.Text = Clipboard.GetText(); //получаем текст из буфера копирования
-            
-
-                // input_Quest.Text = DateTime.Now.ToString() + " WM_HOTKEY message, ID: 0x" + wParam.ToString("X");
-                // input_Quest.Text += Environment.NewLine;
-                handled = true;
-            }
-            return IntPtr.Zero;
-        } 
-        private void Window_LoadedKeyQ(object sender, RoutedEventArgs e)
+        private void AddTextBox(string text)
         {
-            WindowInteropHelper h = new WindowInteropHelper(this);
-            HwndSource source = HwndSource.FromHwnd(h.Handle);
-            source.AddHook(new HwndSourceHook(WndProcQ));//регистрируем обработчик сообщений
-
-            bool res = RegisterHotKey(h.Handle, 1, MOD_CONTROL | MOD_NOREPEAT, KEY_Q);  
-            if (res == false) MessageBox.Show("RegisterHotKey failed re2s");
+            if (input_Quest.Text != "") input_Quest.Text += "\n";
+            input_Quest.Text += text;
         }
-
-
-
+        public void Window_LoadedKeyPaste(object sender, RoutedEventArgs e)
+        {
+            Copy.CopyCtrl.AddTextEvent += AddTextBox;
+            Copy.CopyCtrl.Window_LoadedKeyQ(this);
+        }
 
 
 

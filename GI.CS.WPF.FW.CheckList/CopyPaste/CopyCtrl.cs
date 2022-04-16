@@ -7,7 +7,7 @@ using System.Windows.Interop;
 //Windows.Input.Key до System.Windows.Forms.Keys
 //using System.Windows.Forms.Keys;
 
-namespace MyTestCopy
+namespace Copy
 {
     public delegate void AddTextBoxDelegate(String text);
 

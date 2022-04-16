@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace MyTestCopy
+namespace Copy
 {
     public static class ConstantKey
     {
