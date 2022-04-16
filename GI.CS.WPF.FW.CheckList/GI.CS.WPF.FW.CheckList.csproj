@@ -116,6 +116,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CopyPaste\ConstantKey.cs" />
+    <Compile Include="CopyPaste\CopyCtrl.cs" />
     <Compile Include="FileBackend\ReadFile.cs" />
     <Compile Include="FileBackend\StructCCS.cs" />
   </ItemGroup>
