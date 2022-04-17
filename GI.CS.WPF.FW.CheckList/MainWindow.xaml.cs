@@ -23,15 +23,27 @@ namespace GI.CS.WPF.FW.CheckList
             Loaded += MainWindow_Loaded;
             Loaded += Window_LoadedKeyPaste;
         }
-        private void AddTextBox(string text)
-        {
-            if (input_Quest.Text != "") input_Quest.Text += "\n";
-            input_Quest.Text += text;
+        private void AddTexQuesttBox(string text)
+        {       
+            input_Quest.Text = text;
         }
+        private void AddTextAnswerBox(string text)
+        {
+            if (input_Answer.Text != "") input_Answer.Text += "\n";
+            input_Answer.Text += text;
+        }
+
+        /*Добвление горячих клавишь*/
         public void Window_LoadedKeyPaste(object sender, RoutedEventArgs e)
         {
-            Copy.CopyCtrl.AddTextQuestEvent += AddTextBox;
+            Copy.CopyCtrl.AddTextQuestEvent += AddTexQuesttBox;
             Copy.CopyCtrl.Window_LoadedKeyQ(this);
+
+         //   Copy.CopyCtrl.AddTextAnswerEvent += AddTextAnswerBox;
+           // Copy.CopyCtrl.Window_LoadedKeyW(this);
+
+            //AddTextAnAnswerEvent
+            //AddTextCommentEvent
         }
 
 
