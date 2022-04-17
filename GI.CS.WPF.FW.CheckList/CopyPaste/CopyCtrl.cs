@@ -9,7 +9,10 @@ namespace Copy
 
     public class CopyCtrl
     {
-        public static AddTextBoxDelegate AddTextEvent;
+        public static AddTextBoxDelegate AddTextQuestEvent;
+        public static AddTextBoxDelegate AddTextAnswerEvent;
+        public static AddTextBoxDelegate AddTextAnAnswerEvent;
+        public static AddTextBoxDelegate AddTextCommentEvent;
 
         [DllImport("User32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
@@ -26,7 +29,7 @@ namespace Copy
         {
             if (msg == ConstantKey.WM_HOTKEY)
             {    
-                AddTextEvent?.Invoke(Clipboard.GetText()); //вызвать вставку из буфера
+                AddTextQuestEvent?.Invoke(Clipboard.GetText()); //вызвать вставку из буфера
                 handled = true;
             }
             return IntPtr.Zero;
@@ -49,7 +52,7 @@ namespace Copy
         {
             if (msg == ConstantKey.WM_HOTKEY)
             {
-                AddTextEvent?.Invoke(Clipboard.GetText()); //вызвать вставку из буфера
+                AddTextAnswerEvent?.Invoke(Clipboard.GetText()); //вызвать вставку из буфера
                 handled = true;
             }
             return IntPtr.Zero;

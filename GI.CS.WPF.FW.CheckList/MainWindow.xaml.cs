@@ -30,7 +30,7 @@ namespace GI.CS.WPF.FW.CheckList
         }
         public void Window_LoadedKeyPaste(object sender, RoutedEventArgs e)
         {
-            Copy.CopyCtrl.AddTextEvent += AddTextBox;
+            Copy.CopyCtrl.AddTextQuestEvent += AddTextBox;
             Copy.CopyCtrl.Window_LoadedKeyQ(this);
         }
 
