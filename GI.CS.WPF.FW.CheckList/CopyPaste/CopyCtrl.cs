@@ -51,7 +51,7 @@ namespace Copy
         private static IntPtr WndProcW(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == ConstantKey.WM_HOTKEY)
-            {
+            {       
                 AddTextAnswerEvent?.Invoke(Clipboard.GetText()); //вызвать вставку из буфера
                 handled = true;
             }
